@@ -8,20 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		9083B39A1F86D5B20079E309 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9083B3991F86D5B20079E309 /* AppDelegate.swift */; };
-		9083B39C1F86D5B20079E309 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9083B39B1F86D5B20079E309 /* ViewController.swift */; };
 		9083B39F1F86D5B20079E309 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9083B39D1F86D5B20079E309 /* Main.storyboard */; };
 		9083B3A11F86D5B20079E309 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9083B3A01F86D5B20079E309 /* Assets.xcassets */; };
 		9083B3A41F86D5B20079E309 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9083B3A21F86D5B20079E309 /* LaunchScreen.storyboard */; };
+		F7EB9A05A452C6086BD6CA17 /* Pods_servicely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B904A9DEB1102FB134E43A /* Pods_servicely.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		663C9C56D0E640BCE58EE219 /* Pods-servicely.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-servicely.release.xcconfig"; path = "Pods/Target Support Files/Pods-servicely/Pods-servicely.release.xcconfig"; sourceTree = "<group>"; };
+		904AA8B51F929DBA000FE7AC /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9083B3961F86D5B20079E309 /* servicely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = servicely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9083B3991F86D5B20079E309 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9083B39B1F86D5B20079E309 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9083B39E1F86D5B20079E309 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9083B3A01F86D5B20079E309 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9083B3A31F86D5B20079E309 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9083B3A51F86D5B20079E309 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C767318476A40047FD5CA7B6 /* Pods-servicely.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-servicely.debug.xcconfig"; path = "Pods/Target Support Files/Pods-servicely/Pods-servicely.debug.xcconfig"; sourceTree = "<group>"; };
+		E7B904A9DEB1102FB134E43A /* Pods_servicely.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_servicely.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +32,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7EB9A05A452C6086BD6CA17 /* Pods_servicely.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C8D978032974C97F2E58A5D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E7B904A9DEB1102FB134E43A /* Pods_servicely.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9083B38D1F86D5B20079E309 = {
 			isa = PBXGroup;
 			children = (
 				9083B3981F86D5B20079E309 /* servicely */,
 				9083B3971F86D5B20079E309 /* Products */,
+				C3A3BCE3C49EDA41FBF0ABCD /* Pods */,
+				5C8D978032974C97F2E58A5D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +69,22 @@
 			isa = PBXGroup;
 			children = (
 				9083B3991F86D5B20079E309 /* AppDelegate.swift */,
-				9083B39B1F86D5B20079E309 /* ViewController.swift */,
 				9083B39D1F86D5B20079E309 /* Main.storyboard */,
 				9083B3A01F86D5B20079E309 /* Assets.xcassets */,
 				9083B3A21F86D5B20079E309 /* LaunchScreen.storyboard */,
 				9083B3A51F86D5B20079E309 /* Info.plist */,
+				904AA8B51F929DBA000FE7AC /* GoogleService-Info.plist */,
 			);
 			path = servicely;
+			sourceTree = "<group>";
+		};
+		C3A3BCE3C49EDA41FBF0ABCD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C767318476A40047FD5CA7B6 /* Pods-servicely.debug.xcconfig */,
+				663C9C56D0E640BCE58EE219 /* Pods-servicely.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +94,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9083B3A81F86D5B20079E309 /* Build configuration list for PBXNativeTarget "servicely" */;
 			buildPhases = (
+				29EAE9724662AF9E1A212EFF /* [CP] Check Pods Manifest.lock */,
 				9083B3921F86D5B20079E309 /* Sources */,
 				9083B3931F86D5B20079E309 /* Frameworks */,
 				9083B3941F86D5B20079E309 /* Resources */,
+				B502D0CC9DEE17C9B54B6411 /* [CP] Embed Pods Frameworks */,
+				9A4024DBFC650AD633FE038E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,12 +157,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		29EAE9724662AF9E1A212EFF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9A4024DBFC650AD633FE038E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-servicely/Pods-servicely-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B502D0CC9DEE17C9B54B6411 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-servicely/Pods-servicely-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9083B3921F86D5B20079E309 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9083B39C1F86D5B20079E309 /* ViewController.swift in Sources */,
 				9083B39A1F86D5B20079E309 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,6 +345,7 @@
 		};
 		9083B3A91F86D5B20079E309 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C767318476A40047FD5CA7B6 /* Pods-servicely.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +361,7 @@
 		};
 		9083B3AA1F86D5B20079E309 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 663C9C56D0E640BCE58EE219 /* Pods-servicely.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
