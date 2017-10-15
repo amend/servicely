@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
-class CreateServiceOfferViewController: UIViewController {
+class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     @IBOutlet weak var serviceTypePickerView: UIPickerView!
     
@@ -18,13 +19,23 @@ class CreateServiceOfferViewController: UIViewController {
     
     @IBOutlet weak var location: UITextField!
     
+    @IBOutlet weak var companyName: UITextField!
+    
     @IBOutlet weak var contactInfo: UITextField!
     
+    @IBOutlet weak var savedLabel: UILabel!
+    
+    
+    let pickerViewData:[String] = ["Mechanic", "Carpentry", "Tutoring", "Care provider", "Lawn & Garden", "Pet care", "Plumbing", "Other"]
+    
+    var serviceType:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.serviceTypePickerView.dataSource = self
+        self.serviceTypePickerView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,9 +44,51 @@ class CreateServiceOfferViewController: UIViewController {
     }
     
     @IBAction func submitButton(_ sender: Any) {
+        // define array of key/value pairs to store for this person.
+        let serviceOfferRecord = [
+            "companyName": companyName.text!,
+            "serviceType": serviceType,
+            "serviceDescription": serviceDescription.text!,
+            "askingPrice": askingPrice.text!,
+            "location": location.text!,
+            "contactInfo": contactInfo.text!
+        ]
+        
+        // Save to Firebase.
+        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
+        
+        ref.child("serviceOffer").childByAutoId().setValue(serviceOfferRecord)
+        
+        savedLabel.text = "saved!"
+        
     }
     
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if(component == 0) {
+            return pickerViewData.count
+        } else {
+            return 0
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if(component == 0) {
+            return pickerViewData[row]
+        } else {
+            return ""
+        }
+    }
 
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if(component == 0) {
+            serviceType = pickerViewData[row]
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

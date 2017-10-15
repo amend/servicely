@@ -47,7 +47,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contact info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nXp-b6-G78">
-                                <rect key="frame" x="140" y="516" width="94" height="21"/>
+                                <rect key="frame" x="222" y="513" width="94" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -69,7 +69,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="956 321 9876" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ucz-43-5UH">
-                                <rect key="frame" x="100" y="545" width="174" height="30"/>
+                                <rect key="frame" x="201" y="542" width="158" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="textColor"/>
@@ -114,18 +114,40 @@
                                     <navigationItem id="SpR-sU-szN"/>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Company name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OT6-3G-ZO8">
+                                <rect key="frame" x="28" y="513" width="120" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Handy Men" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dBz-IU-mvb">
+                                <rect key="frame" x="16" y="542" width="158" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmb-wc-8Gw">
+                                <rect key="frame" x="254" y="605" width="105" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="On7-n2-6xP"/>
                     </view>
                     <connections>
                         <outlet property="askingPrice" destination="wlw-3h-sdE" id="Phx-uL-W74"/>
+                        <outlet property="companyName" destination="dBz-IU-mvb" id="0Ko-Xw-oCk"/>
                         <outlet property="contactInfo" destination="ucz-43-5UH" id="cM8-9H-hGt"/>
-                        <outlet property="description" destination="Y46-Bg-f4l" id="G5q-4A-5T1"/>
                         <outlet property="location" destination="1Ak-8E-Oam" id="DYr-g7-aEA"/>
+                        <outlet property="savedLabel" destination="fmb-wc-8Gw" id="NWd-8b-gAb"/>
                         <outlet property="serviceDescription" destination="Y46-Bg-f4l" id="sm9-8d-WVT"/>
-                        <outlet property="serviceTypePickerView" destination="Zyk-ap-z48" id="6UL-sn-zrR"/>
-                        <outlet property="serviceTypeViewPicker" destination="Zyk-ap-z48" id="DvC-N3-Qyg"/>
+                        <outlet property="serviceTypePickerView" destination="Zyk-ap-z48" id="SJC-UZ-TgE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KLB-oG-zlp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -230,9 +252,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="feed" width="16" height="16"/>
-        <image name="hammer_icon" width="16" height="16"/>
-        <image name="profile" width="16" height="16"/>
-        <image name="settings" width="16" height="16"/>
+        <image name="feed" width="25" height="25"/>
+        <image name="hammer_icon" width="25" height="25"/>
+        <image name="profile" width="25" height="25"/>
+        <image name="settings" width="25" height="25"/>
     </resources>
 </document>

@@ -33,8 +33,7 @@ class ServiceOfferTableViewCell: UITableViewCell {
         
         // Save to Firebase.
         var ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-        
-
+    
         ref.child("serviceOffer").childByAutoId().setValue(serviceOfferRecord)
     }
 
