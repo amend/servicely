@@ -9,7 +9,11 @@
 import UIKit
 
 class ClientFeedTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
+    @IBOutlet weak var feedTableView: UITableView!
+    
+    var services = [ServiceOffer]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,6 +22,11 @@ class ClientFeedTableViewController: UIViewController, UITableViewDelegate, UITa
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        self.feedTableView.dataSource = self
+        self.feedTableView.delegate = self
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

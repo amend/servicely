@@ -157,7 +157,7 @@
         <!--Feed-->
         <scene sceneID="Fzx-n7-uLV">
             <objects>
-                <viewController title="Feed" id="33I-3r-eD6" customClass="ClientFeedTableViewController" customModule="servicely" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Feed" id="33I-3r-eD6" customClass="ClientFeedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IGu-Nn-2BB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -220,13 +220,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="3DM-mC-v4C"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="HEB-oV-LSN">
+                    <navigationItem key="navigationItem" title="Feed" id="HEB-oV-LSN">
                         <barButtonItem key="rightBarButtonItem" title="Post" id="YCb-ot-IGy">
                             <connections>
                                 <segue destination="y70-ST-alP" kind="show" id="zMC-YJ-Kvg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="feedTableView" destination="T54-4i-9ZU" id="Snb-ei-GBo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="miZ-tk-QRt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

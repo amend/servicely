@@ -18,24 +18,11 @@ class ServiceOfferTableViewCell: UITableViewCell {
     
     @IBOutlet weak var askingPrice: UILabel!
     
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-        // define array of key/value pairs to store for this person.
-        let serviceOfferRecord = [
-            "companyName": companyName.text,
-            "serviceType": serviceType.text,
-            "askingPrice": askingPrice.text
-        ]
-        
-        // Save to Firebase.
-        var ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-    
-        ref.child("serviceOffer").childByAutoId().setValue(serviceOfferRecord)
-    }
+     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
