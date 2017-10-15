@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		901677271F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901677261F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift */; };
+		901677291F92B87C00F1E1D5 /* ClientFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901677281F92B87C00F1E1D5 /* ClientFeedTableViewController.swift */; };
+		9016772D1F92BA1C00F1E1D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9016772C1F92BA1C00F1E1D5 /* GoogleService-Info.plist */; };
+		9016772F1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016772E1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift */; };
 		9083B39A1F86D5B20079E309 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9083B3991F86D5B20079E309 /* AppDelegate.swift */; };
 		9083B39F1F86D5B20079E309 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9083B39D1F86D5B20079E309 /* Main.storyboard */; };
 		9083B3A11F86D5B20079E309 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9083B3A01F86D5B20079E309 /* Assets.xcassets */; };
@@ -16,7 +20,10 @@
 
 /* Begin PBXFileReference section */
 		663C9C56D0E640BCE58EE219 /* Pods-servicely.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-servicely.release.xcconfig"; path = "Pods/Target Support Files/Pods-servicely/Pods-servicely.release.xcconfig"; sourceTree = "<group>"; };
-		904AA8B51F929DBA000FE7AC /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		901677261F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceOfferViewController.swift; sourceTree = "<group>"; };
+		901677281F92B87C00F1E1D5 /* ClientFeedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientFeedTableViewController.swift; sourceTree = "<group>"; };
+		9016772C1F92BA1C00F1E1D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9016772E1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceOfferTableViewCell.swift; sourceTree = "<group>"; };
 		9083B3961F86D5B20079E309 /* servicely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = servicely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9083B3991F86D5B20079E309 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9083B39E1F86D5B20079E309 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -68,12 +75,15 @@
 		9083B3981F86D5B20079E309 /* servicely */ = {
 			isa = PBXGroup;
 			children = (
+				9016772C1F92BA1C00F1E1D5 /* GoogleService-Info.plist */,
 				9083B3991F86D5B20079E309 /* AppDelegate.swift */,
 				9083B39D1F86D5B20079E309 /* Main.storyboard */,
 				9083B3A01F86D5B20079E309 /* Assets.xcassets */,
 				9083B3A21F86D5B20079E309 /* LaunchScreen.storyboard */,
 				9083B3A51F86D5B20079E309 /* Info.plist */,
-				904AA8B51F929DBA000FE7AC /* GoogleService-Info.plist */,
+				901677261F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift */,
+				901677281F92B87C00F1E1D5 /* ClientFeedTableViewController.swift */,
+				9016772E1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift */,
 			);
 			path = servicely;
 			sourceTree = "<group>";
@@ -150,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9083B3A41F86D5B20079E309 /* LaunchScreen.storyboard in Resources */,
+				9016772D1F92BA1C00F1E1D5 /* GoogleService-Info.plist in Resources */,
 				9083B3A11F86D5B20079E309 /* Assets.xcassets in Resources */,
 				9083B39F1F86D5B20079E309 /* Main.storyboard in Resources */,
 			);
@@ -210,7 +221,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9016772F1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift in Sources */,
 				9083B39A1F86D5B20079E309 /* AppDelegate.swift in Sources */,
+				901677291F92B87C00F1E1D5 /* ClientFeedTableViewController.swift in Sources */,
+				901677271F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

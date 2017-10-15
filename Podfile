@@ -7,4 +7,6 @@ target 'servicely' do
 
   # Pods for servicely
   pod 'Firebase/Core'
+  pod 'Firebase/Database'
+
 end
