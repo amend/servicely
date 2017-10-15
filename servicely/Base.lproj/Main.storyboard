@@ -157,7 +157,7 @@
         <!--Feed-->
         <scene sceneID="Fzx-n7-uLV">
             <objects>
-                <viewController title="Feed" id="33I-3r-eD6" customClass="ClientFeedViewController" sceneMemberID="viewController">
+                <viewController title="Feed" id="33I-3r-eD6" customClass="ClientFeedViewController" customModule="servicely" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IGu-Nn-2BB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -178,11 +178,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="serviceOfferCell" rowHeight="74" id="mP1-Nb-r1k" customClass="ServiceOfferTableViewCell" customModule="servicely" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="74"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="serviceOfferCell" rowHeight="75" id="mP1-Nb-r1k" customClass="ServiceOfferTableViewCell" customModule="servicely" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mP1-Nb-r1k" id="yOq-c4-HUN">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="73.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;typeOfService&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAr-dt-0yW">
@@ -228,7 +228,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="feedTableView" destination="T54-4i-9ZU" id="Snb-ei-GBo"/>
+                        <outlet property="feedTableView" destination="T54-4i-9ZU" id="rKi-nf-Qzg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="miZ-tk-QRt" userLabel="First Responder" sceneMemberID="firstResponder"/>

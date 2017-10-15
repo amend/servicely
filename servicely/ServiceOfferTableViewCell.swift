@@ -18,6 +18,8 @@ class ServiceOfferTableViewCell: UITableViewCell {
     
     @IBOutlet weak var askingPrice: UILabel!
     
+    var service:ServiceOffer? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
