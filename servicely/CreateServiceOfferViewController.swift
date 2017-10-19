@@ -37,6 +37,14 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         self.serviceTypePickerView.dataSource = self
         self.serviceTypePickerView.delegate = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // picks the first entry in picker view once view loads, otherwise
+        // if user wants first item in pickerview and doesn't need to scroll, no
+        // item will be selected
+        serviceTypePickerView.selectRow(0, inComponent: 0, animated: false)
+        serviceType = pickerViewData[0]
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
