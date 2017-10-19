@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -221,11 +222,18 @@
                         <viewLayoutGuide key="safeArea" id="3DM-mC-v4C"/>
                     </view>
                     <navigationItem key="navigationItem" title="Feed" id="HEB-oV-LSN">
-                        <barButtonItem key="rightBarButtonItem" title="Post" id="YCb-ot-IGy">
-                            <connections>
-                                <segue destination="y70-ST-alP" kind="show" id="zMC-YJ-Kvg"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Post" id="YCb-ot-IGy">
+                                <connections>
+                                    <segue destination="y70-ST-alP" kind="show" id="zMC-YJ-Kvg"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Temp sign out" id="LNn-y6-4vD">
+                                <connections>
+                                    <action selector="tempSignOutButton:" destination="33I-3r-eD6" id="LzM-SR-FkK"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="feedTableView" destination="T54-4i-9ZU" id="rKi-nf-Qzg"/>

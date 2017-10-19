@@ -9,8 +9,10 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseAuth
+import FirebaseAuthUI
 
-class ClientFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var feedTableView: UITableView!
     
@@ -27,6 +29,8 @@ class ClientFeedViewController: UIViewController, UITableViewDelegate, UITableVi
         
         self.feedTableView.dataSource = self
         self.feedTableView.delegate = self
+        
+        checkLoggedIn()
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,6 +68,39 @@ class ClientFeedViewController: UIViewController, UITableViewDelegate, UITableVi
             }
         })
     }
+    
+    // MARK: - Firebase auth
+    
+    func checkLoggedIn() {
+        FIRAuth.auth()?.addStateDidChangeListener { auth, user in
+            if user != nil {
+                // User is signed in.
+            } else {
+                // No user is signed in.
+                self.login()
+            }
+        }
+    }
+    
+    func login() {
+        let authUI = FIRAuthUI.authUI()
+        
+        authUI?.delegate = self
+        //authUI?.signInProviders = [FIRFacebookAuthProvider()]
+        let authViewController = authUI?.authViewController()
+        self.present(authViewController!, animated: true, completion: nil)
+    }
+    
+    func authUI(_ authUI: FIRAuthUI, didSignInWith user: FIRUser?, error: Error?) {
+        if error != nil {
+            //Problem signing in
+            login()
+        }else {
+            //User is in! Here is where we code after signing in
+            
+        }
+    }
+
 
     // MARK: - Table view data source
 
@@ -90,6 +127,11 @@ class ClientFeedViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75
     }
+    
+    @IBAction func tempSignOutButton(_ sender: Any) {
+        try! FIRAuth.auth()!.signOut()
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
