@@ -11,6 +11,8 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 import FirebaseAuthUI
+import FirebaseGoogleAuthUI
+import FirebaseFacebookAuthUI
 
 class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableViewDelegate, UITableViewDataSource {
     
@@ -85,8 +87,13 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     func login() {
         let authUI = FIRAuthUI.authUI()
         
+        let fbAppID:String = "1969547683311551"
+        let googleClientID:String = "16510907992-1rre0iqk91d75f5sp4jtbe22maomuc7k.apps.googleusercontent.com"
+        let googleProvider = FIRGoogleAuthUI(clientID: googleClientID)
+        let fbProvider = FIRFacebookAuthUI(appID: fbAppID)
+        
         authUI?.delegate = self
-        //authUI?.signInProviders = [FIRFacebookAuthProvider()]
+        authUI?.signInProviders = [fbProvider!, googleProvider!]
         let authViewController = authUI?.authViewController()
         self.present(authViewController!, animated: true, completion: nil)
     }
@@ -94,7 +101,7 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     func authUI(_ authUI: FIRAuthUI, didSignInWith user: FIRUser?, error: Error?) {
         if error != nil {
             //Problem signing in
-            login()
+            self.login()
         }else {
             //User is in! Here is where we code after signing in
             
