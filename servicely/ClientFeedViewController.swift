@@ -95,9 +95,14 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
         authUI?.delegate = self
         authUI?.signInProviders = [fbProvider!, googleProvider!]
         let authViewController = authUI?.authViewController()
+        
         self.present(authViewController!, animated: true, completion: nil)
     }
     
+    func authPickerViewController(for authUI: FIRAuthUI) -> FIRAuthPickerViewController {
+        return  ServicelyLogoViewController(authUI: authUI)
+    }
+
     func authUI(_ authUI: FIRAuthUI, didSignInWith user: FIRUser?, error: Error?) {
         if error != nil {
             //Problem signing in
@@ -113,13 +118,13 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "serviceOfferCell", for: indexPath) as! ServiceOfferTableViewCell
-        
-        // Configure the cell...
-        cell.companyName.text = services[indexPath.row].companyName
-        cell.serviceType.text = services[indexPath.row].serviceType
-        cell.askingPrice.text = services[indexPath.row].askingPrice
-        cell.service = services[indexPath.row]
-        
+        if(services.count > 0) {
+            // Configure the cell...
+            cell.companyName.text = services[indexPath.row].companyName
+            cell.serviceType.text = services[indexPath.row].serviceType
+            cell.askingPrice.text = services[indexPath.row].askingPrice
+            cell.service = services[indexPath.row]
+        }
         return cell
     }
     

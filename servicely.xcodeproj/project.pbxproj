@@ -16,6 +16,7 @@
 		9083B39F1F86D5B20079E309 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9083B39D1F86D5B20079E309 /* Main.storyboard */; };
 		9083B3A11F86D5B20079E309 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9083B3A01F86D5B20079E309 /* Assets.xcassets */; };
 		9083B3A41F86D5B20079E309 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9083B3A21F86D5B20079E309 /* LaunchScreen.storyboard */; };
+		90CA841A1F995EFA00EDB7AC /* ServicelyLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CA84191F995EFA00EDB7AC /* ServicelyLogoViewController.swift */; };
 		F7EB9A05A452C6086BD6CA17 /* Pods_servicely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B904A9DEB1102FB134E43A /* Pods_servicely.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,7 @@
 		9083B3A01F86D5B20079E309 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9083B3A31F86D5B20079E309 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9083B3A51F86D5B20079E309 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90CA84191F995EFA00EDB7AC /* ServicelyLogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicelyLogoViewController.swift; sourceTree = "<group>"; };
 		C767318476A40047FD5CA7B6 /* Pods-servicely.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-servicely.debug.xcconfig"; path = "Pods/Target Support Files/Pods-servicely/Pods-servicely.debug.xcconfig"; sourceTree = "<group>"; };
 		E7B904A9DEB1102FB134E43A /* Pods_servicely.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_servicely.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -87,6 +89,7 @@
 				901677281F92B87C00F1E1D5 /* ClientFeedViewController.swift */,
 				9016772E1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift */,
 				902588521F93DC7200F57059 /* ServiceOffer.swift */,
+				90CA84191F995EFA00EDB7AC /* ServicelyLogoViewController.swift */,
 			);
 			path = servicely;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90CA841A1F995EFA00EDB7AC /* ServicelyLogoViewController.swift in Sources */,
 				902588531F93DC7200F57059 /* ServiceOffer.swift in Sources */,
 				9016772F1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift in Sources */,
 				9083B39A1F86D5B20079E309 /* AppDelegate.swift in Sources */,
