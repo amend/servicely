@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vY-Gq-nmd">
-                                <rect key="frame" x="129" y="53" width="117" height="21"/>
+                                <rect key="frame" x="129" y="88" width="117" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="117" id="27q-oa-Mtf"/>
                                     <constraint firstAttribute="height" constant="21" id="cqB-tk-ehB"/>
@@ -30,20 +30,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0F-w8-b58">
-                                <rect key="frame" x="143.5" y="212" width="88" height="21"/>
+                                <rect key="frame" x="143.5" y="247" width="88" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zyk-ap-z48">
-                                <rect key="frame" x="27.5" y="82" width="320" height="122"/>
+                                <rect key="frame" x="27.5" y="117" width="320" height="122"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="122" id="1xZ-xV-Ptc"/>
                                     <constraint firstAttribute="width" constant="320" id="cvJ-FD-pSz"/>
                                 </constraints>
                             </pickerView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Say something about the service you are offering..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Y46-Bg-f4l">
-                                <rect key="frame" x="67.5" y="241" width="240" height="128"/>
+                                <rect key="frame" x="67.5" y="276" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="1nD-2V-zt8"/>
                                     <constraint firstAttribute="height" constant="128" id="gL3-EY-gww"/>
@@ -57,7 +57,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ro-tb-L43">
-                                <rect key="frame" x="236" y="383" width="66" height="21"/>
+                                <rect key="frame" x="236" y="418" width="66" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="66" id="IG5-gA-dbi"/>
                                     <constraint firstAttribute="height" constant="21" id="pGc-b6-n2w"/>
@@ -67,7 +67,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Austin, TX" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Ak-8E-Oam">
-                                <rect key="frame" x="193" y="412" width="152" height="30"/>
+                                <rect key="frame" x="193" y="447" width="152" height="30"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="152" id="4kf-GG-2NG"/>
@@ -78,7 +78,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="956 321 9876" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ucz-43-5UH">
-                                <rect key="frame" x="201" y="498" width="158" height="30"/>
+                                <rect key="frame" x="201" y="533" width="158" height="30"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="158" id="C5G-4k-L5p"/>
@@ -89,7 +89,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBY-hV-3bo">
-                                <rect key="frame" x="129" y="549" width="117" height="45"/>
+                                <rect key="frame" x="129" y="584" width="117" height="45"/>
                                 <color key="backgroundColor" red="0.99434119460000003" green="0.3587232232" blue="0.37387704849999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="OFJ-9K-FVw"/>
@@ -108,7 +108,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Asking price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEh-84-lpD">
-                                <rect key="frame" x="38" y="383" width="95" height="21"/>
+                                <rect key="frame" x="38" y="418" width="95" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="95" id="Fj7-O2-dVc"/>
                                     <constraint firstAttribute="height" constant="21" id="YB8-nd-pEk"/>
@@ -118,7 +118,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$15/hour" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wlw-3h-sdE">
-                                <rect key="frame" x="21" y="412" width="128" height="30"/>
+                                <rect key="frame" x="21" y="447" width="128" height="30"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="KyH-BD-lW0"/>
@@ -129,7 +129,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OT6-3G-ZO8">
-                                <rect key="frame" x="35" y="469" width="120" height="21"/>
+                                <rect key="frame" x="35" y="504" width="120" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="D90-8f-NnQ"/>
                                     <constraint firstAttribute="width" constant="120" id="Gat-j1-TU3"/>
@@ -139,7 +139,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Handy Men" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dBz-IU-mvb">
-                                <rect key="frame" x="16" y="498" width="158" height="30"/>
+                                <rect key="frame" x="16" y="533" width="158" height="30"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="3DO-VR-alB"/>
@@ -157,7 +157,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nXp-b6-G78">
-                                <rect key="frame" x="233" y="468" width="94" height="21"/>
+                                <rect key="frame" x="233" y="503" width="94" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="3xd-Md-bnd"/>
                                     <constraint firstAttribute="width" constant="94" id="9MT-Oc-pAK"/>
@@ -166,12 +166,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GbB-Ex-xWl">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Create Service Offer" id="29O-JQ-cwg">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="rU9-fq-eoG">
+                                            <connections>
+                                                <segue destination="HHC-b8-qDK" kind="show" id="gtD-ch-fEa"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gBY-hV-3bo" firstAttribute="top" secondItem="ucz-43-5UH" secondAttribute="bottom" constant="21" id="0Iz-NM-IPH"/>
                             <constraint firstItem="L0F-w8-b58" firstAttribute="top" secondItem="Zyk-ap-z48" secondAttribute="bottom" constant="8" id="3Zq-xF-4Ni"/>
-                            <constraint firstItem="0vY-Gq-nmd" firstAttribute="top" secondItem="On7-n2-6xP" secondAttribute="top" constant="33" id="4GC-Vj-UVR"/>
+                            <constraint firstItem="0vY-Gq-nmd" firstAttribute="top" secondItem="On7-n2-6xP" secondAttribute="top" constant="68" id="4GC-Vj-UVR" userLabel="Type of service.top = Safe Area.top + 68"/>
                             <constraint firstItem="gBY-hV-3bo" firstAttribute="centerX" secondItem="Sde-tl-MbK" secondAttribute="centerX" id="Ab2-eB-glP"/>
                             <constraint firstItem="nXp-b6-G78" firstAttribute="top" secondItem="1Ak-8E-Oam" secondAttribute="bottom" constant="26" id="BXr-fI-k6t"/>
                             <constraint firstItem="UEh-84-lpD" firstAttribute="top" secondItem="Y46-Bg-f4l" secondAttribute="bottom" constant="14" id="EDC-qQ-iFD"/>
@@ -536,6 +549,7 @@
                 <tabBarController title="Nav Controller" automaticallyAdjustsScrollViewInsets="NO" id="O0k-a1-GKq" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="00q-Uf-8dc">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
@@ -559,4 +573,7 @@
         <image name="profile" width="25" height="25"/>
         <image name="settings" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="gtD-ch-fEa"/>
+    </inferredMetricsTieBreakers>
 </document>
