@@ -139,12 +139,10 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75
     }
-    
     @IBAction func tempSignOutButton(_ sender: Any) {
         try! FIRAuth.auth()!.signOut()
     }
     
-
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
