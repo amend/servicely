@@ -13,6 +13,7 @@ class Client {
     var _lastName:String = ""
     var _location:String = ""
     var _aboutMe:String = ""
+    var _userID:String = ""
     
     var firstName:String {
         get { return _firstName }
@@ -34,10 +35,16 @@ class Client {
         set(v) {_aboutMe = v}
     }
     
-    init(firstName:String, lastName:String, location:String, aboutMe:String) {
+    var userID:String {
+        get { return _userID }
+        set(v) { _userID = v }
+    }
+    
+    init(firstName:String, lastName:String, location:String, aboutMe:String, userID:String) {
         self.firstName = firstName
         self.lastName = lastName
         self.location = location
         self.aboutMe = aboutMe
+        self.userID = userID
     }
 }
