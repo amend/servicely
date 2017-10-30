@@ -33,4 +33,11 @@ class Client {
         get { return _aboutMe }
         set(v) {_aboutMe = v}
     }
+    
+    init(firstName:String, lastName:String, location:String, aboutMe:String) {
+        self.firstName = firstName
+        self.lastName = lastName
+        self.location = location
+        self.aboutMe = aboutMe
+    }
 }
