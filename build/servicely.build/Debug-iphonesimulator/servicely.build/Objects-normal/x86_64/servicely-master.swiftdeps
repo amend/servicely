@@ -1,0 +1,15 @@
+version: "Apple Swift version 4.0 (swiftlang-900.0.65.2 clang-900.0.37)"
+options: "dbcee1900ac2aa61d6db2855698c2665"
+build_time: [1509351458, 158744000]
+inputs:
+  "/Programming/servicely/servicely/ServicelyLogoViewController.swift": [1509339894, 0]
+  "/Programming/servicely/servicely/ClientProfileViewController.swift": [1509339894, 0]
+  "/Programming/servicely/servicely/Client.swift": [1509339894, 0]
+  "/Programming/servicely/servicely/ColorScheme.swift": !dirty [1509351391, 0]
+  "/Programming/servicely/servicely/ServiceOffer.swift": [1509339894, 0]
+  "/Programming/servicely/servicely/ServiceOfferTableViewCell.swift": [1509339894, 0]
+  "/Programming/servicely/servicely/ChangeColorSchemeViewController.swift": [1509351430, 0]
+  "/Programming/servicely/servicely/AppDelegate.swift": [1509339894, 0]
+  "/Programming/servicely/servicely/ClientFeedViewController.swift": [1509339894, 0]
+  "/Programming/servicely/servicely/ServiceTypeViewController.swift": [1509339894, 0]
+  "/Programming/servicely/servicely/CreateServiceOfferViewController.swift": [1509339894, 0]

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3762DAD91FA705990065FA87 /* ChangeColorSchemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3762DAD81FA705990065FA87 /* ChangeColorSchemeViewController.swift */; };
+		3762DAFF1FA7144C0065FA87 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3762DAFE1FA7144C0065FA87 /* ColorScheme.swift */; };
 		7F7F23101FA68DC200EEA294 /* ClientProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7F230F1FA68DC200EEA294 /* ClientProfileViewController.swift */; };
 		7F9E23241FA3A6C600865172 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E23231FA3A6C600865172 /* Client.swift */; };
 		901677271F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901677261F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3762DAD81FA705990065FA87 /* ChangeColorSchemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeColorSchemeViewController.swift; sourceTree = "<group>"; };
+		3762DAFE1FA7144C0065FA87 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		663C9C56D0E640BCE58EE219 /* Pods-servicely.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-servicely.release.xcconfig"; path = "Pods/Target Support Files/Pods-servicely/Pods-servicely.release.xcconfig"; sourceTree = "<group>"; };
 		7F7F230F1FA68DC200EEA294 /* ClientProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProfileViewController.swift; sourceTree = "<group>"; };
 		7F9E23231FA3A6C600865172 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 				7F9E23231FA3A6C600865172 /* Client.swift */,
 				90CA84191F995EFA00EDB7AC /* ServicelyLogoViewController.swift */,
 				901FDE8D1FA6AE4400BA2163 /* ServiceTypeViewController.swift */,
+				3762DAD81FA705990065FA87 /* ChangeColorSchemeViewController.swift */,
+				3762DAFE1FA7144C0065FA87 /* ColorScheme.swift */,
 			);
 			path = servicely;
 			sourceTree = "<group>";
@@ -239,8 +245,10 @@
 				90CA841A1F995EFA00EDB7AC /* ServicelyLogoViewController.swift in Sources */,
 				7F7F23101FA68DC200EEA294 /* ClientProfileViewController.swift in Sources */,
 				7F9E23241FA3A6C600865172 /* Client.swift in Sources */,
+				3762DAFF1FA7144C0065FA87 /* ColorScheme.swift in Sources */,
 				902588531F93DC7200F57059 /* ServiceOffer.swift in Sources */,
 				9016772F1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift in Sources */,
+				3762DAD91FA705990065FA87 /* ChangeColorSchemeViewController.swift in Sources */,
 				9083B39A1F86D5B20079E309 /* AppDelegate.swift in Sources */,
 				901677291F92B87C00F1E1D5 /* ClientFeedViewController.swift in Sources */,
 				901FDE8E1FA6AE4400BA2163 /* ServiceTypeViewController.swift in Sources */,
