@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -323,7 +323,113 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="miZ-tk-QRt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1040.8" y="132.68365817091455"/>
+            <point key="canvasLocation" x="942" y="133"/>
+        </scene>
+        <!--Service Type View Controller-->
+        <scene sceneID="pzn-E9-tmj">
+            <objects>
+                <viewController storyboardIdentifier="serviceTypeViewController" id="cK7-9L-nFY" customClass="ServiceTypeViewController" customModule="servicely" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DaH-dL-2Zf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Select service provider if you are a company or independent contractor who offers services" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gOG-AC-r7F">
+                                <rect key="frame" x="67.5" y="199" width="240" height="68"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="5CY-vQ-P7I"/>
+                                    <constraint firstAttribute="height" constant="68" id="zGb-lc-Hb8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Select client if you are interested in hiring a service provider" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SA0-Zq-QMd">
+                                <rect key="frame" x="67.5" y="331" width="240" height="68"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="7r3-Wg-YoV"/>
+                                    <constraint firstAttribute="width" constant="240" id="a6R-Xs-mXG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service Provider" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1K0-gc-DQi">
+                                <rect key="frame" x="125" y="170" width="125" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125" id="gP2-kx-JGK"/>
+                                    <constraint firstAttribute="height" constant="21" id="tZ3-gc-BJl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Client" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZ9-MN-yS3">
+                                <rect key="frame" x="165" y="302" width="45" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="Jz6-Yw-rzu"/>
+                                    <constraint firstAttribute="height" constant="21" id="aq6-7V-OID"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGc-jL-eRD">
+                                <rect key="frame" x="129" y="449" width="117" height="45"/>
+                                <color key="backgroundColor" red="0.99434119460000003" green="0.3587232232" blue="0.37387704849999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="R9D-Bo-eQy"/>
+                                    <constraint firstAttribute="width" constant="117" id="xJA-nf-HPa"/>
+                                </constraints>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="dXh-2y-Oof" kind="show" id="ngI-wg-Da1"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qtf-xu-5aA">
+                                <rect key="frame" x="73" y="99" width="229" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="229" id="g7H-BU-whu"/>
+                                    <constraint firstAttribute="height" constant="28" id="qlu-Qn-GwZ"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Service Provider"/>
+                                    <segment title="Client"/>
+                                </segments>
+                                <color key="tintColor" red="0.99607843137254903" green="0.35686274509803922" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wZ9-MN-yS3" firstAttribute="top" secondItem="gOG-AC-r7F" secondAttribute="bottom" constant="35" id="4ZQ-wa-9v6"/>
+                            <constraint firstItem="wZ9-MN-yS3" firstAttribute="centerX" secondItem="DaH-dL-2Zf" secondAttribute="centerX" id="7wM-XP-7IL"/>
+                            <constraint firstItem="yGc-jL-eRD" firstAttribute="centerX" secondItem="DaH-dL-2Zf" secondAttribute="centerX" id="Blm-7c-TEv"/>
+                            <constraint firstItem="qtf-xu-5aA" firstAttribute="top" secondItem="5xX-vh-Bzo" secondAttribute="top" constant="79" id="CUM-ez-4V5"/>
+                            <constraint firstItem="SA0-Zq-QMd" firstAttribute="centerX" secondItem="DaH-dL-2Zf" secondAttribute="centerX" id="Kz2-L0-ld1"/>
+                            <constraint firstItem="yGc-jL-eRD" firstAttribute="top" secondItem="SA0-Zq-QMd" secondAttribute="bottom" constant="50" id="gAk-f5-tgX"/>
+                            <constraint firstItem="1K0-gc-DQi" firstAttribute="centerX" secondItem="DaH-dL-2Zf" secondAttribute="centerX" id="hAO-R4-AHu"/>
+                            <constraint firstItem="1K0-gc-DQi" firstAttribute="top" secondItem="qtf-xu-5aA" secondAttribute="bottom" constant="43" id="hgL-MK-Koo"/>
+                            <constraint firstItem="gOG-AC-r7F" firstAttribute="top" secondItem="1K0-gc-DQi" secondAttribute="bottom" constant="8" id="pl1-zy-bdx"/>
+                            <constraint firstItem="SA0-Zq-QMd" firstAttribute="top" secondItem="wZ9-MN-yS3" secondAttribute="bottom" constant="8" id="qvf-fv-BWL"/>
+                            <constraint firstItem="qtf-xu-5aA" firstAttribute="centerX" secondItem="DaH-dL-2Zf" secondAttribute="centerX" id="rEz-MO-Bec"/>
+                            <constraint firstItem="gOG-AC-r7F" firstAttribute="centerX" secondItem="DaH-dL-2Zf" secondAttribute="centerX" id="tah-RR-26n"/>
+                            <constraint firstItem="yGc-jL-eRD" firstAttribute="centerX" secondItem="DaH-dL-2Zf" secondAttribute="centerX" id="ukN-dv-Ubb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5xX-vh-Bzo"/>
+                    </view>
+                    <connections>
+                        <outlet property="serviceTypeSegmentedControl" destination="qtf-xu-5aA" id="pyi-To-J2f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aO8-Ln-HZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="941.60000000000002" y="887.40629685157433"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AuL-Ik-lBk">
@@ -341,7 +447,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YsX-rZ-tZM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="33" y="133"/>
+            <point key="canvasLocation" x="58" y="133"/>
         </scene>
     </scenes>
     <resources>

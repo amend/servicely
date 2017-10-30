@@ -11,6 +11,7 @@
 		901677291F92B87C00F1E1D5 /* ClientFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901677281F92B87C00F1E1D5 /* ClientFeedViewController.swift */; };
 		9016772D1F92BA1C00F1E1D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9016772C1F92BA1C00F1E1D5 /* GoogleService-Info.plist */; };
 		9016772F1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016772E1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift */; };
+		901FDE8E1FA6AE4400BA2163 /* ServiceTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901FDE8D1FA6AE4400BA2163 /* ServiceTypeViewController.swift */; };
 		902588531F93DC7200F57059 /* ServiceOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902588521F93DC7200F57059 /* ServiceOffer.swift */; };
 		9083B39A1F86D5B20079E309 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9083B3991F86D5B20079E309 /* AppDelegate.swift */; };
 		9083B39F1F86D5B20079E309 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9083B39D1F86D5B20079E309 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 		901677281F92B87C00F1E1D5 /* ClientFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientFeedViewController.swift; sourceTree = "<group>"; };
 		9016772C1F92BA1C00F1E1D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9016772E1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceOfferTableViewCell.swift; sourceTree = "<group>"; };
+		901FDE8D1FA6AE4400BA2163 /* ServiceTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTypeViewController.swift; sourceTree = "<group>"; };
 		902588521F93DC7200F57059 /* ServiceOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceOffer.swift; sourceTree = "<group>"; };
 		9083B3961F86D5B20079E309 /* servicely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = servicely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9083B3991F86D5B20079E309 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				9016772E1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift */,
 				902588521F93DC7200F57059 /* ServiceOffer.swift */,
 				90CA84191F995EFA00EDB7AC /* ServicelyLogoViewController.swift */,
+				901FDE8D1FA6AE4400BA2163 /* ServiceTypeViewController.swift */,
 			);
 			path = servicely;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				9016772F1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift in Sources */,
 				9083B39A1F86D5B20079E309 /* AppDelegate.swift in Sources */,
 				901677291F92B87C00F1E1D5 /* ClientFeedViewController.swift in Sources */,
+				901FDE8E1FA6AE4400BA2163 /* ServiceTypeViewController.swift in Sources */,
 				901677271F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

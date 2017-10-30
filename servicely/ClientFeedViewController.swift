@@ -43,6 +43,32 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // No need for semicolon
         
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        
+        let ref1:FIRDatabaseReference! = FIRDatabase.database().reference()
+        let usersRef = ref1.child("users")
+        
+        usersRef.child(userID!).observeSingleEvent(of: .value, with: { snapshot in
+            let user = snapshot.value as? NSDictionary
+            
+            if(user == nil) {
+                // present service type view controller
+                //let vc = ServiceTypeViewController()
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "serviceTypeViewController")
+                self.present(vc!, animated: true, completion: nil)
+            }
+            /*
+            let serviceType = user?["serviceType"] as? String ?? ""
+        
+            if(serviceType == "") {
+                // present service type view controller
+            }
+         */
+            
+        })
+
+        FIRAuth.auth()?.currentUser?.uid
+        
         services.removeAll()
         
         // get serviceOffers from Firebase.
