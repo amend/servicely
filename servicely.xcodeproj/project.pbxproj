@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F7F23101FA68DC200EEA294 /* ClientProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7F230F1FA68DC200EEA294 /* ClientProfileViewController.swift */; };
+		7F9E23241FA3A6C600865172 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E23231FA3A6C600865172 /* Client.swift */; };
 		901677271F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901677261F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift */; };
 		901677291F92B87C00F1E1D5 /* ClientFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901677281F92B87C00F1E1D5 /* ClientFeedViewController.swift */; };
 		9016772D1F92BA1C00F1E1D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9016772C1F92BA1C00F1E1D5 /* GoogleService-Info.plist */; };
@@ -23,6 +25,8 @@
 
 /* Begin PBXFileReference section */
 		663C9C56D0E640BCE58EE219 /* Pods-servicely.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-servicely.release.xcconfig"; path = "Pods/Target Support Files/Pods-servicely/Pods-servicely.release.xcconfig"; sourceTree = "<group>"; };
+		7F7F230F1FA68DC200EEA294 /* ClientProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProfileViewController.swift; sourceTree = "<group>"; };
+		7F9E23231FA3A6C600865172 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		901677261F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceOfferViewController.swift; sourceTree = "<group>"; };
 		901677281F92B87C00F1E1D5 /* ClientFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientFeedViewController.swift; sourceTree = "<group>"; };
 		9016772C1F92BA1C00F1E1D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 				9016772C1F92BA1C00F1E1D5 /* GoogleService-Info.plist */,
 				9083B3991F86D5B20079E309 /* AppDelegate.swift */,
 				9083B39D1F86D5B20079E309 /* Main.storyboard */,
+				7F7F230F1FA68DC200EEA294 /* ClientProfileViewController.swift */,
 				9083B3A01F86D5B20079E309 /* Assets.xcassets */,
 				9083B3A21F86D5B20079E309 /* LaunchScreen.storyboard */,
 				9083B3A51F86D5B20079E309 /* Info.plist */,
@@ -91,6 +96,7 @@
 				901677281F92B87C00F1E1D5 /* ClientFeedViewController.swift */,
 				9016772E1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift */,
 				902588521F93DC7200F57059 /* ServiceOffer.swift */,
+				7F9E23231FA3A6C600865172 /* Client.swift */,
 				90CA84191F995EFA00EDB7AC /* ServicelyLogoViewController.swift */,
 				901FDE8D1FA6AE4400BA2163 /* ServiceTypeViewController.swift */,
 			);
@@ -231,6 +237,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				90CA841A1F995EFA00EDB7AC /* ServicelyLogoViewController.swift in Sources */,
+				7F7F23101FA68DC200EEA294 /* ClientProfileViewController.swift in Sources */,
+				7F9E23241FA3A6C600865172 /* Client.swift in Sources */,
 				902588531F93DC7200F57059 /* ServiceOffer.swift in Sources */,
 				9016772F1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift in Sources */,
 				9083B39A1F86D5B20079E309 /* AppDelegate.swift in Sources */,

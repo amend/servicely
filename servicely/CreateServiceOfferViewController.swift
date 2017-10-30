@@ -39,6 +39,7 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationItem.title = "Create Service Offer"
         // picks the first entry in picker view once view loads, otherwise
         // if user wants first item in pickerview and doesn't need to scroll, no
         // item will be selected
