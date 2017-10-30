@@ -42,6 +42,26 @@ class ClientProfileViewController: UIViewController{
     func constraints() {
         self.nameView.frame.size.width = self.view.frame.size.width
     }
+    
+    func loadCorrectProfilePage() {
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        
+        let ref1:FIRDatabaseReference! = FIRDatabase.database().reference()
+        let usersRef = ref1.child("users")
+        
+        usersRef.child(userID!).observeSingleEvent(of: .value, with: { snapshot in
+            let user = snapshot.value as? NSDictionary
+            
+            let serviceType = user?["serviceType"] as? String ?? ""
+            print("ServiceType: \(serviceType)")
+            
+            let providerVC = self.storyboard?.instantiateViewController(withIdentifier: "providerProfile") as! ProviderProfileViewController
+            
+            if serviceType == "serviceProvider" {
+                self.present(providerVC, animated: true, completion: nil)
+            }
+        })
+    }
 
     /*
     // MARK: - Navigation
