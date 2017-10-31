@@ -19,6 +19,7 @@ class ClientProfileViewController: UIViewController{
     @IBOutlet weak var displayName: UILabel!
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var aboutMe: UILabel!
+    @IBOutlet weak var viewMyRequestsButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,9 @@ class ClientProfileViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let colorScheme = ColorScheme.getColorScheme()
+        nameView.backgroundColor = colorScheme
+        viewMyRequestsButton.backgroundColor = colorScheme
         loadInfo()
         loadCorrectProfilePage()
     }

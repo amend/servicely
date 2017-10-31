@@ -7,138 +7,227 @@ provides-member:
 - ["9servicely27SettingsTableViewControllerC", ""]
 provides-dynamic-lookup:
 - "didReceiveMemoryWarning"
-- "numberOfSections"
 - "tableView"
 - "viewDidLoad"
 depends-top-level:
-- "Int"
+- !private "=="
+- !private "FIRAuth"
+- "IndexPath"
 - "SettingsTableViewController"
 - "UITableView"
 - "UITableViewController"
 depends-member:
+- !private ["s23BidirectionalCollectionP", "item"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["s7CVarArgP", "FIRAuth"]
+- !private ["s7CVarArgP", "auth"]
 - !private ["s7CVarArgP", "didReceiveMemoryWarning"]
 - !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "signOut"]
 - !private ["s7CVarArgP", "viewDidLoad"]
 - ["s7CVarArgP", ""]
+- !private ["s10CollectionP", "item"]
+- !private ["s10ComparableP", "item"]
+- !private ["s28CustomDebugStringConvertibleP", "FIRAuth"]
+- !private ["s28CustomDebugStringConvertibleP", "auth"]
 - !private ["s28CustomDebugStringConvertibleP", "didReceiveMemoryWarning"]
 - !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "item"]
+- !private ["s28CustomDebugStringConvertibleP", "signOut"]
 - !private ["s28CustomDebugStringConvertibleP", "viewDidLoad"]
 - ["s28CustomDebugStringConvertibleP", ""]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "item"]
+- !private ["s23CustomStringConvertibleP", "FIRAuth"]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "auth"]
 - !private ["s23CustomStringConvertibleP", "didReceiveMemoryWarning"]
 - !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "item"]
+- !private ["s23CustomStringConvertibleP", "signOut"]
 - !private ["s23CustomStringConvertibleP", "viewDidLoad"]
 - ["s23CustomStringConvertibleP", ""]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
+- !private ["s9DecodableP", "item"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
+- !private ["s9EncodableP", "item"]
+- !private ["s9EquatableP", "FIRAuth"]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- !private ["s9EquatableP", "auth"]
 - !private ["s9EquatableP", "didReceiveMemoryWarning"]
 - !private ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "item"]
+- !private ["s9EquatableP", "signOut"]
 - !private ["s9EquatableP", "viewDidLoad"]
 - ["s9EquatableP", ""]
+- !private ["s25ExpressibleByArrayLiteralP", "item"]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["So7FIRAuthC", "auth"]
+- !private ["So7FIRAuthC", "signOut"]
+- !private ["s8HashableP", "FIRAuth"]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- !private ["s8HashableP", "auth"]
 - !private ["s8HashableP", "didReceiveMemoryWarning"]
 - !private ["s8HashableP", "init"]
+- !private ["s8HashableP", "item"]
+- !private ["s8HashableP", "signOut"]
 - !private ["s8HashableP", "viewDidLoad"]
 - ["s8HashableP", ""]
+- !private ["10Foundation9IndexPathV", "item"]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s17MutableCollectionP", "item"]
+- !private ["So8NSCodingP", "FIRAuth"]
 - !private ["So8NSCodingP", "didReceiveMemoryWarning"]
 - !private ["So8NSCodingP", "init"]
 - !private ["So8NSCodingP", "viewDidLoad"]
 - ["So8NSCodingP", ""]
+- !private ["So26NSExtensionRequestHandlingP", "FIRAuth"]
 - !private ["So26NSExtensionRequestHandlingP", "didReceiveMemoryWarning"]
 - !private ["So26NSExtensionRequestHandlingP", "init"]
 - !private ["So26NSExtensionRequestHandlingP", "viewDidLoad"]
 - ["So26NSExtensionRequestHandlingP", ""]
-- ["So8NSObjectC", "Int"]
+- !private ["So8NSObjectC", "FIRAuth"]
+- ["So8NSObjectC", "IndexPath"]
 - ["So8NSObjectC", "UITableView"]
+- !private ["So8NSObjectC", "auth"]
 - ["So8NSObjectC", "didReceiveMemoryWarning"]
 - ["So8NSObjectC", "init"]
-- ["So8NSObjectC", "numberOfSections"]
+- !private ["So8NSObjectC", "signOut"]
 - ["So8NSObjectC", "tableView"]
 - ["So8NSObjectC", "viewDidLoad"]
+- !private ["So16NSObjectProtocolP", "FIRAuth"]
+- !private ["So16NSObjectProtocolP", "auth"]
 - !private ["So16NSObjectProtocolP", "didReceiveMemoryWarning"]
 - !private ["So16NSObjectProtocolP", "init"]
+- !private ["So16NSObjectProtocolP", "signOut"]
 - !private ["So16NSObjectProtocolP", "viewDidLoad"]
 - ["So16NSObjectProtocolP", ""]
-- ["9servicely27SettingsTableViewControllerC", "Int"]
+- !private ["s22RandomAccessCollectionP", "item"]
+- !private ["10Foundation20ReferenceConvertibleP", "item"]
+- !private ["s8SequenceP", "item"]
+- !private ["9servicely27SettingsTableViewControllerC", "FIRAuth"]
+- ["9servicely27SettingsTableViewControllerC", "IndexPath"]
 - ["9servicely27SettingsTableViewControllerC", "UITableView"]
 - ["9servicely27SettingsTableViewControllerC", "deinit"]
 - ["9servicely27SettingsTableViewControllerC", "didReceiveMemoryWarning"]
 - ["9servicely27SettingsTableViewControllerC", "init"]
-- ["9servicely27SettingsTableViewControllerC", "numberOfSections"]
 - ["9servicely27SettingsTableViewControllerC", "tableView"]
 - ["9servicely27SettingsTableViewControllerC", "viewDidLoad"]
+- !private ["So21UIAppearanceContainerP", "FIRAuth"]
 - !private ["So21UIAppearanceContainerP", "didReceiveMemoryWarning"]
 - !private ["So21UIAppearanceContainerP", "init"]
 - !private ["So21UIAppearanceContainerP", "viewDidLoad"]
 - ["So21UIAppearanceContainerP", ""]
+- !private ["So18UIContentContainerP", "FIRAuth"]
 - !private ["So18UIContentContainerP", "didReceiveMemoryWarning"]
 - !private ["So18UIContentContainerP", "init"]
 - !private ["So18UIContentContainerP", "viewDidLoad"]
 - ["So18UIContentContainerP", ""]
+- !private ["So18UIFocusEnvironmentP", "FIRAuth"]
 - !private ["So18UIFocusEnvironmentP", "didReceiveMemoryWarning"]
 - !private ["So18UIFocusEnvironmentP", "init"]
 - !private ["So18UIFocusEnvironmentP", "viewDidLoad"]
 - ["So18UIFocusEnvironmentP", ""]
+- !private ["So30UIPasteConfigurationSupportingP", "FIRAuth"]
 - !private ["So30UIPasteConfigurationSupportingP", "didReceiveMemoryWarning"]
 - !private ["So30UIPasteConfigurationSupportingP", "init"]
 - !private ["So30UIPasteConfigurationSupportingP", "viewDidLoad"]
 - ["So30UIPasteConfigurationSupportingP", ""]
-- ["So11UIResponderC", "Int"]
+- !private ["So11UIResponderC", "FIRAuth"]
+- ["So11UIResponderC", "IndexPath"]
 - ["So11UIResponderC", "UITableView"]
 - ["So11UIResponderC", "didReceiveMemoryWarning"]
 - ["So11UIResponderC", "init"]
-- ["So11UIResponderC", "numberOfSections"]
 - ["So11UIResponderC", "tableView"]
 - ["So11UIResponderC", "viewDidLoad"]
+- !private ["So30UIResponderStandardEditActionsP", "FIRAuth"]
 - !private ["So30UIResponderStandardEditActionsP", "didReceiveMemoryWarning"]
 - !private ["So30UIResponderStandardEditActionsP", "init"]
 - !private ["So30UIResponderStandardEditActionsP", "viewDidLoad"]
 - ["So30UIResponderStandardEditActionsP", ""]
+- !private ["So20UIScrollViewDelegateP", "FIRAuth"]
 - !private ["So20UIScrollViewDelegateP", "didReceiveMemoryWarning"]
 - !private ["So20UIScrollViewDelegateP", "init"]
 - !private ["So20UIScrollViewDelegateP", "viewDidLoad"]
 - ["So20UIScrollViewDelegateP", ""]
+- !private ["So16UIStateRestoringP", "FIRAuth"]
 - !private ["So16UIStateRestoringP", "didReceiveMemoryWarning"]
 - !private ["So16UIStateRestoringP", "init"]
 - !private ["So16UIStateRestoringP", "viewDidLoad"]
 - ["So16UIStateRestoringP", ""]
-- ["So21UITableViewControllerC", "Int"]
+- !private ["So21UITableViewControllerC", "FIRAuth"]
+- ["So21UITableViewControllerC", "IndexPath"]
 - ["So21UITableViewControllerC", "UITableView"]
 - ["So21UITableViewControllerC", "didReceiveMemoryWarning"]
 - ["So21UITableViewControllerC", "init"]
-- ["So21UITableViewControllerC", "numberOfSections"]
 - ["So21UITableViewControllerC", "tableView"]
 - ["So21UITableViewControllerC", "viewDidLoad"]
 - ["So21UITableViewControllerC", ""]
+- !private ["So21UITableViewDataSourceP", "FIRAuth"]
 - !private ["So21UITableViewDataSourceP", "didReceiveMemoryWarning"]
 - !private ["So21UITableViewDataSourceP", "init"]
 - !private ["So21UITableViewDataSourceP", "viewDidLoad"]
 - ["So21UITableViewDataSourceP", ""]
+- !private ["So19UITableViewDelegateP", "FIRAuth"]
 - !private ["So19UITableViewDelegateP", "didReceiveMemoryWarning"]
 - !private ["So19UITableViewDelegateP", "init"]
 - !private ["So19UITableViewDelegateP", "viewDidLoad"]
 - ["So19UITableViewDelegateP", ""]
+- !private ["So18UITraitEnvironmentP", "FIRAuth"]
 - !private ["So18UITraitEnvironmentP", "didReceiveMemoryWarning"]
 - !private ["So18UITraitEnvironmentP", "init"]
 - !private ["So18UITraitEnvironmentP", "viewDidLoad"]
 - ["So18UITraitEnvironmentP", ""]
-- ["So16UIViewControllerC", "Int"]
+- !private ["So16UIViewControllerC", "FIRAuth"]
+- ["So16UIViewControllerC", "IndexPath"]
 - ["So16UIViewControllerC", "UITableView"]
 - ["So16UIViewControllerC", "didReceiveMemoryWarning"]
 - ["So16UIViewControllerC", "init"]
-- ["So16UIViewControllerC", "numberOfSections"]
 - ["So16UIViewControllerC", "tableView"]
 - ["So16UIViewControllerC", "viewDidLoad"]
+- !private ["s23_BidirectionalIndexableP", "item"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s10_IndexableP", "item"]
+- !private ["s14_IndexableBaseP", "item"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "FIRAuth"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "auth"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "didReceiveMemoryWarning"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "signOut"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "viewDidLoad"]
 - ["10Foundation27_KeyValueCodingAndObservingP", ""]
+- !private ["s17_MutableIndexableP", "item"]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
+- !private ["s21_ObjectiveCBridgeableP", "item"]
+- !private ["s22_RandomAccessIndexableP", "item"]
 depends-nominal:
+- !private "s23BidirectionalCollectionP"
+- !private "Sb"
 - "s7CVarArgP"
+- !private "s10CollectionP"
+- !private "s10ComparableP"
 - "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
 - "s23CustomStringConvertibleP"
+- !private "s9DecodableP"
+- !private "s9EncodableP"
 - "s9EquatableP"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s27ExpressibleByBooleanLiteralP"
+- !private "So7FIRAuthC"
 - "s8HashableP"
+- !private "10Foundation9IndexPathV"
+- !private "s25LosslessStringConvertibleP"
+- !private "s17MutableCollectionP"
 - "So8NSCodingP"
 - "So26NSExtensionRequestHandlingP"
 - "So8NSObjectC"
 - "So16NSObjectProtocolP"
+- !private "s22RandomAccessCollectionP"
+- !private "10Foundation20ReferenceConvertibleP"
+- !private "s8SequenceP"
 - "9servicely27SettingsTableViewControllerC"
 - "So21UIAppearanceContainerP"
 - "So18UIContentContainerP"
@@ -153,7 +242,14 @@ depends-nominal:
 - "So19UITableViewDelegateP"
 - "So18UITraitEnvironmentP"
 - "So16UIViewControllerC"
+- !private "s23_BidirectionalIndexableP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- !private "s10_IndexableP"
+- !private "s14_IndexableBaseP"
 - "10Foundation27_KeyValueCodingAndObservingP"
+- !private "s17_MutableIndexableP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s22_RandomAccessIndexableP"
 depends-dynamic-lookup:
 depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
@@ -276,4 +372,4 @@ depends-external:
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/Pods/Firebase/Headers/module.modulemap"
-interface-hash: "9e8bde71bcbce9ef9839f78f71898bba"
+interface-hash: "419d39b6663adb511af740bf6d562919"

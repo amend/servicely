@@ -13,6 +13,7 @@ import FirebaseAuth
 class ServiceTypeViewController: UIViewController {
     
     @IBOutlet weak var serviceTypeSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var submitButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,12 @@ class ServiceTypeViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let colorScheme = ColorScheme.getColorScheme()
+        serviceTypeSegmentedControl.backgroundColor = colorScheme
+        submitButton.backgroundColor = colorScheme
     }
     
     

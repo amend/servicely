@@ -10,8 +10,10 @@ provides-dynamic-lookup:
 - "didReceiveMemoryWarning"
 - "headerView"
 - "viewDidLoad"
+- "viewWillAppear"
 depends-top-level:
 - "AssignmentPrecedence"
+- "Bool"
 - "ChangeColorSchemeViewController"
 - !private "ColorScheme"
 - !private "Int"
@@ -33,6 +35,7 @@ depends-member:
 - !private ["s7CVarArgP", "titleLabel"]
 - !private ["s7CVarArgP", "viewDidLoad"]
 - ["s7CVarArgP", ""]
+- ["9servicely31ChangeColorSchemeViewControllerC", "Bool"]
 - !private ["9servicely31ChangeColorSchemeViewControllerC", "ColorScheme"]
 - !private ["9servicely31ChangeColorSchemeViewControllerC", "Int"]
 - ["9servicely31ChangeColorSchemeViewControllerC", "UIButton"]
@@ -43,6 +46,8 @@ depends-member:
 - ["9servicely31ChangeColorSchemeViewControllerC", "headerView"]
 - ["9servicely31ChangeColorSchemeViewControllerC", "init"]
 - ["9servicely31ChangeColorSchemeViewControllerC", "viewDidLoad"]
+- ["9servicely31ChangeColorSchemeViewControllerC", "viewWillAppear"]
+- !private ["9servicely11ColorSchemeC", "getColorScheme"]
 - !private ["9servicely11ColorSchemeC", "setColorScheme"]
 - !private ["s10ComparableP", "init"]
 - !private ["s28CustomDebugStringConvertibleP", "ColorScheme"]
@@ -111,6 +116,7 @@ depends-member:
 - !private ["So26NSExtensionRequestHandlingP", "init"]
 - !private ["So26NSExtensionRequestHandlingP", "viewDidLoad"]
 - ["So26NSExtensionRequestHandlingP", ""]
+- ["So8NSObjectC", "Bool"]
 - !private ["So8NSObjectC", "ColorScheme"]
 - !private ["So8NSObjectC", "Int"]
 - ["So8NSObjectC", "UIButton"]
@@ -123,6 +129,7 @@ depends-member:
 - !private ["So8NSObjectC", "text"]
 - !private ["So8NSObjectC", "titleLabel"]
 - ["So8NSObjectC", "viewDidLoad"]
+- ["So8NSObjectC", "viewWillAppear"]
 - !private ["So16NSObjectProtocolP", "ColorScheme"]
 - !private ["So16NSObjectProtocolP", "Int"]
 - !private ["So16NSObjectProtocolP", "backgroundColor"]
@@ -197,6 +204,7 @@ depends-member:
 - !private ["So30UIPasteConfigurationSupportingP", "titleLabel"]
 - !private ["So30UIPasteConfigurationSupportingP", "viewDidLoad"]
 - ["So30UIPasteConfigurationSupportingP", ""]
+- ["So11UIResponderC", "Bool"]
 - !private ["So11UIResponderC", "ColorScheme"]
 - !private ["So11UIResponderC", "Int"]
 - ["So11UIResponderC", "UIButton"]
@@ -209,6 +217,7 @@ depends-member:
 - !private ["So11UIResponderC", "text"]
 - !private ["So11UIResponderC", "titleLabel"]
 - ["So11UIResponderC", "viewDidLoad"]
+- ["So11UIResponderC", "viewWillAppear"]
 - !private ["So30UIResponderStandardEditActionsP", "ColorScheme"]
 - !private ["So30UIResponderStandardEditActionsP", "Int"]
 - !private ["So30UIResponderStandardEditActionsP", "backgroundColor"]
@@ -241,6 +250,7 @@ depends-member:
 - !private ["So6UIViewC", "backgroundColor"]
 - !private ["So6UIViewC", "text"]
 - !private ["So6UIViewC", "titleLabel"]
+- ["So16UIViewControllerC", "Bool"]
 - !private ["So16UIViewControllerC", "ColorScheme"]
 - !private ["So16UIViewControllerC", "Int"]
 - ["So16UIViewControllerC", "UIButton"]
@@ -250,6 +260,7 @@ depends-member:
 - ["So16UIViewControllerC", "headerView"]
 - ["So16UIViewControllerC", "init"]
 - ["So16UIViewControllerC", "viewDidLoad"]
+- ["So16UIViewControllerC", "viewWillAppear"]
 - ["So16UIViewControllerC", ""]
 - !private ["s18_BitwiseOperationsP", "init"]
 - !private ["s37_DefaultCustomPlaygroundQuickLookableP", "backgroundColor"]
@@ -445,4 +456,4 @@ depends-external:
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/Pods/Firebase/Headers/module.modulemap"
-interface-hash: "8d1893276f20472b907326ae1f96c7ca"
+interface-hash: "240054e822c38674279be485e5bde93a"

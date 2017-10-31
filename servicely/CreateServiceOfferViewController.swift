@@ -25,6 +25,7 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
     
     @IBOutlet weak var savedLabel: UILabel!
     
+    @IBOutlet weak var submitButton: UIButton!
     
     let pickerViewData:[String] = ["Mechanic", "Carpentry", "Tutoring", "Care provider", "Lawn & Garden", "Pet care", "Plumbing", "Other"]
     
@@ -40,6 +41,7 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
     
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.title = "Create Service Offer"
+        submitButton.backgroundColor = ColorScheme.getColorScheme()
         // picks the first entry in picker view once view loads, otherwise
         // if user wants first item in pickerview and doesn't need to scroll, no
         // item will be selected

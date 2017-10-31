@@ -14,6 +14,8 @@ class EditProviderViewController: UIViewController {
 
     @IBOutlet weak var aboutUs: UITextView!
     @IBOutlet weak var savedLabel: UILabel!
+    @IBOutlet weak var saveButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         savedLabel.text = ""
@@ -25,6 +27,11 @@ class EditProviderViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let colorScheme = ColorScheme.getColorScheme()
+        saveButton.backgroundColor = colorScheme
     }
     
     @IBAction func saveButton(_ sender: Any) {

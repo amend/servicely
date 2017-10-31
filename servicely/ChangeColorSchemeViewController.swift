@@ -23,6 +23,10 @@ class ChangeColorSchemeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        headerView.backgroundColor = ColorScheme.getColorScheme()
+    }
+    
     @IBAction func colorChosen(_ sender: UIButton) {
         let color = sender.backgroundColor
         headerView.backgroundColor = color

@@ -23,13 +23,13 @@ class ColorScheme{
         let colorID = defaults.integer(forKey: "colorScheme")
         switch colorID {
             case 1:
-                return UIColor.init(red: 0, green: 122, blue: 255, alpha: 1)
+                return UIColor.init(red: 25/255.0, green: 148/255.0, blue: 252/255.0, alpha: 1.0)
             case 2:
-                return UIColor.init(red: 254, green: 91, blue: 95, alpha: 1)
+                return UIColor.init(red: 251/255.0, green: 93/255.0, blue: 99/255.0, alpha: 1.0)
             case 3:
-                return UIColor.init(red: 102, green: 255, blue: 102, alpha: 1)
+                return UIColor.init(red: 120/255.0, green: 248/255.0, blue: 127/255.0, alpha: 1.0)
             default:
-                return UIColor.init(red: 254, green: 91, blue: 95, alpha: 1)
+                return UIColor.init(red: 251/255.0, green: 93/255.0, blue: 99/255.0, alpha: 1.0)
         }
     }
 }

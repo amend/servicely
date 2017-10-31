@@ -7,6 +7,7 @@ provides-member:
 - ["9servicely11ColorSchemeC", ""]
 provides-dynamic-lookup:
 depends-top-level:
+- !private "/"
 - "ColorScheme"
 - "Int"
 - !private "StringLiteralType"

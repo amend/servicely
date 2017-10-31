@@ -41,7 +41,9 @@ class DeleteAccountViewController: UIViewController {
                 if let error = error {
                     // An error happened.
                     print("reauthenticate error happend")
-                    print(error.localizedDescription)
+                    if(error.localizedDescription == "The password is invalid or the user does not have a password."){
+                        self.errorLabel.text = "The password provided does not match the account."
+                    }
                 } else {
                     // User re-authenticated.
                     user?.delete(completion: nil)

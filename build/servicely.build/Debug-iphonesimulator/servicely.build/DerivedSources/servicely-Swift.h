@@ -213,6 +213,7 @@ SWIFT_CLASS("_TtC9servicely31ChangeColorSchemeViewController")
 @property (nonatomic, weak) IBOutlet UIView * _Null_unspecified headerView;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
+- (void)viewWillAppear:(BOOL)animated;
 - (IBAction)colorChosen:(UIButton * _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
@@ -229,10 +230,30 @@ SWIFT_CLASS("_TtC9servicely28ChangePasswordViewController")
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified newPasswordTextField;
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified reenterPasswordTextField;
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified changePasswordButton;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified resultLabel;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
 - (void)viewWillAppear:(BOOL)animated;
 - (IBAction)changePassword:(id _Nonnull)sender;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UIImageView;
+@class UIImagePickerController;
+
+SWIFT_CLASS("_TtC9servicely34ChangeProfilePictureViewController")
+@interface ChangeProfilePictureViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified headerView;
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified imageView;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified choosePictureButton;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified setPictureButton;
+- (void)viewDidLoad;
+- (void)didReceiveMemoryWarning;
+- (void)viewWillAppear:(BOOL)animated;
+- (IBAction)choosePicture:(id _Nonnull)sender;
+- (IBAction)setPicture:(id _Nonnull)sender;
+- (void)imagePickerController:(UIImagePickerController * _Nonnull)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> * _Nonnull)info;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -266,6 +287,7 @@ SWIFT_CLASS("_TtC9servicely27ClientProfileViewController")
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified displayName;
 @property (nonatomic, weak) IBOutlet UIView * _Null_unspecified nameView;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified aboutMe;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified viewMyRequestsButton;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)didReceiveMemoryWarning;
@@ -285,6 +307,7 @@ SWIFT_CLASS("_TtC9servicely32CreateServiceOfferViewController")
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified companyName;
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified contactInfo;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified savedLabel;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified submitButton;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)didReceiveMemoryWarning;
@@ -316,8 +339,10 @@ SWIFT_CLASS("_TtC9servicely25EditProfileViewController")
 @interface EditProfileViewController : UIViewController
 @property (nonatomic, weak) IBOutlet UITextView * _Null_unspecified aboutMe;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified savedLabel;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified saveButton;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
+- (void)viewWillAppear:(BOOL)animated;
 - (IBAction)saveButton:(id _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
@@ -328,8 +353,10 @@ SWIFT_CLASS("_TtC9servicely26EditProviderViewController")
 @interface EditProviderViewController : UIViewController
 @property (nonatomic, weak) IBOutlet UITextView * _Null_unspecified aboutUs;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified savedLabel;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified saveButton;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
+- (void)viewWillAppear:(BOOL)animated;
 - (IBAction)saveButton:(id _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
@@ -340,6 +367,9 @@ SWIFT_CLASS("_TtC9servicely29ProviderProfileViewController")
 @interface ProviderProfileViewController : UIViewController
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified displayName;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified aboutUs;
+@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified headerView;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified viewOurServicesButton;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified viewMyRequestsButton;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
 - (void)viewWillAppear:(BOOL)animated;
@@ -365,8 +395,10 @@ SWIFT_CLASS("_TtC9servicely25ServiceOfferTableViewCell")
 SWIFT_CLASS("_TtC9servicely25ServiceTypeViewController")
 @interface ServiceTypeViewController : UIViewController
 @property (nonatomic, weak) IBOutlet UISegmentedControl * _Null_unspecified serviceTypeSegmentedControl;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified submitButton;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
+- (void)viewWillAppear:(BOOL)animated;
 - (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
@@ -385,8 +417,7 @@ SWIFT_CLASS("_TtC9servicely27SettingsTableViewController")
 @interface SettingsTableViewController : UITableViewController
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
-- (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
-- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 - (nonnull instancetype)initWithStyle:(UITableViewStyle)style OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
@@ -395,8 +426,10 @@ SWIFT_CLASS("_TtC9servicely27SettingsTableViewController")
 
 SWIFT_CLASS("_TtC9servicely22SettingsViewController")
 @interface SettingsViewController : UIViewController
+@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified headerView;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
+- (void)viewWillAppear:(BOOL)animated;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end

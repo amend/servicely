@@ -15,6 +15,7 @@ provides-dynamic-lookup:
 - "viewWillAppear"
 depends-top-level:
 - !private "!"
+- !private "=="
 - "AssignmentPrecedence"
 - "Bool"
 - !private "ColorScheme"

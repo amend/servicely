@@ -18,6 +18,7 @@ class ChangePasswordViewController: UIViewController {
     @IBOutlet weak var newPasswordTextField: UITextField!
     @IBOutlet weak var reenterPasswordTextField: UITextField!
     @IBOutlet weak var changePasswordButton: UIButton!
+    @IBOutlet weak var resultLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,10 +49,13 @@ class ChangePasswordViewController: UIViewController {
                     if let error = error {
                         // An error happened.
                         print("reauthenticate error happend")
-                        print(error.localizedDescription)
+                        if(error.localizedDescription == "The password is invalid or the user does not have a password."){
+                            self.errorLabel.text = "The password provided does not match the account."
+                        }
                     } else {
                         // User re-authenticated.
                         user?.updatePassword(self.newPasswordTextField.text! , completion: nil)
+                        self.resultLabel.text = "Password Changed!"
                     }
                 }
             }else{
@@ -63,7 +67,7 @@ class ChangePasswordViewController: UIViewController {
     }
     
     func allTextFieldsFull() -> Bool {
-        return !(currentPasswordTextField.text?.isEmpty)! && (newPasswordTextField.text?.isEmpty)! && (reenterPasswordTextField.text?.isEmpty)!
+        return !(currentPasswordTextField.text?.isEmpty)! && !(newPasswordTextField.text?.isEmpty)! && !(reenterPasswordTextField.text?.isEmpty)!
     }
     
     func ifPasswordsMatch() -> Bool {

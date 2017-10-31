@@ -6,111 +6,568 @@ provides-nominal:
 provides-member:
 - ["9servicely27DeleteAccountViewControllerC", ""]
 provides-dynamic-lookup:
+- "deleteAccount"
 - "didReceiveMemoryWarning"
+- "errorLabel"
+- "headerView"
+- "passwordTextField"
 - "viewDidLoad"
+- "viewWillAppear"
 depends-top-level:
+- !private "!"
+- !private "=="
+- "AssignmentPrecedence"
+- "Bool"
+- !private "ColorScheme"
 - "DeleteAccountViewController"
+- !private "FIRAuth"
+- !private "FIRAuthCredential"
+- !private "FIREmailPasswordAuthProvider"
+- !private "StringLiteralType"
+- "UILabel"
+- "UITextField"
+- "UIView"
 - "UIViewController"
+- !private "print"
 depends-member:
+- !private ["s23BidirectionalCollectionP", "init"]
+- !private ["s23BidirectionalCollectionP", "isEmpty"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["So15CALayerDelegateP", "backgroundColor"]
+- !private ["So15CALayerDelegateP", "text"]
+- !private ["s7CVarArgP", "ColorScheme"]
+- !private ["s7CVarArgP", "FIRAuth"]
+- !private ["s7CVarArgP", "FIREmailPasswordAuthProvider"]
+- !private ["s7CVarArgP", "auth"]
+- !private ["s7CVarArgP", "backgroundColor"]
+- !private ["s7CVarArgP", "credential"]
+- !private ["s7CVarArgP", "currentUser"]
+- !private ["s7CVarArgP", "delete"]
 - !private ["s7CVarArgP", "didReceiveMemoryWarning"]
+- !private ["s7CVarArgP", "email"]
+- !private ["s7CVarArgP", "errorLabel"]
+- !private ["s7CVarArgP", "headerView"]
 - !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "isEmpty"]
+- !private ["s7CVarArgP", "passwordTextField"]
+- !private ["s7CVarArgP", "print"]
+- !private ["s7CVarArgP", "reauthenticate"]
+- !private ["s7CVarArgP", "text"]
 - !private ["s7CVarArgP", "viewDidLoad"]
 - ["s7CVarArgP", ""]
+- !private ["s10CollectionP", "init"]
+- !private ["s10CollectionP", "isEmpty"]
+- !private ["9servicely11ColorSchemeC", "getColorScheme"]
+- !private ["s10ComparableP", "init"]
+- !private ["s10ComparableP", "isEmpty"]
+- !private ["s28CustomDebugStringConvertibleP", "ColorScheme"]
+- !private ["s28CustomDebugStringConvertibleP", "FIRAuth"]
+- !private ["s28CustomDebugStringConvertibleP", "FIREmailPasswordAuthProvider"]
+- !private ["s28CustomDebugStringConvertibleP", "auth"]
+- !private ["s28CustomDebugStringConvertibleP", "backgroundColor"]
+- !private ["s28CustomDebugStringConvertibleP", "credential"]
+- !private ["s28CustomDebugStringConvertibleP", "currentUser"]
+- !private ["s28CustomDebugStringConvertibleP", "delete"]
 - !private ["s28CustomDebugStringConvertibleP", "didReceiveMemoryWarning"]
+- !private ["s28CustomDebugStringConvertibleP", "email"]
+- !private ["s28CustomDebugStringConvertibleP", "errorLabel"]
+- !private ["s28CustomDebugStringConvertibleP", "headerView"]
 - !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "isEmpty"]
+- !private ["s28CustomDebugStringConvertibleP", "passwordTextField"]
+- !private ["s28CustomDebugStringConvertibleP", "print"]
+- !private ["s28CustomDebugStringConvertibleP", "reauthenticate"]
+- !private ["s28CustomDebugStringConvertibleP", "text"]
 - !private ["s28CustomDebugStringConvertibleP", "viewDidLoad"]
 - ["s28CustomDebugStringConvertibleP", ""]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
+- !private ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s29CustomPlaygroundQuickLookableP", "isEmpty"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "isEmpty"]
+- !private ["s23CustomStringConvertibleP", "ColorScheme"]
+- !private ["s23CustomStringConvertibleP", "FIRAuth"]
+- !private ["s23CustomStringConvertibleP", "FIREmailPasswordAuthProvider"]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "auth"]
+- !private ["s23CustomStringConvertibleP", "backgroundColor"]
+- !private ["s23CustomStringConvertibleP", "credential"]
+- !private ["s23CustomStringConvertibleP", "currentUser"]
+- !private ["s23CustomStringConvertibleP", "delete"]
 - !private ["s23CustomStringConvertibleP", "didReceiveMemoryWarning"]
+- !private ["s23CustomStringConvertibleP", "email"]
+- !private ["s23CustomStringConvertibleP", "errorLabel"]
+- !private ["s23CustomStringConvertibleP", "headerView"]
 - !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "isEmpty"]
+- !private ["s23CustomStringConvertibleP", "passwordTextField"]
+- !private ["s23CustomStringConvertibleP", "print"]
+- !private ["s23CustomStringConvertibleP", "reauthenticate"]
+- !private ["s23CustomStringConvertibleP", "text"]
 - !private ["s23CustomStringConvertibleP", "viewDidLoad"]
 - ["s23CustomStringConvertibleP", ""]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
+- !private ["s9DecodableP", "init"]
+- !private ["s9DecodableP", "isEmpty"]
+- ["9servicely27DeleteAccountViewControllerC", "Bool"]
+- !private ["9servicely27DeleteAccountViewControllerC", "ColorScheme"]
+- !private ["9servicely27DeleteAccountViewControllerC", "FIRAuth"]
+- !private ["9servicely27DeleteAccountViewControllerC", "FIRAuthCredential"]
+- !private ["9servicely27DeleteAccountViewControllerC", "FIREmailPasswordAuthProvider"]
+- ["9servicely27DeleteAccountViewControllerC", "UILabel"]
+- ["9servicely27DeleteAccountViewControllerC", "UITextField"]
+- ["9servicely27DeleteAccountViewControllerC", "UIView"]
 - ["9servicely27DeleteAccountViewControllerC", "deinit"]
+- ["9servicely27DeleteAccountViewControllerC", "deleteAccount"]
 - ["9servicely27DeleteAccountViewControllerC", "didReceiveMemoryWarning"]
+- ["9servicely27DeleteAccountViewControllerC", "errorLabel"]
+- ["9servicely27DeleteAccountViewControllerC", "headerView"]
 - ["9servicely27DeleteAccountViewControllerC", "init"]
+- ["9servicely27DeleteAccountViewControllerC", "passwordTextField"]
+- !private ["9servicely27DeleteAccountViewControllerC", "print"]
 - ["9servicely27DeleteAccountViewControllerC", "viewDidLoad"]
+- ["9servicely27DeleteAccountViewControllerC", "viewWillAppear"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
+- !private ["s9EncodableP", "init"]
+- !private ["s9EncodableP", "isEmpty"]
+- !private ["s9EquatableP", "ColorScheme"]
+- !private ["s9EquatableP", "FIRAuth"]
+- !private ["s9EquatableP", "FIREmailPasswordAuthProvider"]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- !private ["s9EquatableP", "auth"]
+- !private ["s9EquatableP", "backgroundColor"]
+- !private ["s9EquatableP", "credential"]
+- !private ["s9EquatableP", "currentUser"]
+- !private ["s9EquatableP", "delete"]
 - !private ["s9EquatableP", "didReceiveMemoryWarning"]
+- !private ["s9EquatableP", "email"]
+- !private ["s9EquatableP", "errorLabel"]
+- !private ["s9EquatableP", "headerView"]
 - !private ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "isEmpty"]
+- !private ["s9EquatableP", "passwordTextField"]
+- !private ["s9EquatableP", "print"]
+- !private ["s9EquatableP", "reauthenticate"]
+- !private ["s9EquatableP", "text"]
 - !private ["s9EquatableP", "viewDidLoad"]
 - ["s9EquatableP", ""]
+- !private ["s5ErrorP", "localizedDescription"]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "isEmpty"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", "isEmpty"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "isEmpty"]
+- !private ["So7FIRAuthC", "auth"]
+- !private ["So7FIRAuthC", "currentUser"]
+- !private ["So28FIREmailPasswordAuthProviderC", "credential"]
+- !private ["So7FIRUserC", "delete"]
+- !private ["So7FIRUserC", "email"]
+- !private ["So7FIRUserC", "reauthenticate"]
+- !private ["So11FIRUserInfoP", "delete"]
+- !private ["So11FIRUserInfoP", "email"]
+- !private ["So11FIRUserInfoP", "reauthenticate"]
+- !private ["s8HashableP", "ColorScheme"]
+- !private ["s8HashableP", "FIRAuth"]
+- !private ["s8HashableP", "FIREmailPasswordAuthProvider"]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- !private ["s8HashableP", "auth"]
+- !private ["s8HashableP", "backgroundColor"]
+- !private ["s8HashableP", "credential"]
+- !private ["s8HashableP", "currentUser"]
+- !private ["s8HashableP", "delete"]
 - !private ["s8HashableP", "didReceiveMemoryWarning"]
+- !private ["s8HashableP", "email"]
+- !private ["s8HashableP", "errorLabel"]
+- !private ["s8HashableP", "headerView"]
 - !private ["s8HashableP", "init"]
+- !private ["s8HashableP", "isEmpty"]
+- !private ["s8HashableP", "passwordTextField"]
+- !private ["s8HashableP", "print"]
+- !private ["s8HashableP", "reauthenticate"]
+- !private ["s8HashableP", "text"]
 - !private ["s8HashableP", "viewDidLoad"]
 - ["s8HashableP", ""]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["s25LosslessStringConvertibleP", "isEmpty"]
+- !private ["s10MirrorPathP", "init"]
+- !private ["s10MirrorPathP", "isEmpty"]
+- !private ["So8NSCodingP", "ColorScheme"]
+- !private ["So8NSCodingP", "FIRAuth"]
+- !private ["So8NSCodingP", "FIREmailPasswordAuthProvider"]
+- !private ["So8NSCodingP", "backgroundColor"]
 - !private ["So8NSCodingP", "didReceiveMemoryWarning"]
+- !private ["So8NSCodingP", "errorLabel"]
+- !private ["So8NSCodingP", "headerView"]
 - !private ["So8NSCodingP", "init"]
+- !private ["So8NSCodingP", "isEmpty"]
+- !private ["So8NSCodingP", "passwordTextField"]
+- !private ["So8NSCodingP", "print"]
+- !private ["So8NSCodingP", "text"]
 - !private ["So8NSCodingP", "viewDidLoad"]
 - ["So8NSCodingP", ""]
+- !private ["So9NSCopyingP", "init"]
+- !private ["So9NSCopyingP", "isEmpty"]
+- !private ["So26NSExtensionRequestHandlingP", "ColorScheme"]
+- !private ["So26NSExtensionRequestHandlingP", "FIRAuth"]
+- !private ["So26NSExtensionRequestHandlingP", "FIREmailPasswordAuthProvider"]
 - !private ["So26NSExtensionRequestHandlingP", "didReceiveMemoryWarning"]
+- !private ["So26NSExtensionRequestHandlingP", "errorLabel"]
+- !private ["So26NSExtensionRequestHandlingP", "headerView"]
 - !private ["So26NSExtensionRequestHandlingP", "init"]
+- !private ["So26NSExtensionRequestHandlingP", "passwordTextField"]
+- !private ["So26NSExtensionRequestHandlingP", "print"]
 - !private ["So26NSExtensionRequestHandlingP", "viewDidLoad"]
 - ["So26NSExtensionRequestHandlingP", ""]
+- !private ["So21NSItemProviderReadingP", "init"]
+- !private ["So21NSItemProviderReadingP", "isEmpty"]
+- !private ["So21NSItemProviderWritingP", "init"]
+- !private ["So21NSItemProviderWritingP", "isEmpty"]
+- !private ["So16NSMutableCopyingP", "init"]
+- !private ["So16NSMutableCopyingP", "isEmpty"]
+- ["So8NSObjectC", "Bool"]
+- !private ["So8NSObjectC", "ColorScheme"]
+- !private ["So8NSObjectC", "FIRAuth"]
+- !private ["So8NSObjectC", "FIRAuthCredential"]
+- !private ["So8NSObjectC", "FIREmailPasswordAuthProvider"]
+- ["So8NSObjectC", "UILabel"]
+- ["So8NSObjectC", "UITextField"]
+- ["So8NSObjectC", "UIView"]
+- !private ["So8NSObjectC", "auth"]
+- !private ["So8NSObjectC", "backgroundColor"]
+- !private ["So8NSObjectC", "credential"]
+- !private ["So8NSObjectC", "currentUser"]
+- !private ["So8NSObjectC", "delete"]
+- ["So8NSObjectC", "deleteAccount"]
 - ["So8NSObjectC", "didReceiveMemoryWarning"]
+- !private ["So8NSObjectC", "email"]
+- ["So8NSObjectC", "errorLabel"]
+- ["So8NSObjectC", "headerView"]
 - ["So8NSObjectC", "init"]
+- !private ["So8NSObjectC", "isEmpty"]
+- ["So8NSObjectC", "passwordTextField"]
+- !private ["So8NSObjectC", "print"]
+- !private ["So8NSObjectC", "reauthenticate"]
+- !private ["So8NSObjectC", "text"]
 - ["So8NSObjectC", "viewDidLoad"]
+- ["So8NSObjectC", "viewWillAppear"]
+- !private ["So16NSObjectProtocolP", "ColorScheme"]
+- !private ["So16NSObjectProtocolP", "FIRAuth"]
+- !private ["So16NSObjectProtocolP", "FIREmailPasswordAuthProvider"]
+- !private ["So16NSObjectProtocolP", "auth"]
+- !private ["So16NSObjectProtocolP", "backgroundColor"]
+- !private ["So16NSObjectProtocolP", "credential"]
+- !private ["So16NSObjectProtocolP", "currentUser"]
+- !private ["So16NSObjectProtocolP", "delete"]
 - !private ["So16NSObjectProtocolP", "didReceiveMemoryWarning"]
+- !private ["So16NSObjectProtocolP", "email"]
+- !private ["So16NSObjectProtocolP", "errorLabel"]
+- !private ["So16NSObjectProtocolP", "headerView"]
 - !private ["So16NSObjectProtocolP", "init"]
+- !private ["So16NSObjectProtocolP", "isEmpty"]
+- !private ["So16NSObjectProtocolP", "passwordTextField"]
+- !private ["So16NSObjectProtocolP", "print"]
+- !private ["So16NSObjectProtocolP", "reauthenticate"]
+- !private ["So16NSObjectProtocolP", "text"]
 - !private ["So16NSObjectProtocolP", "viewDidLoad"]
 - ["So16NSObjectProtocolP", ""]
+- !private ["So14NSSecureCodingP", "init"]
+- !private ["So14NSSecureCodingP", "isEmpty"]
+- !private ["So8NSStringC", "init"]
+- !private ["So8NSStringC", "isEmpty"]
+- !private ["s26RangeReplaceableCollectionP", "init"]
+- !private ["s26RangeReplaceableCollectionP", "isEmpty"]
+- !private ["s8SequenceP", "init"]
+- !private ["s8SequenceP", "isEmpty"]
+- !private ["SS", "init"]
+- !private ["SS", "isEmpty"]
+- !private ["s14StringProtocolP", "init"]
+- !private ["s14StringProtocolP", "isEmpty"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s16TextOutputStreamP", "isEmpty"]
+- !private ["s20TextOutputStreamableP", "init"]
+- !private ["s20TextOutputStreamableP", "isEmpty"]
+- !private ["So29UIAccessibilityIdentificationP", "backgroundColor"]
+- !private ["So29UIAccessibilityIdentificationP", "text"]
+- !private ["So12UIAppearanceP", "backgroundColor"]
+- !private ["So12UIAppearanceP", "text"]
+- !private ["So21UIAppearanceContainerP", "ColorScheme"]
+- !private ["So21UIAppearanceContainerP", "FIRAuth"]
+- !private ["So21UIAppearanceContainerP", "FIREmailPasswordAuthProvider"]
+- !private ["So21UIAppearanceContainerP", "backgroundColor"]
 - !private ["So21UIAppearanceContainerP", "didReceiveMemoryWarning"]
+- !private ["So21UIAppearanceContainerP", "errorLabel"]
+- !private ["So21UIAppearanceContainerP", "headerView"]
 - !private ["So21UIAppearanceContainerP", "init"]
+- !private ["So21UIAppearanceContainerP", "passwordTextField"]
+- !private ["So21UIAppearanceContainerP", "print"]
+- !private ["So21UIAppearanceContainerP", "text"]
 - !private ["So21UIAppearanceContainerP", "viewDidLoad"]
 - ["So21UIAppearanceContainerP", ""]
+- !private ["So18UIContentContainerP", "ColorScheme"]
+- !private ["So18UIContentContainerP", "FIRAuth"]
+- !private ["So18UIContentContainerP", "FIREmailPasswordAuthProvider"]
 - !private ["So18UIContentContainerP", "didReceiveMemoryWarning"]
+- !private ["So18UIContentContainerP", "errorLabel"]
+- !private ["So18UIContentContainerP", "headerView"]
 - !private ["So18UIContentContainerP", "init"]
+- !private ["So18UIContentContainerP", "passwordTextField"]
+- !private ["So18UIContentContainerP", "print"]
 - !private ["So18UIContentContainerP", "viewDidLoad"]
 - ["So18UIContentContainerP", ""]
+- !private ["So30UIContentSizeCategoryAdjustingP", "text"]
+- !private ["So9UIControlC", "text"]
+- !private ["So17UICoordinateSpaceP", "backgroundColor"]
+- !private ["So17UICoordinateSpaceP", "text"]
+- !private ["So13UIDynamicItemP", "backgroundColor"]
+- !private ["So13UIDynamicItemP", "text"]
+- !private ["So18UIFocusEnvironmentP", "ColorScheme"]
+- !private ["So18UIFocusEnvironmentP", "FIRAuth"]
+- !private ["So18UIFocusEnvironmentP", "FIREmailPasswordAuthProvider"]
+- !private ["So18UIFocusEnvironmentP", "backgroundColor"]
 - !private ["So18UIFocusEnvironmentP", "didReceiveMemoryWarning"]
+- !private ["So18UIFocusEnvironmentP", "errorLabel"]
+- !private ["So18UIFocusEnvironmentP", "headerView"]
 - !private ["So18UIFocusEnvironmentP", "init"]
+- !private ["So18UIFocusEnvironmentP", "passwordTextField"]
+- !private ["So18UIFocusEnvironmentP", "print"]
+- !private ["So18UIFocusEnvironmentP", "text"]
 - !private ["So18UIFocusEnvironmentP", "viewDidLoad"]
 - ["So18UIFocusEnvironmentP", ""]
+- !private ["So11UIFocusItemP", "backgroundColor"]
+- !private ["So11UIFocusItemP", "text"]
+- !private ["So10UIKeyInputP", "text"]
+- !private ["So7UILabelC", "text"]
+- !private ["So30UIPasteConfigurationSupportingP", "ColorScheme"]
+- !private ["So30UIPasteConfigurationSupportingP", "FIRAuth"]
+- !private ["So30UIPasteConfigurationSupportingP", "FIREmailPasswordAuthProvider"]
+- !private ["So30UIPasteConfigurationSupportingP", "backgroundColor"]
 - !private ["So30UIPasteConfigurationSupportingP", "didReceiveMemoryWarning"]
+- !private ["So30UIPasteConfigurationSupportingP", "errorLabel"]
+- !private ["So30UIPasteConfigurationSupportingP", "headerView"]
 - !private ["So30UIPasteConfigurationSupportingP", "init"]
+- !private ["So30UIPasteConfigurationSupportingP", "passwordTextField"]
+- !private ["So30UIPasteConfigurationSupportingP", "print"]
+- !private ["So30UIPasteConfigurationSupportingP", "text"]
 - !private ["So30UIPasteConfigurationSupportingP", "viewDidLoad"]
 - ["So30UIPasteConfigurationSupportingP", ""]
+- ["So11UIResponderC", "Bool"]
+- !private ["So11UIResponderC", "ColorScheme"]
+- !private ["So11UIResponderC", "FIRAuth"]
+- !private ["So11UIResponderC", "FIRAuthCredential"]
+- !private ["So11UIResponderC", "FIREmailPasswordAuthProvider"]
+- ["So11UIResponderC", "UILabel"]
+- ["So11UIResponderC", "UITextField"]
+- ["So11UIResponderC", "UIView"]
+- !private ["So11UIResponderC", "backgroundColor"]
+- ["So11UIResponderC", "deleteAccount"]
 - ["So11UIResponderC", "didReceiveMemoryWarning"]
+- ["So11UIResponderC", "errorLabel"]
+- ["So11UIResponderC", "headerView"]
 - ["So11UIResponderC", "init"]
+- ["So11UIResponderC", "passwordTextField"]
+- !private ["So11UIResponderC", "print"]
+- !private ["So11UIResponderC", "text"]
 - ["So11UIResponderC", "viewDidLoad"]
+- ["So11UIResponderC", "viewWillAppear"]
+- !private ["So30UIResponderStandardEditActionsP", "ColorScheme"]
+- !private ["So30UIResponderStandardEditActionsP", "FIRAuth"]
+- !private ["So30UIResponderStandardEditActionsP", "FIREmailPasswordAuthProvider"]
+- !private ["So30UIResponderStandardEditActionsP", "backgroundColor"]
 - !private ["So30UIResponderStandardEditActionsP", "didReceiveMemoryWarning"]
+- !private ["So30UIResponderStandardEditActionsP", "errorLabel"]
+- !private ["So30UIResponderStandardEditActionsP", "headerView"]
 - !private ["So30UIResponderStandardEditActionsP", "init"]
+- !private ["So30UIResponderStandardEditActionsP", "passwordTextField"]
+- !private ["So30UIResponderStandardEditActionsP", "print"]
+- !private ["So30UIResponderStandardEditActionsP", "text"]
 - !private ["So30UIResponderStandardEditActionsP", "viewDidLoad"]
 - ["So30UIResponderStandardEditActionsP", ""]
+- !private ["So16UIStateRestoringP", "ColorScheme"]
+- !private ["So16UIStateRestoringP", "FIRAuth"]
+- !private ["So16UIStateRestoringP", "FIREmailPasswordAuthProvider"]
 - !private ["So16UIStateRestoringP", "didReceiveMemoryWarning"]
+- !private ["So16UIStateRestoringP", "errorLabel"]
+- !private ["So16UIStateRestoringP", "headerView"]
 - !private ["So16UIStateRestoringP", "init"]
+- !private ["So16UIStateRestoringP", "passwordTextField"]
+- !private ["So16UIStateRestoringP", "print"]
 - !private ["So16UIStateRestoringP", "viewDidLoad"]
 - ["So16UIStateRestoringP", ""]
+- !private ["So15UITextDraggableP", "text"]
+- !private ["So15UITextDroppableP", "text"]
+- !private ["So11UITextFieldC", "text"]
+- !private ["So11UITextInputP", "text"]
+- !private ["So17UITextInputTraitsP", "text"]
+- !private ["So34UITextPasteConfigurationSupportingP", "text"]
+- !private ["So18UITraitEnvironmentP", "ColorScheme"]
+- !private ["So18UITraitEnvironmentP", "FIRAuth"]
+- !private ["So18UITraitEnvironmentP", "FIREmailPasswordAuthProvider"]
+- !private ["So18UITraitEnvironmentP", "backgroundColor"]
 - !private ["So18UITraitEnvironmentP", "didReceiveMemoryWarning"]
+- !private ["So18UITraitEnvironmentP", "errorLabel"]
+- !private ["So18UITraitEnvironmentP", "headerView"]
 - !private ["So18UITraitEnvironmentP", "init"]
+- !private ["So18UITraitEnvironmentP", "passwordTextField"]
+- !private ["So18UITraitEnvironmentP", "print"]
+- !private ["So18UITraitEnvironmentP", "text"]
 - !private ["So18UITraitEnvironmentP", "viewDidLoad"]
 - ["So18UITraitEnvironmentP", ""]
+- !private ["So6UIViewC", "backgroundColor"]
+- !private ["So6UIViewC", "text"]
+- ["So16UIViewControllerC", "Bool"]
+- !private ["So16UIViewControllerC", "ColorScheme"]
+- !private ["So16UIViewControllerC", "FIRAuth"]
+- !private ["So16UIViewControllerC", "FIRAuthCredential"]
+- !private ["So16UIViewControllerC", "FIREmailPasswordAuthProvider"]
+- ["So16UIViewControllerC", "UILabel"]
+- ["So16UIViewControllerC", "UITextField"]
+- ["So16UIViewControllerC", "UIView"]
+- ["So16UIViewControllerC", "deleteAccount"]
 - ["So16UIViewControllerC", "didReceiveMemoryWarning"]
+- ["So16UIViewControllerC", "errorLabel"]
+- ["So16UIViewControllerC", "headerView"]
 - ["So16UIViewControllerC", "init"]
+- ["So16UIViewControllerC", "passwordTextField"]
+- !private ["So16UIViewControllerC", "print"]
 - ["So16UIViewControllerC", "viewDidLoad"]
+- ["So16UIViewControllerC", "viewWillAppear"]
 - ["So16UIViewControllerC", ""]
+- !private ["s23_BidirectionalIndexableP", "init"]
+- !private ["s23_BidirectionalIndexableP", "isEmpty"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "backgroundColor"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "text"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "isEmpty"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "isEmpty"]
+- !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
+- !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "isEmpty"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "isEmpty"]
+- !private ["s33_ExpressibleByStringInterpolationP", "init"]
+- !private ["s33_ExpressibleByStringInterpolationP", "isEmpty"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "isEmpty"]
+- !private ["s10_IndexableP", "init"]
+- !private ["s10_IndexableP", "isEmpty"]
+- !private ["s14_IndexableBaseP", "init"]
+- !private ["s14_IndexableBaseP", "isEmpty"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "ColorScheme"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "FIRAuth"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "FIREmailPasswordAuthProvider"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "auth"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "backgroundColor"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "credential"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "currentUser"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "delete"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "didReceiveMemoryWarning"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "email"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "errorLabel"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "headerView"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "isEmpty"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "passwordTextField"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "print"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "reauthenticate"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "text"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "viewDidLoad"]
 - ["10Foundation27_KeyValueCodingAndObservingP", ""]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "isEmpty"]
+- !private ["s26_RangeReplaceableIndexableP", "init"]
+- !private ["s26_RangeReplaceableIndexableP", "isEmpty"]
+- !private ["s16_SwiftStringViewP", "init"]
+- !private ["s16_SwiftStringViewP", "isEmpty"]
 depends-nominal:
+- !private "s23BidirectionalCollectionP"
+- !private "Sb"
+- !private "So15CALayerDelegateP"
 - "s7CVarArgP"
+- !private "s10CollectionP"
+- !private "9servicely11ColorSchemeC"
+- !private "s10ComparableP"
 - "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
 - "s23CustomStringConvertibleP"
+- !private "s9DecodableP"
 - "9servicely27DeleteAccountViewControllerC"
+- !private "s9EncodableP"
 - "s9EquatableP"
+- !private "s5ErrorP"
+- !private "s27ExpressibleByBooleanLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "So7FIRAuthC"
+- !private "So28FIREmailPasswordAuthProviderC"
+- !private "So7FIRUserC"
+- !private "So11FIRUserInfoP"
 - "s8HashableP"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
 - "So8NSCodingP"
+- !private "So9NSCopyingP"
 - "So26NSExtensionRequestHandlingP"
+- !private "So21NSItemProviderReadingP"
+- !private "So21NSItemProviderWritingP"
+- !private "So16NSMutableCopyingP"
 - "So8NSObjectC"
 - "So16NSObjectProtocolP"
+- !private "So14NSSecureCodingP"
+- !private "So8NSStringC"
+- !private "s26RangeReplaceableCollectionP"
+- !private "s8SequenceP"
+- !private "SS"
+- !private "s14StringProtocolP"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- !private "So29UIAccessibilityIdentificationP"
+- !private "So12UIAppearanceP"
 - "So21UIAppearanceContainerP"
 - "So18UIContentContainerP"
+- !private "So30UIContentSizeCategoryAdjustingP"
+- !private "So9UIControlC"
+- !private "So17UICoordinateSpaceP"
+- !private "So13UIDynamicItemP"
 - "So18UIFocusEnvironmentP"
+- !private "So11UIFocusItemP"
+- !private "So10UIKeyInputP"
+- !private "So7UILabelC"
 - "So30UIPasteConfigurationSupportingP"
 - "So11UIResponderC"
 - "So30UIResponderStandardEditActionsP"
 - "So16UIStateRestoringP"
+- !private "So15UITextDraggableP"
+- !private "So15UITextDroppableP"
+- !private "So11UITextFieldC"
+- !private "So11UITextInputP"
+- !private "So17UITextInputTraitsP"
+- !private "So34UITextPasteConfigurationSupportingP"
 - "So18UITraitEnvironmentP"
+- !private "So6UIViewC"
 - "So16UIViewControllerC"
+- !private "s23_BidirectionalIndexableP"
+- !private "s37_DefaultCustomPlaygroundQuickLookableP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s39_ExpressibleByBuiltinUTF16StringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s33_ExpressibleByStringInterpolationP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- !private "s10_IndexableP"
+- !private "s14_IndexableBaseP"
 - "10Foundation27_KeyValueCodingAndObservingP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s26_RangeReplaceableIndexableP"
+- !private "s16_SwiftStringViewP"
 depends-dynamic-lookup:
 depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
@@ -233,4 +690,4 @@ depends-external:
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/Pods/Firebase/Headers/module.modulemap"
-interface-hash: "51459ec205192c304284ac2676eb0ec3"
+interface-hash: "1d5fedb4e3b43f21a9d7169d49223a1f"

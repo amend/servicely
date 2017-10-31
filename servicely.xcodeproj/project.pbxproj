@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3762DAD91FA705990065FA87 /* ChangeColorSchemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3762DAD81FA705990065FA87 /* ChangeColorSchemeViewController.swift */; };
 		3762DAFF1FA7144C0065FA87 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3762DAFE1FA7144C0065FA87 /* ColorScheme.swift */; };
+		3785C1F11FA9391200774BCE /* ChangeProfilePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3785C1F01FA9391200774BCE /* ChangeProfilePictureViewController.swift */; };
 		379650A01FA889AD00EF72ED /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3796509F1FA889AD00EF72ED /* ChangePasswordViewController.swift */; };
 		379650A21FA891DE00EF72ED /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379650A11FA891DE00EF72ED /* DeleteAccountViewController.swift */; };
 		379650A41FA8954C00EF72ED /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379650A31FA8954C00EF72ED /* SettingsViewController.swift */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		3762DAD81FA705990065FA87 /* ChangeColorSchemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeColorSchemeViewController.swift; sourceTree = "<group>"; };
 		3762DAFE1FA7144C0065FA87 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
+		3785C1F01FA9391200774BCE /* ChangeProfilePictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeProfilePictureViewController.swift; sourceTree = "<group>"; };
 		3796509F1FA889AD00EF72ED /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		379650A11FA891DE00EF72ED /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
 		379650A31FA8954C00EF72ED /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				379650A11FA891DE00EF72ED /* DeleteAccountViewController.swift */,
 				379650A31FA8954C00EF72ED /* SettingsViewController.swift */,
 				379650A51FA8956400EF72ED /* SettingsTableViewController.swift */,
+				3785C1F01FA9391200774BCE /* ChangeProfilePictureViewController.swift */,
 			);
 			path = servicely;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				379650A21FA891DE00EF72ED /* DeleteAccountViewController.swift in Sources */,
 				90CA841A1F995EFA00EDB7AC /* ServicelyLogoViewController.swift in Sources */,
 				7F7F23101FA68DC200EEA294 /* ClientProfileViewController.swift in Sources */,
+				3785C1F11FA9391200774BCE /* ChangeProfilePictureViewController.swift in Sources */,
 				379650A01FA889AD00EF72ED /* ChangePasswordViewController.swift in Sources */,
 				7F9E23241FA3A6C600865172 /* Client.swift in Sources */,
 				3762DAFF1FA7144C0065FA87 /* ColorScheme.swift in Sources */,
