@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -300,7 +300,7 @@
                                     <navigationItem title="Feed" id="Sih-pE-XAe">
                                         <rightBarButtonItems>
                                             <barButtonItem style="plain" id="reg-ss-X6S">
-                                                <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5c6-gl-RN4">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5c6-gl-RN4">
                                                     <rect key="frame" x="257" y="7" width="102" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Temp Sign Out"/>
@@ -310,7 +310,7 @@
                                                 </button>
                                             </barButtonItem>
                                             <barButtonItem style="plain" id="FdU-jf-JEs">
-                                                <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bH5-xu-mrr">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bH5-xu-mrr">
                                                     <rect key="frame" x="218" y="7" width="31" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Post"/>
@@ -369,7 +369,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Uq-iT-LWS">
-                                <rect key="frame" x="25" y="284" width="325" height="101.5"/>
+                                <rect key="frame" x="25" y="284" width="340" height="101.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="340" id="Qzp-6t-aQX"/>
                                 </constraints>
@@ -379,7 +379,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KK0-8g-NFd">
-                                <rect key="frame" x="87" y="461" width="200" height="50"/>
+                                <rect key="frame" x="95" y="461" width="200" height="50"/>
                                 <color key="backgroundColor" red="0.99434119460000003" green="0.3587232232" blue="0.37387704849999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="9sn-0y-IJR"/>
@@ -641,7 +641,7 @@
         <!--Settings-->
         <scene sceneID="GFF-Fu-b4p">
             <objects>
-                <viewController storyboardIdentifier="settings" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Oi4-gm-hsT" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settings" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Oi4-gm-hsT" customClass="SettingsViewController" customModule="servicely" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MmA-fS-ptk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -651,7 +651,7 @@
                                 <items>
                                     <navigationItem title="Settings" id="daz-cE-SNp">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="j3g-fc-sJA">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KNX-uf-QN8">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KNX-uf-QN8">
                                                 <rect key="frame" x="16" y="7" width="34" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Back"/>
@@ -699,15 +699,18 @@
                         <viewLayoutGuide key="safeArea" id="a4E-Q1-rvm"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" selectedImage="settings" id="GaO-oO-2zY"/>
+                    <connections>
+                        <outlet property="headerView" destination="idh-cd-QTq" id="9cY-LI-gfc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVs-PD-5GE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="869.60000000000002" y="132.68365817091455"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Settings Table View Controller-->
         <scene sceneID="MbS-KN-6Ht">
             <objects>
-                <tableViewController id="WQ3-Ca-0Rf" sceneMemberID="viewController">
+                <tableViewController id="WQ3-Ca-0Rf" customClass="SettingsTableViewController" customModule="servicely" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="90V-51-gzL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="467"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -775,12 +778,29 @@
                                             <segue destination="WTc-he-RZg" kind="show" id="prU-9D-80L"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="5uB-wa-wQi" style="IBUITableViewCellStyleDefault" id="msX-MX-ZCR">
+                                        <rect key="frame" x="0.0" y="160" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="msX-MX-ZCR" id="MIM-yX-d5o">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Sign Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5uB-wa-wQi">
+                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Application Settings" id="Z3H-mX-nbQ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="h6T-ls-hNn" style="IBUITableViewCellStyleDefault" id="gd5-Jy-bWn">
-                                        <rect key="frame" x="0.0" y="188" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="232" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gd5-Jy-bWn" id="tAD-FI-LOW">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -812,10 +832,10 @@
             </objects>
             <point key="canvasLocation" x="1610" y="133"/>
         </scene>
-        <!--View Controller-->
+        <!--Delete Account View Controller-->
         <scene sceneID="dFb-G0-uZW">
             <objects>
-                <viewController id="WTc-he-RZg" sceneMemberID="viewController">
+                <viewController id="WTc-he-RZg" customClass="DeleteAccountViewController" customModule="servicely" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jyf-yT-JG4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="467"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -825,7 +845,7 @@
                                 <items>
                                     <navigationItem title="Delete Account" id="d3v-R2-jrt">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="iVu-j2-DRD">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="K3v-9W-uvT">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="K3v-9W-uvT">
                                                 <rect key="frame" x="16" y="7" width="34" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Back"/>
@@ -877,7 +897,17 @@
                                         <integer key="value" value="7"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="deleteAccount:" destination="WTc-he-RZg" eventType="touchUpInside" id="XeA-AJ-BjX"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Zt-dk-f0S">
+                                <rect key="frame" x="16" y="175" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -885,6 +915,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JSD-iV-eyR"/>
                     </view>
+                    <connections>
+                        <outlet property="errorLabel" destination="9Zt-dk-f0S" id="n2W-aq-1N3"/>
+                        <outlet property="headerView" destination="cc9-WY-bA6" id="ech-Pp-wd0"/>
+                        <outlet property="passwordTextField" destination="VJf-p1-mU6" id="aTO-9j-bDh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e07-5e-Pgm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -903,7 +938,7 @@
                                 <items>
                                     <navigationItem title="Change Color Scheme" id="600-sP-LB5">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="ksE-2f-yVt">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MaF-VU-UdK">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MaF-VU-UdK">
                                                 <rect key="frame" x="16" y="7" width="34" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Back"/>
@@ -1003,10 +1038,10 @@
             </objects>
             <point key="canvasLocation" x="2799.1999999999998" y="851.42428785607206"/>
         </scene>
-        <!--View Controller-->
+        <!--Change Password View Controller-->
         <scene sceneID="rDB-Nk-uC7">
             <objects>
-                <viewController id="rqG-c2-1JU" sceneMemberID="viewController">
+                <viewController id="rqG-c2-1JU" customClass="ChangePasswordViewController" customModule="servicely" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Ah-PE-f9h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="467"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1016,7 +1051,7 @@
                                 <items>
                                     <navigationItem title="Change Password" id="rqV-2e-BYr">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="8AO-hf-ZRi">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5jD-uK-1R0">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5jD-uK-1R0">
                                                 <rect key="frame" x="16" y="7" width="34" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Back"/>
@@ -1096,7 +1131,17 @@
                                         <integer key="value" value="7"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="changePassword:" destination="rqG-c2-1JU" eventType="touchUpInside" id="jTz-6u-cqB"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sai-cW-ADk">
+                                <rect key="frame" x="16" y="174" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1104,6 +1149,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cpM-hs-mou"/>
                     </view>
+                    <connections>
+                        <outlet property="changePasswordButton" destination="Rf7-6U-0I6" id="Mwf-KJ-ZFa"/>
+                        <outlet property="currentPasswordTextField" destination="fju-6C-5Tn" id="aAA-R1-Ek0"/>
+                        <outlet property="errorLabel" destination="sai-cW-ADk" id="JSf-Fr-TBf"/>
+                        <outlet property="headerView" destination="GKk-PR-V4U" id="IFs-sQ-GHF"/>
+                        <outlet property="newPasswordTextField" destination="b0I-7N-Its" id="4ds-aN-gfo"/>
+                        <outlet property="reenterPasswordTextField" destination="RtM-Wk-zRh" id="GLY-lg-PqB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uht-aV-5zR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1122,7 +1175,7 @@
                                 <items>
                                     <navigationItem title="Change Profile Picture" id="bCW-vB-zBQ">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="AKW-YP-1OK">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AsD-5u-whU">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AsD-5u-whU">
                                                 <rect key="frame" x="16" y="7" width="34" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Back"/>

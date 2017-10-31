@@ -218,6 +218,25 @@ SWIFT_CLASS("_TtC9servicely31ChangeColorSchemeViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class UILabel;
+@class UITextField;
+
+SWIFT_CLASS("_TtC9servicely28ChangePasswordViewController")
+@interface ChangePasswordViewController : UIViewController
+@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified headerView;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified errorLabel;
+@property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified currentPasswordTextField;
+@property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified newPasswordTextField;
+@property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified reenterPasswordTextField;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified changePasswordButton;
+- (void)viewDidLoad;
+- (void)didReceiveMemoryWarning;
+- (void)viewWillAppear:(BOOL)animated;
+- (IBAction)changePassword:(id _Nonnull)sender;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class UITableView;
 @class FIRAuthUI;
 @class FIRAuthPickerViewController;
@@ -241,30 +260,21 @@ SWIFT_CLASS("_TtC9servicely24ClientFeedViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UILabel;
 
 SWIFT_CLASS("_TtC9servicely27ClientProfileViewController")
 @interface ClientProfileViewController : UIViewController
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified displayName;
 @property (nonatomic, weak) IBOutlet UIView * _Null_unspecified nameView;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified aboutMe;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)animated;
 - (void)didReceiveMemoryWarning;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UIColor;
-
-SWIFT_CLASS("_TtC9servicely12ColoredViews")
-@interface ColoredViews : UIView
-@property (nonatomic, strong) UIColor * _Nullable backgroundColor;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
 @class UIPickerView;
 @class UITextView;
-@class UITextField;
 
 SWIFT_CLASS("_TtC9servicely32CreateServiceOfferViewController")
 @interface CreateServiceOfferViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
@@ -283,6 +293,56 @@ SWIFT_CLASS("_TtC9servicely32CreateServiceOfferViewController")
 - (NSInteger)pickerView:(UIPickerView * _Nonnull)pickerView numberOfRowsInComponent:(NSInteger)component SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nullable)pickerView:(UIPickerView * _Nonnull)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component SWIFT_WARN_UNUSED_RESULT;
 - (void)pickerView:(UIPickerView * _Nonnull)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9servicely27DeleteAccountViewController")
+@interface DeleteAccountViewController : UIViewController
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified errorLabel;
+@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified headerView;
+@property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified passwordTextField;
+- (void)viewDidLoad;
+- (void)didReceiveMemoryWarning;
+- (void)viewWillAppear:(BOOL)animated;
+- (IBAction)deleteAccount:(id _Nonnull)sender;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9servicely25EditProfileViewController")
+@interface EditProfileViewController : UIViewController
+@property (nonatomic, weak) IBOutlet UITextView * _Null_unspecified aboutMe;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified savedLabel;
+- (void)viewDidLoad;
+- (void)didReceiveMemoryWarning;
+- (IBAction)saveButton:(id _Nonnull)sender;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9servicely26EditProviderViewController")
+@interface EditProviderViewController : UIViewController
+@property (nonatomic, weak) IBOutlet UITextView * _Null_unspecified aboutUs;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified savedLabel;
+- (void)viewDidLoad;
+- (void)didReceiveMemoryWarning;
+- (IBAction)saveButton:(id _Nonnull)sender;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9servicely29ProviderProfileViewController")
+@interface ProviderProfileViewController : UIViewController
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified displayName;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified aboutUs;
+- (void)viewDidLoad;
+- (void)didReceiveMemoryWarning;
+- (void)viewWillAppear:(BOOL)animated;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -317,6 +377,27 @@ SWIFT_CLASS("_TtC9servicely27ServicelyLogoViewController")
 @interface ServicelyLogoViewController : FIRAuthPickerViewController
 - (void)viewDidLoad;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil authUI:(FIRAuthUI * _Nonnull)authUI OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9servicely27SettingsTableViewController")
+@interface SettingsTableViewController : UITableViewController
+- (void)viewDidLoad;
+- (void)didReceiveMemoryWarning;
+- (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)initWithStyle:(UITableViewStyle)style OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9servicely22SettingsViewController")
+@interface SettingsViewController : UIViewController
+- (void)viewDidLoad;
+- (void)didReceiveMemoryWarning;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 

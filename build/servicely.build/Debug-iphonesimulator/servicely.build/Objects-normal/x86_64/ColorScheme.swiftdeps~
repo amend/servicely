@@ -1,11 +1,69 @@
 ### Swift dependencies file v0 ###
 provides-top-level:
+- "ColorScheme"
 provides-nominal:
+- "9servicely11ColorSchemeC"
 provides-member:
+- ["9servicely11ColorSchemeC", ""]
 provides-dynamic-lookup:
 depends-top-level:
+- "ColorScheme"
+- "Int"
+- !private "StringLiteralType"
+- "UIColor"
+- "UserDefaults"
+- !private "~="
 depends-member:
+- ["s7CVarArgP", "init"]
+- ["s7CVarArgP", "standard"]
+- ["9servicely11ColorSchemeC", "Int"]
+- ["9servicely11ColorSchemeC", "UIColor"]
+- ["9servicely11ColorSchemeC", "UserDefaults"]
+- ["9servicely11ColorSchemeC", "_colorScheme"]
+- ["9servicely11ColorSchemeC", "defaults"]
+- ["9servicely11ColorSchemeC", "deinit"]
+- ["9servicely11ColorSchemeC", "getColorScheme"]
+- ["9servicely11ColorSchemeC", "init"]
+- ["9servicely11ColorSchemeC", "setColorScheme"]
+- ["s28CustomDebugStringConvertibleP", "init"]
+- ["s28CustomDebugStringConvertibleP", "standard"]
+- ["s23CustomStringConvertibleP", "init"]
+- ["s23CustomStringConvertibleP", "standard"]
+- ["s9EquatableP", "init"]
+- ["s9EquatableP", "standard"]
+- ["s8HashableP", "init"]
+- ["s8HashableP", "standard"]
+- ["So8NSCodingP", "init"]
+- ["So9NSCopyingP", "init"]
+- ["So21NSItemProviderReadingP", "init"]
+- ["So21NSItemProviderWritingP", "init"]
+- ["So8NSObjectC", "standard"]
+- ["So16NSObjectProtocolP", "init"]
+- ["So16NSObjectProtocolP", "standard"]
+- ["So14NSSecureCodingP", "init"]
+- ["So7UIColorC", "init"]
+- ["So12UserDefaultsC", "standard"]
+- ["s26_ExpressibleByColorLiteralP", "init"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "standard"]
 depends-nominal:
+- "s7CVarArgP"
+- "9servicely11ColorSchemeC"
+- "s28CustomDebugStringConvertibleP"
+- "s23CustomStringConvertibleP"
+- "s9EquatableP"
+- "s8HashableP"
+- "So8NSCodingP"
+- "So9NSCopyingP"
+- "So21NSItemProviderReadingP"
+- "So21NSItemProviderWritingP"
+- "So8NSObjectC"
+- "So16NSObjectProtocolP"
+- "So14NSSecureCodingP"
+- "So7UIColorC"
+- "So12UserDefaultsC"
+- "s26_ExpressibleByColorLiteralP"
+- "10Foundation27_KeyValueCodingAndObservingP"
 depends-dynamic-lookup:
 depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
@@ -128,4 +186,4 @@ depends-external:
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/Pods/Firebase/Headers/module.modulemap"
-interface-hash: "5bf39d8b5f0094ca83c744a0da4fb204"
+interface-hash: "2bcde29a4143adc15f411ce45bfb2075"
