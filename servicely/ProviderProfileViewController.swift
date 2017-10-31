@@ -36,6 +36,23 @@ class ProviderProfileViewController: UIViewController {
         if user != nil {
             displayName.text = user?.displayName
         }
+        
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        
+        let ref1:FIRDatabaseReference! = FIRDatabase.database().reference()
+        let usersRef = ref1.child("users")
+        
+        usersRef.child(userID!).observeSingleEvent(of: .value, with: { snapshot in
+            let user = snapshot.value as? NSDictionary
+            
+            let about = user?["aboutMe"] as? String ?? ""
+            
+            self.aboutUs.text = about
+        })
+        
+        DispatchQueue.main.async {
+            self.view.reloadInputViews()
+        }
     }
     
 
