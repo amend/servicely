@@ -1381,7 +1381,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aO8-Ln-HZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-918" y="133"/>
+            <point key="canvasLocation" x="-1361" y="133"/>
         </scene>
         <!--Nav Controller-->
         <scene sceneID="Xvq-Sf-rYD">
@@ -1530,14 +1530,7 @@
         <image name="settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <segue reference="gtD-ch-fEa"/>
-=======
-=======
->>>>>>> 9b4cf8f722f52aa2206c6cde90a35aa7b9708da4
-        <segue reference="bFs-lE-3qd"/>
+        <segue reference="mqa-IA-GHP"/>
         <segue reference="zxh-Jf-4pm"/>
->>>>>>> 9b4cf8f722f52aa2206c6cde90a35aa7b9708da4
     </inferredMetricsTieBreakers>
 </document>
