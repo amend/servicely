@@ -28,7 +28,7 @@ class ServiceTypeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         let colorScheme = ColorScheme.getColorScheme()
-        serviceTypeSegmentedControl.backgroundColor = colorScheme
+        serviceTypeSegmentedControl.tintColor = colorScheme
         submitButton.backgroundColor = colorScheme
     }
     

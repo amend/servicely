@@ -33,6 +33,7 @@ depends-member:
 - !private ["Sb", "_getBuiltinLogicValue"]
 - !private ["So15CALayerDelegateP", "backgroundColor"]
 - !private ["So15CALayerDelegateP", "selectedSegmentIndex"]
+- !private ["So15CALayerDelegateP", "tintColor"]
 - !private ["s7CVarArgP", "ColorScheme"]
 - !private ["s7CVarArgP", "FIRAuth"]
 - !private ["s7CVarArgP", "FIRDatabase"]
@@ -49,6 +50,7 @@ depends-member:
 - !private ["s7CVarArgP", "serviceTypeSegmentedControl"]
 - !private ["s7CVarArgP", "setValue"]
 - !private ["s7CVarArgP", "submitButton"]
+- !private ["s7CVarArgP", "tintColor"]
 - !private ["s7CVarArgP", "uid"]
 - !private ["s7CVarArgP", "viewDidLoad"]
 - ["s7CVarArgP", ""]
@@ -71,6 +73,7 @@ depends-member:
 - !private ["s28CustomDebugStringConvertibleP", "serviceTypeSegmentedControl"]
 - !private ["s28CustomDebugStringConvertibleP", "setValue"]
 - !private ["s28CustomDebugStringConvertibleP", "submitButton"]
+- !private ["s28CustomDebugStringConvertibleP", "tintColor"]
 - !private ["s28CustomDebugStringConvertibleP", "uid"]
 - !private ["s28CustomDebugStringConvertibleP", "viewDidLoad"]
 - ["s28CustomDebugStringConvertibleP", ""]
@@ -95,6 +98,7 @@ depends-member:
 - !private ["s23CustomStringConvertibleP", "serviceTypeSegmentedControl"]
 - !private ["s23CustomStringConvertibleP", "setValue"]
 - !private ["s23CustomStringConvertibleP", "submitButton"]
+- !private ["s23CustomStringConvertibleP", "tintColor"]
 - !private ["s23CustomStringConvertibleP", "uid"]
 - !private ["s23CustomStringConvertibleP", "viewDidLoad"]
 - ["s23CustomStringConvertibleP", ""]
@@ -119,6 +123,7 @@ depends-member:
 - !private ["s9EquatableP", "serviceTypeSegmentedControl"]
 - !private ["s9EquatableP", "setValue"]
 - !private ["s9EquatableP", "submitButton"]
+- !private ["s9EquatableP", "tintColor"]
 - !private ["s9EquatableP", "uid"]
 - !private ["s9EquatableP", "viewDidLoad"]
 - ["s9EquatableP", ""]
@@ -153,6 +158,7 @@ depends-member:
 - !private ["s8HashableP", "serviceTypeSegmentedControl"]
 - !private ["s8HashableP", "setValue"]
 - !private ["s8HashableP", "submitButton"]
+- !private ["s8HashableP", "tintColor"]
 - !private ["s8HashableP", "uid"]
 - !private ["s8HashableP", "viewDidLoad"]
 - ["s8HashableP", ""]
@@ -169,6 +175,7 @@ depends-member:
 - !private ["So8NSCodingP", "selectedSegmentIndex"]
 - !private ["So8NSCodingP", "serviceTypeSegmentedControl"]
 - !private ["So8NSCodingP", "submitButton"]
+- !private ["So8NSCodingP", "tintColor"]
 - !private ["So8NSCodingP", "viewDidLoad"]
 - ["So8NSCodingP", ""]
 - !private ["So9NSCopyingP", "init"]
@@ -207,6 +214,7 @@ depends-member:
 - ["So8NSObjectC", "serviceTypeSegmentedControl"]
 - !private ["So8NSObjectC", "setValue"]
 - ["So8NSObjectC", "submitButton"]
+- !private ["So8NSObjectC", "tintColor"]
 - !private ["So8NSObjectC", "uid"]
 - ["So8NSObjectC", "viewDidLoad"]
 - ["So8NSObjectC", "viewWillAppear"]
@@ -226,6 +234,7 @@ depends-member:
 - !private ["So16NSObjectProtocolP", "serviceTypeSegmentedControl"]
 - !private ["So16NSObjectProtocolP", "setValue"]
 - !private ["So16NSObjectProtocolP", "submitButton"]
+- !private ["So16NSObjectProtocolP", "tintColor"]
 - !private ["So16NSObjectProtocolP", "uid"]
 - !private ["So16NSObjectProtocolP", "viewDidLoad"]
 - ["So16NSObjectProtocolP", ""]
@@ -257,8 +266,10 @@ depends-member:
 - !private ["So48UIAccessibilityContentSizeCategoryImageAdjustingP", "backgroundColor"]
 - !private ["So29UIAccessibilityIdentificationP", "backgroundColor"]
 - !private ["So29UIAccessibilityIdentificationP", "selectedSegmentIndex"]
+- !private ["So29UIAccessibilityIdentificationP", "tintColor"]
 - !private ["So12UIAppearanceP", "backgroundColor"]
 - !private ["So12UIAppearanceP", "selectedSegmentIndex"]
+- !private ["So12UIAppearanceP", "tintColor"]
 - !private ["So21UIAppearanceContainerP", "ColorScheme"]
 - !private ["So21UIAppearanceContainerP", "FIRAuth"]
 - !private ["So21UIAppearanceContainerP", "FIRDatabase"]
@@ -269,6 +280,7 @@ depends-member:
 - !private ["So21UIAppearanceContainerP", "selectedSegmentIndex"]
 - !private ["So21UIAppearanceContainerP", "serviceTypeSegmentedControl"]
 - !private ["So21UIAppearanceContainerP", "submitButton"]
+- !private ["So21UIAppearanceContainerP", "tintColor"]
 - !private ["So21UIAppearanceContainerP", "viewDidLoad"]
 - ["So21UIAppearanceContainerP", ""]
 - !private ["So8UIButtonC", "backgroundColor"]
@@ -284,10 +296,13 @@ depends-member:
 - ["So18UIContentContainerP", ""]
 - !private ["So9UIControlC", "backgroundColor"]
 - !private ["So9UIControlC", "selectedSegmentIndex"]
+- !private ["So9UIControlC", "tintColor"]
 - !private ["So17UICoordinateSpaceP", "backgroundColor"]
 - !private ["So17UICoordinateSpaceP", "selectedSegmentIndex"]
+- !private ["So17UICoordinateSpaceP", "tintColor"]
 - !private ["So13UIDynamicItemP", "backgroundColor"]
 - !private ["So13UIDynamicItemP", "selectedSegmentIndex"]
+- !private ["So13UIDynamicItemP", "tintColor"]
 - !private ["So18UIFocusEnvironmentP", "ColorScheme"]
 - !private ["So18UIFocusEnvironmentP", "FIRAuth"]
 - !private ["So18UIFocusEnvironmentP", "FIRDatabase"]
@@ -298,10 +313,12 @@ depends-member:
 - !private ["So18UIFocusEnvironmentP", "selectedSegmentIndex"]
 - !private ["So18UIFocusEnvironmentP", "serviceTypeSegmentedControl"]
 - !private ["So18UIFocusEnvironmentP", "submitButton"]
+- !private ["So18UIFocusEnvironmentP", "tintColor"]
 - !private ["So18UIFocusEnvironmentP", "viewDidLoad"]
 - ["So18UIFocusEnvironmentP", ""]
 - !private ["So11UIFocusItemP", "backgroundColor"]
 - !private ["So11UIFocusItemP", "selectedSegmentIndex"]
+- !private ["So11UIFocusItemP", "tintColor"]
 - !private ["So30UIPasteConfigurationSupportingP", "ColorScheme"]
 - !private ["So30UIPasteConfigurationSupportingP", "FIRAuth"]
 - !private ["So30UIPasteConfigurationSupportingP", "FIRDatabase"]
@@ -312,6 +329,7 @@ depends-member:
 - !private ["So30UIPasteConfigurationSupportingP", "selectedSegmentIndex"]
 - !private ["So30UIPasteConfigurationSupportingP", "serviceTypeSegmentedControl"]
 - !private ["So30UIPasteConfigurationSupportingP", "submitButton"]
+- !private ["So30UIPasteConfigurationSupportingP", "tintColor"]
 - !private ["So30UIPasteConfigurationSupportingP", "viewDidLoad"]
 - ["So30UIPasteConfigurationSupportingP", ""]
 - ["So11UIResponderC", "Bool"]
@@ -330,6 +348,7 @@ depends-member:
 - !private ["So11UIResponderC", "selectedSegmentIndex"]
 - ["So11UIResponderC", "serviceTypeSegmentedControl"]
 - ["So11UIResponderC", "submitButton"]
+- !private ["So11UIResponderC", "tintColor"]
 - ["So11UIResponderC", "viewDidLoad"]
 - ["So11UIResponderC", "viewWillAppear"]
 - !private ["So30UIResponderStandardEditActionsP", "ColorScheme"]
@@ -342,12 +361,14 @@ depends-member:
 - !private ["So30UIResponderStandardEditActionsP", "selectedSegmentIndex"]
 - !private ["So30UIResponderStandardEditActionsP", "serviceTypeSegmentedControl"]
 - !private ["So30UIResponderStandardEditActionsP", "submitButton"]
+- !private ["So30UIResponderStandardEditActionsP", "tintColor"]
 - !private ["So30UIResponderStandardEditActionsP", "viewDidLoad"]
 - ["So30UIResponderStandardEditActionsP", ""]
-- !private ["So18UISegmentedControlC", "backgroundColor"]
 - !private ["So18UISegmentedControlC", "selectedSegmentIndex"]
+- !private ["So18UISegmentedControlC", "tintColor"]
 - !private ["So35UISpringLoadedInteractionSupportingP", "backgroundColor"]
 - !private ["So35UISpringLoadedInteractionSupportingP", "selectedSegmentIndex"]
+- !private ["So35UISpringLoadedInteractionSupportingP", "tintColor"]
 - !private ["So16UIStateRestoringP", "ColorScheme"]
 - !private ["So16UIStateRestoringP", "FIRAuth"]
 - !private ["So16UIStateRestoringP", "FIRDatabase"]
@@ -368,10 +389,12 @@ depends-member:
 - !private ["So18UITraitEnvironmentP", "selectedSegmentIndex"]
 - !private ["So18UITraitEnvironmentP", "serviceTypeSegmentedControl"]
 - !private ["So18UITraitEnvironmentP", "submitButton"]
+- !private ["So18UITraitEnvironmentP", "tintColor"]
 - !private ["So18UITraitEnvironmentP", "viewDidLoad"]
 - ["So18UITraitEnvironmentP", ""]
 - !private ["So6UIViewC", "backgroundColor"]
 - !private ["So6UIViewC", "selectedSegmentIndex"]
+- !private ["So6UIViewC", "tintColor"]
 - ["So16UIViewControllerC", "Bool"]
 - !private ["So16UIViewControllerC", "ColorScheme"]
 - !private ["So16UIViewControllerC", "FIRAuth"]
@@ -392,6 +415,7 @@ depends-member:
 - !private ["s23_BidirectionalIndexableP", "init"]
 - !private ["s37_DefaultCustomPlaygroundQuickLookableP", "backgroundColor"]
 - !private ["s37_DefaultCustomPlaygroundQuickLookableP", "selectedSegmentIndex"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "tintColor"]
 - !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
 - !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
 - !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
@@ -417,6 +441,7 @@ depends-member:
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "serviceTypeSegmentedControl"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "setValue"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "submitButton"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "tintColor"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "uid"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "viewDidLoad"]
 - ["10Foundation27_KeyValueCodingAndObservingP", ""]
@@ -508,14 +533,20 @@ depends-dynamic-lookup:
 depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreMedia.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/simd.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Metal.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/AVFoundation.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreAudio.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Photos.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
