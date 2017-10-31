@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class ProviderProfileViewController: UIViewController {
 
+    @IBOutlet weak var displayName: UILabel!
+    @IBOutlet weak var aboutUs: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,6 +24,18 @@ class ProviderProfileViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadInfo()
+    }
+    
+    func loadInfo() {
+        let user = FIRAuth.auth()?.currentUser
+        if user != nil {
+            displayName.text = user?.displayName
+        }
     }
     
 

@@ -493,7 +493,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Company Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMK-pW-diO">
-                                        <rect key="frame" x="166" y="84" width="182" height="30"/>
+                                        <rect key="frame" x="166" y="84" width="201" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -547,6 +547,10 @@
                         <viewLayoutGuide key="safeArea" id="oLN-AK-e6U"/>
                     </view>
                     <navigationItem key="navigationItem" id="Npl-Q8-Cuo"/>
+                    <connections>
+                        <outlet property="aboutUs" destination="iw5-g4-EzS" id="jfy-vY-Bod"/>
+                        <outlet property="displayName" destination="OMK-pW-diO" id="kMh-aK-PVU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fMC-AS-6cr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
