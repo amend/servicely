@@ -1,5 +1,5 @@
 //
-//  EditProfileViewController.swift
+//  EditProviderViewController.swift
 //  servicely
 //
 //  Created by Brenda Salazar on 10/30/17.
@@ -10,19 +10,18 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class EditProfileViewController: UIViewController {
+class EditProviderViewController: UIViewController {
 
-    @IBOutlet weak var aboutMe: UITextView!
+    @IBOutlet weak var aboutUs: UITextView!
     @IBOutlet weak var savedLabel: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         savedLabel.text = ""
-        self.title = "Edit Client Profile"
+        self.title = "Edit Provider Profile"
 
         // Do any additional setup after loading the view.
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -34,15 +33,14 @@ class EditProfileViewController: UIViewController {
         let userRef = ref1.child("users")
         
         var about = ""
-
-        if let a = aboutMe.text, !a.isEmpty {
-            about = aboutMe.text!
+        
+        if let a = aboutUs.text, !a.isEmpty {
+            about = aboutUs.text!
         }
- 
-        userRef.child(userID!).setValue(["aboutMe":about])
+        
+        userRef.child(userID!).setValue(["aboutUs":about])
         
         savedLabel.text = "Saved!"
-        
     }
     
     /*

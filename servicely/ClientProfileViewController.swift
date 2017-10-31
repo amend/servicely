@@ -24,6 +24,7 @@ class ClientProfileViewController: UIViewController{
         super.viewDidLoad()
         loadCorrectProfilePage()
         constraints()
+        self.title = "Client Profile"
 
         // Do any additional setup after loading the view.
     }

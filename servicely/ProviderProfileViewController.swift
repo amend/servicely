@@ -17,6 +17,7 @@ class ProviderProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Provider Profile"
 
         // Do any additional setup after loading the view.
     }
