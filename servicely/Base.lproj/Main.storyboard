@@ -173,7 +173,7 @@
                                     <navigationItem title="Create Service Offer" id="29O-JQ-cwg">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="rU9-fq-eoG">
                                             <connections>
-                                                <segue destination="HHC-b8-qDK" kind="show" id="gtD-ch-fEa"/>
+                                                <segue destination="O0k-a1-GKq" kind="show" id="bFs-lE-3qd"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1315,7 +1315,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="HHC-b8-qDK" kind="show" id="y0w-zl-vLC"/>
+                                    <segue destination="O0k-a1-GKq" kind="show" id="mqa-IA-GHP"/>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qtf-xu-5aA">
@@ -1355,7 +1355,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aO8-Ln-HZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1239" y="922"/>
+            <point key="canvasLocation" x="-918" y="133"/>
         </scene>
         <!--Nav Controller-->
         <scene sceneID="Xvq-Sf-rYD">
@@ -1484,6 +1484,7 @@
         <image name="settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="bFs-lE-3qd"/>
         <segue reference="zxh-Jf-4pm"/>
     </inferredMetricsTieBreakers>
 </document>

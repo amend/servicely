@@ -2,13 +2,18 @@ Implementation Contributions:
   Brenda Salazar:
     Nav Bar Setup: 100%
     Profile Pages + Edit Profile Pages: 100%
+  Andoni Mendoza:
+    Setup Firebase: 100%
+    Login/Signup: 100%
+    Create Service Offer Page: 100%
+    Feed (Note: this is not the final version of feed): 100%
 
 Grading Level:
   Same grade for all members
 
 Differences:
-  * Included client ceed in this releaser
+  * Included client feed in this release
   * Minus some of the edit profile functionality like a adding an image
 
 Special Instructions:
-  xNone
+  We usded cocoapods - open the grey workspace
