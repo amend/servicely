@@ -2,22 +2,16 @@ Implementation Contributions:
   Brenda Salazar:
     Nav Bar Setup: 100%
     Profile Pages + Edit Profile Pages: 100%
-<<<<<<< HEAD
-<<<<<<< HEAD
   Seyed Dana Vaziri:
     settings: 100%
-=======
-=======
->>>>>>> 9b4cf8f722f52aa2206c6cde90a35aa7b9708da4
+    change password, delete account page: 100%
+    change color scheme page: 100%
+    change profile picture page(adding the picture to firebase still not implemented): 100%
   Andoni Mendoza:
     Setup Firebase: 100%
     Login/Signup: 100%
     Create Service Offer Page: 100%
     Feed (Note: this is not the final version of feed): 100%
-<<<<<<< HEAD
->>>>>>> 9b4cf8f722f52aa2206c6cde90a35aa7b9708da4
-=======
->>>>>>> 9b4cf8f722f52aa2206c6cde90a35aa7b9708da4
 
 Grading Level:
   Same grade for all members
