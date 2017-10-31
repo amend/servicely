@@ -18,14 +18,21 @@ class ClientProfileViewController: UIViewController{
 
     @IBOutlet weak var displayName: UILabel!
     @IBOutlet weak var nameView: UIView!
+    @IBOutlet weak var aboutMe: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadInfo()
+        loadCorrectProfilePage()
         constraints()
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadInfo()
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -36,6 +43,23 @@ class ClientProfileViewController: UIViewController{
         let user = FIRAuth.auth()?.currentUser
         if user != nil {
             displayName.text = user?.displayName
+        }
+        
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        
+        let ref1:FIRDatabaseReference! = FIRDatabase.database().reference()
+        let usersRef = ref1.child("users")
+        
+        usersRef.child(userID!).observeSingleEvent(of: .value, with: { snapshot in
+            let user = snapshot.value as? NSDictionary
+            
+            let about = user?["aboutMe"] as? String ?? ""
+            
+            self.aboutMe.text = about
+        })
+        
+        DispatchQueue.main.async {
+            self.view.reloadInputViews()
         }
     }
     

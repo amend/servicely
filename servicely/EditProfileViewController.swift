@@ -12,8 +12,6 @@ import FirebaseAuth
 
 class EditProfileViewController: UIViewController {
 
-    @IBOutlet weak var displayName: UITextField!
-    @IBOutlet weak var location: UITextField!
     @IBOutlet weak var aboutMe: UITextView!
     @IBOutlet weak var savedLabel: UILabel!
     
@@ -23,7 +21,7 @@ class EditProfileViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -34,24 +32,12 @@ class EditProfileViewController: UIViewController {
         let ref1:FIRDatabaseReference! = FIRDatabase.database().reference()
         let userRef = ref1.child("users")
         
-        var displayN = FIRAuth.auth()?.currentUser?.displayName
-        var loc = ""
         var about = ""
-        
-        if let display = displayName.text, !display.isEmpty {
-            displayN = displayName.text!
-        }
-        
-        if let locate = location.text, !locate.isEmpty {
-            loc = location.text!
-        }
-        
+
         if let a = aboutMe.text, !a.isEmpty {
             about = aboutMe.text!
         }
  
-        userRef.child(userID!).setValue(["displayName":displayN])
-        userRef.child(userID!).setValue(["location":loc])
         userRef.child(userID!).setValue(["aboutMe":about])
         
         savedLabel.text = "Saved!"
