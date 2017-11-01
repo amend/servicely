@@ -12,7 +12,6 @@ provides-dynamic-lookup:
 - "feedTableView"
 - "numberOfSections"
 - "tableView"
-- "tempSignOutButton"
 - "viewDidLoad"
 - "viewWillAppear"
 depends-top-level:
@@ -144,7 +143,6 @@ depends-member:
 - !private ["s7CVarArgP", "serviceType"]
 - !private ["s7CVarArgP", "services"]
 - !private ["s7CVarArgP", "signInProviders"]
-- !private ["s7CVarArgP", "signOut"]
 - !private ["s7CVarArgP", "storyboard"]
 - !private ["s7CVarArgP", "subscript"]
 - ["s7CVarArgP", "tableView"]
@@ -211,7 +209,6 @@ depends-member:
 - ["9servicely24ClientFeedViewControllerC", "services"]
 - !private ["9servicely24ClientFeedViewControllerC", "storyboard"]
 - ["9servicely24ClientFeedViewControllerC", "tableView"]
-- ["9servicely24ClientFeedViewControllerC", "tempSignOutButton"]
 - ["9servicely24ClientFeedViewControllerC", "viewDidLoad"]
 - ["9servicely24ClientFeedViewControllerC", "viewForZooming"]
 - ["9servicely24ClientFeedViewControllerC", "viewForZoomingInScrollView"]
@@ -292,7 +289,6 @@ depends-member:
 - !private ["s28CustomDebugStringConvertibleP", "serviceType"]
 - !private ["s28CustomDebugStringConvertibleP", "services"]
 - !private ["s28CustomDebugStringConvertibleP", "signInProviders"]
-- !private ["s28CustomDebugStringConvertibleP", "signOut"]
 - !private ["s28CustomDebugStringConvertibleP", "storyboard"]
 - !private ["s28CustomDebugStringConvertibleP", "subscript"]
 - ["s28CustomDebugStringConvertibleP", "tableView"]
@@ -382,7 +378,6 @@ depends-member:
 - !private ["s23CustomStringConvertibleP", "serviceType"]
 - !private ["s23CustomStringConvertibleP", "services"]
 - !private ["s23CustomStringConvertibleP", "signInProviders"]
-- !private ["s23CustomStringConvertibleP", "signOut"]
 - !private ["s23CustomStringConvertibleP", "storyboard"]
 - !private ["s23CustomStringConvertibleP", "subscript"]
 - ["s23CustomStringConvertibleP", "tableView"]
@@ -475,7 +470,6 @@ depends-member:
 - !private ["s9EquatableP", "serviceType"]
 - !private ["s9EquatableP", "services"]
 - !private ["s9EquatableP", "signInProviders"]
-- !private ["s9EquatableP", "signOut"]
 - !private ["s9EquatableP", "storyboard"]
 - !private ["s9EquatableP", "subscript"]
 - ["s9EquatableP", "tableView"]
@@ -504,7 +498,6 @@ depends-member:
 - !private ["So7FIRAuthC", "addStateDidChangeListener"]
 - !private ["So7FIRAuthC", "auth"]
 - !private ["So7FIRAuthC", "currentUser"]
-- !private ["So7FIRAuthC", "signOut"]
 - !private ["So27FIRAuthPickerViewControllerC", "init"]
 - !private ["So17FIRAuthProviderUIP", "init"]
 - !private ["So9FIRAuthUIC", "authUI"]
@@ -630,7 +623,6 @@ depends-member:
 - !private ["s8HashableP", "serviceType"]
 - !private ["s8HashableP", "services"]
 - !private ["s8HashableP", "signInProviders"]
-- !private ["s8HashableP", "signOut"]
 - !private ["s8HashableP", "storyboard"]
 - !private ["s8HashableP", "subscript"]
 - ["s8HashableP", "tableView"]
@@ -842,11 +834,9 @@ depends-member:
 - !private ["So8NSObjectC", "serviceType"]
 - ["So8NSObjectC", "services"]
 - !private ["So8NSObjectC", "signInProviders"]
-- !private ["So8NSObjectC", "signOut"]
 - !private ["So8NSObjectC", "storyboard"]
 - !private ["So8NSObjectC", "subscript"]
 - ["So8NSObjectC", "tableView"]
-- ["So8NSObjectC", "tempSignOutButton"]
 - !private ["So8NSObjectC", "text"]
 - !private ["So8NSObjectC", "uid"]
 - !private ["So8NSObjectC", "value"]
@@ -915,7 +905,6 @@ depends-member:
 - !private ["So16NSObjectProtocolP", "serviceType"]
 - !private ["So16NSObjectProtocolP", "services"]
 - !private ["So16NSObjectProtocolP", "signInProviders"]
-- !private ["So16NSObjectProtocolP", "signOut"]
 - !private ["So16NSObjectProtocolP", "storyboard"]
 - !private ["So16NSObjectProtocolP", "subscript"]
 - ["So16NSObjectProtocolP", "tableView"]
@@ -1302,7 +1291,6 @@ depends-member:
 - ["So11UIResponderC", "services"]
 - !private ["So11UIResponderC", "storyboard"]
 - ["So11UIResponderC", "tableView"]
-- ["So11UIResponderC", "tempSignOutButton"]
 - !private ["So11UIResponderC", "text"]
 - ["So11UIResponderC", "viewDidLoad"]
 - ["So11UIResponderC", "viewForZooming"]
@@ -1668,7 +1656,6 @@ depends-member:
 - ["So16UIViewControllerC", "services"]
 - !private ["So16UIViewControllerC", "storyboard"]
 - ["So16UIViewControllerC", "tableView"]
-- ["So16UIViewControllerC", "tempSignOutButton"]
 - ["So16UIViewControllerC", "viewDidLoad"]
 - ["So16UIViewControllerC", "viewForZooming"]
 - ["So16UIViewControllerC", "viewForZoomingInScrollView"]
@@ -1794,7 +1781,6 @@ depends-member:
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "serviceType"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "services"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "signInProviders"]
-- !private ["10Foundation27_KeyValueCodingAndObservingP", "signOut"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "storyboard"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "subscript"]
 - ["10Foundation27_KeyValueCodingAndObservingP", "tableView"]
@@ -2086,4 +2072,4 @@ depends-external:
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/Pods/Firebase/Headers/module.modulemap"
-interface-hash: "6edb473b6fdd0e2293d1bc91c359192a"
+interface-hash: "0731e32eed635c836b298292c8658a8e"

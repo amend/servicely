@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class ChangePasswordViewController: UIViewController {
+class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var errorLabel: UILabel!
@@ -22,7 +22,9 @@ class ChangePasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.currentPasswordTextField.delegate = self
+        self.newPasswordTextField.delegate = self
+        self.reenterPasswordTextField.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -38,6 +40,7 @@ class ChangePasswordViewController: UIViewController {
     }
     
     @IBAction func changePassword(_ sender: Any) {
+        self.view.endEditing(true)
         if(allTextFieldsFull()){
             errorLabel.text = ""
             if(ifPasswordsMatch()){
@@ -73,6 +76,16 @@ class ChangePasswordViewController: UIViewController {
     func ifPasswordsMatch() -> Bool {
         return newPasswordTextField.text! == reenterPasswordTextField.text!
     }
+    
+    func textFieldShouldReturn(_ currentPasswordTextField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     /*
     // MARK: - Navigation
 

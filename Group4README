@@ -1,13 +1,15 @@
 Implementation Contributions:
-  Brenda Salazar:
+  Brenda Salazar: 33%
     Nav Bar Setup: 100%
     Profile Pages + Edit Profile Pages: 100%
-  Seyed Dana Vaziri:
+
+  Seyed Dana Vaziri: 33%
     settings: 100%
     change password, delete account page: 100%
     change color scheme page: 100%
     change profile picture page(adding the picture to firebase still not implemented): 100%
-  Andoni Mendoza:
+
+  Andoni Mendoza: 33%
     Setup Firebase: 100%
     Login/Signup: 100%
     Create Service Offer Page: 100%
