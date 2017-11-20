@@ -76,15 +76,20 @@ class ServicesRequestsTableViewController: UITableViewController {
         })
     }
     
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "categoriesServiceCell", for: indexPath) as! CategoriesServiceTableViewCell
+        
+        let service = services[indexPath.row]
+        
+        cell.name?.text = service.companyName
+        cell.price?.text = service.askingPrice
+        
         // Configure the cell...
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
