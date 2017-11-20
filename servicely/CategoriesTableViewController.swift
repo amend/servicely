@@ -10,6 +10,8 @@ import UIKit
 
 class CategoriesTableViewController: UITableViewController {
 
+    @IBOutlet weak var typeDisplay: UISegmentedControl!
+    
     let categories:[String] = ["Automotive", "Cell/Mobile", "Computer", "Creative", "Event", "Farm + Garden", "Financial", "Household", "Labor/Move", "Legal", "Lessons", "Real Estate", "Skilled Trade", "Trave/Vac", "Mechanic", "Carpentry", "Tutoring", "Care provider", "Lawn & Garden", "Pet care", "Plumbing", "Health & Beauty", "Other"]
     
     override func viewDidLoad() {
@@ -86,14 +88,26 @@ class CategoriesTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "serviceRequestController" {
+            let vc:ServicesRequestsTableViewController = segue.destination as! ServicesRequestsTableViewController
+            
+            let indexPath = self.tableView.indexPathForSelectedRow?.row
+            vc.category = categories[indexPath!]
+            
+            if self.typeDisplay.selectedSegmentIndex == 0 {
+                vc.client = false
+            } else {
+                vc.client = true
+            }
+        }
     }
-    */
+ 
 
 }
