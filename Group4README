@@ -1,28 +1,16 @@
 Implementation Contributions:
   Brenda Salazar: 33%
-    Nav Bar Setup: 100%
-    Profile Pages + Edit Profile Pages: 100%
+    Categories Tab: 100%
+    Service View Page: 100%
 
   Seyed Dana Vaziri: 33%
-    settings: 100%
-    change password, delete account page: 100%
-    change color scheme page: 100%
-    change profile picture page(adding the picture to firebase still not implemented): 100%
 
   Andoni Mendoza: 33%
-    Setup Firebase: 100%
-    Login/Signup: 100%
-    Create Service Offer Page: 100%
-    Feed (Note: this is not the final version of feed): 100%
 
 Grading Level:
   Same grade for all members
 
 Differences:
-  * Included client feed in this release
-  * Minus some of the edit profile functionality like a adding an image
-  * Sign Out added to the settings page
-  * user can pick a profile picture from photo library, but pushing it to firebase has not been implemented yet
-
+ 
 Special Instructions:
   We usded cocoapods - open the grey workspace
