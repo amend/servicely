@@ -126,14 +126,27 @@ class ServicesRequestsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "viewService" {
+            let vc:ViewServiceViewController = segue.destination as! ViewServiceViewController
+            
+            let indexPath = self.tableView.indexPathForSelectedRow?.row
+            
+            let service = services[indexPath!]
+            
+            vc.name.text = service.companyName
+            vc.serviceDescription.text = service.serviceDescription
+            vc.price.text = service.askingPrice
+            vc.contactNumber.text = service.contactInfo
+            
+        }
     }
-    */
+ 
 
 }
