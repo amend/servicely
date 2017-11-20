@@ -390,8 +390,8 @@
                                 <items>
                                     <navigationItem title="Feed" id="Sih-pE-XAe">
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="FdU-jf-JEs">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bH5-xu-mrr">
-                                                <rect key="frame" x="328" y="7" width="31" height="30"/>
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bH5-xu-mrr">
+                                                <rect key="frame" x="328" y="9" width="31" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Post"/>
                                                 <connections>
@@ -642,7 +642,7 @@
                     <navigationItem key="navigationItem" id="Npl-Q8-Cuo">
                         <barButtonItem key="rightBarButtonItem" title="Feed" style="plain" id="xnt-qg-RT8">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XBL-V2-FeC">
-                                <rect key="frame" x="325" y="7" width="34" height="30"/>
+                                <rect key="frame" x="325" y="9" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Feed"/>
                                 <connections>
@@ -731,13 +731,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yIz-Sw-ANy">
-                                <rect key="frame" x="0.0" y="163" width="375" height="456"/>
+                                <rect key="frame" x="0.0" y="167" width="375" height="452"/>
                                 <connections>
                                     <segue destination="WQ3-Ca-0Rf" kind="embed" id="5pm-6v-dc3"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="idh-cd-QTq">
-                                <rect key="frame" x="0.0" y="64" width="375" height="99"/>
+                                <rect key="frame" x="0.0" y="68" width="375" height="99"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDy-aZ-kLX">
                                         <rect key="frame" x="130.5" y="31.5" width="114" height="36"/>
@@ -780,7 +780,7 @@
             <objects>
                 <tableViewController id="WQ3-Ca-0Rf" customClass="SettingsTableViewController" customModule="servicely" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="90V-51-gzL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="456"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="452"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -905,7 +905,7 @@
             <objects>
                 <viewController id="WTc-he-RZg" customClass="DeleteAccountViewController" customModule="servicely" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jyf-yT-JG4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="456"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="452"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cc9-WY-bA6">
@@ -997,7 +997,7 @@
             <objects>
                 <viewController id="xmF-jb-HeK" customClass="ChangeColorSchemeViewController" customModule="servicely" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dqJ-Yt-rWd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="456"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="452"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDB-FW-NUd">
@@ -1114,7 +1114,7 @@
             <objects>
                 <viewController id="rqG-c2-1JU" customClass="ChangePasswordViewController" customModule="servicely" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Ah-PE-f9h">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="456"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="452"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yb8-nf-qhC">
@@ -1253,7 +1253,7 @@
             <objects>
                 <viewController id="pEa-bl-KQb" customClass="ChangeProfilePictureViewController" customModule="servicely" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Gx-1g-1cY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="456"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="452"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5om-46-vmi">
@@ -1488,7 +1488,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wz8-Rs-Uiq" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WGQ-hT-708">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1569,7 +1569,7 @@
                     <tabBarItem key="tabBarItem" title="Profile" image="profile" selectedImage="profile" id="aCV-KY-ZhL"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NTr-nT-Znf">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1588,7 +1588,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" selectedImage="settings" id="GaO-oO-2zY"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3H7-HW-zQE">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1607,7 +1607,7 @@
                     <tabBarItem key="tabBarItem" title="Services" image="hammer_icon" selectedImage="hammer_icon" id="jsj-A4-ver"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="O4J-wL-wUN">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

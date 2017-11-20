@@ -27,7 +27,7 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
     
     @IBOutlet weak var submitButton: UIButton!
     
-    let pickerViewData:[String] = ["Mechanic", "Carpentry", "Tutoring", "Care provider", "Lawn & Garden", "Pet care", "Plumbing", "Health & Beauty", "Other"]
+    let pickerViewData:[String] = ["Automotive", "Cell/Mobile", "Computer", "Creative", "Event", "Farm + Garden", "Financial", "Household", "Labor/Move", "Legal", "Lessons", "Real Estate", "Skilled Trade", "Trave/Vac", "Mechanic", "Carpentry", "Tutoring", "Care provider", "Lawn & Garden", "Pet care", "Plumbing", "Health & Beauty", "Other"]
     
     var serviceType:String = ""
     

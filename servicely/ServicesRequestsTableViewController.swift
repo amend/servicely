@@ -1,20 +1,19 @@
 //
-//  CategoriesTableViewController.swift
+//  ServicesRequestsTableViewController.swift
 //  servicely
 //
-//  Created by Brenda Salazar on 11/18/17.
+//  Created by Brenda Salazar on 11/19/17.
 //  Copyright © 2017 Andoni Mendoza. All rights reserved.
 //
 
 import UIKit
 
-class CategoriesTableViewController: UITableViewController {
+class ServicesRequestsTableViewController: UITableViewController {
 
-    let categories:[String] = ["Automotive", "Cell/Mobile", "Computer", "Creative", "Event", "Farm + Garden", "Financial", "Household", "Labor/Move", "Legal", "Lessons", "Real Estate", "Skilled Trade", "Trave/Vac", "Mechanic", "Carpentry", "Tutoring", "Care provider", "Lawn & Garden", "Pet care", "Plumbing", "Health & Beauty", "Other"]
+    var category:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Services"
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -32,24 +31,23 @@ class CategoriesTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return categories.count
+        return 0
     }
 
-    
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
-        let category = categories[indexPath.row]
-        cell.detailTextLabel?.text = category
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
         // Configure the cell...
 
         return cell
     }
+    */
 
     /*
     // Override to support conditional editing of the table view.
