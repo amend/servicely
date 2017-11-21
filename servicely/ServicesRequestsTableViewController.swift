@@ -21,7 +21,8 @@ class ServicesRequestsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getServices()
-
+        
+        self.tableView.rowHeight = 80.0
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -140,11 +141,7 @@ class ServicesRequestsTableViewController: UITableViewController {
             
             let service = services[indexPath!]
             
-            vc.name.text = service.companyName
-            vc.serviceDescription.text = service.serviceDescription
-            vc.price.text = service.askingPrice
-            vc.contactNumber.text = service.contactInfo
-            
+            vc.service = service
         }
     }
  

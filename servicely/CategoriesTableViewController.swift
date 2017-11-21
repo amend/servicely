@@ -46,7 +46,7 @@ class CategoriesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
         let category = categories[indexPath.row]
-        cell.detailTextLabel?.text = category
+        cell.textLabel?.text = category
         
         // Configure the cell...
 
@@ -93,13 +93,14 @@ class CategoriesTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "serviceRequestController" {
             let vc:ServicesRequestsTableViewController = segue.destination as! ServicesRequestsTableViewController
             
             let indexPath = self.tableView.indexPathForSelectedRow?.row
-            vc.category = categories[indexPath!]
+            vc.category = self.categories[indexPath!]
             
             if self.typeDisplay.selectedSegmentIndex == 0 {
                 vc.client = false
