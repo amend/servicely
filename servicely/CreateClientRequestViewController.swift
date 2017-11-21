@@ -38,6 +38,9 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.title = "Create Client Request"
         submitButton.backgroundColor = ColorScheme.getColorScheme()
+        
+        loadCorrectRequestOrOffer()
+        
         // picks the first entry in picker view once view loads, otherwise
         // if user wants first item in pickerview and doesn't need to scroll, no
         // item will be selected
@@ -93,6 +96,18 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
             serviceType = pickerViewData[row]
         }
     }
+    
+    func loadCorrectRequestOrOffer() {
+        let defaults = UserDefaults.standard
+        let serviceType:String = defaults.string(forKey: "serviceType" )!
+        
+        if(serviceType == "serviceProvider") {
+            let providerVC = self.storyboard?.instantiateViewController(withIdentifier: "createServiceOfferView") as! CreateServiceOfferViewController
+            
+            self.present(providerVC, animated: true, completion: nil)
+            }
+        }
+        
     
     /*
      // MARK: - Navigation

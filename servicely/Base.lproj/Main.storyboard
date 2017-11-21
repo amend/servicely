@@ -357,7 +357,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Create Client Request" id="UFj-sQ-yvG">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="ayv-Z3-nIQ"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="ayv-Z3-nIQ">
+                                            <connections>
+                                                <segue destination="O0k-a1-GKq" kind="show" id="WRh-Y7-IdD"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -405,7 +409,6 @@
                                 <connections>
                                     <action selector="submitButton:" destination="y70-ST-alP" eventType="touchUpInside" id="C2z-9i-09e"/>
                                     <action selector="submitButton:" destination="aJB-nc-89W" eventType="touchUpInside" id="GTI-dK-M8a"/>
-                                    <segue destination="O0k-a1-GKq" kind="show" id="9Mf-eo-FDV"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAb-It-7mk">
@@ -535,17 +538,9 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Feed" id="Sih-pE-XAe">
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="FdU-jf-JEs">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bH5-xu-mrr">
-                                                <rect key="frame" x="328" y="7" width="31" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Post"/>
-                                                <connections>
-                                                    <action selector="buttonAction:" destination="HHC-b8-qDK" eventType="touchUpInside" id="Mcr-tN-kf9"/>
-                                                </connections>
-                                            </button>
+                                        <barButtonItem key="rightBarButtonItem" title="Post" id="LJf-Zd-gk9">
                                             <connections>
-                                                <segue destination="aJB-nc-89W" kind="show" id="nD0-co-Dpk"/>
+                                                <segue destination="aJB-nc-89W" kind="show" id="GXO-GN-NkU"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1852,7 +1847,7 @@
         <image name="settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9Mf-eo-FDV"/>
+        <segue reference="bFs-lE-3qd"/>
         <segue reference="zxh-Jf-4pm"/>
     </inferredMetricsTieBreakers>
 </document>
