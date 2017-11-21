@@ -29,6 +29,8 @@
 		9016772F1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016772E1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift */; };
 		901FDE8E1FA6AE4400BA2163 /* ServiceTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901FDE8D1FA6AE4400BA2163 /* ServiceTypeViewController.swift */; };
 		902588531F93DC7200F57059 /* ServiceOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902588521F93DC7200F57059 /* ServiceOffer.swift */; };
+		90280E8B1FC3C431006C5542 /* ClientRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90280E8A1FC3C431006C5542 /* ClientRequest.swift */; };
+		90280E8D1FC3CAF5006C5542 /* CreateClientRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90280E8C1FC3CAF5006C5542 /* CreateClientRequestViewController.swift */; };
 		9083B39A1F86D5B20079E309 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9083B3991F86D5B20079E309 /* AppDelegate.swift */; };
 		9083B39F1F86D5B20079E309 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9083B39D1F86D5B20079E309 /* Main.storyboard */; };
 		9083B3A11F86D5B20079E309 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9083B3A01F86D5B20079E309 /* Assets.xcassets */; };
@@ -61,6 +63,8 @@
 		9016772E1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceOfferTableViewCell.swift; sourceTree = "<group>"; };
 		901FDE8D1FA6AE4400BA2163 /* ServiceTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTypeViewController.swift; sourceTree = "<group>"; };
 		902588521F93DC7200F57059 /* ServiceOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceOffer.swift; sourceTree = "<group>"; };
+		90280E8A1FC3C431006C5542 /* ClientRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientRequest.swift; sourceTree = "<group>"; };
+		90280E8C1FC3CAF5006C5542 /* CreateClientRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateClientRequestViewController.swift; sourceTree = "<group>"; };
 		9083B3961F86D5B20079E309 /* servicely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = servicely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9083B3991F86D5B20079E309 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9083B39E1F86D5B20079E309 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -127,10 +131,12 @@
 				9083B3A21F86D5B20079E309 /* LaunchScreen.storyboard */,
 				9083B3A51F86D5B20079E309 /* Info.plist */,
 				901677261F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift */,
+				90280E8C1FC3CAF5006C5542 /* CreateClientRequestViewController.swift */,
 				7FBB2EB21FC281A4002067C1 /* ServicesRequestsTableViewController.swift */,
 				901677281F92B87C00F1E1D5 /* ClientFeedViewController.swift */,
 				9016772E1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift */,
 				902588521F93DC7200F57059 /* ServiceOffer.swift */,
+				90280E8A1FC3C431006C5542 /* ClientRequest.swift */,
 				7F9E23231FA3A6C600865172 /* Client.swift */,
 				90CA84191F995EFA00EDB7AC /* ServicelyLogoViewController.swift */,
 				901FDE8D1FA6AE4400BA2163 /* ServiceTypeViewController.swift */,
@@ -284,6 +290,7 @@
 				7F7F23101FA68DC200EEA294 /* ClientProfileViewController.swift in Sources */,
 				3785C1F11FA9391200774BCE /* ChangeProfilePictureViewController.swift in Sources */,
 				379650A01FA889AD00EF72ED /* ChangePasswordViewController.swift in Sources */,
+				90280E8B1FC3C431006C5542 /* ClientRequest.swift in Sources */,
 				7F9E23241FA3A6C600865172 /* Client.swift in Sources */,
 				3762DAFF1FA7144C0065FA87 /* ColorScheme.swift in Sources */,
 				902588531F93DC7200F57059 /* ServiceOffer.swift in Sources */,
@@ -293,6 +300,7 @@
 				3762DAD91FA705990065FA87 /* ChangeColorSchemeViewController.swift in Sources */,
 				9083B39A1F86D5B20079E309 /* AppDelegate.swift in Sources */,
 				7F7F23141FA78B7D00EEA294 /* ProviderProfileViewController.swift in Sources */,
+				90280E8D1FC3CAF5006C5542 /* CreateClientRequestViewController.swift in Sources */,
 				379650A41FA8954C00EF72ED /* SettingsViewController.swift in Sources */,
 				901677291F92B87C00F1E1D5 /* ClientFeedViewController.swift in Sources */,
 				901FDE8E1FA6AE4400BA2163 /* ServiceTypeViewController.swift in Sources */,

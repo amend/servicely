@@ -18,7 +18,10 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     
     @IBOutlet weak var feedTableView: UITableView!
     
+    
     var services = [ServiceOffer]()
+    var requests = [ClientRequest]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +47,6 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
         super.viewWillAppear(animated) // No need for semicolon
         
         var userID = FIRAuth.auth()?.currentUser?.uid
-        
         
         if(userID == nil) {
             checkLoggedIn()
@@ -185,6 +187,85 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
         return true
     }
     */
+    @IBAction func buttonAction(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        let serviceType:String = defaults.string(forKey: "serviceType" )!
+        
+        if(serviceType == "serviceProvider") {
+            let vc:CreateServiceOfferViewController = self.storyboard?.instantiateViewController(withIdentifier: "createServiceOfferView") as! CreateServiceOfferViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        } else if(serviceType == "client") {
+            let viewC:CreateClientRequestViewController = self.storyboard?.instantiateViewController(withIdentifier: "createClientRequestView") as! CreateClientRequestViewController
+            self.navigationController?.pushViewController(viewC, animated: true)
+            
+        } else {
+            // shouldnt reach here
+        }
+
+        
+    }
+    @IBAction func postBtn(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        let serviceType:String = defaults.string(forKey: "serviceType" )!
+        
+        if(serviceType == "serviceProvider") {
+            let vc:CreateServiceOfferViewController = self.storyboard?.instantiateViewController(withIdentifier: "createServiceOfferView") as! CreateServiceOfferViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        } else if(serviceType == "client") {
+            let viewC:CreateClientRequestViewController = self.storyboard?.instantiateViewController(withIdentifier: "createClientRequestView") as! CreateClientRequestViewController
+            self.navigationController?.pushViewController(viewC, animated: true)
+            
+        } else {
+            // shouldnt reach here
+        }
+    }
+    @IBAction func postButton(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        let serviceType:String = defaults.string(forKey: "serviceType" )!
+        
+        if(serviceType == "serviceProvider") {
+            let vc:CreateServiceOfferViewController = self.storyboard?.instantiateViewController(withIdentifier: "createServiceOfferView") as! CreateServiceOfferViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        } else if(serviceType == "client") {
+            let viewC:CreateClientRequestViewController = self.storyboard?.instantiateViewController(withIdentifier: "createClientRequestView") as! CreateClientRequestViewController
+            self.navigationController?.pushViewController(viewC, animated: true)
+            
+        } else {
+            // shouldnt reach here
+        }
+
+    }
+    
+    @IBAction func post(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        let serviceType:String = defaults.string(forKey: "serviceType" )!
+        
+        if(serviceType == "serviceProvider") {
+            let vc:CreateServiceOfferViewController = self.storyboard?.instantiateViewController(withIdentifier: "createServiceOfferView") as! CreateServiceOfferViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        } else if(serviceType == "client") {
+            let viewC:CreateClientRequestViewController = self.storyboard?.instantiateViewController(withIdentifier: "createClientRequestView") as! CreateClientRequestViewController
+            self.navigationController?.pushViewController(viewC, animated: true)
+            
+        } else {
+            // shouldnt reach here
+        }
+ 
+        /*
+        if(serviceType == "serviceProvider") {
+            self.performSegue(withIdentifier: "createServiceOfferSegue", sender: self)
+        } else if(serviceType == "client") {
+            self.performSegue(withIdentifier: "createClientRequestSegue", sender: self)
+        } else {
+            // shouldnt reach here
+        }
+         */
+    }
+    
 
     /*
     // Override to support editing the table view.

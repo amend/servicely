@@ -57,7 +57,12 @@ class ServiceTypeViewController: UIViewController {
         }
         
         usersRef.child(userID!).setValue(["serviceType":serviceType])
-     
+
+        let defaults = UserDefaults.standard
+        defaults.set(serviceType, forKey: "serviceType")
+        defaults.synchronize()
+
+        
         print("exiting prepare for segue")
     }
 
