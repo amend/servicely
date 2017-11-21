@@ -221,9 +221,11 @@ SWIFT_CLASS("_TtC9servicely31ChangeColorSchemeViewController")
 
 @class UILabel;
 @class UITextField;
+@class UITouch;
+@class UIEvent;
 
 SWIFT_CLASS("_TtC9servicely28ChangePasswordViewController")
-@interface ChangePasswordViewController : UIViewController
+@interface ChangePasswordViewController : UIViewController <UITextFieldDelegate>
 @property (nonatomic, weak) IBOutlet UIView * _Null_unspecified headerView;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified errorLabel;
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified currentPasswordTextField;
@@ -235,6 +237,8 @@ SWIFT_CLASS("_TtC9servicely28ChangePasswordViewController")
 - (void)didReceiveMemoryWarning;
 - (void)viewWillAppear:(BOOL)animated;
 - (IBAction)changePassword:(id _Nonnull)sender;
+- (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)currentPasswordTextField SWIFT_WARN_UNUSED_RESULT;
+- (void)touchesBegan:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -276,7 +280,6 @@ SWIFT_CLASS("_TtC9servicely24ClientFeedViewController")
 - (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (CGFloat)tableView:(UITableView * _Nonnull)tableView heightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-- (IBAction)tempSignOutButton:(id _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -322,7 +325,7 @@ SWIFT_CLASS("_TtC9servicely32CreateServiceOfferViewController")
 
 
 SWIFT_CLASS("_TtC9servicely27DeleteAccountViewController")
-@interface DeleteAccountViewController : UIViewController
+@interface DeleteAccountViewController : UIViewController <UITextFieldDelegate>
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified errorLabel;
 @property (nonatomic, weak) IBOutlet UIView * _Null_unspecified headerView;
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified passwordTextField;
@@ -330,6 +333,8 @@ SWIFT_CLASS("_TtC9servicely27DeleteAccountViewController")
 - (void)didReceiveMemoryWarning;
 - (void)viewWillAppear:(BOOL)animated;
 - (IBAction)deleteAccount:(id _Nonnull)sender;
+- (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
+- (void)touchesBegan:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end

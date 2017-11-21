@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class DeleteAccountViewController: UIViewController {
+class DeleteAccountViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
@@ -18,7 +18,7 @@ class DeleteAccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.passwordTextField.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -54,6 +54,15 @@ class DeleteAccountViewController: UIViewController {
         }else{
             errorLabel.text = "Please enter your password"
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     /*
