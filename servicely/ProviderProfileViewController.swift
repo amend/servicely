@@ -63,6 +63,10 @@ class ProviderProfileViewController: UIViewController {
         }
     }
     
+    func feedButtonPressed() {
+    
+    }
+    
 
     /*
     // MARK: - Navigation
