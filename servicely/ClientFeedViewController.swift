@@ -43,7 +43,14 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // No need for semicolon
         
-        let userID = FIRAuth.auth()?.currentUser?.uid
+        var userID = FIRAuth.auth()?.currentUser?.uid
+        
+        
+        if(userID == nil) {
+            checkLoggedIn()
+            //var userID = FIRAuth.auth()?.currentUser?.uid
+            return
+        }
         
         let ref1:FIRDatabaseReference! = FIRDatabase.database().reference()
         let usersRef = ref1.child("users")
