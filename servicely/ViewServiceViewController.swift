@@ -14,16 +14,28 @@ class ViewServiceViewController: UIViewController {
     @IBOutlet weak var serviceDescription: UILabel!
     @IBOutlet weak var contactNumber: UILabel!
     @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var redView: UIView!
+    
+    var service:ServiceOffer? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setValues()
+        self.redView.frame.size.width = self.view.frame.size.width
+        self.redView.frame.size.height = 80.00
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setValues() {
+        self.name.text = service?.companyName
+        self.serviceDescription.text = service?.serviceDescription
+        self.contactNumber.text = service?.contactInfo
+        self.price.text = service?.askingPrice
     }
     
 
