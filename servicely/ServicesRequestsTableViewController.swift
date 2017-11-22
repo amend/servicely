@@ -17,10 +17,16 @@ class ServicesRequestsTableViewController: UITableViewController {
     var client:Bool = false
     
     var services = [ServiceOffer]()
+    var requests = [ClientRequest]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getServices()
+        
+        if(client) {
+            getRequets()
+        } else {
+            getServices()
+        }
         
         self.tableView.rowHeight = 80.0
         // Uncomment the following line to preserve selection between presentations
@@ -47,7 +53,7 @@ class ServicesRequestsTableViewController: UITableViewController {
         if (client == false) {
             return services.count
         } else {
-            return 0
+            return requests.count
         }
     }
 
@@ -77,17 +83,52 @@ class ServicesRequestsTableViewController: UITableViewController {
         })
     }
     
+    func getRequets() {
+        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
+        let serviceOfferRef = ref.child("clientRequest")
+        
+        serviceOfferRef.observeSingleEvent(of: .value, with: { snapshot in
+            print(snapshot.childrenCount)
+            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                print("adding to services array...")
+                
+                if let dict = rest.value as? NSDictionary {
+                    let serviceType = (dict["serviceType"] as? String)!
+                    if (serviceType == self.category) {
+                        self.requests.append(ClientRequest.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["requestDescription"] as? String)!, location: (dict["location"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!))
+                        
+                        /*
+                        self.services.append(ServiceOffer.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!))
+                        */
+                    }
+                    print("added \(rest.value)")
+                } else {
+                    print("could not convert snaptshot to dictionary")
+                }
+            }
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
+    }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoriesServiceCell", for: indexPath) as! CategoriesServiceTableViewCell
+        if(self.client == false) {
+            let service = services[indexPath.row]
         
-        let service = services[indexPath.row]
+            cell.name?.text = service.companyName
+            cell.price?.text = service.askingPrice
         
-        cell.name?.text = service.companyName
-        cell.price?.text = service.askingPrice
-        
-        // Configure the cell...
-
+            // Configure the cell...
+        } else {
+            let request = requests[indexPath.row]
+            
+            cell.name?.text = "Jane Doe"
+            cell.price?.text = request.contactInfo
+        }
         return cell
     }
     
@@ -135,13 +176,23 @@ class ServicesRequestsTableViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "viewService" {
-            let vc:ViewServiceViewController = segue.destination as! ViewServiceViewController
+            if(self.client == false) {
+                let vc:ViewServiceViewController = segue.destination as! ViewServiceViewController
             
-            let indexPath = self.tableView.indexPathForSelectedRow?.row
+                let indexPath = self.tableView.indexPathForSelectedRow?.row
+                let service = services[indexPath!]
             
-            let service = services[indexPath!]
-            
-            vc.service = service
+                vc.service = service
+                vc.client = client
+            } else {
+                let vc:ViewServiceViewController = segue.destination as! ViewServiceViewController
+                
+                let indexPath = self.tableView.indexPathForSelectedRow?.row
+                let request = requests[indexPath!]
+                
+                vc.request = request
+                vc.client = client
+            }
         }
     }
  
