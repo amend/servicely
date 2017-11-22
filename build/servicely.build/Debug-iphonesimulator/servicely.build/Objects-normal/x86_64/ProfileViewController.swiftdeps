@@ -10,12 +10,9 @@ provides-dynamic-lookup:
 - "didReceiveMemoryWarning"
 - "viewDidLoad"
 depends-top-level:
-- !private "!"
 - !private "=="
 - !private "??"
 - "AssignmentPrecedence"
-- "Bool"
-- !private "BooleanLiteralType"
 - "CastingPrecedence"
 - !private "ClientProfileViewController"
 - !private "FIRAuth"
@@ -53,6 +50,7 @@ depends-member:
 - !private ["s7CVarArgP", "observeSingleEvent"]
 - !private ["s7CVarArgP", "print"]
 - !private ["s7CVarArgP", "reference"]
+- !private ["s7CVarArgP", "showProfile"]
 - !private ["s7CVarArgP", "storyboard"]
 - !private ["s7CVarArgP", "subscript"]
 - !private ["s7CVarArgP", "uid"]
@@ -60,7 +58,6 @@ depends-member:
 - !private ["s7CVarArgP", "view"]
 - !private ["s7CVarArgP", "viewDidLoad"]
 - ["s7CVarArgP", ""]
-- !private ["9servicely27ClientProfileViewControllerC", "view"]
 - !private ["s10CollectionP", "init"]
 - !private ["s10ComparableP", "init"]
 - !private ["s28CustomDebugStringConvertibleP", "FIRAuth"]
@@ -81,6 +78,7 @@ depends-member:
 - !private ["s28CustomDebugStringConvertibleP", "observeSingleEvent"]
 - !private ["s28CustomDebugStringConvertibleP", "print"]
 - !private ["s28CustomDebugStringConvertibleP", "reference"]
+- !private ["s28CustomDebugStringConvertibleP", "showProfile"]
 - !private ["s28CustomDebugStringConvertibleP", "storyboard"]
 - !private ["s28CustomDebugStringConvertibleP", "subscript"]
 - !private ["s28CustomDebugStringConvertibleP", "uid"]
@@ -112,6 +110,7 @@ depends-member:
 - !private ["s23CustomStringConvertibleP", "observeSingleEvent"]
 - !private ["s23CustomStringConvertibleP", "print"]
 - !private ["s23CustomStringConvertibleP", "reference"]
+- !private ["s23CustomStringConvertibleP", "showProfile"]
 - !private ["s23CustomStringConvertibleP", "storyboard"]
 - !private ["s23CustomStringConvertibleP", "subscript"]
 - !private ["s23CustomStringConvertibleP", "uid"]
@@ -142,6 +141,7 @@ depends-member:
 - !private ["s9EquatableP", "observeSingleEvent"]
 - !private ["s9EquatableP", "print"]
 - !private ["s9EquatableP", "reference"]
+- !private ["s9EquatableP", "showProfile"]
 - !private ["s9EquatableP", "storyboard"]
 - !private ["s9EquatableP", "subscript"]
 - !private ["s9EquatableP", "uid"]
@@ -185,6 +185,7 @@ depends-member:
 - !private ["s8HashableP", "observeSingleEvent"]
 - !private ["s8HashableP", "print"]
 - !private ["s8HashableP", "reference"]
+- !private ["s8HashableP", "showProfile"]
 - !private ["s8HashableP", "storyboard"]
 - !private ["s8HashableP", "subscript"]
 - !private ["s8HashableP", "uid"]
@@ -206,6 +207,7 @@ depends-member:
 - !private ["So8NSCodingP", "ifClientProfilePage"]
 - !private ["So8NSCodingP", "init"]
 - !private ["So8NSCodingP", "print"]
+- !private ["So8NSCodingP", "showProfile"]
 - !private ["So8NSCodingP", "storyboard"]
 - !private ["So8NSCodingP", "subscript"]
 - !private ["So8NSCodingP", "view"]
@@ -222,6 +224,7 @@ depends-member:
 - !private ["So26NSExtensionRequestHandlingP", "ifClientProfilePage"]
 - !private ["So26NSExtensionRequestHandlingP", "init"]
 - !private ["So26NSExtensionRequestHandlingP", "print"]
+- !private ["So26NSExtensionRequestHandlingP", "showProfile"]
 - !private ["So26NSExtensionRequestHandlingP", "storyboard"]
 - !private ["So26NSExtensionRequestHandlingP", "view"]
 - !private ["So26NSExtensionRequestHandlingP", "viewDidLoad"]
@@ -231,7 +234,6 @@ depends-member:
 - !private ["So21NSItemProviderWritingP", "init"]
 - !private ["So16NSMutableCopyingP", "init"]
 - !private ["So16NSMutableCopyingP", "subscript"]
-- ["So8NSObjectC", "Bool"]
 - !private ["So8NSObjectC", "ClientProfileViewController"]
 - !private ["So8NSObjectC", "FIRAuth"]
 - !private ["So8NSObjectC", "FIRDatabase"]
@@ -240,6 +242,7 @@ depends-member:
 - !private ["So8NSObjectC", "ProviderProfileViewController"]
 - !private ["So8NSObjectC", "String"]
 - ["So8NSObjectC", "UIView"]
+- ["So8NSObjectC", "UIViewController"]
 - !private ["So8NSObjectC", "addChildViewController"]
 - !private ["So8NSObjectC", "addSubview"]
 - !private ["So8NSObjectC", "auth"]
@@ -256,6 +259,7 @@ depends-member:
 - !private ["So8NSObjectC", "observeSingleEvent"]
 - !private ["So8NSObjectC", "print"]
 - !private ["So8NSObjectC", "reference"]
+- ["So8NSObjectC", "showProfile"]
 - !private ["So8NSObjectC", "storyboard"]
 - !private ["So8NSObjectC", "subscript"]
 - !private ["So8NSObjectC", "uid"]
@@ -280,6 +284,7 @@ depends-member:
 - !private ["So16NSObjectProtocolP", "observeSingleEvent"]
 - !private ["So16NSObjectProtocolP", "print"]
 - !private ["So16NSObjectProtocolP", "reference"]
+- !private ["So16NSObjectProtocolP", "showProfile"]
 - !private ["So16NSObjectProtocolP", "storyboard"]
 - !private ["So16NSObjectProtocolP", "subscript"]
 - !private ["So16NSObjectProtocolP", "uid"]
@@ -290,7 +295,6 @@ depends-member:
 - !private ["So14NSSecureCodingP", "init"]
 - !private ["So14NSSecureCodingP", "subscript"]
 - !private ["So8NSStringC", "init"]
-- ["9servicely21ProfileViewControllerC", "Bool"]
 - !private ["9servicely21ProfileViewControllerC", "ClientProfileViewController"]
 - !private ["9servicely21ProfileViewControllerC", "FIRAuth"]
 - !private ["9servicely21ProfileViewControllerC", "FIRDatabase"]
@@ -299,6 +303,7 @@ depends-member:
 - !private ["9servicely21ProfileViewControllerC", "ProviderProfileViewController"]
 - !private ["9servicely21ProfileViewControllerC", "String"]
 - ["9servicely21ProfileViewControllerC", "UIView"]
+- ["9servicely21ProfileViewControllerC", "UIViewController"]
 - !private ["9servicely21ProfileViewControllerC", "addChildViewController"]
 - ["9servicely21ProfileViewControllerC", "containerView"]
 - ["9servicely21ProfileViewControllerC", "deinit"]
@@ -306,9 +311,9 @@ depends-member:
 - ["9servicely21ProfileViewControllerC", "ifClientProfilePage"]
 - ["9servicely21ProfileViewControllerC", "init"]
 - !private ["9servicely21ProfileViewControllerC", "print"]
+- ["9servicely21ProfileViewControllerC", "showProfile"]
 - !private ["9servicely21ProfileViewControllerC", "storyboard"]
 - ["9servicely21ProfileViewControllerC", "viewDidLoad"]
-- !private ["9servicely29ProviderProfileViewControllerC", "view"]
 - !private ["s26RangeReplaceableCollectionP", "init"]
 - !private ["s16RawRepresentableP", "value"]
 - !private ["s8SequenceP", "init"]
@@ -334,6 +339,7 @@ depends-member:
 - !private ["So21UIAppearanceContainerP", "ifClientProfilePage"]
 - !private ["So21UIAppearanceContainerP", "init"]
 - !private ["So21UIAppearanceContainerP", "print"]
+- !private ["So21UIAppearanceContainerP", "showProfile"]
 - !private ["So21UIAppearanceContainerP", "storyboard"]
 - !private ["So21UIAppearanceContainerP", "view"]
 - !private ["So21UIAppearanceContainerP", "viewDidLoad"]
@@ -346,6 +352,7 @@ depends-member:
 - !private ["So18UIContentContainerP", "ifClientProfilePage"]
 - !private ["So18UIContentContainerP", "init"]
 - !private ["So18UIContentContainerP", "print"]
+- !private ["So18UIContentContainerP", "showProfile"]
 - !private ["So18UIContentContainerP", "storyboard"]
 - !private ["So18UIContentContainerP", "view"]
 - !private ["So18UIContentContainerP", "viewDidLoad"]
@@ -367,6 +374,7 @@ depends-member:
 - !private ["So18UIFocusEnvironmentP", "ifClientProfilePage"]
 - !private ["So18UIFocusEnvironmentP", "init"]
 - !private ["So18UIFocusEnvironmentP", "print"]
+- !private ["So18UIFocusEnvironmentP", "showProfile"]
 - !private ["So18UIFocusEnvironmentP", "storyboard"]
 - !private ["So18UIFocusEnvironmentP", "view"]
 - !private ["So18UIFocusEnvironmentP", "viewDidLoad"]
@@ -385,11 +393,11 @@ depends-member:
 - !private ["So30UIPasteConfigurationSupportingP", "ifClientProfilePage"]
 - !private ["So30UIPasteConfigurationSupportingP", "init"]
 - !private ["So30UIPasteConfigurationSupportingP", "print"]
+- !private ["So30UIPasteConfigurationSupportingP", "showProfile"]
 - !private ["So30UIPasteConfigurationSupportingP", "storyboard"]
 - !private ["So30UIPasteConfigurationSupportingP", "view"]
 - !private ["So30UIPasteConfigurationSupportingP", "viewDidLoad"]
 - ["So30UIPasteConfigurationSupportingP", ""]
-- ["So11UIResponderC", "Bool"]
 - !private ["So11UIResponderC", "ClientProfileViewController"]
 - !private ["So11UIResponderC", "FIRAuth"]
 - !private ["So11UIResponderC", "FIRDatabase"]
@@ -398,6 +406,7 @@ depends-member:
 - !private ["So11UIResponderC", "ProviderProfileViewController"]
 - !private ["So11UIResponderC", "String"]
 - ["So11UIResponderC", "UIView"]
+- ["So11UIResponderC", "UIViewController"]
 - !private ["So11UIResponderC", "addChildViewController"]
 - !private ["So11UIResponderC", "addSubview"]
 - !private ["So11UIResponderC", "bounds"]
@@ -407,6 +416,7 @@ depends-member:
 - ["So11UIResponderC", "ifClientProfilePage"]
 - ["So11UIResponderC", "init"]
 - !private ["So11UIResponderC", "print"]
+- ["So11UIResponderC", "showProfile"]
 - !private ["So11UIResponderC", "storyboard"]
 - !private ["So11UIResponderC", "view"]
 - ["So11UIResponderC", "viewDidLoad"]
@@ -421,6 +431,7 @@ depends-member:
 - !private ["So30UIResponderStandardEditActionsP", "ifClientProfilePage"]
 - !private ["So30UIResponderStandardEditActionsP", "init"]
 - !private ["So30UIResponderStandardEditActionsP", "print"]
+- !private ["So30UIResponderStandardEditActionsP", "showProfile"]
 - !private ["So30UIResponderStandardEditActionsP", "storyboard"]
 - !private ["So30UIResponderStandardEditActionsP", "view"]
 - !private ["So30UIResponderStandardEditActionsP", "viewDidLoad"]
@@ -433,6 +444,7 @@ depends-member:
 - !private ["So16UIStateRestoringP", "ifClientProfilePage"]
 - !private ["So16UIStateRestoringP", "init"]
 - !private ["So16UIStateRestoringP", "print"]
+- !private ["So16UIStateRestoringP", "showProfile"]
 - !private ["So16UIStateRestoringP", "storyboard"]
 - !private ["So16UIStateRestoringP", "view"]
 - !private ["So16UIStateRestoringP", "viewDidLoad"]
@@ -449,6 +461,7 @@ depends-member:
 - !private ["So18UITraitEnvironmentP", "ifClientProfilePage"]
 - !private ["So18UITraitEnvironmentP", "init"]
 - !private ["So18UITraitEnvironmentP", "print"]
+- !private ["So18UITraitEnvironmentP", "showProfile"]
 - !private ["So18UITraitEnvironmentP", "storyboard"]
 - !private ["So18UITraitEnvironmentP", "view"]
 - !private ["So18UITraitEnvironmentP", "viewDidLoad"]
@@ -456,7 +469,6 @@ depends-member:
 - !private ["So6UIViewC", "addSubview"]
 - !private ["So6UIViewC", "bounds"]
 - !private ["So6UIViewC", "frame"]
-- ["So16UIViewControllerC", "Bool"]
 - !private ["So16UIViewControllerC", "ClientProfileViewController"]
 - !private ["So16UIViewControllerC", "FIRAuth"]
 - !private ["So16UIViewControllerC", "FIRDatabase"]
@@ -465,12 +477,14 @@ depends-member:
 - !private ["So16UIViewControllerC", "ProviderProfileViewController"]
 - !private ["So16UIViewControllerC", "String"]
 - ["So16UIViewControllerC", "UIView"]
+- ["So16UIViewControllerC", "UIViewController"]
 - !private ["So16UIViewControllerC", "addChildViewController"]
 - ["So16UIViewControllerC", "containerView"]
 - ["So16UIViewControllerC", "didReceiveMemoryWarning"]
 - ["So16UIViewControllerC", "ifClientProfilePage"]
 - ["So16UIViewControllerC", "init"]
 - !private ["So16UIViewControllerC", "print"]
+- ["So16UIViewControllerC", "showProfile"]
 - !private ["So16UIViewControllerC", "storyboard"]
 - !private ["So16UIViewControllerC", "view"]
 - ["So16UIViewControllerC", "viewDidLoad"]
@@ -506,6 +520,7 @@ depends-member:
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "observeSingleEvent"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "print"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "reference"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "showProfile"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "storyboard"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "subscript"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "uid"]
@@ -522,7 +537,6 @@ depends-nominal:
 - !private "Sb"
 - !private "So15CALayerDelegateP"
 - "s7CVarArgP"
-- !private "9servicely27ClientProfileViewControllerC"
 - !private "s10CollectionP"
 - !private "s10ComparableP"
 - "s28CustomDebugStringConvertibleP"
@@ -561,7 +575,6 @@ depends-nominal:
 - !private "So14NSSecureCodingP"
 - !private "So8NSStringC"
 - "9servicely21ProfileViewControllerC"
-- !private "9servicely29ProviderProfileViewControllerC"
 - !private "s26RangeReplaceableCollectionP"
 - !private "s16RawRepresentableP"
 - !private "s8SequenceP"
@@ -728,4 +741,4 @@ depends-external:
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/Pods/Firebase/Headers/module.modulemap"
-interface-hash: "746d2cff4ba577c88bf3fbc683e956ef"
+interface-hash: "c9eba87cfbb70961739b42efb53823e8"

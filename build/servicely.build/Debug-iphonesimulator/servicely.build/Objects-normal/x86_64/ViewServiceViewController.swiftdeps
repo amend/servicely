@@ -14,18 +14,26 @@ provides-dynamic-lookup:
 - "serviceDescription"
 - "viewDidLoad"
 depends-top-level:
+- !private "=="
 - "AssignmentPrecedence"
+- "Bool"
+- "BooleanLiteralType"
+- "ClientRequest"
 - "ServiceOffer"
+- !private "StringLiteralType"
 - "UILabel"
 - "UIView"
 - "UIViewController"
 - "ViewServiceViewController"
 depends-member:
+- !private ["s23BidirectionalCollectionP", "init"]
+- !private ["Sb", "_getBuiltinLogicValue"]
 - !private ["So15CALayerDelegateP", "frame"]
 - !private ["So15CALayerDelegateP", "text"]
 - !private ["SC6CGRectV", "size"]
 - !private ["SC6CGSizeV", "height"]
 - !private ["SC6CGSizeV", "width"]
+- !private ["s7CVarArgP", "client"]
 - !private ["s7CVarArgP", "contactNumber"]
 - !private ["s7CVarArgP", "didReceiveMemoryWarning"]
 - !private ["s7CVarArgP", "frame"]
@@ -33,6 +41,7 @@ depends-member:
 - !private ["s7CVarArgP", "name"]
 - !private ["s7CVarArgP", "price"]
 - !private ["s7CVarArgP", "redView"]
+- !private ["s7CVarArgP", "request"]
 - !private ["s7CVarArgP", "service"]
 - !private ["s7CVarArgP", "serviceDescription"]
 - !private ["s7CVarArgP", "setValues"]
@@ -40,6 +49,11 @@ depends-member:
 - !private ["s7CVarArgP", "view"]
 - !private ["s7CVarArgP", "viewDidLoad"]
 - ["s7CVarArgP", ""]
+- !private ["9servicely13ClientRequestC", "contactInfo"]
+- !private ["9servicely13ClientRequestC", "serviceDescription"]
+- !private ["s10CollectionP", "init"]
+- !private ["s10ComparableP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "client"]
 - !private ["s28CustomDebugStringConvertibleP", "contactNumber"]
 - !private ["s28CustomDebugStringConvertibleP", "didReceiveMemoryWarning"]
 - !private ["s28CustomDebugStringConvertibleP", "frame"]
@@ -48,6 +62,7 @@ depends-member:
 - !private ["s28CustomDebugStringConvertibleP", "name"]
 - !private ["s28CustomDebugStringConvertibleP", "price"]
 - !private ["s28CustomDebugStringConvertibleP", "redView"]
+- !private ["s28CustomDebugStringConvertibleP", "request"]
 - !private ["s28CustomDebugStringConvertibleP", "service"]
 - !private ["s28CustomDebugStringConvertibleP", "serviceDescription"]
 - !private ["s28CustomDebugStringConvertibleP", "setValues"]
@@ -57,12 +72,18 @@ depends-member:
 - !private ["s28CustomDebugStringConvertibleP", "viewDidLoad"]
 - !private ["s28CustomDebugStringConvertibleP", "width"]
 - ["s28CustomDebugStringConvertibleP", ""]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
 - !private ["s29CustomPlaygroundQuickLookableP", "height"]
+- !private ["s29CustomPlaygroundQuickLookableP", "init"]
 - !private ["s29CustomPlaygroundQuickLookableP", "size"]
 - !private ["s29CustomPlaygroundQuickLookableP", "width"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
 - !private ["s17CustomReflectableP", "height"]
+- !private ["s17CustomReflectableP", "init"]
 - !private ["s17CustomReflectableP", "size"]
 - !private ["s17CustomReflectableP", "width"]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "client"]
 - !private ["s23CustomStringConvertibleP", "contactNumber"]
 - !private ["s23CustomStringConvertibleP", "didReceiveMemoryWarning"]
 - !private ["s23CustomStringConvertibleP", "frame"]
@@ -70,6 +91,7 @@ depends-member:
 - !private ["s23CustomStringConvertibleP", "name"]
 - !private ["s23CustomStringConvertibleP", "price"]
 - !private ["s23CustomStringConvertibleP", "redView"]
+- !private ["s23CustomStringConvertibleP", "request"]
 - !private ["s23CustomStringConvertibleP", "service"]
 - !private ["s23CustomStringConvertibleP", "serviceDescription"]
 - !private ["s23CustomStringConvertibleP", "setValues"]
@@ -77,12 +99,18 @@ depends-member:
 - !private ["s23CustomStringConvertibleP", "view"]
 - !private ["s23CustomStringConvertibleP", "viewDidLoad"]
 - ["s23CustomStringConvertibleP", ""]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
 - !private ["s9DecodableP", "height"]
+- !private ["s9DecodableP", "init"]
 - !private ["s9DecodableP", "size"]
 - !private ["s9DecodableP", "width"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
 - !private ["s9EncodableP", "height"]
+- !private ["s9EncodableP", "init"]
 - !private ["s9EncodableP", "size"]
 - !private ["s9EncodableP", "width"]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- !private ["s9EquatableP", "client"]
 - !private ["s9EquatableP", "contactNumber"]
 - !private ["s9EquatableP", "didReceiveMemoryWarning"]
 - !private ["s9EquatableP", "frame"]
@@ -91,6 +119,7 @@ depends-member:
 - !private ["s9EquatableP", "name"]
 - !private ["s9EquatableP", "price"]
 - !private ["s9EquatableP", "redView"]
+- !private ["s9EquatableP", "request"]
 - !private ["s9EquatableP", "service"]
 - !private ["s9EquatableP", "serviceDescription"]
 - !private ["s9EquatableP", "setValues"]
@@ -100,6 +129,12 @@ depends-member:
 - !private ["s9EquatableP", "viewDidLoad"]
 - !private ["s9EquatableP", "width"]
 - ["s9EquatableP", ""]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- !private ["s8HashableP", "client"]
 - !private ["s8HashableP", "contactNumber"]
 - !private ["s8HashableP", "didReceiveMemoryWarning"]
 - !private ["s8HashableP", "frame"]
@@ -107,6 +142,7 @@ depends-member:
 - !private ["s8HashableP", "name"]
 - !private ["s8HashableP", "price"]
 - !private ["s8HashableP", "redView"]
+- !private ["s8HashableP", "request"]
 - !private ["s8HashableP", "service"]
 - !private ["s8HashableP", "serviceDescription"]
 - !private ["s8HashableP", "setValues"]
@@ -114,6 +150,10 @@ depends-member:
 - !private ["s8HashableP", "view"]
 - !private ["s8HashableP", "viewDidLoad"]
 - ["s8HashableP", ""]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["s10MirrorPathP", "init"]
+- !private ["So8NSCodingP", "client"]
 - !private ["So8NSCodingP", "contactNumber"]
 - !private ["So8NSCodingP", "didReceiveMemoryWarning"]
 - !private ["So8NSCodingP", "frame"]
@@ -121,6 +161,7 @@ depends-member:
 - !private ["So8NSCodingP", "name"]
 - !private ["So8NSCodingP", "price"]
 - !private ["So8NSCodingP", "redView"]
+- !private ["So8NSCodingP", "request"]
 - !private ["So8NSCodingP", "service"]
 - !private ["So8NSCodingP", "serviceDescription"]
 - !private ["So8NSCodingP", "setValues"]
@@ -128,21 +169,30 @@ depends-member:
 - !private ["So8NSCodingP", "view"]
 - !private ["So8NSCodingP", "viewDidLoad"]
 - ["So8NSCodingP", ""]
+- !private ["So9NSCopyingP", "init"]
+- !private ["So26NSExtensionRequestHandlingP", "client"]
 - !private ["So26NSExtensionRequestHandlingP", "contactNumber"]
 - !private ["So26NSExtensionRequestHandlingP", "didReceiveMemoryWarning"]
 - !private ["So26NSExtensionRequestHandlingP", "init"]
 - !private ["So26NSExtensionRequestHandlingP", "name"]
 - !private ["So26NSExtensionRequestHandlingP", "price"]
 - !private ["So26NSExtensionRequestHandlingP", "redView"]
+- !private ["So26NSExtensionRequestHandlingP", "request"]
 - !private ["So26NSExtensionRequestHandlingP", "service"]
 - !private ["So26NSExtensionRequestHandlingP", "serviceDescription"]
 - !private ["So26NSExtensionRequestHandlingP", "setValues"]
 - !private ["So26NSExtensionRequestHandlingP", "view"]
 - !private ["So26NSExtensionRequestHandlingP", "viewDidLoad"]
 - ["So26NSExtensionRequestHandlingP", ""]
+- !private ["So21NSItemProviderReadingP", "init"]
+- !private ["So21NSItemProviderWritingP", "init"]
+- !private ["So16NSMutableCopyingP", "init"]
+- ["So8NSObjectC", "Bool"]
+- ["So8NSObjectC", "ClientRequest"]
 - ["So8NSObjectC", "ServiceOffer"]
 - ["So8NSObjectC", "UILabel"]
 - ["So8NSObjectC", "UIView"]
+- ["So8NSObjectC", "client"]
 - ["So8NSObjectC", "contactNumber"]
 - ["So8NSObjectC", "didReceiveMemoryWarning"]
 - !private ["So8NSObjectC", "frame"]
@@ -150,12 +200,14 @@ depends-member:
 - ["So8NSObjectC", "name"]
 - ["So8NSObjectC", "price"]
 - ["So8NSObjectC", "redView"]
+- ["So8NSObjectC", "request"]
 - ["So8NSObjectC", "service"]
 - ["So8NSObjectC", "serviceDescription"]
 - ["So8NSObjectC", "setValues"]
 - !private ["So8NSObjectC", "text"]
 - !private ["So8NSObjectC", "view"]
 - ["So8NSObjectC", "viewDidLoad"]
+- !private ["So16NSObjectProtocolP", "client"]
 - !private ["So16NSObjectProtocolP", "contactNumber"]
 - !private ["So16NSObjectProtocolP", "didReceiveMemoryWarning"]
 - !private ["So16NSObjectProtocolP", "frame"]
@@ -163,6 +215,7 @@ depends-member:
 - !private ["So16NSObjectProtocolP", "name"]
 - !private ["So16NSObjectProtocolP", "price"]
 - !private ["So16NSObjectProtocolP", "redView"]
+- !private ["So16NSObjectProtocolP", "request"]
 - !private ["So16NSObjectProtocolP", "service"]
 - !private ["So16NSObjectProtocolP", "serviceDescription"]
 - !private ["So16NSObjectProtocolP", "setValues"]
@@ -170,14 +223,23 @@ depends-member:
 - !private ["So16NSObjectProtocolP", "view"]
 - !private ["So16NSObjectProtocolP", "viewDidLoad"]
 - ["So16NSObjectProtocolP", ""]
+- !private ["So14NSSecureCodingP", "init"]
+- !private ["So8NSStringC", "init"]
+- !private ["s26RangeReplaceableCollectionP", "init"]
+- !private ["s8SequenceP", "init"]
 - !private ["9servicely12ServiceOfferC", "askingPrice"]
 - !private ["9servicely12ServiceOfferC", "companyName"]
 - !private ["9servicely12ServiceOfferC", "contactInfo"]
 - !private ["9servicely12ServiceOfferC", "serviceDescription"]
+- !private ["SS", "init"]
+- !private ["s14StringProtocolP", "init"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s20TextOutputStreamableP", "init"]
 - !private ["So29UIAccessibilityIdentificationP", "frame"]
 - !private ["So29UIAccessibilityIdentificationP", "text"]
 - !private ["So12UIAppearanceP", "frame"]
 - !private ["So12UIAppearanceP", "text"]
+- !private ["So21UIAppearanceContainerP", "client"]
 - !private ["So21UIAppearanceContainerP", "contactNumber"]
 - !private ["So21UIAppearanceContainerP", "didReceiveMemoryWarning"]
 - !private ["So21UIAppearanceContainerP", "frame"]
@@ -185,6 +247,7 @@ depends-member:
 - !private ["So21UIAppearanceContainerP", "name"]
 - !private ["So21UIAppearanceContainerP", "price"]
 - !private ["So21UIAppearanceContainerP", "redView"]
+- !private ["So21UIAppearanceContainerP", "request"]
 - !private ["So21UIAppearanceContainerP", "service"]
 - !private ["So21UIAppearanceContainerP", "serviceDescription"]
 - !private ["So21UIAppearanceContainerP", "setValues"]
@@ -192,12 +255,14 @@ depends-member:
 - !private ["So21UIAppearanceContainerP", "view"]
 - !private ["So21UIAppearanceContainerP", "viewDidLoad"]
 - ["So21UIAppearanceContainerP", ""]
+- !private ["So18UIContentContainerP", "client"]
 - !private ["So18UIContentContainerP", "contactNumber"]
 - !private ["So18UIContentContainerP", "didReceiveMemoryWarning"]
 - !private ["So18UIContentContainerP", "init"]
 - !private ["So18UIContentContainerP", "name"]
 - !private ["So18UIContentContainerP", "price"]
 - !private ["So18UIContentContainerP", "redView"]
+- !private ["So18UIContentContainerP", "request"]
 - !private ["So18UIContentContainerP", "service"]
 - !private ["So18UIContentContainerP", "serviceDescription"]
 - !private ["So18UIContentContainerP", "setValues"]
@@ -209,6 +274,7 @@ depends-member:
 - !private ["So17UICoordinateSpaceP", "text"]
 - !private ["So13UIDynamicItemP", "frame"]
 - !private ["So13UIDynamicItemP", "text"]
+- !private ["So18UIFocusEnvironmentP", "client"]
 - !private ["So18UIFocusEnvironmentP", "contactNumber"]
 - !private ["So18UIFocusEnvironmentP", "didReceiveMemoryWarning"]
 - !private ["So18UIFocusEnvironmentP", "frame"]
@@ -216,6 +282,7 @@ depends-member:
 - !private ["So18UIFocusEnvironmentP", "name"]
 - !private ["So18UIFocusEnvironmentP", "price"]
 - !private ["So18UIFocusEnvironmentP", "redView"]
+- !private ["So18UIFocusEnvironmentP", "request"]
 - !private ["So18UIFocusEnvironmentP", "service"]
 - !private ["So18UIFocusEnvironmentP", "serviceDescription"]
 - !private ["So18UIFocusEnvironmentP", "setValues"]
@@ -226,6 +293,7 @@ depends-member:
 - !private ["So11UIFocusItemP", "frame"]
 - !private ["So11UIFocusItemP", "text"]
 - !private ["So7UILabelC", "text"]
+- !private ["So30UIPasteConfigurationSupportingP", "client"]
 - !private ["So30UIPasteConfigurationSupportingP", "contactNumber"]
 - !private ["So30UIPasteConfigurationSupportingP", "didReceiveMemoryWarning"]
 - !private ["So30UIPasteConfigurationSupportingP", "frame"]
@@ -233,6 +301,7 @@ depends-member:
 - !private ["So30UIPasteConfigurationSupportingP", "name"]
 - !private ["So30UIPasteConfigurationSupportingP", "price"]
 - !private ["So30UIPasteConfigurationSupportingP", "redView"]
+- !private ["So30UIPasteConfigurationSupportingP", "request"]
 - !private ["So30UIPasteConfigurationSupportingP", "service"]
 - !private ["So30UIPasteConfigurationSupportingP", "serviceDescription"]
 - !private ["So30UIPasteConfigurationSupportingP", "setValues"]
@@ -240,9 +309,12 @@ depends-member:
 - !private ["So30UIPasteConfigurationSupportingP", "view"]
 - !private ["So30UIPasteConfigurationSupportingP", "viewDidLoad"]
 - ["So30UIPasteConfigurationSupportingP", ""]
+- ["So11UIResponderC", "Bool"]
+- ["So11UIResponderC", "ClientRequest"]
 - ["So11UIResponderC", "ServiceOffer"]
 - ["So11UIResponderC", "UILabel"]
 - ["So11UIResponderC", "UIView"]
+- ["So11UIResponderC", "client"]
 - ["So11UIResponderC", "contactNumber"]
 - ["So11UIResponderC", "didReceiveMemoryWarning"]
 - !private ["So11UIResponderC", "frame"]
@@ -250,12 +322,14 @@ depends-member:
 - ["So11UIResponderC", "name"]
 - ["So11UIResponderC", "price"]
 - ["So11UIResponderC", "redView"]
+- ["So11UIResponderC", "request"]
 - ["So11UIResponderC", "service"]
 - ["So11UIResponderC", "serviceDescription"]
 - ["So11UIResponderC", "setValues"]
 - !private ["So11UIResponderC", "text"]
 - !private ["So11UIResponderC", "view"]
 - ["So11UIResponderC", "viewDidLoad"]
+- !private ["So30UIResponderStandardEditActionsP", "client"]
 - !private ["So30UIResponderStandardEditActionsP", "contactNumber"]
 - !private ["So30UIResponderStandardEditActionsP", "didReceiveMemoryWarning"]
 - !private ["So30UIResponderStandardEditActionsP", "frame"]
@@ -263,6 +337,7 @@ depends-member:
 - !private ["So30UIResponderStandardEditActionsP", "name"]
 - !private ["So30UIResponderStandardEditActionsP", "price"]
 - !private ["So30UIResponderStandardEditActionsP", "redView"]
+- !private ["So30UIResponderStandardEditActionsP", "request"]
 - !private ["So30UIResponderStandardEditActionsP", "service"]
 - !private ["So30UIResponderStandardEditActionsP", "serviceDescription"]
 - !private ["So30UIResponderStandardEditActionsP", "setValues"]
@@ -270,18 +345,21 @@ depends-member:
 - !private ["So30UIResponderStandardEditActionsP", "view"]
 - !private ["So30UIResponderStandardEditActionsP", "viewDidLoad"]
 - ["So30UIResponderStandardEditActionsP", ""]
+- !private ["So16UIStateRestoringP", "client"]
 - !private ["So16UIStateRestoringP", "contactNumber"]
 - !private ["So16UIStateRestoringP", "didReceiveMemoryWarning"]
 - !private ["So16UIStateRestoringP", "init"]
 - !private ["So16UIStateRestoringP", "name"]
 - !private ["So16UIStateRestoringP", "price"]
 - !private ["So16UIStateRestoringP", "redView"]
+- !private ["So16UIStateRestoringP", "request"]
 - !private ["So16UIStateRestoringP", "service"]
 - !private ["So16UIStateRestoringP", "serviceDescription"]
 - !private ["So16UIStateRestoringP", "setValues"]
 - !private ["So16UIStateRestoringP", "view"]
 - !private ["So16UIStateRestoringP", "viewDidLoad"]
 - ["So16UIStateRestoringP", ""]
+- !private ["So18UITraitEnvironmentP", "client"]
 - !private ["So18UITraitEnvironmentP", "contactNumber"]
 - !private ["So18UITraitEnvironmentP", "didReceiveMemoryWarning"]
 - !private ["So18UITraitEnvironmentP", "frame"]
@@ -289,6 +367,7 @@ depends-member:
 - !private ["So18UITraitEnvironmentP", "name"]
 - !private ["So18UITraitEnvironmentP", "price"]
 - !private ["So18UITraitEnvironmentP", "redView"]
+- !private ["So18UITraitEnvironmentP", "request"]
 - !private ["So18UITraitEnvironmentP", "service"]
 - !private ["So18UITraitEnvironmentP", "serviceDescription"]
 - !private ["So18UITraitEnvironmentP", "setValues"]
@@ -298,24 +377,31 @@ depends-member:
 - ["So18UITraitEnvironmentP", ""]
 - !private ["So6UIViewC", "frame"]
 - !private ["So6UIViewC", "text"]
+- ["So16UIViewControllerC", "Bool"]
+- ["So16UIViewControllerC", "ClientRequest"]
 - ["So16UIViewControllerC", "ServiceOffer"]
 - ["So16UIViewControllerC", "UILabel"]
 - ["So16UIViewControllerC", "UIView"]
+- ["So16UIViewControllerC", "client"]
 - ["So16UIViewControllerC", "contactNumber"]
 - ["So16UIViewControllerC", "didReceiveMemoryWarning"]
 - ["So16UIViewControllerC", "init"]
 - ["So16UIViewControllerC", "name"]
 - ["So16UIViewControllerC", "price"]
 - ["So16UIViewControllerC", "redView"]
+- ["So16UIViewControllerC", "request"]
 - ["So16UIViewControllerC", "service"]
 - ["So16UIViewControllerC", "serviceDescription"]
 - ["So16UIViewControllerC", "setValues"]
 - !private ["So16UIViewControllerC", "view"]
 - ["So16UIViewControllerC", "viewDidLoad"]
 - ["So16UIViewControllerC", ""]
+- ["9servicely011ViewServiceB10ControllerC", "Bool"]
+- ["9servicely011ViewServiceB10ControllerC", "ClientRequest"]
 - ["9servicely011ViewServiceB10ControllerC", "ServiceOffer"]
 - ["9servicely011ViewServiceB10ControllerC", "UILabel"]
 - ["9servicely011ViewServiceB10ControllerC", "UIView"]
+- ["9servicely011ViewServiceB10ControllerC", "client"]
 - ["9servicely011ViewServiceB10ControllerC", "contactNumber"]
 - ["9servicely011ViewServiceB10ControllerC", "deinit"]
 - ["9servicely011ViewServiceB10ControllerC", "didReceiveMemoryWarning"]
@@ -323,13 +409,25 @@ depends-member:
 - ["9servicely011ViewServiceB10ControllerC", "name"]
 - ["9servicely011ViewServiceB10ControllerC", "price"]
 - ["9servicely011ViewServiceB10ControllerC", "redView"]
+- ["9servicely011ViewServiceB10ControllerC", "request"]
 - ["9servicely011ViewServiceB10ControllerC", "service"]
 - ["9servicely011ViewServiceB10ControllerC", "serviceDescription"]
 - ["9servicely011ViewServiceB10ControllerC", "setValues"]
 - !private ["9servicely011ViewServiceB10ControllerC", "view"]
 - ["9servicely011ViewServiceB10ControllerC", "viewDidLoad"]
+- !private ["s23_BidirectionalIndexableP", "init"]
 - !private ["s37_DefaultCustomPlaygroundQuickLookableP", "frame"]
 - !private ["s37_DefaultCustomPlaygroundQuickLookableP", "text"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s33_ExpressibleByStringInterpolationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s10_IndexableP", "init"]
+- !private ["s14_IndexableBaseP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "client"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "contactNumber"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "didReceiveMemoryWarning"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "frame"]
@@ -337,6 +435,7 @@ depends-member:
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "name"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "price"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "redView"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "request"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "service"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "serviceDescription"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "setValues"]
@@ -344,14 +443,23 @@ depends-member:
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "view"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "viewDidLoad"]
 - ["10Foundation27_KeyValueCodingAndObservingP", ""]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
 - !private ["s21_ObjectiveCBridgeableP", "height"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
 - !private ["s21_ObjectiveCBridgeableP", "size"]
 - !private ["s21_ObjectiveCBridgeableP", "width"]
+- !private ["s26_RangeReplaceableIndexableP", "init"]
+- !private ["s16_SwiftStringViewP", "init"]
 depends-nominal:
+- !private "s23BidirectionalCollectionP"
+- !private "Sb"
 - !private "So15CALayerDelegateP"
 - !private "SC6CGRectV"
 - !private "SC6CGSizeV"
 - "s7CVarArgP"
+- !private "9servicely13ClientRequestC"
+- !private "s10CollectionP"
+- !private "s10ComparableP"
 - "s28CustomDebugStringConvertibleP"
 - !private "s29CustomPlaygroundQuickLookableP"
 - !private "s17CustomReflectableP"
@@ -359,12 +467,30 @@ depends-nominal:
 - !private "s9DecodableP"
 - !private "s9EncodableP"
 - "s9EquatableP"
+- !private "s27ExpressibleByBooleanLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
 - "s8HashableP"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
 - "So8NSCodingP"
+- !private "So9NSCopyingP"
 - "So26NSExtensionRequestHandlingP"
+- !private "So21NSItemProviderReadingP"
+- !private "So21NSItemProviderWritingP"
+- !private "So16NSMutableCopyingP"
 - "So8NSObjectC"
 - "So16NSObjectProtocolP"
+- !private "So14NSSecureCodingP"
+- !private "So8NSStringC"
+- !private "s26RangeReplaceableCollectionP"
+- !private "s8SequenceP"
 - !private "9servicely12ServiceOfferC"
+- !private "SS"
+- !private "s14StringProtocolP"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
 - !private "So29UIAccessibilityIdentificationP"
 - !private "So12UIAppearanceP"
 - "So21UIAppearanceContainerP"
@@ -383,9 +509,21 @@ depends-nominal:
 - !private "So6UIViewC"
 - "So16UIViewControllerC"
 - "9servicely011ViewServiceB10ControllerC"
+- !private "s23_BidirectionalIndexableP"
 - !private "s37_DefaultCustomPlaygroundQuickLookableP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s39_ExpressibleByBuiltinUTF16StringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s33_ExpressibleByStringInterpolationP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- !private "s10_IndexableP"
+- !private "s14_IndexableBaseP"
 - "10Foundation27_KeyValueCodingAndObservingP"
 - !private "s21_ObjectiveCBridgeableP"
+- !private "s26_RangeReplaceableIndexableP"
+- !private "s16_SwiftStringViewP"
 depends-dynamic-lookup:
 depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
@@ -514,4 +652,4 @@ depends-external:
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/Pods/Firebase/Headers/module.modulemap"
-interface-hash: "65280f9dd6e5b167231b3e6ac339affa"
+interface-hash: "815b6aa333fccf4ac231247d0b56a9c5"
