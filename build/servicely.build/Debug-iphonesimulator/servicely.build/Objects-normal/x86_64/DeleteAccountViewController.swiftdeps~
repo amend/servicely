@@ -12,6 +12,7 @@ provides-dynamic-lookup:
 - "headerView"
 - "passwordTextField"
 - "textFieldShouldReturn"
+- "touchesBegan"
 - "viewDidLoad"
 - "viewWillAppear"
 depends-top-level:
@@ -25,10 +26,13 @@ depends-top-level:
 - !private "FIRAuth"
 - !private "FIRAuthCredential"
 - !private "FIREmailPasswordAuthProvider"
+- "Set"
 - !private "StringLiteralType"
+- "UIEvent"
 - "UILabel"
 - "UITextField"
 - "UITextFieldDelegate"
+- "UITouch"
 - "UIView"
 - "UIViewController"
 - !private "print"
@@ -150,8 +154,11 @@ depends-member:
 - !private ["9servicely27DeleteAccountViewControllerC", "FIRAuth"]
 - !private ["9servicely27DeleteAccountViewControllerC", "FIRAuthCredential"]
 - !private ["9servicely27DeleteAccountViewControllerC", "FIREmailPasswordAuthProvider"]
+- ["9servicely27DeleteAccountViewControllerC", "Set"]
+- ["9servicely27DeleteAccountViewControllerC", "UIEvent"]
 - ["9servicely27DeleteAccountViewControllerC", "UILabel"]
 - ["9servicely27DeleteAccountViewControllerC", "UITextField"]
+- ["9servicely27DeleteAccountViewControllerC", "UITouch"]
 - ["9servicely27DeleteAccountViewControllerC", "UIView"]
 - ["9servicely27DeleteAccountViewControllerC", "deinit"]
 - ["9servicely27DeleteAccountViewControllerC", "deleteAccount"]
@@ -168,6 +175,7 @@ depends-member:
 - ["9servicely27DeleteAccountViewControllerC", "textFieldShouldClear"]
 - ["9servicely27DeleteAccountViewControllerC", "textFieldShouldEndEditing"]
 - ["9servicely27DeleteAccountViewControllerC", "textFieldShouldReturn"]
+- ["9servicely27DeleteAccountViewControllerC", "touchesBegan"]
 - !private ["9servicely27DeleteAccountViewControllerC", "view"]
 - ["9servicely27DeleteAccountViewControllerC", "viewDidLoad"]
 - ["9servicely27DeleteAccountViewControllerC", "viewWillAppear"]
@@ -314,8 +322,11 @@ depends-member:
 - !private ["So8NSObjectC", "FIRAuth"]
 - !private ["So8NSObjectC", "FIRAuthCredential"]
 - !private ["So8NSObjectC", "FIREmailPasswordAuthProvider"]
+- ["So8NSObjectC", "Set"]
+- ["So8NSObjectC", "UIEvent"]
 - ["So8NSObjectC", "UILabel"]
 - ["So8NSObjectC", "UITextField"]
+- ["So8NSObjectC", "UITouch"]
 - ["So8NSObjectC", "UIView"]
 - !private ["So8NSObjectC", "auth"]
 - !private ["So8NSObjectC", "backgroundColor"]
@@ -342,6 +353,7 @@ depends-member:
 - ["So8NSObjectC", "textFieldShouldClear"]
 - ["So8NSObjectC", "textFieldShouldEndEditing"]
 - ["So8NSObjectC", "textFieldShouldReturn"]
+- ["So8NSObjectC", "touchesBegan"]
 - !private ["So8NSObjectC", "view"]
 - ["So8NSObjectC", "viewDidLoad"]
 - ["So8NSObjectC", "viewWillAppear"]
@@ -511,8 +523,11 @@ depends-member:
 - !private ["So11UIResponderC", "FIRAuth"]
 - !private ["So11UIResponderC", "FIRAuthCredential"]
 - !private ["So11UIResponderC", "FIREmailPasswordAuthProvider"]
+- ["So11UIResponderC", "Set"]
+- ["So11UIResponderC", "UIEvent"]
 - ["So11UIResponderC", "UILabel"]
 - ["So11UIResponderC", "UITextField"]
+- ["So11UIResponderC", "UITouch"]
 - ["So11UIResponderC", "UIView"]
 - !private ["So11UIResponderC", "backgroundColor"]
 - !private ["So11UIResponderC", "delegate"]
@@ -532,6 +547,7 @@ depends-member:
 - ["So11UIResponderC", "textFieldShouldClear"]
 - ["So11UIResponderC", "textFieldShouldEndEditing"]
 - ["So11UIResponderC", "textFieldShouldReturn"]
+- ["So11UIResponderC", "touchesBegan"]
 - !private ["So11UIResponderC", "view"]
 - ["So11UIResponderC", "viewDidLoad"]
 - ["So11UIResponderC", "viewWillAppear"]
@@ -637,8 +653,11 @@ depends-member:
 - !private ["So16UIViewControllerC", "FIRAuth"]
 - !private ["So16UIViewControllerC", "FIRAuthCredential"]
 - !private ["So16UIViewControllerC", "FIREmailPasswordAuthProvider"]
+- ["So16UIViewControllerC", "Set"]
+- ["So16UIViewControllerC", "UIEvent"]
 - ["So16UIViewControllerC", "UILabel"]
 - ["So16UIViewControllerC", "UITextField"]
+- ["So16UIViewControllerC", "UITouch"]
 - ["So16UIViewControllerC", "UIView"]
 - ["So16UIViewControllerC", "deleteAccount"]
 - ["So16UIViewControllerC", "didReceiveMemoryWarning"]
@@ -654,6 +673,7 @@ depends-member:
 - ["So16UIViewControllerC", "textFieldShouldClear"]
 - ["So16UIViewControllerC", "textFieldShouldEndEditing"]
 - ["So16UIViewControllerC", "textFieldShouldReturn"]
+- ["So16UIViewControllerC", "touchesBegan"]
 - !private ["So16UIViewControllerC", "view"]
 - ["So16UIViewControllerC", "viewDidLoad"]
 - ["So16UIViewControllerC", "viewWillAppear"]
@@ -931,4 +951,4 @@ depends-external:
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/Pods/Firebase/Headers/module.modulemap"
-interface-hash: "c0aa0bbfc674d3f59f8efc0b8f594393"
+interface-hash: "5063d6a7dc17d54deaa40a717d2e3e9b"

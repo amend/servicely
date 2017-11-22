@@ -11,15 +11,19 @@ provides-dynamic-lookup:
 - "saveButton"
 - "savedLabel"
 - "viewDidLoad"
+- "viewWillAppear"
 depends-top-level:
 - !private "!"
 - "AssignmentPrecedence"
+- "Bool"
+- !private "ColorScheme"
 - !private "Dictionary"
 - "EditProviderViewController"
 - !private "FIRAuth"
 - !private "FIRDatabase"
 - !private "FIRDatabaseReference"
 - !private "StringLiteralType"
+- "UIButton"
 - "UILabel"
 - "UITextView"
 - "UIViewController"
@@ -27,11 +31,14 @@ depends-member:
 - !private ["s23BidirectionalCollectionP", "init"]
 - !private ["s23BidirectionalCollectionP", "isEmpty"]
 - !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["So15CALayerDelegateP", "backgroundColor"]
 - !private ["So15CALayerDelegateP", "text"]
+- !private ["s7CVarArgP", "ColorScheme"]
 - !private ["s7CVarArgP", "FIRAuth"]
 - !private ["s7CVarArgP", "FIRDatabase"]
 - !private ["s7CVarArgP", "aboutUs"]
 - !private ["s7CVarArgP", "auth"]
+- !private ["s7CVarArgP", "backgroundColor"]
 - !private ["s7CVarArgP", "child"]
 - !private ["s7CVarArgP", "currentUser"]
 - !private ["s7CVarArgP", "database"]
@@ -39,6 +46,7 @@ depends-member:
 - !private ["s7CVarArgP", "init"]
 - !private ["s7CVarArgP", "isEmpty"]
 - !private ["s7CVarArgP", "reference"]
+- !private ["s7CVarArgP", "saveButton"]
 - !private ["s7CVarArgP", "savedLabel"]
 - !private ["s7CVarArgP", "setValue"]
 - !private ["s7CVarArgP", "text"]
@@ -48,12 +56,15 @@ depends-member:
 - ["s7CVarArgP", ""]
 - !private ["s10CollectionP", "init"]
 - !private ["s10CollectionP", "isEmpty"]
+- !private ["9servicely11ColorSchemeC", "getColorScheme"]
 - !private ["s10ComparableP", "init"]
 - !private ["s10ComparableP", "isEmpty"]
+- !private ["s28CustomDebugStringConvertibleP", "ColorScheme"]
 - !private ["s28CustomDebugStringConvertibleP", "FIRAuth"]
 - !private ["s28CustomDebugStringConvertibleP", "FIRDatabase"]
 - !private ["s28CustomDebugStringConvertibleP", "aboutUs"]
 - !private ["s28CustomDebugStringConvertibleP", "auth"]
+- !private ["s28CustomDebugStringConvertibleP", "backgroundColor"]
 - !private ["s28CustomDebugStringConvertibleP", "child"]
 - !private ["s28CustomDebugStringConvertibleP", "currentUser"]
 - !private ["s28CustomDebugStringConvertibleP", "database"]
@@ -61,6 +72,7 @@ depends-member:
 - !private ["s28CustomDebugStringConvertibleP", "init"]
 - !private ["s28CustomDebugStringConvertibleP", "isEmpty"]
 - !private ["s28CustomDebugStringConvertibleP", "reference"]
+- !private ["s28CustomDebugStringConvertibleP", "saveButton"]
 - !private ["s28CustomDebugStringConvertibleP", "savedLabel"]
 - !private ["s28CustomDebugStringConvertibleP", "setValue"]
 - !private ["s28CustomDebugStringConvertibleP", "text"]
@@ -74,11 +86,13 @@ depends-member:
 - !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
 - !private ["s17CustomReflectableP", "init"]
 - !private ["s17CustomReflectableP", "isEmpty"]
+- !private ["s23CustomStringConvertibleP", "ColorScheme"]
 - !private ["s23CustomStringConvertibleP", "FIRAuth"]
 - !private ["s23CustomStringConvertibleP", "FIRDatabase"]
 - !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
 - !private ["s23CustomStringConvertibleP", "aboutUs"]
 - !private ["s23CustomStringConvertibleP", "auth"]
+- !private ["s23CustomStringConvertibleP", "backgroundColor"]
 - !private ["s23CustomStringConvertibleP", "child"]
 - !private ["s23CustomStringConvertibleP", "currentUser"]
 - !private ["s23CustomStringConvertibleP", "database"]
@@ -86,6 +100,7 @@ depends-member:
 - !private ["s23CustomStringConvertibleP", "init"]
 - !private ["s23CustomStringConvertibleP", "isEmpty"]
 - !private ["s23CustomStringConvertibleP", "reference"]
+- !private ["s23CustomStringConvertibleP", "saveButton"]
 - !private ["s23CustomStringConvertibleP", "savedLabel"]
 - !private ["s23CustomStringConvertibleP", "setValue"]
 - !private ["s23CustomStringConvertibleP", "text"]
@@ -96,9 +111,12 @@ depends-member:
 - !private ["s9DecodableP", "_getBuiltinLogicValue"]
 - !private ["s9DecodableP", "init"]
 - !private ["s9DecodableP", "isEmpty"]
+- ["9servicely26EditProviderViewControllerC", "Bool"]
+- !private ["9servicely26EditProviderViewControllerC", "ColorScheme"]
 - !private ["9servicely26EditProviderViewControllerC", "FIRAuth"]
 - !private ["9servicely26EditProviderViewControllerC", "FIRDatabase"]
 - !private ["9servicely26EditProviderViewControllerC", "FIRDatabaseReference"]
+- ["9servicely26EditProviderViewControllerC", "UIButton"]
 - ["9servicely26EditProviderViewControllerC", "UILabel"]
 - ["9servicely26EditProviderViewControllerC", "UITextView"]
 - ["9servicely26EditProviderViewControllerC", "aboutUs"]
@@ -109,14 +127,17 @@ depends-member:
 - ["9servicely26EditProviderViewControllerC", "savedLabel"]
 - !private ["9servicely26EditProviderViewControllerC", "title"]
 - ["9servicely26EditProviderViewControllerC", "viewDidLoad"]
+- ["9servicely26EditProviderViewControllerC", "viewWillAppear"]
 - !private ["s9EncodableP", "_getBuiltinLogicValue"]
 - !private ["s9EncodableP", "init"]
 - !private ["s9EncodableP", "isEmpty"]
+- !private ["s9EquatableP", "ColorScheme"]
 - !private ["s9EquatableP", "FIRAuth"]
 - !private ["s9EquatableP", "FIRDatabase"]
 - !private ["s9EquatableP", "_getBuiltinLogicValue"]
 - !private ["s9EquatableP", "aboutUs"]
 - !private ["s9EquatableP", "auth"]
+- !private ["s9EquatableP", "backgroundColor"]
 - !private ["s9EquatableP", "child"]
 - !private ["s9EquatableP", "currentUser"]
 - !private ["s9EquatableP", "database"]
@@ -124,6 +145,7 @@ depends-member:
 - !private ["s9EquatableP", "init"]
 - !private ["s9EquatableP", "isEmpty"]
 - !private ["s9EquatableP", "reference"]
+- !private ["s9EquatableP", "saveButton"]
 - !private ["s9EquatableP", "savedLabel"]
 - !private ["s9EquatableP", "setValue"]
 - !private ["s9EquatableP", "text"]
@@ -148,11 +170,13 @@ depends-member:
 - !private ["So20FIRDatabaseReferenceC", "setValue"]
 - !private ["So7FIRUserC", "uid"]
 - !private ["So11FIRUserInfoP", "uid"]
+- !private ["s8HashableP", "ColorScheme"]
 - !private ["s8HashableP", "FIRAuth"]
 - !private ["s8HashableP", "FIRDatabase"]
 - !private ["s8HashableP", "_getBuiltinLogicValue"]
 - !private ["s8HashableP", "aboutUs"]
 - !private ["s8HashableP", "auth"]
+- !private ["s8HashableP", "backgroundColor"]
 - !private ["s8HashableP", "child"]
 - !private ["s8HashableP", "currentUser"]
 - !private ["s8HashableP", "database"]
@@ -160,6 +184,7 @@ depends-member:
 - !private ["s8HashableP", "init"]
 - !private ["s8HashableP", "isEmpty"]
 - !private ["s8HashableP", "reference"]
+- !private ["s8HashableP", "saveButton"]
 - !private ["s8HashableP", "savedLabel"]
 - !private ["s8HashableP", "setValue"]
 - !private ["s8HashableP", "text"]
@@ -172,12 +197,15 @@ depends-member:
 - !private ["s25LosslessStringConvertibleP", "isEmpty"]
 - !private ["s10MirrorPathP", "init"]
 - !private ["s10MirrorPathP", "isEmpty"]
+- !private ["So8NSCodingP", "ColorScheme"]
 - !private ["So8NSCodingP", "FIRAuth"]
 - !private ["So8NSCodingP", "FIRDatabase"]
 - !private ["So8NSCodingP", "aboutUs"]
+- !private ["So8NSCodingP", "backgroundColor"]
 - !private ["So8NSCodingP", "didReceiveMemoryWarning"]
 - !private ["So8NSCodingP", "init"]
 - !private ["So8NSCodingP", "isEmpty"]
+- !private ["So8NSCodingP", "saveButton"]
 - !private ["So8NSCodingP", "savedLabel"]
 - !private ["So8NSCodingP", "text"]
 - !private ["So8NSCodingP", "title"]
@@ -185,11 +213,13 @@ depends-member:
 - ["So8NSCodingP", ""]
 - !private ["So9NSCopyingP", "init"]
 - !private ["So9NSCopyingP", "isEmpty"]
+- !private ["So26NSExtensionRequestHandlingP", "ColorScheme"]
 - !private ["So26NSExtensionRequestHandlingP", "FIRAuth"]
 - !private ["So26NSExtensionRequestHandlingP", "FIRDatabase"]
 - !private ["So26NSExtensionRequestHandlingP", "aboutUs"]
 - !private ["So26NSExtensionRequestHandlingP", "didReceiveMemoryWarning"]
 - !private ["So26NSExtensionRequestHandlingP", "init"]
+- !private ["So26NSExtensionRequestHandlingP", "saveButton"]
 - !private ["So26NSExtensionRequestHandlingP", "savedLabel"]
 - !private ["So26NSExtensionRequestHandlingP", "title"]
 - !private ["So26NSExtensionRequestHandlingP", "viewDidLoad"]
@@ -200,13 +230,17 @@ depends-member:
 - !private ["So21NSItemProviderWritingP", "isEmpty"]
 - !private ["So16NSMutableCopyingP", "init"]
 - !private ["So16NSMutableCopyingP", "isEmpty"]
+- ["So8NSObjectC", "Bool"]
+- !private ["So8NSObjectC", "ColorScheme"]
 - !private ["So8NSObjectC", "FIRAuth"]
 - !private ["So8NSObjectC", "FIRDatabase"]
 - !private ["So8NSObjectC", "FIRDatabaseReference"]
+- ["So8NSObjectC", "UIButton"]
 - ["So8NSObjectC", "UILabel"]
 - ["So8NSObjectC", "UITextView"]
 - ["So8NSObjectC", "aboutUs"]
 - !private ["So8NSObjectC", "auth"]
+- !private ["So8NSObjectC", "backgroundColor"]
 - !private ["So8NSObjectC", "child"]
 - !private ["So8NSObjectC", "currentUser"]
 - !private ["So8NSObjectC", "database"]
@@ -221,10 +255,13 @@ depends-member:
 - !private ["So8NSObjectC", "title"]
 - !private ["So8NSObjectC", "uid"]
 - ["So8NSObjectC", "viewDidLoad"]
+- ["So8NSObjectC", "viewWillAppear"]
+- !private ["So16NSObjectProtocolP", "ColorScheme"]
 - !private ["So16NSObjectProtocolP", "FIRAuth"]
 - !private ["So16NSObjectProtocolP", "FIRDatabase"]
 - !private ["So16NSObjectProtocolP", "aboutUs"]
 - !private ["So16NSObjectProtocolP", "auth"]
+- !private ["So16NSObjectProtocolP", "backgroundColor"]
 - !private ["So16NSObjectProtocolP", "child"]
 - !private ["So16NSObjectProtocolP", "currentUser"]
 - !private ["So16NSObjectProtocolP", "database"]
@@ -232,6 +269,7 @@ depends-member:
 - !private ["So16NSObjectProtocolP", "init"]
 - !private ["So16NSObjectProtocolP", "isEmpty"]
 - !private ["So16NSObjectProtocolP", "reference"]
+- !private ["So16NSObjectProtocolP", "saveButton"]
 - !private ["So16NSObjectProtocolP", "savedLabel"]
 - !private ["So16NSObjectProtocolP", "setValue"]
 - !private ["So16NSObjectProtocolP", "text"]
@@ -255,59 +293,82 @@ depends-member:
 - !private ["s16TextOutputStreamP", "isEmpty"]
 - !private ["s20TextOutputStreamableP", "init"]
 - !private ["s20TextOutputStreamableP", "isEmpty"]
+- !private ["So48UIAccessibilityContentSizeCategoryImageAdjustingP", "backgroundColor"]
+- !private ["So29UIAccessibilityIdentificationP", "backgroundColor"]
 - !private ["So29UIAccessibilityIdentificationP", "text"]
+- !private ["So12UIAppearanceP", "backgroundColor"]
 - !private ["So12UIAppearanceP", "text"]
+- !private ["So21UIAppearanceContainerP", "ColorScheme"]
 - !private ["So21UIAppearanceContainerP", "FIRAuth"]
 - !private ["So21UIAppearanceContainerP", "FIRDatabase"]
 - !private ["So21UIAppearanceContainerP", "aboutUs"]
+- !private ["So21UIAppearanceContainerP", "backgroundColor"]
 - !private ["So21UIAppearanceContainerP", "didReceiveMemoryWarning"]
 - !private ["So21UIAppearanceContainerP", "init"]
+- !private ["So21UIAppearanceContainerP", "saveButton"]
 - !private ["So21UIAppearanceContainerP", "savedLabel"]
 - !private ["So21UIAppearanceContainerP", "text"]
 - !private ["So21UIAppearanceContainerP", "title"]
 - !private ["So21UIAppearanceContainerP", "viewDidLoad"]
 - ["So21UIAppearanceContainerP", ""]
+- !private ["So8UIButtonC", "backgroundColor"]
+- !private ["So18UIContentContainerP", "ColorScheme"]
 - !private ["So18UIContentContainerP", "FIRAuth"]
 - !private ["So18UIContentContainerP", "FIRDatabase"]
 - !private ["So18UIContentContainerP", "aboutUs"]
 - !private ["So18UIContentContainerP", "didReceiveMemoryWarning"]
 - !private ["So18UIContentContainerP", "init"]
+- !private ["So18UIContentContainerP", "saveButton"]
 - !private ["So18UIContentContainerP", "savedLabel"]
 - !private ["So18UIContentContainerP", "title"]
 - !private ["So18UIContentContainerP", "viewDidLoad"]
 - ["So18UIContentContainerP", ""]
 - !private ["So30UIContentSizeCategoryAdjustingP", "text"]
+- !private ["So9UIControlC", "backgroundColor"]
+- !private ["So17UICoordinateSpaceP", "backgroundColor"]
 - !private ["So17UICoordinateSpaceP", "text"]
+- !private ["So13UIDynamicItemP", "backgroundColor"]
 - !private ["So13UIDynamicItemP", "text"]
+- !private ["So18UIFocusEnvironmentP", "ColorScheme"]
 - !private ["So18UIFocusEnvironmentP", "FIRAuth"]
 - !private ["So18UIFocusEnvironmentP", "FIRDatabase"]
 - !private ["So18UIFocusEnvironmentP", "aboutUs"]
+- !private ["So18UIFocusEnvironmentP", "backgroundColor"]
 - !private ["So18UIFocusEnvironmentP", "didReceiveMemoryWarning"]
 - !private ["So18UIFocusEnvironmentP", "init"]
+- !private ["So18UIFocusEnvironmentP", "saveButton"]
 - !private ["So18UIFocusEnvironmentP", "savedLabel"]
 - !private ["So18UIFocusEnvironmentP", "text"]
 - !private ["So18UIFocusEnvironmentP", "title"]
 - !private ["So18UIFocusEnvironmentP", "viewDidLoad"]
 - ["So18UIFocusEnvironmentP", ""]
+- !private ["So11UIFocusItemP", "backgroundColor"]
 - !private ["So11UIFocusItemP", "text"]
 - !private ["So10UIKeyInputP", "text"]
 - !private ["So7UILabelC", "text"]
+- !private ["So30UIPasteConfigurationSupportingP", "ColorScheme"]
 - !private ["So30UIPasteConfigurationSupportingP", "FIRAuth"]
 - !private ["So30UIPasteConfigurationSupportingP", "FIRDatabase"]
 - !private ["So30UIPasteConfigurationSupportingP", "aboutUs"]
+- !private ["So30UIPasteConfigurationSupportingP", "backgroundColor"]
 - !private ["So30UIPasteConfigurationSupportingP", "didReceiveMemoryWarning"]
 - !private ["So30UIPasteConfigurationSupportingP", "init"]
+- !private ["So30UIPasteConfigurationSupportingP", "saveButton"]
 - !private ["So30UIPasteConfigurationSupportingP", "savedLabel"]
 - !private ["So30UIPasteConfigurationSupportingP", "text"]
 - !private ["So30UIPasteConfigurationSupportingP", "title"]
 - !private ["So30UIPasteConfigurationSupportingP", "viewDidLoad"]
 - ["So30UIPasteConfigurationSupportingP", ""]
+- ["So11UIResponderC", "Bool"]
+- !private ["So11UIResponderC", "ColorScheme"]
 - !private ["So11UIResponderC", "FIRAuth"]
 - !private ["So11UIResponderC", "FIRDatabase"]
 - !private ["So11UIResponderC", "FIRDatabaseReference"]
+- ["So11UIResponderC", "UIButton"]
 - ["So11UIResponderC", "UILabel"]
 - ["So11UIResponderC", "UITextView"]
 - ["So11UIResponderC", "aboutUs"]
+- !private ["So11UIResponderC", "backgroundColor"]
 - ["So11UIResponderC", "didReceiveMemoryWarning"]
 - ["So11UIResponderC", "init"]
 - ["So11UIResponderC", "saveButton"]
@@ -315,22 +376,29 @@ depends-member:
 - !private ["So11UIResponderC", "text"]
 - !private ["So11UIResponderC", "title"]
 - ["So11UIResponderC", "viewDidLoad"]
+- ["So11UIResponderC", "viewWillAppear"]
+- !private ["So30UIResponderStandardEditActionsP", "ColorScheme"]
 - !private ["So30UIResponderStandardEditActionsP", "FIRAuth"]
 - !private ["So30UIResponderStandardEditActionsP", "FIRDatabase"]
 - !private ["So30UIResponderStandardEditActionsP", "aboutUs"]
+- !private ["So30UIResponderStandardEditActionsP", "backgroundColor"]
 - !private ["So30UIResponderStandardEditActionsP", "didReceiveMemoryWarning"]
 - !private ["So30UIResponderStandardEditActionsP", "init"]
+- !private ["So30UIResponderStandardEditActionsP", "saveButton"]
 - !private ["So30UIResponderStandardEditActionsP", "savedLabel"]
 - !private ["So30UIResponderStandardEditActionsP", "text"]
 - !private ["So30UIResponderStandardEditActionsP", "title"]
 - !private ["So30UIResponderStandardEditActionsP", "viewDidLoad"]
 - ["So30UIResponderStandardEditActionsP", ""]
 - !private ["So12UIScrollViewC", "text"]
+- !private ["So35UISpringLoadedInteractionSupportingP", "backgroundColor"]
+- !private ["So16UIStateRestoringP", "ColorScheme"]
 - !private ["So16UIStateRestoringP", "FIRAuth"]
 - !private ["So16UIStateRestoringP", "FIRDatabase"]
 - !private ["So16UIStateRestoringP", "aboutUs"]
 - !private ["So16UIStateRestoringP", "didReceiveMemoryWarning"]
 - !private ["So16UIStateRestoringP", "init"]
+- !private ["So16UIStateRestoringP", "saveButton"]
 - !private ["So16UIStateRestoringP", "savedLabel"]
 - !private ["So16UIStateRestoringP", "title"]
 - !private ["So16UIStateRestoringP", "viewDidLoad"]
@@ -341,20 +409,27 @@ depends-member:
 - !private ["So17UITextInputTraitsP", "text"]
 - !private ["So34UITextPasteConfigurationSupportingP", "text"]
 - !private ["So10UITextViewC", "text"]
+- !private ["So18UITraitEnvironmentP", "ColorScheme"]
 - !private ["So18UITraitEnvironmentP", "FIRAuth"]
 - !private ["So18UITraitEnvironmentP", "FIRDatabase"]
 - !private ["So18UITraitEnvironmentP", "aboutUs"]
+- !private ["So18UITraitEnvironmentP", "backgroundColor"]
 - !private ["So18UITraitEnvironmentP", "didReceiveMemoryWarning"]
 - !private ["So18UITraitEnvironmentP", "init"]
+- !private ["So18UITraitEnvironmentP", "saveButton"]
 - !private ["So18UITraitEnvironmentP", "savedLabel"]
 - !private ["So18UITraitEnvironmentP", "text"]
 - !private ["So18UITraitEnvironmentP", "title"]
 - !private ["So18UITraitEnvironmentP", "viewDidLoad"]
 - ["So18UITraitEnvironmentP", ""]
+- !private ["So6UIViewC", "backgroundColor"]
 - !private ["So6UIViewC", "text"]
+- ["So16UIViewControllerC", "Bool"]
+- !private ["So16UIViewControllerC", "ColorScheme"]
 - !private ["So16UIViewControllerC", "FIRAuth"]
 - !private ["So16UIViewControllerC", "FIRDatabase"]
 - !private ["So16UIViewControllerC", "FIRDatabaseReference"]
+- ["So16UIViewControllerC", "UIButton"]
 - ["So16UIViewControllerC", "UILabel"]
 - ["So16UIViewControllerC", "UITextView"]
 - ["So16UIViewControllerC", "aboutUs"]
@@ -364,9 +439,11 @@ depends-member:
 - ["So16UIViewControllerC", "savedLabel"]
 - !private ["So16UIViewControllerC", "title"]
 - ["So16UIViewControllerC", "viewDidLoad"]
+- ["So16UIViewControllerC", "viewWillAppear"]
 - ["So16UIViewControllerC", ""]
 - !private ["s23_BidirectionalIndexableP", "init"]
 - !private ["s23_BidirectionalIndexableP", "isEmpty"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "backgroundColor"]
 - !private ["s37_DefaultCustomPlaygroundQuickLookableP", "text"]
 - !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
 - !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
@@ -385,10 +462,12 @@ depends-member:
 - !private ["s10_IndexableP", "isEmpty"]
 - !private ["s14_IndexableBaseP", "init"]
 - !private ["s14_IndexableBaseP", "isEmpty"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "ColorScheme"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "FIRAuth"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "FIRDatabase"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "aboutUs"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "auth"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "backgroundColor"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "child"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "currentUser"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "database"]
@@ -396,6 +475,7 @@ depends-member:
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "isEmpty"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "reference"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "saveButton"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "savedLabel"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "setValue"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "text"]
@@ -416,6 +496,7 @@ depends-nominal:
 - !private "So15CALayerDelegateP"
 - "s7CVarArgP"
 - !private "s10CollectionP"
+- !private "9servicely11ColorSchemeC"
 - !private "s10ComparableP"
 - "s28CustomDebugStringConvertibleP"
 - !private "s29CustomPlaygroundQuickLookableP"
@@ -454,11 +535,14 @@ depends-nominal:
 - !private "s14StringProtocolP"
 - !private "s16TextOutputStreamP"
 - !private "s20TextOutputStreamableP"
+- !private "So48UIAccessibilityContentSizeCategoryImageAdjustingP"
 - !private "So29UIAccessibilityIdentificationP"
 - !private "So12UIAppearanceP"
 - "So21UIAppearanceContainerP"
+- !private "So8UIButtonC"
 - "So18UIContentContainerP"
 - !private "So30UIContentSizeCategoryAdjustingP"
+- !private "So9UIControlC"
 - !private "So17UICoordinateSpaceP"
 - !private "So13UIDynamicItemP"
 - "So18UIFocusEnvironmentP"
@@ -469,6 +553,7 @@ depends-nominal:
 - "So11UIResponderC"
 - "So30UIResponderStandardEditActionsP"
 - !private "So12UIScrollViewC"
+- !private "So35UISpringLoadedInteractionSupportingP"
 - "So16UIStateRestoringP"
 - !private "So15UITextDraggableP"
 - !private "So15UITextDroppableP"
@@ -498,14 +583,20 @@ depends-dynamic-lookup:
 depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreMedia.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/simd.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Metal.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/AVFoundation.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreAudio.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Photos.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
@@ -616,4 +707,4 @@ depends-external:
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/Pods/Firebase/Headers/module.modulemap"
-interface-hash: "df891bde26f6ad399c1fc1ba0b3691f3"
+interface-hash: "b9a4deee0a4d5ee110df07a53eb5b526"

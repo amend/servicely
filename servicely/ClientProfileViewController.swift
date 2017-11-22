@@ -23,7 +23,7 @@ class ClientProfileViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadCorrectProfilePage()
+        //loadCorrectProfilePage()
         constraints()
         self.title = "Client Profile"
 
@@ -36,7 +36,7 @@ class ClientProfileViewController: UIViewController{
         nameView.backgroundColor = colorScheme
         viewMyRequestsButton.backgroundColor = colorScheme
         loadInfo()
-        loadCorrectProfilePage()
+        //loadCorrectProfilePage()
     }
 
 

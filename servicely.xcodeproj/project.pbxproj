@@ -14,6 +14,7 @@
 		379650A21FA891DE00EF72ED /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379650A11FA891DE00EF72ED /* DeleteAccountViewController.swift */; };
 		379650A41FA8954C00EF72ED /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379650A31FA8954C00EF72ED /* SettingsViewController.swift */; };
 		379650A61FA8956400EF72ED /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379650A51FA8956400EF72ED /* SettingsTableViewController.swift */; };
+		37A974DC1FC501AF000D5493 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A974DB1FC501AF000D5493 /* ProfileViewController.swift */; };
 		7F2217E11FA820740004D67D /* EditProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2217E01FA820740004D67D /* EditProviderViewController.swift */; };
 		7F3E1B0D1FA7EB3B0034EE46 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3E1B0C1FA7EB3B0034EE46 /* EditProfileViewController.swift */; };
 		7F7F23101FA68DC200EEA294 /* ClientProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7F230F1FA68DC200EEA294 /* ClientProfileViewController.swift */; };
@@ -47,6 +48,7 @@
 		379650A11FA891DE00EF72ED /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
 		379650A31FA8954C00EF72ED /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		379650A51FA8956400EF72ED /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		37A974DB1FC501AF000D5493 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		663C9C56D0E640BCE58EE219 /* Pods-servicely.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-servicely.release.xcconfig"; path = "Pods/Target Support Files/Pods-servicely/Pods-servicely.release.xcconfig"; sourceTree = "<group>"; };
 		7F2217E01FA820740004D67D /* EditProviderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProviderViewController.swift; sourceTree = "<group>"; };
 		7F3E1B0C1FA7EB3B0034EE46 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				7FF61A761FC0CC3B00DFE2E7 /* CategoriesTableViewController.swift */,
 				7F2217E01FA820740004D67D /* EditProviderViewController.swift */,
 				7F3E1B0C1FA7EB3B0034EE46 /* EditProfileViewController.swift */,
+				37A974DB1FC501AF000D5493 /* ProfileViewController.swift */,
 				7F7F23131FA78B7D00EEA294 /* ProviderProfileViewController.swift */,
 				7F7F230F1FA68DC200EEA294 /* ClientProfileViewController.swift */,
 				9083B3A01F86D5B20079E309 /* Assets.xcassets */,
@@ -294,6 +297,7 @@
 				7F9E23241FA3A6C600865172 /* Client.swift in Sources */,
 				3762DAFF1FA7144C0065FA87 /* ColorScheme.swift in Sources */,
 				902588531F93DC7200F57059 /* ServiceOffer.swift in Sources */,
+				37A974DC1FC501AF000D5493 /* ProfileViewController.swift in Sources */,
 				379650A61FA8956400EF72ED /* SettingsTableViewController.swift in Sources */,
 				9016772F1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift in Sources */,
 				7FBB2EB71FC37588002067C1 /* ViewServiceViewController.swift in Sources */,
