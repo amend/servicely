@@ -7,12 +7,22 @@ Implementation Contributions:
     Profile pages: 100%
 
   Andoni Mendoza: 33%
+  Categories for client requests view: 100%
+  Create client request view: 100%
 
 Grading Level:
   Same grade for all members
 
 Differences:
    ViewMyRequests and ViewMyOffers will be added in final version alongside reviews.
- 
+
 Special Instructions:
-  We usded cocoapods - open the grey workspace
+  when viewing the categories view, select "lawn & garden" to see
+  the entries for the segmented control "services offered".
+
+  if selected "client requests" on segmented control, choose
+  "cell/mobile".
+
+  This is because we have not created offerings/requests for every category
+
+  We used cocoapods - open the grey workspace
