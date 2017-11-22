@@ -17,6 +17,9 @@ class ViewServiceViewController: UIViewController {
     @IBOutlet weak var redView: UIView!
     
     var service:ServiceOffer? = nil
+    var request:ClientRequest? = nil
+    
+    var client:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +35,18 @@ class ViewServiceViewController: UIViewController {
     }
     
     func setValues() {
-        self.name.text = service?.companyName
-        self.serviceDescription.text = service?.serviceDescription
-        self.contactNumber.text = service?.contactInfo
-        self.price.text = service?.askingPrice
-    }
+        if(client == false) {
+            self.name.text = service?.companyName
+            self.serviceDescription.text = service?.serviceDescription
+            self.contactNumber.text = service?.contactInfo
+            self.price.text = service?.askingPrice
+        } else {
+            self.name.text = "Jane Doe"
+            self.serviceDescription.text = request?.serviceDescription
+            self.contactNumber.text = request?.contactInfo
+            self.price.text = "15/hr"
+        }
+ }
     
 
     /*
