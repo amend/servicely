@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class EditProviderViewController: UIViewController {
+class EditProviderViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var aboutUs: UITextView!
     @IBOutlet weak var savedLabel: UILabel!
@@ -20,6 +20,9 @@ class EditProviderViewController: UIViewController {
         super.viewDidLoad()
         savedLabel.text = ""
         self.title = "Edit Provider Profile"
+        aboutUs.delegate = self
+        aboutUs.text = "Tell us about your company..."
+        aboutUs.textColor = UIColor.lightGray
 
         // Do any additional setup after loading the view.
     }
@@ -50,6 +53,19 @@ class EditProviderViewController: UIViewController {
         savedLabel.text = "Saved!"
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Tell us about your company..."
+            textView.textColor = UIColor.lightGray
+        }
+    }
     /*
     // MARK: - Navigation
 

@@ -4,6 +4,7 @@ Implementation Contributions:
     Service View Page: 100%
 
   Seyed Dana Vaziri: 33%
+    Profile pages: 100%
 
   Andoni Mendoza: 33%
 
@@ -11,6 +12,7 @@ Grading Level:
   Same grade for all members
 
 Differences:
+   ViewMyRequests and ViewMyOffers will be added in final version alongside reviews.
  
 Special Instructions:
   We usded cocoapods - open the grey workspace

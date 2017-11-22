@@ -852,7 +852,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Tell Us about your company..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IWu-Ql-ogV">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IWu-Ql-ogV">
                                 <rect key="frame" x="78" y="193" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -867,7 +867,6 @@
                         <outlet property="aboutUs" destination="IWu-Ql-ogV" id="G2O-nn-mNb"/>
                         <outlet property="saveButton" destination="Z6L-0N-YYw" id="u2g-Co-O76"/>
                         <outlet property="savedLabel" destination="u5x-CM-0Zh" id="fWe-xA-gkO"/>
-                        <outlet property="savedLavel" destination="u5x-CM-0Zh" id="ml7-B9-EZ5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wSP-UB-l57" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1674,7 +1673,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Tell us about yourself...." translatesAutoresizingMaskIntoConstraints="NO" id="Jkh-0I-alA">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jkh-0I-alA">
                                 <rect key="frame" x="25" y="184" width="325" height="133"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1841,6 +1840,7 @@
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="niQ-P1-sLg"/>
                     </view>
                     <navigationItem key="navigationItem" id="2Tv-nm-Jqq"/>
                     <connections>

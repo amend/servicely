@@ -1,8 +1,8 @@
 version: "Apple Swift version 4.0.2 (swiftlang-900.0.69.2 clang-900.0.38)"
 options: "aac7264ddeb84ee66c03fd0489585e4a"
-build_time: [1511318701, 221045000]
+build_time: [1511319851, 533990000]
 inputs:
-  "/Programming/servicely/servicely/EditProfileViewController.swift": [1511309525, 0]
+  "/Programming/servicely/servicely/EditProfileViewController.swift": [1511319841, 0]
   "/Programming/servicely/servicely/DeleteAccountViewController.swift": [1511309525, 0]
   "/Programming/servicely/servicely/ServicelyLogoViewController.swift": [1511309525, 0]
   "/Programming/servicely/servicely/ClientProfileViewController.swift": [1511317151, 0]
@@ -24,7 +24,7 @@ inputs:
   "/Programming/servicely/servicely/ClientFeedViewController.swift": [1511309525, 0]
   "/Programming/servicely/servicely/ServiceTypeViewController.swift": [1511309525, 0]
   "/Programming/servicely/servicely/CategoriesServiceTableViewCell.swift": [1511309525, 0]
-  "/Programming/servicely/servicely/EditProviderViewController.swift": [1511309525, 0]
+  "/Programming/servicely/servicely/EditProviderViewController.swift": [1511319806, 0]
   "/Programming/servicely/servicely/ServicesRequestsTableViewController.swift": [1511317697, 0]
   "/Programming/servicely/servicely/CreateServiceOfferViewController.swift": [1511309525, 0]
   "/Programming/servicely/servicely/CategoriesTableViewController.swift": [1511317910, 0]

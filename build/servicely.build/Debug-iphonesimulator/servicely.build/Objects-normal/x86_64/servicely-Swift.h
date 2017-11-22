@@ -390,7 +390,7 @@ SWIFT_CLASS("_TtC9servicely27DeleteAccountViewController")
 
 
 SWIFT_CLASS("_TtC9servicely25EditProfileViewController")
-@interface EditProfileViewController : UIViewController
+@interface EditProfileViewController : UIViewController <UITextViewDelegate>
 @property (nonatomic, weak) IBOutlet UITextView * _Null_unspecified aboutMe;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified savedLabel;
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified saveButton;
@@ -398,13 +398,15 @@ SWIFT_CLASS("_TtC9servicely25EditProfileViewController")
 - (void)didReceiveMemoryWarning;
 - (void)viewWillAppear:(BOOL)animated;
 - (IBAction)saveButton:(id _Nonnull)sender;
+- (void)textViewDidBeginEditing:(UITextView * _Nonnull)textView;
+- (void)textViewDidEndEditing:(UITextView * _Nonnull)textView;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
 SWIFT_CLASS("_TtC9servicely26EditProviderViewController")
-@interface EditProviderViewController : UIViewController
+@interface EditProviderViewController : UIViewController <UITextViewDelegate>
 @property (nonatomic, weak) IBOutlet UITextView * _Null_unspecified aboutUs;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified savedLabel;
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified saveButton;
@@ -412,6 +414,8 @@ SWIFT_CLASS("_TtC9servicely26EditProviderViewController")
 - (void)didReceiveMemoryWarning;
 - (void)viewWillAppear:(BOOL)animated;
 - (IBAction)saveButton:(id _Nonnull)sender;
+- (void)textViewDidBeginEditing:(UITextView * _Nonnull)textView;
+- (void)textViewDidEndEditing:(UITextView * _Nonnull)textView;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
