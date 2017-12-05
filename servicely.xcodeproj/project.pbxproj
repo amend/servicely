@@ -21,6 +21,7 @@
 		7F7F23141FA78B7D00EEA294 /* ProviderProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7F23131FA78B7D00EEA294 /* ProviderProfileViewController.swift */; };
 		7F9E23241FA3A6C600865172 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E23231FA3A6C600865172 /* Client.swift */; };
 		7F9E39761FD72290008CB750 /* OurServicesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E39751FD72290008CB750 /* OurServicesTableViewController.swift */; };
+		7F9E39781FD7326A008CB750 /* MyRequetsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E39771FD7326A008CB750 /* MyRequetsTableViewController.swift */; };
 		7FBB2EB31FC281A4002067C1 /* ServicesRequestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB2EB21FC281A4002067C1 /* ServicesRequestsTableViewController.swift */; };
 		7FBB2EB51FC36430002067C1 /* CategoriesServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB2EB41FC36430002067C1 /* CategoriesServiceTableViewCell.swift */; };
 		7FBB2EB71FC37588002067C1 /* ViewServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB2EB61FC37588002067C1 /* ViewServiceViewController.swift */; };
@@ -57,6 +58,7 @@
 		7F7F23131FA78B7D00EEA294 /* ProviderProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderProfileViewController.swift; sourceTree = "<group>"; };
 		7F9E23231FA3A6C600865172 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		7F9E39751FD72290008CB750 /* OurServicesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurServicesTableViewController.swift; sourceTree = "<group>"; };
+		7F9E39771FD7326A008CB750 /* MyRequetsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRequetsTableViewController.swift; sourceTree = "<group>"; };
 		7FBB2EB21FC281A4002067C1 /* ServicesRequestsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesRequestsTableViewController.swift; sourceTree = "<group>"; };
 		7FBB2EB41FC36430002067C1 /* CategoriesServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesServiceTableViewCell.swift; sourceTree = "<group>"; };
 		7FBB2EB61FC37588002067C1 /* ViewServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewServiceViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				9016772C1F92BA1C00F1E1D5 /* GoogleService-Info.plist */,
 				9083B3991F86D5B20079E309 /* AppDelegate.swift */,
 				9083B39D1F86D5B20079E309 /* Main.storyboard */,
+				7F9E39771FD7326A008CB750 /* MyRequetsTableViewController.swift */,
 				7F9E39751FD72290008CB750 /* OurServicesTableViewController.swift */,
 				7FBB2EB61FC37588002067C1 /* ViewServiceViewController.swift */,
 				7FBB2EB21FC281A4002067C1 /* ServicesRequestsTableViewController.swift */,
@@ -293,6 +296,7 @@
 				7F3E1B0D1FA7EB3B0034EE46 /* EditProfileViewController.swift in Sources */,
 				379650A21FA891DE00EF72ED /* DeleteAccountViewController.swift in Sources */,
 				90CA841A1F995EFA00EDB7AC /* ServicelyLogoViewController.swift in Sources */,
+				7F9E39781FD7326A008CB750 /* MyRequetsTableViewController.swift in Sources */,
 				7F7F23101FA68DC200EEA294 /* ClientProfileViewController.swift in Sources */,
 				3785C1F11FA9391200774BCE /* ChangeProfilePictureViewController.swift in Sources */,
 				379650A01FA889AD00EF72ED /* ChangePasswordViewController.swift in Sources */,

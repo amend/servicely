@@ -1,8 +1,8 @@
 //
-//  ServicesRequestsTableViewController.swift
+//  MyRequetsTableViewController.swift
 //  servicely
 //
-//  Created by Brenda Salazar on 11/19/17.
+//  Created by Brenda Salazar on 12/5/17.
 //  Copyright © 2017 Andoni Mendoza. All rights reserved.
 //
 
@@ -11,24 +11,16 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-class ServicesRequestsTableViewController: UITableViewController {
-
-    var category:String = ""
-    var client:Bool = false
+class MyRequetsTableViewController: UITableViewController {
     
-    var services = [ServiceOffer]()
     var requests = [ClientRequest]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if(client) {
-            getRequets()
-        } else {
-            getServices()
-        }
-        
+        self.title = "My Requests"
         self.tableView.rowHeight = 80.0
+        getRequests()
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -50,60 +42,28 @@ class ServicesRequestsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if (client == false) {
-            return services.count
-        } else {
-            return requests.count
-        }
+        return requests.count
     }
 
-    func getServices() {
-        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-        let serviceOfferRef = ref.child("serviceOffer")
+    func getRequests() {
+        let userID = FIRAuth.auth()?.currentUser?.uid
         
-        serviceOfferRef.observeSingleEvent(of: .value, with: { snapshot in
+        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
+        let requestOfferRef = ref.child("clientRequest")
+        
+        requestOfferRef.observeSingleEvent(of: .value, with: { snapshot in
             print(snapshot.childrenCount)
             for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                print("adding to services array...")
+                print("adding to requests array...")
                 
                 if let dict = rest.value as? NSDictionary {
-                    let serviceType = (dict["serviceType"] as? String)!
-                    if (serviceType == self.category) {
-                        self.services.append(ServiceOffer.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!))
-                    }
-                    print("added \(rest.value)")
-                } else {
-                    print("could not convert snaptshot to dictionary")
-                }
-            }
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
-    }
-    
-    func getRequets() {
-        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-        let serviceOfferRef = ref.child("clientRequest")
-        
-        serviceOfferRef.observeSingleEvent(of: .value, with: { snapshot in
-            print(snapshot.childrenCount)
-            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                print("adding to services array...")
-                
-                if let dict = rest.value as? NSDictionary {
-                    let serviceType = (dict["serviceType"] as? String)!
-                    if (serviceType == self.category) {
+                    let _userID = (dict["userID"] as? String)!
+                    if (_userID == userID!) {
                         self.requests.append(ClientRequest.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["requestDescription"] as? String)!, location: (dict["location"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!, userName: (dict["userName"] as? String)!))
-                        
-                        /*
-                        self.services.append(ServiceOffer.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!))
-                        */
                     }
                     print("added \(rest.value)")
                 } else {
-                    print("could not convert snaptshot to dictionary")
+                    print("could not convert snapshot to dictionary")
                 }
             }
             
@@ -112,23 +72,15 @@ class ServicesRequestsTableViewController: UITableViewController {
             }
         })
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoriesServiceCell", for: indexPath) as! CategoriesServiceTableViewCell
-        if(self.client == false) {
-            let service = services[indexPath.row]
-        
-            cell.name?.text = service.companyName
-            cell.price?.text = service.askingPrice
-        
-            // Configure the cell...
-        } else {
-            let request = requests[indexPath.row]
-            
-            cell.name?.text = request.userName
-            cell.price?.text = request.contactInfo
-        }
+
+        let request = requests[indexPath.row]
+        cell.name?.text = request.userName
+        cell.price?.text = request.contactInfo
+        // Configure the cell...
+
         return cell
     }
     
@@ -168,33 +120,14 @@ class ServicesRequestsTableViewController: UITableViewController {
     }
     */
 
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "viewService" {
-            if(self.client == false) {
-                let vc:ViewServiceViewController = segue.destination as! ViewServiceViewController
-            
-                let indexPath = self.tableView.indexPathForSelectedRow?.row
-                let service = services[indexPath!]
-            
-                vc.service = service
-                vc.client = client
-            } else {
-                let vc:ViewServiceViewController = segue.destination as! ViewServiceViewController
-                
-                let indexPath = self.tableView.indexPathForSelectedRow?.row
-                let request = requests[indexPath!]
-                
-                vc.request = request
-                vc.client = client
-            }
-        }
     }
- 
+    */
 
 }

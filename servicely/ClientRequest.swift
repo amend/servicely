@@ -15,6 +15,7 @@ class ClientRequest {
     private var _location:String = ""
     private var _contactInfo:String = ""
     private var _userID:String = ""
+    private var _userName:String = ""
     
     var serviceType:String {
         get { return _serviceType}
@@ -41,11 +42,18 @@ class ClientRequest {
         set(v) { _userID = v }
     }
     
-    init(serviceType:String, serviceDescription:String, location:String, contactInfo:String, userID:String) {
+    var userName:String {
+        get { return _userName }
+        set(v) {_userName = v}
+    }
+    
+    
+    init(serviceType:String, serviceDescription:String, location:String, contactInfo:String, userID:String, userName:String) {
         self.serviceType = serviceType
         self.serviceDescription = serviceDescription
         self.location = location
         self.contactInfo = contactInfo
         self.userID = userID
+        self.userName = userName
     }
 }

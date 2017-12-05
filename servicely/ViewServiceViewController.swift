@@ -41,7 +41,7 @@ class ViewServiceViewController: UIViewController {
             self.contactNumber.text = service?.contactInfo
             self.price.text = service?.askingPrice
         } else {
-            self.name.text = "Jane Doe"
+            self.name.text = request?.userName
             self.serviceDescription.text = request?.serviceDescription
             self.contactNumber.text = request?.contactInfo
             self.price.text = "15/hr"
