@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
@@ -55,6 +56,8 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
     }
     
     @IBAction func submitButton(_ sender: Any) {
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        
         // define array of key/value pairs to store for this person.
         let serviceOfferRecord = [
             "companyName": companyName.text!,
@@ -62,7 +65,8 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
             "serviceDescription": serviceDescription.text!,
             "askingPrice": askingPrice.text!,
             "location": location.text!,
-            "contactInfo": contactInfo.text!
+            "contactInfo": contactInfo.text!,
+            "userID": userID
         ]
         
         // Save to Firebase.

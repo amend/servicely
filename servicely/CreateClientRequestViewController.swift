@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class CreateClientRequestViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -54,12 +55,15 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
     }
     
     @IBAction func submitButton(_ sender: Any) {
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        
         // define array of key/value pairs to store for this person.
         let clientRequestRecord = [
             "serviceType": serviceType,
             "location": location.text!,
             "contactInfo": contactInfo.text!,
-            "requestDescription": requestDescription.text!
+            "requestDescription": requestDescription.text!,
+            "userID": userID
         ]
         
         // Save to Firebase.

@@ -92,7 +92,8 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
                 if let dict = rest.value as? NSDictionary {
                     //let postContent = dict["companyName"] as? String
                     
-                    self.services.append(ServiceOffer.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!))
+                    self.services.append(ServiceOffer.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!))
+                    
                     print("added \(rest.value)")
                 } else {
                     print("could not convert snapshot to dictionay")
