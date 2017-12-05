@@ -20,6 +20,7 @@
 		7F7F23101FA68DC200EEA294 /* ClientProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7F230F1FA68DC200EEA294 /* ClientProfileViewController.swift */; };
 		7F7F23141FA78B7D00EEA294 /* ProviderProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7F23131FA78B7D00EEA294 /* ProviderProfileViewController.swift */; };
 		7F9E23241FA3A6C600865172 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E23231FA3A6C600865172 /* Client.swift */; };
+		7F9E39761FD72290008CB750 /* OurServicesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9E39751FD72290008CB750 /* OurServicesTableViewController.swift */; };
 		7FBB2EB31FC281A4002067C1 /* ServicesRequestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB2EB21FC281A4002067C1 /* ServicesRequestsTableViewController.swift */; };
 		7FBB2EB51FC36430002067C1 /* CategoriesServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB2EB41FC36430002067C1 /* CategoriesServiceTableViewCell.swift */; };
 		7FBB2EB71FC37588002067C1 /* ViewServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB2EB61FC37588002067C1 /* ViewServiceViewController.swift */; };
@@ -55,6 +56,7 @@
 		7F7F230F1FA68DC200EEA294 /* ClientProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProfileViewController.swift; sourceTree = "<group>"; };
 		7F7F23131FA78B7D00EEA294 /* ProviderProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderProfileViewController.swift; sourceTree = "<group>"; };
 		7F9E23231FA3A6C600865172 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		7F9E39751FD72290008CB750 /* OurServicesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurServicesTableViewController.swift; sourceTree = "<group>"; };
 		7FBB2EB21FC281A4002067C1 /* ServicesRequestsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesRequestsTableViewController.swift; sourceTree = "<group>"; };
 		7FBB2EB41FC36430002067C1 /* CategoriesServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesServiceTableViewCell.swift; sourceTree = "<group>"; };
 		7FBB2EB61FC37588002067C1 /* ViewServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewServiceViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				9016772C1F92BA1C00F1E1D5 /* GoogleService-Info.plist */,
 				9083B3991F86D5B20079E309 /* AppDelegate.swift */,
 				9083B39D1F86D5B20079E309 /* Main.storyboard */,
+				7F9E39751FD72290008CB750 /* OurServicesTableViewController.swift */,
 				7FBB2EB61FC37588002067C1 /* ViewServiceViewController.swift */,
 				7FBB2EB21FC281A4002067C1 /* ServicesRequestsTableViewController.swift */,
 				7FBB2EB41FC36430002067C1 /* CategoriesServiceTableViewCell.swift */,
@@ -311,6 +314,7 @@
 				7FBB2EB51FC36430002067C1 /* CategoriesServiceTableViewCell.swift in Sources */,
 				7F2217E11FA820740004D67D /* EditProviderViewController.swift in Sources */,
 				7FBB2EB31FC281A4002067C1 /* ServicesRequestsTableViewController.swift in Sources */,
+				7F9E39761FD72290008CB750 /* OurServicesTableViewController.swift in Sources */,
 				901677271F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift in Sources */,
 				7FF61A771FC0CC3B00DFE2E7 /* CategoriesTableViewController.swift in Sources */,
 			);
