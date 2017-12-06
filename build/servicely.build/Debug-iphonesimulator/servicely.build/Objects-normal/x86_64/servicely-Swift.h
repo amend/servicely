@@ -616,6 +616,7 @@ SWIFT_CLASS("_TtC9servicely25ViewServiceViewController")
 @property (nonatomic, weak) IBOutlet CosmosView * _Null_unspecified ratingBar;
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified submitButton;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)animated;
 - (void)didReceiveMemoryWarning;
 - (IBAction)submitRating:(id _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;

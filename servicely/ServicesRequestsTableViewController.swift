@@ -145,11 +145,20 @@ class ServicesRequestsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoriesServiceCell", for: indexPath) as! CategoriesServiceTableViewCell
         if(self.client == false) {
             let service = services[indexPath.row]
+            let rating = ratings[service.userID]!
+            let colorScheme = ColorScheme.getColorScheme()
+            
             cell.name?.text = service.companyName
             cell.price?.text = service.askingPrice
-            cell.rating?.isHidden = false
-            cell.rating?.rating = ratings[service.userID]!
-            
+            if(rating != -1){
+                cell.rating?.isHidden = false
+                cell.rating?.rating = rating
+                cell.rating?.filledColor = colorScheme
+                cell.rating?.filledBorderColor = colorScheme
+                cell.rating?.emptyBorderColor = colorScheme
+            }else{
+                cell.rating?.isHidden = true
+            }
         } else {
             let request = requests[indexPath.row]
             

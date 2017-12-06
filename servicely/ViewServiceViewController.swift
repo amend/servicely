@@ -34,7 +34,17 @@ class ViewServiceViewController: UIViewController {
         self.redView.frame.size.height = 80.00
         // Do any additional setup after loading the view.
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let colorScheme = ColorScheme.getColorScheme()
+        redView.backgroundColor = colorScheme
+        submitButton.backgroundColor = colorScheme
+        redView.backgroundColor = colorScheme
+        ratingBar.filledColor = colorScheme
+        ratingBar.filledBorderColor = colorScheme
+        ratingBar.emptyBorderColor = colorScheme
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
