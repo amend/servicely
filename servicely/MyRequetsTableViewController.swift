@@ -78,7 +78,7 @@ class MyRequetsTableViewController: UITableViewController {
 
         let request = requests[indexPath.row]
         cell.name?.text = request.userName
-        cell.price?.text = request.contactInfo
+        cell.price?.text = request.serviceDescription
         // Configure the cell...
 
         return cell
@@ -120,14 +120,23 @@ class MyRequetsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "viewService" {
+            let vc:ViewServiceViewController = segue.destination as! ViewServiceViewController
+            let indexPath = self.tableView.indexPathForSelectedRow?.row
+            
+            let request = requests[indexPath!]
+            
+            vc.request = request
+            vc.client = true
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+
 
 }

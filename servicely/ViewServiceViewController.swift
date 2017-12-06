@@ -20,6 +20,7 @@ class ViewServiceViewController: UIViewController {
     @IBOutlet weak var redView: UIView!
     @IBOutlet weak var ratingBar: CosmosView!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var priceLabel: UILabel!
     
     var service:ServiceOffer? = nil
     var request:ClientRequest? = nil
@@ -60,7 +61,8 @@ class ViewServiceViewController: UIViewController {
             self.name.text = request?.userName
             self.serviceDescription.text = request?.serviceDescription
             self.contactNumber.text = request?.contactInfo
-            self.price.text = "15/hr"
+            self.price.text = ""
+            self.priceLabel.text = ""
         }
  }
     

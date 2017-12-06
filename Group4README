@@ -1,20 +1,19 @@
 Implementation Contributions:
   Brenda Salazar: 33%
-    Categories Tab: 100%
-    Service View Page: 100%
+    View My Requests: 100%
+    View Our Services: 100%
+    View Services on Feed: 100%
 
   Seyed Dana Vaziri: 33%
-    Profile pages: 100%
 
   Andoni Mendoza: 33%
-  Categories for client requests view: 100%
-  Create client request view: 100%
+
 
 Grading Level:
   Same grade for all members
 
 Differences:
-   ViewMyRequests and ViewMyOffers will be added in final version alongside reviews.
+  
 
 Special Instructions:
   when viewing the categories view, select "lawn & garden" to see

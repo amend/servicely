@@ -268,29 +268,20 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     }
     */
 
-   /* override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "viewService" {
-            if(self.client == false) {
-                let vc:ViewServiceViewController = segue.destination as! ViewServiceViewController
+            let vc:ViewServiceViewController = segue.destination as! ViewServiceViewController
                 
-                let indexPath = self.feedTableView.indexPathForSelectedRow?.row
-                let service = services[indexPath!]
+            let indexPath = self.feedTableView.indexPathForSelectedRow?.row
+            let service = services[indexPath!]
                 
-                vc.service = service
-                vc.client = client
-                vc.oldRating = ratings[service.userID]!
-            } else {
-                let vc:ViewServiceViewController = segue.destination as! ViewServiceViewController
-                
-                let indexPath = self.feedTableView.indexPathForSelectedRow?.row
-                let request = requests[indexPath!]
-                
-                vc.request = request
-                vc.client = client
-            }
+            vc.service = service
+            vc.client = false
+            vc.oldRating = ratings[service.userID]!
+        
         }
-    }*/
+    }
 
 }

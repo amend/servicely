@@ -78,7 +78,7 @@ class OurServicesTableViewController: UITableViewController {
         
         let service = services[indexPath.row]
         cell.name?.text = service.companyName
-        cell.price?.text = service.askingPrice
+        cell.price?.text = service.serviceDescription
 
         // Configure the cell...
 
@@ -121,14 +121,22 @@ class OurServicesTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "viewService" {
+            let vc:ViewServiceViewController = segue.destination as! ViewServiceViewController
+            let indexPath = self.tableView.indexPathForSelectedRow?.row
+            let service = services[indexPath!]
+            
+            vc.service = service
+            vc.client = false
+        }
     }
-    */
+    
 
 }

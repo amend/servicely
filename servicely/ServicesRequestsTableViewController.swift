@@ -163,7 +163,7 @@ class ServicesRequestsTableViewController: UITableViewController {
             let request = requests[indexPath.row]
             
             cell.name?.text = request.userName
-            cell.price?.text = request.contactInfo
+            cell.price?.text = request.serviceDescription
             cell.rating?.isHidden = true
         }
         return cell

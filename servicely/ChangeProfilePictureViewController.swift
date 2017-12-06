@@ -19,7 +19,7 @@ class ChangeProfilePictureViewController: UIViewController, UINavigationControll
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var choosePictureButton: UIButton!
     @IBOutlet weak var setPictureButton: UIButton!
-    var sourceImage: UIImage = nil
+    var sourceImage: UIImage? = nil
     var imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
