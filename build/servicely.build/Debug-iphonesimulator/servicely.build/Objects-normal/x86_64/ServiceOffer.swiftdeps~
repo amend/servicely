@@ -46,6 +46,7 @@ depends-member:
 - !private ["9servicely12ServiceOfferC", "_location"]
 - !private ["9servicely12ServiceOfferC", "_serviceDescription"]
 - !private ["9servicely12ServiceOfferC", "_serviceType"]
+- !private ["9servicely12ServiceOfferC", "_userID"]
 - ["9servicely12ServiceOfferC", "askingPrice"]
 - ["9servicely12ServiceOfferC", "companyName"]
 - ["9servicely12ServiceOfferC", "contactInfo"]
@@ -54,6 +55,7 @@ depends-member:
 - ["9servicely12ServiceOfferC", "location"]
 - ["9servicely12ServiceOfferC", "serviceDescription"]
 - ["9servicely12ServiceOfferC", "serviceType"]
+- ["9servicely12ServiceOfferC", "userID"]
 - ["SS", "init"]
 - ["s14StringProtocolP", "init"]
 - ["s16TextOutputStreamP", "init"]
@@ -245,4 +247,4 @@ depends-external:
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/Pods/Firebase/Headers/module.modulemap"
-interface-hash: "1ff4d6db9c7b21756ed5933c1420d6e4"
+interface-hash: "4d3b0d44a5cafb3b8c0fbc7053d74c8c"

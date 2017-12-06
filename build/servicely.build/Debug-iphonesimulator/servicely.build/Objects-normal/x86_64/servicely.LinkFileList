@@ -1,6 +1,7 @@
 /Programming/servicely/build/servicely.build/Debug-iphonesimulator/servicely.build/Objects-normal/x86_64/EditProfileViewController.o
 /Programming/servicely/build/servicely.build/Debug-iphonesimulator/servicely.build/Objects-normal/x86_64/DeleteAccountViewController.o
 /Programming/servicely/build/servicely.build/Debug-iphonesimulator/servicely.build/Objects-normal/x86_64/ServicelyLogoViewController.o
+/Programming/servicely/build/servicely.build/Debug-iphonesimulator/servicely.build/Objects-normal/x86_64/MyRequetsTableViewController.o
 /Programming/servicely/build/servicely.build/Debug-iphonesimulator/servicely.build/Objects-normal/x86_64/ClientProfileViewController.o
 /Programming/servicely/build/servicely.build/Debug-iphonesimulator/servicely.build/Objects-normal/x86_64/ChangeProfilePictureViewController.o
 /Programming/servicely/build/servicely.build/Debug-iphonesimulator/servicely.build/Objects-normal/x86_64/ChangePasswordViewController.o
@@ -9,6 +10,7 @@
 /Programming/servicely/build/servicely.build/Debug-iphonesimulator/servicely.build/Objects-normal/x86_64/ColorScheme.o
 /Programming/servicely/build/servicely.build/Debug-iphonesimulator/servicely.build/Objects-normal/x86_64/ServiceOffer.o
 /Programming/servicely/build/servicely.build/Debug-iphonesimulator/servicely.build/Objects-normal/x86_64/ProfileViewController.o
+/Programming/servicely/build/servicely.build/Debug-iphonesimulator/servicely.build/Objects-normal/x86_64/CosmosDistrib.o
 /Programming/servicely/build/servicely.build/Debug-iphonesimulator/servicely.build/Objects-normal/x86_64/SettingsTableViewController.o
 /Programming/servicely/build/servicely.build/Debug-iphonesimulator/servicely.build/Objects-normal/x86_64/ServiceOfferTableViewCell.o
 /Programming/servicely/build/servicely.build/Debug-iphonesimulator/servicely.build/Objects-normal/x86_64/ViewServiceViewController.o
@@ -22,5 +24,6 @@
 /Programming/servicely/build/servicely.build/Debug-iphonesimulator/servicely.build/Objects-normal/x86_64/CategoriesServiceTableViewCell.o
 /Programming/servicely/build/servicely.build/Debug-iphonesimulator/servicely.build/Objects-normal/x86_64/EditProviderViewController.o
 /Programming/servicely/build/servicely.build/Debug-iphonesimulator/servicely.build/Objects-normal/x86_64/ServicesRequestsTableViewController.o
+/Programming/servicely/build/servicely.build/Debug-iphonesimulator/servicely.build/Objects-normal/x86_64/OurServicesTableViewController.o
 /Programming/servicely/build/servicely.build/Debug-iphonesimulator/servicely.build/Objects-normal/x86_64/CreateServiceOfferViewController.o
 /Programming/servicely/build/servicely.build/Debug-iphonesimulator/servicely.build/Objects-normal/x86_64/CategoriesTableViewController.o

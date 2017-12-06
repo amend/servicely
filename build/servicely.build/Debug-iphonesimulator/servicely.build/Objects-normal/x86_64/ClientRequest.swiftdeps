@@ -19,12 +19,16 @@ depends-member:
 - !private ["9servicely13ClientRequestC", "_location"]
 - !private ["9servicely13ClientRequestC", "_serviceDescription"]
 - !private ["9servicely13ClientRequestC", "_serviceType"]
+- !private ["9servicely13ClientRequestC", "_userID"]
+- !private ["9servicely13ClientRequestC", "_userName"]
 - ["9servicely13ClientRequestC", "contactInfo"]
 - ["9servicely13ClientRequestC", "deinit"]
 - ["9servicely13ClientRequestC", "init"]
 - ["9servicely13ClientRequestC", "location"]
 - ["9servicely13ClientRequestC", "serviceDescription"]
 - ["9servicely13ClientRequestC", "serviceType"]
+- ["9servicely13ClientRequestC", "userID"]
+- ["9servicely13ClientRequestC", "userName"]
 - ["s10CollectionP", "init"]
 - ["s10ComparableP", "init"]
 - ["s28CustomDebugStringConvertibleP", "init"]
@@ -241,4 +245,4 @@ depends-external:
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/Pods/Firebase/Headers/module.modulemap"
-interface-hash: "e02a4eb85109471a07ffd0a3a095b2cf"
+interface-hash: "4e8715ec3a958a16197c25726eaf1590"

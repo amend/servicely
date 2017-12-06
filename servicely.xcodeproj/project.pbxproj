@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3745B96E1FD79E0400622BCE /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3745B96D1FD79E0400622BCE /* CosmosDistrib.swift */; };
 		3762DAD91FA705990065FA87 /* ChangeColorSchemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3762DAD81FA705990065FA87 /* ChangeColorSchemeViewController.swift */; };
 		3762DAFF1FA7144C0065FA87 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3762DAFE1FA7144C0065FA87 /* ColorScheme.swift */; };
 		3785C1F11FA9391200774BCE /* ChangeProfilePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3785C1F01FA9391200774BCE /* ChangeProfilePictureViewController.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3745B96D1FD79E0400622BCE /* CosmosDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosDistrib.swift; sourceTree = "<group>"; };
 		3762DAD81FA705990065FA87 /* ChangeColorSchemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeColorSchemeViewController.swift; sourceTree = "<group>"; };
 		3762DAFE1FA7144C0065FA87 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		3785C1F01FA9391200774BCE /* ChangeProfilePictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeProfilePictureViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		9083B3981F86D5B20079E309 /* servicely */ = {
 			isa = PBXGroup;
 			children = (
+				3745B96D1FD79E0400622BCE /* CosmosDistrib.swift */,
 				9016772C1F92BA1C00F1E1D5 /* GoogleService-Info.plist */,
 				9083B3991F86D5B20079E309 /* AppDelegate.swift */,
 				9083B39D1F86D5B20079E309 /* Main.storyboard */,
@@ -305,6 +308,7 @@
 				3762DAFF1FA7144C0065FA87 /* ColorScheme.swift in Sources */,
 				902588531F93DC7200F57059 /* ServiceOffer.swift in Sources */,
 				37A974DC1FC501AF000D5493 /* ProfileViewController.swift in Sources */,
+				3745B96E1FD79E0400622BCE /* CosmosDistrib.swift in Sources */,
 				379650A61FA8956400EF72ED /* SettingsTableViewController.swift in Sources */,
 				9016772F1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift in Sources */,
 				7FBB2EB71FC37588002067C1 /* ViewServiceViewController.swift in Sources */,

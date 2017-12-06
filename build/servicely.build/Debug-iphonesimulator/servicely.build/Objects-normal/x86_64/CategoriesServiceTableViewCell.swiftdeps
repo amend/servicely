@@ -9,10 +9,12 @@ provides-dynamic-lookup:
 - "awakeFromNib"
 - "name"
 - "price"
+- "rating"
 - "setSelected"
 depends-top-level:
 - "Bool"
 - "CategoriesServiceTableViewCell"
+- "CosmosView"
 - "UILabel"
 - "UITableViewCell"
 depends-member:
@@ -25,12 +27,14 @@ depends-member:
 - !private ["s7CVarArgP", "setSelected"]
 - ["s7CVarArgP", ""]
 - ["9servicely30CategoriesServiceTableViewCellC", "Bool"]
+- ["9servicely30CategoriesServiceTableViewCellC", "CosmosView"]
 - ["9servicely30CategoriesServiceTableViewCellC", "UILabel"]
 - ["9servicely30CategoriesServiceTableViewCellC", "awakeFromNib"]
 - ["9servicely30CategoriesServiceTableViewCellC", "deinit"]
 - ["9servicely30CategoriesServiceTableViewCellC", "init"]
 - ["9servicely30CategoriesServiceTableViewCellC", "name"]
 - ["9servicely30CategoriesServiceTableViewCellC", "price"]
+- ["9servicely30CategoriesServiceTableViewCellC", "rating"]
 - ["9servicely30CategoriesServiceTableViewCellC", "setSelected"]
 - !private ["s28CustomDebugStringConvertibleP", "awakeFromNib"]
 - !private ["s28CustomDebugStringConvertibleP", "init"]
@@ -53,11 +57,13 @@ depends-member:
 - !private ["So8NSCodingP", "setSelected"]
 - ["So8NSCodingP", ""]
 - ["So8NSObjectC", "Bool"]
+- ["So8NSObjectC", "CosmosView"]
 - ["So8NSObjectC", "UILabel"]
 - ["So8NSObjectC", "awakeFromNib"]
 - ["So8NSObjectC", "init"]
 - ["So8NSObjectC", "name"]
 - ["So8NSObjectC", "price"]
+- ["So8NSObjectC", "rating"]
 - ["So8NSObjectC", "setSelected"]
 - !private ["So16NSObjectProtocolP", "awakeFromNib"]
 - !private ["So16NSObjectProtocolP", "init"]
@@ -100,22 +106,26 @@ depends-member:
 - !private ["So30UIPasteConfigurationSupportingP", "setSelected"]
 - ["So30UIPasteConfigurationSupportingP", ""]
 - ["So11UIResponderC", "Bool"]
+- ["So11UIResponderC", "CosmosView"]
 - ["So11UIResponderC", "UILabel"]
 - ["So11UIResponderC", "awakeFromNib"]
 - ["So11UIResponderC", "init"]
 - ["So11UIResponderC", "name"]
 - ["So11UIResponderC", "price"]
+- ["So11UIResponderC", "rating"]
 - ["So11UIResponderC", "setSelected"]
 - !private ["So30UIResponderStandardEditActionsP", "awakeFromNib"]
 - !private ["So30UIResponderStandardEditActionsP", "init"]
 - !private ["So30UIResponderStandardEditActionsP", "setSelected"]
 - ["So30UIResponderStandardEditActionsP", ""]
 - ["So15UITableViewCellC", "Bool"]
+- ["So15UITableViewCellC", "CosmosView"]
 - ["So15UITableViewCellC", "UILabel"]
 - ["So15UITableViewCellC", "awakeFromNib"]
 - ["So15UITableViewCellC", "init"]
 - ["So15UITableViewCellC", "name"]
 - ["So15UITableViewCellC", "price"]
+- ["So15UITableViewCellC", "rating"]
 - ["So15UITableViewCellC", "setSelected"]
 - ["So15UITableViewCellC", ""]
 - !private ["So18UITraitEnvironmentP", "awakeFromNib"]
@@ -123,11 +133,13 @@ depends-member:
 - !private ["So18UITraitEnvironmentP", "setSelected"]
 - ["So18UITraitEnvironmentP", ""]
 - ["So6UIViewC", "Bool"]
+- ["So6UIViewC", "CosmosView"]
 - ["So6UIViewC", "UILabel"]
 - ["So6UIViewC", "awakeFromNib"]
 - ["So6UIViewC", "init"]
 - ["So6UIViewC", "name"]
 - ["So6UIViewC", "price"]
+- ["So6UIViewC", "rating"]
 - ["So6UIViewC", "setSelected"]
 - !private ["s37_DefaultCustomPlaygroundQuickLookableP", "awakeFromNib"]
 - !private ["s37_DefaultCustomPlaygroundQuickLookableP", "init"]
@@ -292,4 +304,4 @@ depends-external:
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/Pods/Firebase/Headers/module.modulemap"
-interface-hash: "fc828389de01cfad5bf71b965fba684e"
+interface-hash: "e2f50e5bc4c174109c9bc46af0c65e86"

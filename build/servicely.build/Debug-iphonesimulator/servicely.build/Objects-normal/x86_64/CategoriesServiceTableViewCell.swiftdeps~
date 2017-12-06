@@ -9,145 +9,451 @@ provides-dynamic-lookup:
 - "awakeFromNib"
 - "name"
 - "price"
+- "rating"
 - "setSelected"
 depends-top-level:
+- !private "??"
+- !private "AssignmentPrecedence"
 - "Bool"
+- !private "CastingPrecedence"
 - "CategoriesServiceTableViewCell"
+- "CosmosView"
+- !private "Double"
+- !private "FIRDatabase"
+- !private "FIRDatabaseReference"
+- !private "NSDictionary"
+- "String"
+- "StringLiteralType"
 - "UILabel"
 - "UITableViewCell"
+- !private "print"
 depends-member:
+- ["s23BidirectionalCollectionP", "init"]
+- !private ["So15CALayerDelegateP", "FIRDatabase"]
 - !private ["So15CALayerDelegateP", "awakeFromNib"]
+- !private ["So15CALayerDelegateP", "getRating"]
 - !private ["So15CALayerDelegateP", "init"]
+- !private ["So15CALayerDelegateP", "print"]
+- !private ["So15CALayerDelegateP", "rating"]
 - !private ["So15CALayerDelegateP", "setSelected"]
+- !private ["So15CALayerDelegateP", "userID"]
 - ["So15CALayerDelegateP", ""]
+- !private ["s7CVarArgP", "FIRDatabase"]
 - !private ["s7CVarArgP", "awakeFromNib"]
-- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "child"]
+- !private ["s7CVarArgP", "database"]
+- !private ["s7CVarArgP", "getRating"]
+- ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "observeSingleEvent"]
+- !private ["s7CVarArgP", "print"]
+- !private ["s7CVarArgP", "rating"]
+- !private ["s7CVarArgP", "reference"]
 - !private ["s7CVarArgP", "setSelected"]
+- !private ["s7CVarArgP", "subscript"]
+- !private ["s7CVarArgP", "userID"]
+- !private ["s7CVarArgP", "value"]
 - ["s7CVarArgP", ""]
 - ["9servicely30CategoriesServiceTableViewCellC", "Bool"]
+- ["9servicely30CategoriesServiceTableViewCellC", "CosmosView"]
+- !private ["9servicely30CategoriesServiceTableViewCellC", "Double"]
+- !private ["9servicely30CategoriesServiceTableViewCellC", "FIRDatabase"]
+- !private ["9servicely30CategoriesServiceTableViewCellC", "FIRDatabaseReference"]
+- !private ["9servicely30CategoriesServiceTableViewCellC", "NSDictionary"]
+- ["9servicely30CategoriesServiceTableViewCellC", "String"]
 - ["9servicely30CategoriesServiceTableViewCellC", "UILabel"]
 - ["9servicely30CategoriesServiceTableViewCellC", "awakeFromNib"]
 - ["9servicely30CategoriesServiceTableViewCellC", "deinit"]
+- ["9servicely30CategoriesServiceTableViewCellC", "getRating"]
 - ["9servicely30CategoriesServiceTableViewCellC", "init"]
 - ["9servicely30CategoriesServiceTableViewCellC", "name"]
 - ["9servicely30CategoriesServiceTableViewCellC", "price"]
+- !private ["9servicely30CategoriesServiceTableViewCellC", "print"]
+- ["9servicely30CategoriesServiceTableViewCellC", "rating"]
 - ["9servicely30CategoriesServiceTableViewCellC", "setSelected"]
+- ["9servicely30CategoriesServiceTableViewCellC", "userID"]
+- ["s10CollectionP", "init"]
+- ["s10ComparableP", "init"]
+- !private ["9servicely10CosmosViewC", "rating"]
+- !private ["s28CustomDebugStringConvertibleP", "FIRDatabase"]
 - !private ["s28CustomDebugStringConvertibleP", "awakeFromNib"]
-- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "child"]
+- !private ["s28CustomDebugStringConvertibleP", "database"]
+- !private ["s28CustomDebugStringConvertibleP", "getRating"]
+- ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "observeSingleEvent"]
+- !private ["s28CustomDebugStringConvertibleP", "print"]
+- !private ["s28CustomDebugStringConvertibleP", "rating"]
+- !private ["s28CustomDebugStringConvertibleP", "reference"]
 - !private ["s28CustomDebugStringConvertibleP", "setSelected"]
+- !private ["s28CustomDebugStringConvertibleP", "subscript"]
+- !private ["s28CustomDebugStringConvertibleP", "userID"]
+- !private ["s28CustomDebugStringConvertibleP", "value"]
 - ["s28CustomDebugStringConvertibleP", ""]
+- ["s29CustomPlaygroundQuickLookableP", "init"]
+- ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "FIRDatabase"]
 - !private ["s23CustomStringConvertibleP", "awakeFromNib"]
-- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "child"]
+- !private ["s23CustomStringConvertibleP", "database"]
+- !private ["s23CustomStringConvertibleP", "getRating"]
+- ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "observeSingleEvent"]
+- !private ["s23CustomStringConvertibleP", "print"]
+- !private ["s23CustomStringConvertibleP", "rating"]
+- !private ["s23CustomStringConvertibleP", "reference"]
 - !private ["s23CustomStringConvertibleP", "setSelected"]
+- !private ["s23CustomStringConvertibleP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "userID"]
+- !private ["s23CustomStringConvertibleP", "value"]
 - ["s23CustomStringConvertibleP", ""]
+- ["s9DecodableP", "init"]
+- ["s9EncodableP", "init"]
+- !private ["s9EquatableP", "FIRDatabase"]
 - !private ["s9EquatableP", "awakeFromNib"]
-- !private ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "child"]
+- !private ["s9EquatableP", "database"]
+- !private ["s9EquatableP", "getRating"]
+- ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "observeSingleEvent"]
+- !private ["s9EquatableP", "print"]
+- !private ["s9EquatableP", "rating"]
+- !private ["s9EquatableP", "reference"]
 - !private ["s9EquatableP", "setSelected"]
+- !private ["s9EquatableP", "subscript"]
+- !private ["s9EquatableP", "userID"]
+- !private ["s9EquatableP", "value"]
 - ["s9EquatableP", ""]
+- !private ["s5ErrorP", "localizedDescription"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "subscript"]
+- ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- ["s26ExpressibleByStringLiteralP", "init"]
+- ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["SC16FIRDataEventTypeO", "value"]
+- !private ["So15FIRDataSnapshotC", "value"]
+- !private ["So11FIRDatabaseC", "database"]
+- !private ["So11FIRDatabaseC", "reference"]
+- !private ["So16FIRDatabaseQueryC", "child"]
+- !private ["So16FIRDatabaseQueryC", "observeSingleEvent"]
+- !private ["So20FIRDatabaseReferenceC", "child"]
+- !private ["So20FIRDatabaseReferenceC", "observeSingleEvent"]
+- !private ["s8HashableP", "FIRDatabase"]
 - !private ["s8HashableP", "awakeFromNib"]
-- !private ["s8HashableP", "init"]
+- !private ["s8HashableP", "child"]
+- !private ["s8HashableP", "database"]
+- !private ["s8HashableP", "getRating"]
+- ["s8HashableP", "init"]
+- !private ["s8HashableP", "observeSingleEvent"]
+- !private ["s8HashableP", "print"]
+- !private ["s8HashableP", "rating"]
+- !private ["s8HashableP", "reference"]
 - !private ["s8HashableP", "setSelected"]
+- !private ["s8HashableP", "subscript"]
+- !private ["s8HashableP", "userID"]
+- !private ["s8HashableP", "value"]
 - ["s8HashableP", ""]
+- ["s25LosslessStringConvertibleP", "init"]
+- ["s10MirrorPathP", "init"]
+- !private ["So8NSCodingP", "FIRDatabase"]
 - !private ["So8NSCodingP", "awakeFromNib"]
-- !private ["So8NSCodingP", "init"]
+- !private ["So8NSCodingP", "getRating"]
+- ["So8NSCodingP", "init"]
+- !private ["So8NSCodingP", "print"]
+- !private ["So8NSCodingP", "rating"]
 - !private ["So8NSCodingP", "setSelected"]
+- !private ["So8NSCodingP", "subscript"]
+- !private ["So8NSCodingP", "userID"]
 - ["So8NSCodingP", ""]
+- ["So9NSCopyingP", "init"]
+- !private ["So9NSCopyingP", "subscript"]
+- !private ["So12NSDictionaryC", "subscript"]
+- !private ["So17NSFastEnumerationP", "subscript"]
+- ["So21NSItemProviderReadingP", "init"]
+- ["So21NSItemProviderWritingP", "init"]
+- ["So16NSMutableCopyingP", "init"]
+- !private ["So16NSMutableCopyingP", "subscript"]
 - ["So8NSObjectC", "Bool"]
+- ["So8NSObjectC", "CosmosView"]
+- !private ["So8NSObjectC", "Double"]
+- !private ["So8NSObjectC", "FIRDatabase"]
+- !private ["So8NSObjectC", "FIRDatabaseReference"]
+- !private ["So8NSObjectC", "NSDictionary"]
+- ["So8NSObjectC", "String"]
 - ["So8NSObjectC", "UILabel"]
 - ["So8NSObjectC", "awakeFromNib"]
+- !private ["So8NSObjectC", "child"]
+- !private ["So8NSObjectC", "database"]
+- ["So8NSObjectC", "getRating"]
 - ["So8NSObjectC", "init"]
 - ["So8NSObjectC", "name"]
+- !private ["So8NSObjectC", "observeSingleEvent"]
 - ["So8NSObjectC", "price"]
+- !private ["So8NSObjectC", "print"]
+- ["So8NSObjectC", "rating"]
+- !private ["So8NSObjectC", "reference"]
 - ["So8NSObjectC", "setSelected"]
+- !private ["So8NSObjectC", "subscript"]
+- ["So8NSObjectC", "userID"]
+- !private ["So8NSObjectC", "value"]
+- !private ["So16NSObjectProtocolP", "FIRDatabase"]
 - !private ["So16NSObjectProtocolP", "awakeFromNib"]
-- !private ["So16NSObjectProtocolP", "init"]
+- !private ["So16NSObjectProtocolP", "child"]
+- !private ["So16NSObjectProtocolP", "database"]
+- !private ["So16NSObjectProtocolP", "getRating"]
+- ["So16NSObjectProtocolP", "init"]
+- !private ["So16NSObjectProtocolP", "observeSingleEvent"]
+- !private ["So16NSObjectProtocolP", "print"]
+- !private ["So16NSObjectProtocolP", "rating"]
+- !private ["So16NSObjectProtocolP", "reference"]
 - !private ["So16NSObjectProtocolP", "setSelected"]
+- !private ["So16NSObjectProtocolP", "subscript"]
+- !private ["So16NSObjectProtocolP", "userID"]
+- !private ["So16NSObjectProtocolP", "value"]
 - ["So16NSObjectProtocolP", ""]
+- ["So14NSSecureCodingP", "init"]
+- !private ["So14NSSecureCodingP", "subscript"]
+- ["So8NSStringC", "init"]
+- ["s26RangeReplaceableCollectionP", "init"]
+- !private ["s16RawRepresentableP", "value"]
+- ["s8SequenceP", "init"]
+- !private ["s8SequenceP", "subscript"]
+- ["SS", "init"]
+- ["s14StringProtocolP", "init"]
+- ["s16TextOutputStreamP", "init"]
+- ["s20TextOutputStreamableP", "init"]
+- !private ["So29UIAccessibilityIdentificationP", "FIRDatabase"]
 - !private ["So29UIAccessibilityIdentificationP", "awakeFromNib"]
+- !private ["So29UIAccessibilityIdentificationP", "getRating"]
 - !private ["So29UIAccessibilityIdentificationP", "init"]
+- !private ["So29UIAccessibilityIdentificationP", "print"]
+- !private ["So29UIAccessibilityIdentificationP", "rating"]
 - !private ["So29UIAccessibilityIdentificationP", "setSelected"]
+- !private ["So29UIAccessibilityIdentificationP", "userID"]
 - ["So29UIAccessibilityIdentificationP", ""]
+- !private ["So12UIAppearanceP", "FIRDatabase"]
 - !private ["So12UIAppearanceP", "awakeFromNib"]
+- !private ["So12UIAppearanceP", "getRating"]
 - !private ["So12UIAppearanceP", "init"]
+- !private ["So12UIAppearanceP", "print"]
+- !private ["So12UIAppearanceP", "rating"]
 - !private ["So12UIAppearanceP", "setSelected"]
+- !private ["So12UIAppearanceP", "userID"]
 - ["So12UIAppearanceP", ""]
+- !private ["So21UIAppearanceContainerP", "FIRDatabase"]
 - !private ["So21UIAppearanceContainerP", "awakeFromNib"]
+- !private ["So21UIAppearanceContainerP", "getRating"]
 - !private ["So21UIAppearanceContainerP", "init"]
+- !private ["So21UIAppearanceContainerP", "print"]
+- !private ["So21UIAppearanceContainerP", "rating"]
 - !private ["So21UIAppearanceContainerP", "setSelected"]
+- !private ["So21UIAppearanceContainerP", "userID"]
 - ["So21UIAppearanceContainerP", ""]
+- !private ["So17UICoordinateSpaceP", "FIRDatabase"]
 - !private ["So17UICoordinateSpaceP", "awakeFromNib"]
+- !private ["So17UICoordinateSpaceP", "getRating"]
 - !private ["So17UICoordinateSpaceP", "init"]
+- !private ["So17UICoordinateSpaceP", "print"]
+- !private ["So17UICoordinateSpaceP", "rating"]
 - !private ["So17UICoordinateSpaceP", "setSelected"]
+- !private ["So17UICoordinateSpaceP", "userID"]
 - ["So17UICoordinateSpaceP", ""]
+- !private ["So13UIDynamicItemP", "FIRDatabase"]
 - !private ["So13UIDynamicItemP", "awakeFromNib"]
+- !private ["So13UIDynamicItemP", "getRating"]
 - !private ["So13UIDynamicItemP", "init"]
+- !private ["So13UIDynamicItemP", "print"]
+- !private ["So13UIDynamicItemP", "rating"]
 - !private ["So13UIDynamicItemP", "setSelected"]
+- !private ["So13UIDynamicItemP", "userID"]
 - ["So13UIDynamicItemP", ""]
+- !private ["So18UIFocusEnvironmentP", "FIRDatabase"]
 - !private ["So18UIFocusEnvironmentP", "awakeFromNib"]
+- !private ["So18UIFocusEnvironmentP", "getRating"]
 - !private ["So18UIFocusEnvironmentP", "init"]
+- !private ["So18UIFocusEnvironmentP", "print"]
+- !private ["So18UIFocusEnvironmentP", "rating"]
 - !private ["So18UIFocusEnvironmentP", "setSelected"]
+- !private ["So18UIFocusEnvironmentP", "userID"]
 - ["So18UIFocusEnvironmentP", ""]
+- !private ["So11UIFocusItemP", "FIRDatabase"]
 - !private ["So11UIFocusItemP", "awakeFromNib"]
+- !private ["So11UIFocusItemP", "getRating"]
 - !private ["So11UIFocusItemP", "init"]
+- !private ["So11UIFocusItemP", "print"]
+- !private ["So11UIFocusItemP", "rating"]
 - !private ["So11UIFocusItemP", "setSelected"]
+- !private ["So11UIFocusItemP", "userID"]
 - ["So11UIFocusItemP", ""]
+- !private ["So27UIGestureRecognizerDelegateP", "FIRDatabase"]
 - !private ["So27UIGestureRecognizerDelegateP", "awakeFromNib"]
+- !private ["So27UIGestureRecognizerDelegateP", "getRating"]
 - !private ["So27UIGestureRecognizerDelegateP", "init"]
+- !private ["So27UIGestureRecognizerDelegateP", "print"]
+- !private ["So27UIGestureRecognizerDelegateP", "rating"]
 - !private ["So27UIGestureRecognizerDelegateP", "setSelected"]
+- !private ["So27UIGestureRecognizerDelegateP", "userID"]
 - ["So27UIGestureRecognizerDelegateP", ""]
+- !private ["So30UIPasteConfigurationSupportingP", "FIRDatabase"]
 - !private ["So30UIPasteConfigurationSupportingP", "awakeFromNib"]
+- !private ["So30UIPasteConfigurationSupportingP", "getRating"]
 - !private ["So30UIPasteConfigurationSupportingP", "init"]
+- !private ["So30UIPasteConfigurationSupportingP", "print"]
+- !private ["So30UIPasteConfigurationSupportingP", "rating"]
 - !private ["So30UIPasteConfigurationSupportingP", "setSelected"]
+- !private ["So30UIPasteConfigurationSupportingP", "userID"]
 - ["So30UIPasteConfigurationSupportingP", ""]
 - ["So11UIResponderC", "Bool"]
+- ["So11UIResponderC", "CosmosView"]
+- !private ["So11UIResponderC", "Double"]
+- !private ["So11UIResponderC", "FIRDatabase"]
+- !private ["So11UIResponderC", "FIRDatabaseReference"]
+- !private ["So11UIResponderC", "NSDictionary"]
+- ["So11UIResponderC", "String"]
 - ["So11UIResponderC", "UILabel"]
 - ["So11UIResponderC", "awakeFromNib"]
+- ["So11UIResponderC", "getRating"]
 - ["So11UIResponderC", "init"]
 - ["So11UIResponderC", "name"]
 - ["So11UIResponderC", "price"]
+- !private ["So11UIResponderC", "print"]
+- ["So11UIResponderC", "rating"]
 - ["So11UIResponderC", "setSelected"]
+- ["So11UIResponderC", "userID"]
+- !private ["So30UIResponderStandardEditActionsP", "FIRDatabase"]
 - !private ["So30UIResponderStandardEditActionsP", "awakeFromNib"]
+- !private ["So30UIResponderStandardEditActionsP", "getRating"]
 - !private ["So30UIResponderStandardEditActionsP", "init"]
+- !private ["So30UIResponderStandardEditActionsP", "print"]
+- !private ["So30UIResponderStandardEditActionsP", "rating"]
 - !private ["So30UIResponderStandardEditActionsP", "setSelected"]
+- !private ["So30UIResponderStandardEditActionsP", "userID"]
 - ["So30UIResponderStandardEditActionsP", ""]
 - ["So15UITableViewCellC", "Bool"]
+- ["So15UITableViewCellC", "CosmosView"]
+- !private ["So15UITableViewCellC", "Double"]
+- !private ["So15UITableViewCellC", "FIRDatabase"]
+- !private ["So15UITableViewCellC", "FIRDatabaseReference"]
+- !private ["So15UITableViewCellC", "NSDictionary"]
+- ["So15UITableViewCellC", "String"]
 - ["So15UITableViewCellC", "UILabel"]
 - ["So15UITableViewCellC", "awakeFromNib"]
+- ["So15UITableViewCellC", "getRating"]
 - ["So15UITableViewCellC", "init"]
 - ["So15UITableViewCellC", "name"]
 - ["So15UITableViewCellC", "price"]
+- !private ["So15UITableViewCellC", "print"]
+- ["So15UITableViewCellC", "rating"]
 - ["So15UITableViewCellC", "setSelected"]
+- ["So15UITableViewCellC", "userID"]
 - ["So15UITableViewCellC", ""]
+- !private ["So18UITraitEnvironmentP", "FIRDatabase"]
 - !private ["So18UITraitEnvironmentP", "awakeFromNib"]
+- !private ["So18UITraitEnvironmentP", "getRating"]
 - !private ["So18UITraitEnvironmentP", "init"]
+- !private ["So18UITraitEnvironmentP", "print"]
+- !private ["So18UITraitEnvironmentP", "rating"]
 - !private ["So18UITraitEnvironmentP", "setSelected"]
+- !private ["So18UITraitEnvironmentP", "userID"]
 - ["So18UITraitEnvironmentP", ""]
 - ["So6UIViewC", "Bool"]
+- ["So6UIViewC", "CosmosView"]
+- !private ["So6UIViewC", "Double"]
+- !private ["So6UIViewC", "FIRDatabase"]
+- !private ["So6UIViewC", "FIRDatabaseReference"]
+- !private ["So6UIViewC", "NSDictionary"]
+- ["So6UIViewC", "String"]
 - ["So6UIViewC", "UILabel"]
 - ["So6UIViewC", "awakeFromNib"]
+- ["So6UIViewC", "getRating"]
 - ["So6UIViewC", "init"]
 - ["So6UIViewC", "name"]
 - ["So6UIViewC", "price"]
+- !private ["So6UIViewC", "print"]
+- ["So6UIViewC", "rating"]
 - ["So6UIViewC", "setSelected"]
+- ["So6UIViewC", "userID"]
+- ["s23_BidirectionalIndexableP", "init"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "FIRDatabase"]
 - !private ["s37_DefaultCustomPlaygroundQuickLookableP", "awakeFromNib"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "getRating"]
 - !private ["s37_DefaultCustomPlaygroundQuickLookableP", "init"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "print"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "rating"]
 - !private ["s37_DefaultCustomPlaygroundQuickLookableP", "setSelected"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "userID"]
 - ["s37_DefaultCustomPlaygroundQuickLookableP", ""]
+- ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
+- ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- ["s33_ExpressibleByStringInterpolationP", "init"]
+- ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- ["s10_IndexableP", "init"]
+- ["s14_IndexableBaseP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "FIRDatabase"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "awakeFromNib"]
-- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "child"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "database"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "getRating"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "observeSingleEvent"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "print"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "rating"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "reference"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "setSelected"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "subscript"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "userID"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "value"]
 - ["10Foundation27_KeyValueCodingAndObservingP", ""]
+- ["s21_ObjectiveCBridgeableP", "init"]
+- ["s26_RangeReplaceableIndexableP", "init"]
+- ["s16_SwiftStringViewP", "init"]
 depends-nominal:
+- "s23BidirectionalCollectionP"
 - "So15CALayerDelegateP"
 - "s7CVarArgP"
 - "9servicely30CategoriesServiceTableViewCellC"
+- "s10CollectionP"
+- "s10ComparableP"
+- !private "9servicely10CosmosViewC"
 - "s28CustomDebugStringConvertibleP"
+- "s29CustomPlaygroundQuickLookableP"
+- "s17CustomReflectableP"
 - "s23CustomStringConvertibleP"
+- "s9DecodableP"
+- "s9EncodableP"
 - "s9EquatableP"
+- !private "s5ErrorP"
+- !private "s30ExpressibleByDictionaryLiteralP"
+- "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- "s26ExpressibleByStringLiteralP"
+- "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "SC16FIRDataEventTypeO"
+- !private "So15FIRDataSnapshotC"
+- !private "So11FIRDatabaseC"
+- !private "So16FIRDatabaseQueryC"
+- !private "So20FIRDatabaseReferenceC"
 - "s8HashableP"
+- "s25LosslessStringConvertibleP"
+- "s10MirrorPathP"
 - "So8NSCodingP"
+- "So9NSCopyingP"
+- !private "So12NSDictionaryC"
+- !private "So17NSFastEnumerationP"
+- "So21NSItemProviderReadingP"
+- "So21NSItemProviderWritingP"
+- "So16NSMutableCopyingP"
 - "So8NSObjectC"
 - "So16NSObjectProtocolP"
+- "So14NSSecureCodingP"
+- "So8NSStringC"
+- "s26RangeReplaceableCollectionP"
+- !private "s16RawRepresentableP"
+- "s8SequenceP"
+- "SS"
+- "s14StringProtocolP"
+- "s16TextOutputStreamP"
+- "s20TextOutputStreamableP"
 - "So29UIAccessibilityIdentificationP"
 - "So12UIAppearanceP"
 - "So21UIAppearanceContainerP"
@@ -162,8 +468,20 @@ depends-nominal:
 - "So15UITableViewCellC"
 - "So18UITraitEnvironmentP"
 - "So6UIViewC"
+- "s23_BidirectionalIndexableP"
 - "s37_DefaultCustomPlaygroundQuickLookableP"
+- "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- "s34_ExpressibleByBuiltinStringLiteralP"
+- "s39_ExpressibleByBuiltinUTF16StringLiteralP"
+- "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- "s33_ExpressibleByStringInterpolationP"
+- "s35_HasCustomAnyHashableRepresentationP"
+- "s10_IndexableP"
+- "s14_IndexableBaseP"
 - "10Foundation27_KeyValueCodingAndObservingP"
+- "s21_ObjectiveCBridgeableP"
+- "s26_RangeReplaceableIndexableP"
+- "s16_SwiftStringViewP"
 depends-dynamic-lookup:
 depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
@@ -292,4 +610,4 @@ depends-external:
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/Pods/Firebase/Headers/module.modulemap"
-interface-hash: "fc828389de01cfad5bf71b965fba684e"
+interface-hash: "37eec327b36dd27dd04eca33ea85f501"

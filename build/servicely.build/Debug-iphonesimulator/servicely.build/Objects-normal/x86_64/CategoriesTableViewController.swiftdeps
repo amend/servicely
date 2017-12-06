@@ -12,9 +12,11 @@ provides-dynamic-lookup:
 - "tableView"
 - "typeDisplay"
 - "viewDidLoad"
+- "viewWillAppear"
 depends-top-level:
 - !private "=="
 - "AssignmentPrecedence"
+- "Bool"
 - !private "BooleanLiteralType"
 - "CastingPrecedence"
 - "CategoriesTableViewController"
@@ -64,6 +66,7 @@ depends-member:
 - !private ["s7CVarArgP", "typeDisplay"]
 - !private ["s7CVarArgP", "viewDidLoad"]
 - ["s7CVarArgP", ""]
+- ["9servicely29CategoriesTableViewControllerC", "Bool"]
 - !private ["9servicely29CategoriesTableViewControllerC", "ColorScheme"]
 - ["9servicely29CategoriesTableViewControllerC", "IndexPath"]
 - ["9servicely29CategoriesTableViewControllerC", "Int"]
@@ -83,6 +86,7 @@ depends-member:
 - !private ["9servicely29CategoriesTableViewControllerC", "title"]
 - ["9servicely29CategoriesTableViewControllerC", "typeDisplay"]
 - ["9servicely29CategoriesTableViewControllerC", "viewDidLoad"]
+- ["9servicely29CategoriesTableViewControllerC", "viewWillAppear"]
 - !private ["s10CollectionP", "count"]
 - ["s10CollectionP", "init"]
 - !private ["s10CollectionP", "row"]
@@ -240,6 +244,7 @@ depends-member:
 - ["So21NSItemProviderReadingP", "init"]
 - ["So21NSItemProviderWritingP", "init"]
 - ["So16NSMutableCopyingP", "init"]
+- ["So8NSObjectC", "Bool"]
 - !private ["So8NSObjectC", "ColorScheme"]
 - ["So8NSObjectC", "IndexPath"]
 - ["So8NSObjectC", "Int"]
@@ -268,6 +273,7 @@ depends-member:
 - !private ["So8NSObjectC", "title"]
 - ["So8NSObjectC", "typeDisplay"]
 - ["So8NSObjectC", "viewDidLoad"]
+- ["So8NSObjectC", "viewWillAppear"]
 - !private ["So16NSObjectProtocolP", "ColorScheme"]
 - !private ["So16NSObjectProtocolP", "categories"]
 - !private ["So16NSObjectProtocolP", "category"]
@@ -405,6 +411,7 @@ depends-member:
 - !private ["So30UIPasteConfigurationSupportingP", "typeDisplay"]
 - !private ["So30UIPasteConfigurationSupportingP", "viewDidLoad"]
 - ["So30UIPasteConfigurationSupportingP", ""]
+- ["So11UIResponderC", "Bool"]
 - !private ["So11UIResponderC", "ColorScheme"]
 - ["So11UIResponderC", "IndexPath"]
 - ["So11UIResponderC", "Int"]
@@ -431,6 +438,7 @@ depends-member:
 - !private ["So11UIResponderC", "title"]
 - ["So11UIResponderC", "typeDisplay"]
 - ["So11UIResponderC", "viewDidLoad"]
+- ["So11UIResponderC", "viewWillAppear"]
 - !private ["So30UIResponderStandardEditActionsP", "ColorScheme"]
 - !private ["So30UIResponderStandardEditActionsP", "categories"]
 - !private ["So30UIResponderStandardEditActionsP", "category"]
@@ -483,6 +491,7 @@ depends-member:
 - !private ["So11UITableViewC", "dequeueReusableCell"]
 - !private ["So11UITableViewC", "indexPathForSelectedRow"]
 - !private ["So15UITableViewCellC", "textLabel"]
+- ["So21UITableViewControllerC", "Bool"]
 - !private ["So21UITableViewControllerC", "ColorScheme"]
 - ["So21UITableViewControllerC", "IndexPath"]
 - ["So21UITableViewControllerC", "Int"]
@@ -503,6 +512,7 @@ depends-member:
 - !private ["So21UITableViewControllerC", "title"]
 - ["So21UITableViewControllerC", "typeDisplay"]
 - ["So21UITableViewControllerC", "viewDidLoad"]
+- ["So21UITableViewControllerC", "viewWillAppear"]
 - ["So21UITableViewControllerC", ""]
 - !private ["So21UITableViewDataSourceP", "ColorScheme"]
 - !private ["So21UITableViewDataSourceP", "categories"]
@@ -549,6 +559,7 @@ depends-member:
 - !private ["So6UIViewC", "text"]
 - !private ["So6UIViewC", "textLabel"]
 - !private ["So6UIViewC", "tintColor"]
+- ["So16UIViewControllerC", "Bool"]
 - !private ["So16UIViewControllerC", "ColorScheme"]
 - ["So16UIViewControllerC", "IndexPath"]
 - ["So16UIViewControllerC", "Int"]
@@ -569,6 +580,7 @@ depends-member:
 - !private ["So16UIViewControllerC", "title"]
 - ["So16UIViewControllerC", "typeDisplay"]
 - ["So16UIViewControllerC", "viewDidLoad"]
+- ["So16UIViewControllerC", "viewWillAppear"]
 - !private ["s14_ArrayProtocolP", "count"]
 - !private ["s14_ArrayProtocolP", "subscript"]
 - !private ["s23_BidirectionalIndexableP", "count"]
@@ -855,4 +867,4 @@ depends-external:
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/Pods/Firebase/Headers/module.modulemap"
-interface-hash: "62bff26c88e14a446a0e01cc24f43de2"
+interface-hash: "0174d1601551b4b5e6a3656b2a8891cf"

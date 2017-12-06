@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 class ViewServiceViewController: UIViewController {
 
@@ -15,9 +18,12 @@ class ViewServiceViewController: UIViewController {
     @IBOutlet weak var contactNumber: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var redView: UIView!
+    @IBOutlet weak var ratingBar: CosmosView!
+    @IBOutlet weak var submitButton: UIButton!
     
     var service:ServiceOffer? = nil
     var request:ClientRequest? = nil
+    var oldRating: Double = -1.0
     
     var client:Bool = false
     
@@ -48,6 +54,21 @@ class ViewServiceViewController: UIViewController {
         }
  }
     
+    @IBAction func submitRating(_ sender: Any) {
+        var newRating = 0.0
+        if(oldRating == -1){
+            newRating = ratingBar.rating
+        }else{
+            newRating = (ratingBar.rating + oldRating)/2
+        }
+        setRating(newRating)
+    }
+    
+    func setRating(_ rating: Double){
+        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
+        let string = "users/" + (service?.userID)! + "/rating"
+        ref.child(string).setValue(rating)
+    }
 
     /*
     // MARK: - Navigation

@@ -204,12 +204,14 @@ SWIFT_CLASS("_TtC9servicely11AppDelegate")
 @end
 
 @class UILabel;
+@class CosmosView;
 @class NSCoder;
 
 SWIFT_CLASS("_TtC9servicely30CategoriesServiceTableViewCell")
 @interface CategoriesServiceTableViewCell : UITableViewCell
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified name;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified price;
+@property (nonatomic, weak) IBOutlet CosmosView * _Null_unspecified rating;
 - (void)awakeFromNib;
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated;
 - (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(ios,introduced=3.0);
@@ -225,6 +227,7 @@ SWIFT_CLASS("_TtC9servicely29CategoriesTableViewController")
 @interface CategoriesTableViewController : UITableViewController
 @property (nonatomic, weak) IBOutlet UISegmentedControl * _Null_unspecified typeDisplay;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)animated;
 - (void)didReceiveMemoryWarning;
 - (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
@@ -326,6 +329,67 @@ SWIFT_CLASS("_TtC9servicely27ClientProfileViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class UIColor;
+@class UIImage;
+
+/// A star rating view that can be used to show customer rating for the products. On can select stars by tapping on them when updateOnTouch settings is true. An optional text can be supplied that is shown on the right side.
+/// Example:
+/// \code
+/// cosmosView.rating = 4
+/// cosmosView.text = "(123)"
+///
+/// \endcodeShows: ★★★★☆ (123)
+SWIFT_CLASS("_TtC9servicely10CosmosView")
+@interface CosmosView : UIView
+/// The currently shown number of stars, usually between 1 and 5. If the value is decimal the stars will be shown according to the Fill Mode setting.
+@property (nonatomic) double rating;
+/// Currently shown text. Set it to nil to display just the stars without text.
+@property (nonatomic, copy) NSString * _Nullable text;
+/// Draws the stars when the view comes out of storyboard with default settings
+- (void)awakeFromNib;
+/// Initializes and returns a newly allocated cosmos view object.
+- (nonnull instancetype)init;
+/// Initializes and returns a newly allocated cosmos view object with the specified frame rectangle.
+/// \param frame The frame rectangle for the view.
+///
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+/// Initializes and returns a newly allocated cosmos view object.
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+/// Returns the content size to fit all the star and text layers.
+@property (nonatomic, readonly) CGSize intrinsicContentSize;
+/// Called by the system in accessibility voice-over mode when the value is incremented by the user.
+- (void)accessibilityIncrement;
+/// Called by the system in accessibility voice-over mode when the value is decremented by the user.
+- (void)accessibilityDecrement;
+/// Overriding the function to detect the first touch gesture.
+- (void)touchesBegan:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
+/// Overriding the function to detect touch move.
+- (void)touchesMoved:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
+/// Detecting event when the user lifts their finger.
+- (void)touchesEnded:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
+/// Increase the hitsize of the view if it’s less than 44px for easier touching.
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent * _Nullable)event SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic) NSInteger totalStars;
+@property (nonatomic) double starSize;
+@property (nonatomic, strong) UIColor * _Nonnull filledColor;
+@property (nonatomic, strong) UIColor * _Nonnull emptyColor;
+@property (nonatomic, strong) UIColor * _Nonnull emptyBorderColor;
+@property (nonatomic) double emptyBorderWidth;
+@property (nonatomic, strong) UIColor * _Nonnull filledBorderColor;
+@property (nonatomic) double filledBorderWidth;
+@property (nonatomic) double starMargin;
+@property (nonatomic) NSInteger fillMode;
+@property (nonatomic) double textSize;
+@property (nonatomic) double textMargin;
+@property (nonatomic, strong) UIColor * _Nonnull textColor;
+@property (nonatomic) BOOL updateOnTouch;
+@property (nonatomic) double minTouchRating;
+@property (nonatomic, strong) UIImage * _Nullable filledImage;
+@property (nonatomic, strong) UIImage * _Nullable emptyImage;
+/// Draw the stars in interface buidler
+- (void)prepareForInterfaceBuilder;
+@end
+
 @class UIPickerView;
 @class UITextView;
 
@@ -421,6 +485,32 @@ SWIFT_CLASS("_TtC9servicely26EditProviderViewController")
 @end
 
 
+SWIFT_CLASS("_TtC9servicely28MyRequetsTableViewController")
+@interface MyRequetsTableViewController : UITableViewController
+- (void)viewDidLoad;
+- (void)didReceiveMemoryWarning;
+- (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)initWithStyle:(UITableViewStyle)style OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9servicely30OurServicesTableViewController")
+@interface OurServicesTableViewController : UITableViewController
+- (void)viewDidLoad;
+- (void)didReceiveMemoryWarning;
+- (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)initWithStyle:(UITableViewStyle)style OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 SWIFT_CLASS("_TtC9servicely21ProfileViewController")
 @interface ProfileViewController : UIViewController
 @property (nonatomic, weak) IBOutlet UIView * _Null_unspecified containerView;
@@ -482,6 +572,7 @@ SWIFT_CLASS("_TtC9servicely27ServicelyLogoViewController")
 SWIFT_CLASS("_TtC9servicely35ServicesRequestsTableViewController")
 @interface ServicesRequestsTableViewController : UITableViewController
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)animated;
 - (void)didReceiveMemoryWarning;
 - (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
@@ -522,8 +613,11 @@ SWIFT_CLASS("_TtC9servicely25ViewServiceViewController")
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified contactNumber;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified price;
 @property (nonatomic, weak) IBOutlet UIView * _Null_unspecified redView;
+@property (nonatomic, weak) IBOutlet CosmosView * _Null_unspecified ratingBar;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified submitButton;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
+- (IBAction)submitRating:(id _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end

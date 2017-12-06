@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 class CategoriesServiceTableViewCell: UITableViewCell {
 
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var rating: CosmosView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,5 +27,4 @@ class CategoriesServiceTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

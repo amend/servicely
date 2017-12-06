@@ -18,10 +18,11 @@ class ServicesRequestsTableViewController: UITableViewController {
     
     var services = [ServiceOffer]()
     var requests = [ClientRequest]()
+    var ratings = [String:Double]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getRatings()
         if(client) {
             getRequets()
         } else {
@@ -34,6 +35,11 @@ class ServicesRequestsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getRatings()
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -113,21 +119,43 @@ class ServicesRequestsTableViewController: UITableViewController {
         })
     }
     
+    func getRatings(){
+        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
+        let userRef = ref.child("users")
+        
+        userRef.observeSingleEvent(of: .value, with: { snapshot in
+            print(snapshot.childrenCount)
+            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                if let dict = rest.value as? NSDictionary {
+                    let rating = dict["rating"] as? Double ?? -1
+                    let userID = dict["userID"] as? String ?? ""
+                    self.ratings[userID] = rating
+                } else {
+                    print("could not convert snaptshot to dictionary")
+                }
+            }
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoriesServiceCell", for: indexPath) as! CategoriesServiceTableViewCell
         if(self.client == false) {
             let service = services[indexPath.row]
-        
             cell.name?.text = service.companyName
             cell.price?.text = service.askingPrice
-        
-            // Configure the cell...
+            cell.rating?.isHidden = false
+            cell.rating?.rating = ratings[service.userID]!
+            
         } else {
             let request = requests[indexPath.row]
             
             cell.name?.text = request.userName
             cell.price?.text = request.contactInfo
+            cell.rating?.isHidden = true
         }
         return cell
     }
@@ -184,6 +212,7 @@ class ServicesRequestsTableViewController: UITableViewController {
             
                 vc.service = service
                 vc.client = client
+                vc.oldRating = ratings[service.userID]!
             } else {
                 let vc:ViewServiceViewController = segue.destination as! ViewServiceViewController
                 
