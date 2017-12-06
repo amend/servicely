@@ -10,4 +10,6 @@ target 'servicely' do
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'FirebaseUI'
+  pod 'Firebase/Core'
+  pod 'Firebase/Storage'
 end

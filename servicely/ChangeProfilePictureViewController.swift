@@ -8,6 +8,10 @@
 
 import UIKit
 import Photos
+import Firebase
+import FirebaseDatabase
+import FirebaseAuth
+import FirebaseStorage
 
 class ChangeProfilePictureViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -15,6 +19,7 @@ class ChangeProfilePictureViewController: UIViewController, UINavigationControll
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var choosePictureButton: UIButton!
     @IBOutlet weak var setPictureButton: UIButton!
+    var sourceImage: UIImage = nil
     var imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
@@ -49,10 +54,11 @@ class ChangeProfilePictureViewController: UIViewController, UINavigationControll
     }
     
     @IBAction func setPicture(_ sender: Any) {
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        let storageRef = FIRStorage.storage().reference()
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        var sourceImage: UIImage
         sourceImage = (info[UIImagePickerControllerOriginalImage] as? UIImage)!
         picker.dismiss(animated: true, completion: nil)
         imageView.image = sourceImage

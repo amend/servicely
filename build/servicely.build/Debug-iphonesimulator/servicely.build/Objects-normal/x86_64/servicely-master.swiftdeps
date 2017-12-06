@@ -1,13 +1,13 @@
 version: "Apple Swift version 4.0.2 (swiftlang-900.0.69.2 clang-900.0.38)"
-options: "aac7264ddeb84ee66c03fd0489585e4a"
-build_time: [1512585130, 712822000]
+options: "6ec75d5b43c042ab48db2fd3d7d9d0ee"
+build_time: [1512589425, 456278000]
 inputs:
   "/Programming/servicely/servicely/EditProfileViewController.swift": [1512525387, 0]
   "/Programming/servicely/servicely/DeleteAccountViewController.swift": [1512525387, 0]
   "/Programming/servicely/servicely/ServicelyLogoViewController.swift": [1512525387, 0]
   "/Programming/servicely/servicely/MyRequetsTableViewController.swift": [1512525387, 0]
   "/Programming/servicely/servicely/ClientProfileViewController.swift": [1512525387, 0]
-  "/Programming/servicely/servicely/ChangeProfilePictureViewController.swift": [1512525387, 0]
+  "/Programming/servicely/servicely/ChangeProfilePictureViewController.swift": !dirty [1512587707, 0]
   "/Programming/servicely/servicely/ChangePasswordViewController.swift": [1512525387, 0]
   "/Programming/servicely/servicely/ClientRequest.swift": [1512525387, 0]
   "/Programming/servicely/servicely/Client.swift": [1512525387, 0]
@@ -23,7 +23,7 @@ inputs:
   "/Programming/servicely/servicely/ProviderProfileViewController.swift": [1512541439, 0]
   "/Programming/servicely/servicely/CreateClientRequestViewController.swift": [1512525387, 0]
   "/Programming/servicely/servicely/SettingsViewController.swift": [1512525387, 0]
-  "/Programming/servicely/servicely/ClientFeedViewController.swift": [1512585128, 0]
+  "/Programming/servicely/servicely/ClientFeedViewController.swift": [1512586422, 0]
   "/Programming/servicely/servicely/ServiceTypeViewController.swift": [1512525387, 0]
   "/Programming/servicely/servicely/CategoriesServiceTableViewCell.swift": [1512577452, 0]
   "/Programming/servicely/servicely/EditProviderViewController.swift": [1512525387, 0]
