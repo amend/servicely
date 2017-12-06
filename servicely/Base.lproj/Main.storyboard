@@ -561,11 +561,30 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Olr-mU-kQr" customClass="CosmosView" customModule="servicely" customModuleProvider="target">
+                                                    <rect key="frame" x="186" y="6" width="145" height="25"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="145" id="fDE-d4-hX7"/>
+                                                        <constraint firstAttribute="height" constant="25" id="jx6-h8-2fc"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                                            <real key="value" value="25"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="NO"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                                            <integer key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="25Q-ZU-baf" firstAttribute="top" secondItem="XZu-J8-uGI" secondAttribute="topMargin" id="5Tj-o7-JGZ"/>
+                                                <constraint firstItem="Olr-mU-kQr" firstAttribute="leading" secondItem="25Q-ZU-baf" secondAttribute="trailing" constant="34" id="7Ch-67-ibP"/>
                                                 <constraint firstItem="25Q-ZU-baf" firstAttribute="leading" secondItem="XZu-J8-uGI" secondAttribute="leadingMargin" id="9fz-pd-ri5"/>
                                                 <constraint firstItem="gRr-3m-d9t" firstAttribute="leading" secondItem="jRb-bh-epF" secondAttribute="trailing" constant="40" id="IhH-Y4-Ooi"/>
+                                                <constraint firstItem="Olr-mU-kQr" firstAttribute="top" secondItem="XZu-J8-uGI" secondAttribute="top" constant="6" id="eKR-MW-9yN"/>
                                                 <constraint firstItem="jRb-bh-epF" firstAttribute="leading" secondItem="XZu-J8-uGI" secondAttribute="leadingMargin" id="ecY-I7-BAD"/>
                                                 <constraint firstItem="gRr-3m-d9t" firstAttribute="top" secondItem="XZu-J8-uGI" secondAttribute="topMargin" constant="36" id="gFD-ga-auz"/>
                                                 <constraint firstItem="jRb-bh-epF" firstAttribute="top" secondItem="25Q-ZU-baf" secondAttribute="bottom" constant="15" id="wJx-xj-7id"/>
@@ -574,6 +593,7 @@
                                         <connections>
                                             <outlet property="askingPrice" destination="gRr-3m-d9t" id="EKP-Yp-wsk"/>
                                             <outlet property="companyName" destination="25Q-ZU-baf" id="6oz-iM-MOX"/>
+                                            <outlet property="ratingBar" destination="Olr-mU-kQr" id="Khp-Kg-vJR"/>
                                             <outlet property="serviceType" destination="jRb-bh-epF" id="Kct-Ho-BvR"/>
                                         </connections>
                                     </tableViewCell>
@@ -603,7 +623,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="scy-HO-AqL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="316" y="921.58920539730138"/>
+            <point key="canvasLocation" x="314.49275362318843" y="921.19565217391312"/>
         </scene>
         <!--Client Profile-->
         <scene sceneID="AGB-OQ-077">

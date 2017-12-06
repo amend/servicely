@@ -18,7 +18,10 @@ class ServiceOfferTableViewCell: UITableViewCell {
     
     @IBOutlet weak var askingPrice: UILabel!
     
+    @IBOutlet weak var ratingBar: CosmosView!
+    
     var service:ServiceOffer? = nil
+    var rating: Double = -1.0
     
     override func awakeFromNib() {
         super.awakeFromNib()

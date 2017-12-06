@@ -541,6 +541,7 @@ SWIFT_CLASS("_TtC9servicely25ServiceOfferTableViewCell")
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified companyName;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified serviceType;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified askingPrice;
+@property (nonatomic, weak) IBOutlet CosmosView * _Null_unspecified ratingBar;
 - (void)awakeFromNib;
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated;
 - (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(ios,introduced=3.0);

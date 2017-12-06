@@ -21,6 +21,7 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     
     var services = [ServiceOffer]()
     var requests = [ClientRequest]()
+    var ratings = [String: Double]()
     
     
     override func viewDidLoad() {
@@ -45,6 +46,7 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // No need for semicolon
+        getRatings()
         
         var userID = FIRAuth.auth()?.currentUser?.uid
         
@@ -107,6 +109,27 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
         })
     }
     
+    func getRatings(){
+        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
+        let userRef = ref.child("users")
+        
+        userRef.observeSingleEvent(of: .value, with: { snapshot in
+            print(snapshot.childrenCount)
+            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                if let dict = rest.value as? NSDictionary {
+                    let rating = dict["rating"] as? Double ?? -1
+                    let userID = dict["userID"] as? String ?? ""
+                    self.ratings[userID] = rating
+                } else {
+                    print("could not convert snaptshot to dictionary")
+                }
+            }
+            DispatchQueue.main.async{
+                self.feedTableView.reloadData()
+            }
+        })
+    }
+    
     // MARK: - Firebase auth
     
     func checkLoggedIn() {
@@ -156,10 +179,22 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "serviceOfferCell", for: indexPath) as! ServiceOfferTableViewCell
         if(services.count > 0) {
             // Configure the cell...
-            cell.companyName.text = services[indexPath.row].companyName
-            cell.serviceType.text = services[indexPath.row].serviceType
-            cell.askingPrice.text = services[indexPath.row].askingPrice
-            cell.service = services[indexPath.row]
+            let service = services[indexPath.row]
+            let colorScheme = ColorScheme.getColorScheme()
+            let rating = ratings[service.userID]!
+            cell.companyName.text = service.companyName
+            cell.serviceType.text = service.serviceType
+            cell.askingPrice.text = service.askingPrice
+            cell.service = service
+            if(rating != -1){
+                cell.ratingBar.rating = rating
+                cell.ratingBar.filledColor = colorScheme
+                cell.ratingBar.filledBorderColor = colorScheme
+                cell.ratingBar.emptyBorderColor = colorScheme
+            }else{
+                cell.ratingBar.isHidden = true
+            }
+            
         }
         return cell
     }
