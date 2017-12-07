@@ -82,7 +82,9 @@ class ServicesRequestsTableViewController: UITableViewController {
                             print("could not convert snaptshot to dictionary")
                         }
                     }
-                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
                 })
                 
             } else {
