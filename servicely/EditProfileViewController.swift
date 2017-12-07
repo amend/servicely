@@ -48,7 +48,7 @@ class EditProfileViewController: UIViewController, UITextViewDelegate {
             about = aboutMe.text!
         }
  
-        userRef.child(userID!).setValue(["aboutMe":about])
+        userRef.child("\(userID!)/aboutMe").setValue(about)
         
         savedLabel.text = "Saved!"
         
