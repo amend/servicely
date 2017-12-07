@@ -1817,21 +1817,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoriesServiceCell" rowHeight="100" id="86D-gG-1Gb" customClass="CategoriesServiceTableViewCell" customModule="servicely">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="categoriesServiceCell" rowHeight="100" id="86D-gG-1Gb" customClass="CategoriesServiceTableViewCell" customModule="servicely">
                                 <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="86D-gG-1Gb" id="pJi-tE-Jnq">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="99.666666666666671"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="99.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Company/Service/Request&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R5V-xw-C8x">
-                                            <rect key="frame" x="103" y="13" width="266" height="21"/>
+                                            <rect key="frame" x="103" y="13" width="240" height="21"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;price&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxw-rZ-0a7">
-                                            <rect key="frame" x="103" y="39" width="266" height="21"/>
+                                            <rect key="frame" x="103" y="39" width="240" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -1858,7 +1858,7 @@
                                 <connections>
                                     <outlet property="name" destination="R5V-xw-C8x" id="3aH-T1-Mne"/>
                                     <outlet property="price" destination="Rxw-rZ-0a7" id="OuJ-01-1fw"/>
-                                    <segue destination="7AL-4b-v6o" kind="showDetail" identifier="viewService" id="Z4p-Z1-AU7"/>
+                                    <segue destination="7AL-4b-v6o" kind="push" identifier="viewService" id="Z4p-Z1-AU7"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -2046,6 +2046,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OfP-bM-AeH"/>
                     </view>
+                    <navigationItem key="navigationItem" id="UUH-m3-4Hk"/>
                     <connections>
                         <outlet property="contactNumber" destination="LEN-il-UPz" id="D78-wU-7Ql"/>
                         <outlet property="name" destination="5Fk-5T-Rhe" id="Twh-yZ-STW"/>
@@ -2151,7 +2152,7 @@
         <image name="settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BdC-VP-eEj"/>
+        <segue reference="Z4p-Z1-AU7"/>
         <segue reference="bFs-lE-3qd"/>
     </inferredMetricsTieBreakers>
 </document>
