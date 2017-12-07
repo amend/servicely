@@ -78,7 +78,14 @@ class ViewServiceViewController: UIViewController {
     
     func setRating(_ rating: Double){
         let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-        let string = "users/" + (service?.userID)! + "/rating"
+        
+        var string = ""
+        if(client) {
+            string  = "users/" + (request?.userID)! + "/rating"
+        } else {
+            string = "users/" + (service?.userID)! + "/rating"
+        }
+        
         ref.child(string).setValue(rating)
     }
 
