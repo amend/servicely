@@ -46,7 +46,6 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // No need for semicolon
-        getRatings()
         
         var userID = FIRAuth.auth()?.currentUser?.uid
         
@@ -68,47 +67,51 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "serviceTypeViewController")
                 self.present(vc!, animated: true, completion: nil)
             }
-            /*
-            let serviceType = user?["serviceType"] as? String ?? ""
-        
-            if(serviceType == "") {
-                // present service type view controller
-            }
-         */
+            self.services.removeAll()
             
-        })
-
-        FIRAuth.auth()?.currentUser?.uid
-        
-        services.removeAll()
-        
-        // get serviceOffers from Firebase.
-        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-        let serviceOfferRef = ref.child("serviceOffer")
-        
-        serviceOfferRef.observeSingleEvent(of: .value, with: { snapshot in
-            print(snapshot.childrenCount) // I got the expected number of items
-            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                print("adding to services array...")
-                
-                if let dict = rest.value as? NSDictionary {
-                    //let postContent = dict["companyName"] as? String
+            // get serviceOffers from Firebase.
+            let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
+            let serviceOfferRef = ref.child("serviceOffer")
+            
+            serviceOfferRef.observeSingleEvent(of: .value, with: { snapshot in
+                print(snapshot.childrenCount) // I got the expected number of items
+                for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                    print("adding to services array...")
                     
-                    self.services.append(ServiceOffer.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!))
-                    
-                    print("added \(rest.value)")
-                } else {
-                    print("could not convert snapshot to dictionay")
+                    if let dict = rest.value as? NSDictionary {
+                        //let postContent = dict["companyName"] as? String
+                        
+                        self.services.append(ServiceOffer.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!))
+                        
+                        print("added \(rest.value)")
+                    } else {
+                        print("could not convert snapshot to dictionay")
+                    }
                 }
-            }
-            // readload feedTableView on main thrread after finish getting
-            // serviceOffers from firebase
-            DispatchQueue.main.async{
-                self.feedTableView.reloadData()
-            }
+                
+                let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
+                let userRef = ref.child("users")
+                
+                userRef.observeSingleEvent(of: .value, with: { snapshot in
+                    print(snapshot.childrenCount)
+                    for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                        if let dict = rest.value as? NSDictionary {
+                            let rating = dict["rating"] as? Double ?? -1
+                            let userID = dict["userID"] as? String ?? ""
+                          
+                            self.ratings[rest.key] = rating
+                        } else {
+                            print("could not convert snaptshot to dictionary")
+                        }
+                    }
+                    DispatchQueue.main.async{
+                        self.feedTableView.reloadData()
+                    }
+                })
+            })
         })
     }
-    
+
     func getRatings(){
         let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
         let userRef = ref.child("users")
