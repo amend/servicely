@@ -286,7 +286,19 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
                 
             vc.service = service
             vc.client = false
-            vc.oldRating = ratings[service.userID]!
+            
+            if(ratings.keys.contains(service.userID)) {
+                let rating = ratings[service.userID]!
+                
+                if(rating != -1){
+    
+                    vc.oldRating = ratings[service.userID]!
+                }else{
+                    
+                }
+            }
+
+            //vc.oldRating = ratings[service.userID]!
         
         }
     }
