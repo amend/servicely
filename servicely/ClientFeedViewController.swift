@@ -184,18 +184,22 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
             // Configure the cell...
             let service = services[indexPath.row]
             let colorScheme = ColorScheme.getColorScheme()
-            let rating = ratings[service.userID]!
             cell.companyName.text = service.companyName
             cell.serviceType.text = service.serviceType
             cell.askingPrice.text = service.askingPrice
             cell.service = service
-            if(rating != -1){
-                cell.ratingBar.rating = rating
-                cell.ratingBar.filledColor = colorScheme
-                cell.ratingBar.filledBorderColor = colorScheme
-                cell.ratingBar.emptyBorderColor = colorScheme
-            }else{
-                cell.ratingBar.isHidden = true
+            
+            if(ratings.keys.contains(service.userID)) {
+                let rating = ratings[service.userID]!
+
+                if(rating != -1){
+                    cell.ratingBar.rating = rating
+                    cell.ratingBar.filledColor = colorScheme
+                    cell.ratingBar.filledBorderColor = colorScheme
+                    cell.ratingBar.emptyBorderColor = colorScheme
+                }else{
+                    cell.ratingBar.isHidden = true
+                }
             }
             
         }

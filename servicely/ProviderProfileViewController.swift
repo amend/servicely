@@ -53,14 +53,15 @@ class ProviderProfileViewController: UIViewController {
         usersRef.child(userID!).observeSingleEvent(of: .value, with: { snapshot in
             let user = snapshot.value as? NSDictionary
             
-            let about = user?["aboutMe"] as? String ?? ""
+            let about = user?["aboutUs"] as? String ?? ""
             
             self.aboutUs.text = about
+            
+            DispatchQueue.main.async {
+                self.view.reloadInputViews()
+            }
         })
         
-        DispatchQueue.main.async {
-            self.view.reloadInputViews()
-        }
     }
     
     func feedButtonPressed() {

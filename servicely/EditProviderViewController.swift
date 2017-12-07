@@ -48,7 +48,9 @@ class EditProviderViewController: UIViewController, UITextViewDelegate {
             about = aboutUs.text!
         }
         
-        userRef.child(userID!).setValue(["aboutUs":about])
+        //userRef.child(userID!).setValue(["aboutUs":about])
+        
+        userRef.child("\(userID!)/aboutUs").setValue(about)
         
         savedLabel.text = "Saved!"
     }

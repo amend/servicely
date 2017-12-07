@@ -225,9 +225,9 @@ class ServicesRequestsTableViewController: UITableViewController {
             if(self.client == false && services.count > 0) {
                 let service = services[indexPath.row]
                 let colorScheme = ColorScheme.getColorScheme()
-                
                 cell.name?.text = service.companyName
                 cell.price?.text = service.askingPrice
+                
                 if(self.ratings.keys.contains(service.userID)){
                     let rating = ratings[service.userID]!
 
