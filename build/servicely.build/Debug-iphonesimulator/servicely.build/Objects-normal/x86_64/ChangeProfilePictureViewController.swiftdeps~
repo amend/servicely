@@ -75,10 +75,12 @@ depends-member:
 - ["s7CVarArgP", "navigationControllerSupportedInterfaceOrientations"]
 - !private ["s7CVarArgP", "present"]
 - !private ["s7CVarArgP", "print"]
+- !private ["s7CVarArgP", "reference"]
 - !private ["s7CVarArgP", "requestAuthorization"]
 - !private ["s7CVarArgP", "setPictureButton"]
 - !private ["s7CVarArgP", "sourceImage"]
 - !private ["s7CVarArgP", "sourceType"]
+- !private ["s7CVarArgP", "storage"]
 - !private ["s7CVarArgP", "subscript"]
 - !private ["s7CVarArgP", "uid"]
 - !private ["s7CVarArgP", "viewDidLoad"]
@@ -151,10 +153,12 @@ depends-member:
 - ["s28CustomDebugStringConvertibleP", "navigationControllerSupportedInterfaceOrientations"]
 - !private ["s28CustomDebugStringConvertibleP", "present"]
 - !private ["s28CustomDebugStringConvertibleP", "print"]
+- !private ["s28CustomDebugStringConvertibleP", "reference"]
 - !private ["s28CustomDebugStringConvertibleP", "requestAuthorization"]
 - !private ["s28CustomDebugStringConvertibleP", "setPictureButton"]
 - !private ["s28CustomDebugStringConvertibleP", "sourceImage"]
 - !private ["s28CustomDebugStringConvertibleP", "sourceType"]
+- !private ["s28CustomDebugStringConvertibleP", "storage"]
 - !private ["s28CustomDebugStringConvertibleP", "subscript"]
 - !private ["s28CustomDebugStringConvertibleP", "uid"]
 - !private ["s28CustomDebugStringConvertibleP", "viewDidLoad"]
@@ -195,10 +199,12 @@ depends-member:
 - ["s23CustomStringConvertibleP", "navigationControllerSupportedInterfaceOrientations"]
 - !private ["s23CustomStringConvertibleP", "present"]
 - !private ["s23CustomStringConvertibleP", "print"]
+- !private ["s23CustomStringConvertibleP", "reference"]
 - !private ["s23CustomStringConvertibleP", "requestAuthorization"]
 - !private ["s23CustomStringConvertibleP", "setPictureButton"]
 - !private ["s23CustomStringConvertibleP", "sourceImage"]
 - !private ["s23CustomStringConvertibleP", "sourceType"]
+- !private ["s23CustomStringConvertibleP", "storage"]
 - !private ["s23CustomStringConvertibleP", "subscript"]
 - !private ["s23CustomStringConvertibleP", "uid"]
 - !private ["s23CustomStringConvertibleP", "viewDidLoad"]
@@ -244,12 +250,14 @@ depends-member:
 - ["s9EquatableP", "notDetermined"]
 - !private ["s9EquatableP", "present"]
 - !private ["s9EquatableP", "print"]
+- !private ["s9EquatableP", "reference"]
 - !private ["s9EquatableP", "requestAuthorization"]
 - ["s9EquatableP", "restricted"]
 - !private ["s9EquatableP", "savedPhotosAlbum"]
 - !private ["s9EquatableP", "setPictureButton"]
 - !private ["s9EquatableP", "sourceImage"]
 - !private ["s9EquatableP", "sourceType"]
+- !private ["s9EquatableP", "storage"]
 - !private ["s9EquatableP", "uid"]
 - !private ["s9EquatableP", "viewDidLoad"]
 - ["s9EquatableP", ""]
@@ -260,6 +268,8 @@ depends-member:
 - !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
 - !private ["So7FIRAuthC", "auth"]
 - !private ["So7FIRAuthC", "currentUser"]
+- !private ["So10FIRStorageC", "reference"]
+- !private ["So10FIRStorageC", "storage"]
 - !private ["So7FIRUserC", "uid"]
 - !private ["So11FIRUserInfoP", "uid"]
 - !private ["s8HashableP", "ColorScheme"]
@@ -296,12 +306,14 @@ depends-member:
 - ["s8HashableP", "notDetermined"]
 - !private ["s8HashableP", "present"]
 - !private ["s8HashableP", "print"]
+- !private ["s8HashableP", "reference"]
 - !private ["s8HashableP", "requestAuthorization"]
 - ["s8HashableP", "restricted"]
 - !private ["s8HashableP", "savedPhotosAlbum"]
 - !private ["s8HashableP", "setPictureButton"]
 - !private ["s8HashableP", "sourceImage"]
 - !private ["s8HashableP", "sourceType"]
+- !private ["s8HashableP", "storage"]
 - !private ["s8HashableP", "uid"]
 - !private ["s8HashableP", "viewDidLoad"]
 - ["s8HashableP", ""]
@@ -411,11 +423,13 @@ depends-member:
 - ["So8NSObjectC", "navigationControllerSupportedInterfaceOrientations"]
 - !private ["So8NSObjectC", "present"]
 - !private ["So8NSObjectC", "print"]
+- !private ["So8NSObjectC", "reference"]
 - !private ["So8NSObjectC", "requestAuthorization"]
 - ["So8NSObjectC", "setPicture"]
 - ["So8NSObjectC", "setPictureButton"]
 - ["So8NSObjectC", "sourceImage"]
 - !private ["So8NSObjectC", "sourceType"]
+- !private ["So8NSObjectC", "storage"]
 - !private ["So8NSObjectC", "uid"]
 - ["So8NSObjectC", "viewDidLoad"]
 - ["So8NSObjectC", "viewWillAppear"]
@@ -449,10 +463,12 @@ depends-member:
 - ["So16NSObjectProtocolP", "navigationControllerSupportedInterfaceOrientations"]
 - !private ["So16NSObjectProtocolP", "present"]
 - !private ["So16NSObjectProtocolP", "print"]
+- !private ["So16NSObjectProtocolP", "reference"]
 - !private ["So16NSObjectProtocolP", "requestAuthorization"]
 - !private ["So16NSObjectProtocolP", "setPictureButton"]
 - !private ["So16NSObjectProtocolP", "sourceImage"]
 - !private ["So16NSObjectProtocolP", "sourceType"]
+- !private ["So16NSObjectProtocolP", "storage"]
 - !private ["So16NSObjectProtocolP", "uid"]
 - !private ["So16NSObjectProtocolP", "viewDidLoad"]
 - ["So16NSObjectProtocolP", ""]
@@ -894,10 +910,12 @@ depends-member:
 - ["10Foundation27_KeyValueCodingAndObservingP", "navigationControllerSupportedInterfaceOrientations"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "present"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "print"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "reference"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "requestAuthorization"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "setPictureButton"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "sourceImage"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "sourceType"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "storage"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "uid"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "viewDidLoad"]
 - ["10Foundation27_KeyValueCodingAndObservingP", ""]
@@ -929,6 +947,7 @@ depends-nominal:
 - !private "s26ExpressibleByStringLiteralP"
 - !private "s33ExpressibleByUnicodeScalarLiteralP"
 - !private "So7FIRAuthC"
+- !private "So10FIRStorageC"
 - !private "So7FIRUserC"
 - !private "So11FIRUserInfoP"
 - "s8HashableP"
@@ -1029,9 +1048,13 @@ depends-external:
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Headers/FBSDKLoginKit-umbrella.h"
 - "/Programming/servicely/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FIRMutableData.h"
 - "/Programming/servicely/Pods/GoogleSignIn/Frameworks/GoogleSignIn.framework/Headers/GIDProfileData.h"
+- "/Programming/servicely/Pods/FirebaseStorage/Frameworks/FirebaseStorage.framework/Headers/FIRStorageMetadata.h"
+- "/Programming/servicely/Pods/FirebaseStorage/Frameworks/FirebaseStorage.framework/Headers/FIRStorageReference.h"
 - "/Programming/servicely/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FIRDatabaseReference.h"
 - "/Programming/servicely/build/Debug-iphonesimulator/Bolts/Bolts.framework/Headers/BFCancellationTokenSource.h"
 - "/Programming/servicely/build/Debug-iphonesimulator/Bolts/Bolts.framework/Headers/BFTaskCompletionSource.h"
+- "/Programming/servicely/Pods/FirebaseStorage/Frameworks/FirebaseStorage.framework/Headers/FIRStorage.h"
+- "/Programming/servicely/Pods/FirebaseStorage/Frameworks/FirebaseStorage.framework/Headers/FirebaseStorage.h"
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKProfile.h"
 - "/Programming/servicely/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FIRDataEventType.h"
 - "/Programming/servicely/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FIRDatabase.h"
@@ -1047,6 +1070,10 @@ depends-external:
 - "/Programming/servicely/Pods/FirebaseAuth/Frameworks/frameworks/FirebaseAuth.framework/Headers/FirebaseAuth.h"
 - "/Programming/servicely/build/Debug-iphonesimulator/Bolts/Bolts.framework/Headers/BFAppLink.h"
 - "/Programming/servicely/build/Debug-iphonesimulator/Bolts/Bolts.framework/Headers/BFTask.h"
+- "/Programming/servicely/Pods/FirebaseStorage/Frameworks/FirebaseStorage.framework/Headers/FIRStorageDownloadTask.h"
+- "/Programming/servicely/Pods/FirebaseStorage/Frameworks/FirebaseStorage.framework/Headers/FIRStorageUploadTask.h"
+- "/Programming/servicely/Pods/FirebaseStorage/Frameworks/FirebaseStorage.framework/Headers/FIRStorageTask.h"
+- "/Programming/servicely/Pods/FirebaseStorage/Frameworks/FirebaseStorage.framework/Headers/FIRStorageObservableTask.h"
 - "/Programming/servicely/Pods/FirebaseAuth/Frameworks/frameworks/FirebaseAuth.framework/Headers/FIRAuthCredential.h"
 - "/Programming/servicely/Pods/GoogleSignIn/Frameworks/GoogleSignIn.framework/Headers/GIDSignIn.h"
 - "/Programming/servicely/Pods/GoogleSignIn/Frameworks/GoogleSignIn.framework/Headers/GoogleSignIn.h"
@@ -1091,6 +1118,7 @@ depends-external:
 - "/Programming/servicely/Pods/FirebaseAuth/Frameworks/frameworks/FirebaseAuth.framework/Headers/FIRAuthErrors.h"
 - "/Programming/servicely/build/Debug-iphonesimulator/Bolts/Bolts.framework/Headers/Bolts.h"
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKConstants.h"
+- "/Programming/servicely/Pods/FirebaseStorage/Frameworks/FirebaseStorage.framework/Headers/FIRStorageConstants.h"
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Headers/FBSDKLoginConstants.h"
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKAppEvents.h"
 - "/Programming/servicely/build/Debug-iphonesimulator/Bolts/Bolts.framework/Headers/BFAppLinkTarget.h"
@@ -1101,6 +1129,7 @@ depends-external:
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKGraphRequestDataAttachment.h"
 - "/Programming/servicely/build/Debug-iphonesimulator/Bolts/Bolts.framework/Headers/BFMeasurementEvent.h"
 - "/Programming/servicely/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FIRDataSnapshot.h"
+- "/Programming/servicely/Pods/FirebaseStorage/Frameworks/FirebaseStorage.framework/Headers/FIRStorageTaskSnapshot.h"
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKGraphRequest.h"
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Headers/FBSDKProfilePictureView.h"
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Headers/FBSDKTooltipView.h"
@@ -1113,6 +1142,7 @@ depends-external:
 - "/Programming/servicely/Pods/FirebaseUI/FirebaseUIFrameworks/Google/Frameworks/FirebaseGoogleAuthUI.framework/Modules/module.modulemap"
 - "/Programming/servicely/Pods/FirebaseUI/FirebaseUIFrameworks/Auth/Frameworks/FirebaseAuthUI.framework/Modules/module.modulemap"
 - "/Programming/servicely/Pods/FirebaseUI/FirebaseUIFrameworks/Facebook/Frameworks/FirebaseFacebookAuthUI.framework/Modules/module.modulemap"
+- "/Programming/servicely/Pods/FirebaseStorage/Frameworks/FirebaseStorage.framework/Modules/module.modulemap"
 - "/Programming/servicely/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Modules/module.modulemap"
 - "/Programming/servicely/Pods/FirebaseAuth/Frameworks/frameworks/FirebaseAuth.framework/Modules/module.modulemap"
 - "/Programming/servicely/Pods/GoogleSignIn/Frameworks/GoogleSignIn.framework/Modules/module.modulemap"

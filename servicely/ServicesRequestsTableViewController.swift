@@ -22,9 +22,9 @@ class ServicesRequestsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*
+        
         getRatings()
-        if(client) {
+        /*if(client) {
             getRequets()
         } else {
             getServices()
@@ -49,12 +49,15 @@ class ServicesRequestsTableViewController: UITableViewController {
             for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
                 if let dict = rest.value as? NSDictionary {
                     let rating = dict["rating"] as? Double ?? -1
-                    let userID = dict["userID"] as? String ?? ""
-                    self.ratings[userID] = rating
+                    self.ratings[rest.key] = rating
                 } else {
                     print("could not convert snaptshot to dictionary")
                 }
             }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            })
             
             if(self.client) {
                 
@@ -115,7 +118,7 @@ class ServicesRequestsTableViewController: UITableViewController {
                     }
                 })
             }
-        })
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -227,6 +230,7 @@ class ServicesRequestsTableViewController: UITableViewController {
                 let colorScheme = ColorScheme.getColorScheme()
                 cell.name?.text = service.companyName
                 cell.price?.text = service.askingPrice
+                print(ratings)
                 
                 if(self.ratings.keys.contains(service.userID)){
                     let rating = ratings[service.userID]!

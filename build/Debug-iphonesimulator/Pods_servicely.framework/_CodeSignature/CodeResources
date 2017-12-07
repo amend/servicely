@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/Pods-servicely-umbrella.h</key>
 		<data>
-		PSHG2fRSoqSfGRoTUlFokWzi+NE=
+		SNgb5NucuW0sRQkr6R0T3w1tHLY=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -23,11 +23,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			PSHG2fRSoqSfGRoTUlFokWzi+NE=
+			SNgb5NucuW0sRQkr6R0T3w1tHLY=
 			</data>
 			<key>hash2</key>
 			<data>
-			9HIhn21mzN9PBgf3s1oygod3dCJ7+7qt0uHBTiKpESE=
+			uNgDmgeC7BiUP++uU7DQQOiEIT1LG8g7CUT0Jsdo53M=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
