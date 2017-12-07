@@ -34,6 +34,7 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
         // Do any additional setup after loading the view.
         self.serviceTypePickerView.dataSource = self
         self.serviceTypePickerView.delegate = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
