@@ -22,13 +22,15 @@ class ServicesRequestsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        /*
         getRatings()
         if(client) {
             getRequets()
         } else {
             getServices()
         }
-        
+         */
+
         self.tableView.rowHeight = 80.0
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -38,8 +40,80 @@ class ServicesRequestsTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        getRatings()
-        self.tableView.reloadData()
+
+        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
+        let userRef = ref.child("users")
+        
+        userRef.observeSingleEvent(of: .value, with: { snapshot in
+            print(snapshot.childrenCount)
+            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                if let dict = rest.value as? NSDictionary {
+                    let rating = dict["rating"] as? Double ?? -1
+                    let userID = dict["userID"] as? String ?? ""
+                    self.ratings[userID] = rating
+                } else {
+                    print("could not convert snaptshot to dictionary")
+                }
+            }
+            
+            if(self.client) {
+                
+                self.requests.removeAll()
+                
+                let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
+                let serviceOfferRef = ref.child("clientRequest")
+                
+                serviceOfferRef.observeSingleEvent(of: .value, with: { snapshot in
+                    print(snapshot.childrenCount)
+                    for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                        print("adding to services array...")
+                        
+                        if let dict = rest.value as? NSDictionary {
+                            let serviceType = (dict["serviceType"] as? String)!
+                            if (serviceType == self.category) {
+                                self.requests.append(ClientRequest.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["requestDescription"] as? String)!, location: (dict["location"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!, userName: (dict["userName"] as? String)!))
+                                
+                                /*
+                                 self.services.append(ServiceOffer.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!))
+                                 */
+                            }
+                            print("added \(rest.value)")
+                        } else {
+                            print("could not convert snaptshot to dictionary")
+                        }
+                    }
+                    
+                })
+                
+            } else {
+                
+                self.services.removeAll()
+                
+                let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
+                let serviceOfferRef = ref.child("serviceOffer")
+                
+                serviceOfferRef.observeSingleEvent(of: .value, with: { snapshot in
+                    print(snapshot.childrenCount)
+                    for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                        print("adding to services array...")
+                        
+                        if let dict = rest.value as? NSDictionary {
+                            let serviceType = (dict["serviceType"] as? String)!
+                            if (serviceType == self.category) {
+                                self.services.append(ServiceOffer.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!))
+                            }
+                            print("added \(rest.value)")
+                        } else {
+                            print("could not convert snaptshot to dictionary")
+                        }
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                })
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -143,28 +217,35 @@ class ServicesRequestsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoriesServiceCell", for: indexPath) as! CategoriesServiceTableViewCell
-        if(self.client == false) {
-            let service = services[indexPath.row]
-            let rating = ratings[service.userID]!
-            let colorScheme = ColorScheme.getColorScheme()
-            
-            cell.name?.text = service.companyName
-            cell.price?.text = service.askingPrice
-            if(rating != -1){
-                cell.rating?.isHidden = false
-                cell.rating?.rating = rating
-                cell.rating?.filledColor = colorScheme
-                cell.rating?.filledBorderColor = colorScheme
-                cell.rating?.emptyBorderColor = colorScheme
-            }else{
+        
+        if(ratings.count > 0 ) {
+        
+            if(self.client == false && services.count > 0) {
+                let service = services[indexPath.row]
+                let colorScheme = ColorScheme.getColorScheme()
+                
+                cell.name?.text = service.companyName
+                cell.price?.text = service.askingPrice
+                if(self.ratings.keys.contains(service.userID)){
+                    let rating = ratings[service.userID]!
+
+                    if(rating != -1) {
+                        cell.rating?.isHidden = false
+                        cell.rating?.rating = rating
+                        cell.rating?.filledColor = colorScheme
+                        cell.rating?.filledBorderColor = colorScheme
+                        cell.rating?.emptyBorderColor = colorScheme
+                    } else {
+                        cell.rating?.isHidden = true
+                    }
+                }
+            } else if (requests.count > 0){
+                let request = requests[indexPath.row]
+                
+                cell.name?.text = request.userName
+                cell.price?.text = request.serviceDescription
                 cell.rating?.isHidden = true
             }
-        } else {
-            let request = requests[indexPath.row]
-            
-            cell.name?.text = request.userName
-            cell.price?.text = request.serviceDescription
-            cell.rating?.isHidden = true
         }
         return cell
     }
@@ -221,7 +302,9 @@ class ServicesRequestsTableViewController: UITableViewController {
             
                 vc.service = service
                 vc.client = client
-                vc.oldRating = ratings[service.userID]!
+                if(ratings.keys.contains(service.userID)) {
+                    vc.oldRating = ratings[service.userID]!
+                }
             } else {
                 let vc:ViewServiceViewController = segue.destination as! ViewServiceViewController
                 
@@ -233,6 +316,6 @@ class ServicesRequestsTableViewController: UITableViewController {
             }
         }
     }
- 
+
 
 }

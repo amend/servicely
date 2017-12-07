@@ -97,7 +97,7 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
                     for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
                         if let dict = rest.value as? NSDictionary {
                             let rating = dict["rating"] as? Double ?? -1
-                            let userID = dict["userID"] as? String ?? ""
+                            //let userID = dict["userID"] as? String ?? ""
                           
                             self.ratings[rest.key] = rating
                         } else {
