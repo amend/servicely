@@ -11,8 +11,7 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 import FirebaseAuthUI
-import FirebaseGoogleAuthUI
-import FirebaseFacebookAuthUI
+import FirebaseStorage
 
 class ClientProfileViewController: UIViewController{
 
@@ -20,14 +19,37 @@ class ClientProfileViewController: UIViewController{
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var aboutMe: UILabel!
     @IBOutlet weak var viewMyRequestsButton: UIButton!
+    @IBOutlet weak var profilePicImageView: UIImageView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //loadCorrectProfilePage()
         constraints()
         self.title = "Client Profile"
 
         // Do any additional setup after loading the view.
+        
+        // ************* start db stuff, wrap this chunk and others in class *************
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        
+        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
+        
+        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            //let username = value?["username"] as? String ?? ""
+            //let user = User(username: username)
+            
+            let profilePicURL = value?["profilePic"] as? String ?? ""
+            
+            if(profilePicURL != "") {
+                self.retrieveImage(profilePicURL, completionBlock: {_ in })
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        // ************* end db stuff, wrap this chunk and others in class *************
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,7 +58,6 @@ class ClientProfileViewController: UIViewController{
         nameView.backgroundColor = colorScheme
         viewMyRequestsButton.backgroundColor = colorScheme
         loadInfo()
-        //loadCorrectProfilePage()
     }
 
 
@@ -73,26 +94,24 @@ class ClientProfileViewController: UIViewController{
         self.nameView.frame.size.width = self.view.frame.size.width
     }
     
-    func loadCorrectProfilePage() {
-        let userID = FIRAuth.auth()?.currentUser?.uid
+    func retrieveImage(_ URL: String, completionBlock: @escaping (UIImage) -> Void) {
+        let ref = FIRStorage.storage().reference(forURL: URL)
         
-        let ref1:FIRDatabaseReference! = FIRDatabase.database().reference()
-        let usersRef = ref1.child("users")
-        
-        usersRef.child(userID!).observeSingleEvent(of: .value, with: { snapshot in
-            let user = snapshot.value as? NSDictionary
-            
-            let serviceType = user?["serviceType"] as? String ?? ""
-            print("ServiceType: \(serviceType)")
-            
-            let providerVC = self.storyboard?.instantiateViewController(withIdentifier: "providerProfile") as! ProviderProfileViewController
-            
-            if serviceType == "serviceProvider" {
-                self.present(providerVC, animated: true, completion: nil)
+        // max download size limit is 10Mb in this case
+        ref.data(withMaxSize: 10 * 1024 * 1024, completion: { retrievedData, error in
+            if error != nil {
+                // handle the error
+                return
             }
+            
+            let image = UIImage(data: retrievedData!)!
+            self.profilePicImageView.image = image
+            
+            completionBlock(image)
         })
     }
 
+    
     /*
     // MARK: - Navigation
 

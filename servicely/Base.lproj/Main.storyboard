@@ -777,6 +777,7 @@
                         <outlet property="aboutMe" destination="7Uq-iT-LWS" id="tUA-xM-h5d"/>
                         <outlet property="displayName" destination="PBd-jm-t5f" id="mCY-om-kg8"/>
                         <outlet property="nameView" destination="yyz-G7-8Fu" id="ki0-G2-ivn"/>
+                        <outlet property="profilePicImageView" destination="VC9-Bg-mIJ" id="srn-IN-4gm"/>
                         <outlet property="viewMyRequestsButton" destination="KK0-8g-NFd" id="gae-Qn-BuL"/>
                     </connections>
                 </viewController>
@@ -906,6 +907,7 @@
                         <outlet property="aboutUs" destination="iw5-g4-EzS" id="jfy-vY-Bod"/>
                         <outlet property="displayName" destination="OMK-pW-diO" id="kMh-aK-PVU"/>
                         <outlet property="headerView" destination="UAm-29-hgY" id="EBI-JJ-ccq"/>
+                        <outlet property="profilePicImageView" destination="hQu-3f-47q" id="qIZ-ax-zsy"/>
                         <outlet property="viewMyRequestsButton" destination="3zj-Qh-RYs" id="2Ql-xg-Zfe"/>
                         <outlet property="viewOurServicesButton" destination="1hl-Og-9NZ" id="yDE-TU-YFB"/>
                     </connections>
@@ -2202,7 +2204,7 @@
         <image name="settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IUH-sR-iFB"/>
+        <segue reference="BdC-VP-eEj"/>
         <segue reference="Lir-cw-YDj"/>
     </inferredMetricsTieBreakers>
 </document>

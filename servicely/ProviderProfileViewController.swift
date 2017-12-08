@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseStorage
 
 class ProviderProfileViewController: UIViewController {
 
@@ -17,12 +18,36 @@ class ProviderProfileViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var viewOurServicesButton: UIButton!
     @IBOutlet weak var viewMyRequestsButton: UIButton!
+    @IBOutlet weak var profilePicImageView: UIImageView!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Provider Profile"
 
         // Do any additional setup after loading the view.
+        
+        // ************* start db stuff, wrap this chunk and others in class *************
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        
+        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
+        
+        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            //let username = value?["username"] as? String ?? ""
+            //let user = User(username: username)
+            let profilePicURL = value?["profilePic"] as? String ?? ""
+            
+            if(profilePicURL != "") {
+                self.retrieveImage(profilePicURL, completionBlock: {_ in })
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        // ************* end db stuff, wrap this chunk and others in class *************
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,6 +93,22 @@ class ProviderProfileViewController: UIViewController {
     
     }
     
+    func retrieveImage(_ URL: String, completionBlock: @escaping (UIImage) -> Void) {
+        let ref = FIRStorage.storage().reference(forURL: URL)
+        
+        // max download size limit is 10Mb in this case
+        ref.data(withMaxSize: 10 * 1024 * 1024, completion: { retrievedData, error in
+            if error != nil {
+                // handle the error
+                return
+            }
+            
+            let image = UIImage(data: retrievedData!)!
+            self.profilePicImageView.image = image
+            
+            completionBlock(image)
+        })
+    }
 
     /*
     // MARK: - Navigation

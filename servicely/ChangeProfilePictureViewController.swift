@@ -19,6 +19,7 @@ class ChangeProfilePictureViewController: UIViewController, UINavigationControll
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var choosePictureButton: UIButton!
     @IBOutlet weak var setPictureButton: UIButton!
+    
     var sourceImage: UIImage? = nil
     var imagePicker = UIImagePickerController()
     
@@ -28,6 +29,27 @@ class ChangeProfilePictureViewController: UIViewController, UINavigationControll
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // ************* start db stuff, wrap this chunk and others in class *************
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        
+        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
+        
+        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            //let username = value?["username"] as? String ?? ""
+            //let user = User(username: username)
+            let profilePicURL = value?["profilePic"] as? String ?? ""
+            
+            if(profilePicURL != "") {
+                self.retrieveImage(profilePicURL, completionBlock: {_ in })
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        // ************* end db stuff, wrap this chunk and others in class *************
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,26 +78,61 @@ class ChangeProfilePictureViewController: UIViewController, UINavigationControll
     }
     
     @IBAction func setPicture(_ sender: Any) {
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        let storageRef = FIRStorage.storage().reference()
+        uploadPhoto(sourceImage!, completionBlock: {})
+    }
+    
+    func uploadPhoto(_ image: UIImage, completionBlock: @escaping () -> Void) {
+        let ref = FIRStorage.storage().reference().child("images/").child("myFileName.jpg")    // you may want to use UUID().uuidString + ".jpg" instead of "myFileName.jpg" if you want to upload multiple files with unique names
         
-        // File located on disk
+        let meta = FIRStorageMetadata()
+        meta.contentType = "image/jpg"
         
-        //let localFile = URL(string: "path/to/image")!
-        let localFile = URL(string: imageURL.absoluteString!)
-        
-        // Create a reference to the file you want to upload
-        let riversRef = storageRef.child("images/rivers.jpg")
-        
-        // Upload the file to the path "images/rivers.jpg"
-        let uploadTask = riversRef.putFile(localFile!, metadata: nil) { metadata, error in
-            if let error = error {
-                // Uh-oh, an error occurred!
-            } else {
-                // Metadata contains file metadata such as size, content-type, and download URL.
-                let downloadURL = metadata!.downloadURL()
+        // 0.8 here is the compression quality percentage
+        ref.put(UIImageJPEGRepresentation(image, 0.8)!, metadata: meta, completion: { (imageMeta, error) in
+            if error != nil {
+                // handle the error
+                return
             }
-        }
+            
+            // most likely required data
+            let downloadURL = imageMeta?.downloadURL()?.absoluteString      // needed to later download the image
+            let imagePath = imageMeta?.path     // needed if you want to be able to delete the image later
+            
+            // optional data
+            let timeStamp = imageMeta?.timeCreated
+            let size = imageMeta?.size
+            
+            // ----- should save these data in your database at this point -----
+            
+            // ************* start db stuff, wrap this chunk and others in class *************
+            let userID = FIRAuth.auth()?.currentUser?.uid
+            
+            // Save to Firebase.
+            let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
+            
+            ref.child("users/\(userID!)/profilePic").setValue(downloadURL)
+            // ************* end db stuff, wrap this chunk and others in class *************
+
+            completionBlock()
+        })
+        
+    }
+    
+    func retrieveImage(_ URL: String, completionBlock: @escaping (UIImage) -> Void) {
+        let ref = FIRStorage.storage().reference(forURL: URL)
+        
+        // max download size limit is 10Mb in this case
+        ref.data(withMaxSize: 10 * 1024 * 1024, completion: { retrievedData, error in
+            if error != nil {
+                // handle the error
+                return
+            }
+            
+            let image = UIImage(data: retrievedData!)!
+            self.imageView.image = image
+            
+            completionBlock(image)
+        })
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
