@@ -14,7 +14,6 @@ class CreateServiceOrRequestViewController: UIViewController {
 
     @IBOutlet weak var containerView: UIView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,7 +44,7 @@ class CreateServiceOrRequestViewController: UIViewController {
             
             //let providerVC = self.storyboard?.instantiateViewController(withIdentifier: "providerProfile") as! ProviderProfileViewController
             
-            if serviceType == "serviceProvider" {
+            if (serviceType == "serviceProvider") {
                 //self.present(providerVC, animated: true, completion: nil)
                 self.showCreateView(providerVC)
             }else{
