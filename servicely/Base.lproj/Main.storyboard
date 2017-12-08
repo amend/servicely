@@ -45,7 +45,7 @@
                                                 <constraint firstAttribute="width" constant="58" id="MDi-aI-Sdz"/>
                                             </constraints>
                                         </imageView>
-                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Pf-jG-WKZ" customClass="CosmosView" customModule="servicely" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Pf-jG-WKZ" customClass="CosmosView" customModule="servicely" customModuleProvider="target">
                                             <rect key="frame" x="274" y="35" width="120" height="28"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -2040,7 +2040,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s04-7I-WEY" customClass="CosmosView" customModule="servicely" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s04-7I-WEY" customClass="CosmosView" customModule="servicely" customModuleProvider="target">
                                 <rect key="frame" x="72" y="393" width="270" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>

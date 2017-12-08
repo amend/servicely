@@ -1151,4 +1151,4 @@ depends-external:
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKCoreKit/FBSDKCoreKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/build/Debug-iphonesimulator/FBSDKLoginKit/FBSDKLoginKit.framework/Modules/module.modulemap"
 - "/Programming/servicely/Pods/Firebase/Headers/module.modulemap"
-interface-hash: "705615ddae6cee57c01a6cdb5ac974a6"
+interface-hash: "8ed0227d713fc215e6487ef358c97209"
