@@ -10,7 +10,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 
-class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate {
 
     @IBOutlet weak var serviceTypePickerView: UIPickerView!
     
@@ -38,6 +38,10 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         // Do any additional setup after loading the view.
         self.serviceTypePickerView.dataSource = self
         self.serviceTypePickerView.delegate = self
+        self.title = "Create Service Offer"
+        serviceDescription.delegate = self
+        serviceDescription.text = "Say something about the service you are offering..."
+        serviceDescription.textColor = UIColor.lightGray
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -100,6 +104,20 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if(component == 0) {
             serviceType = pickerViewData[row]
+        }
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Tell us about your company..."
+            textView.textColor = UIColor.lightGray
         }
     }
     

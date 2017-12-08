@@ -395,7 +395,7 @@ SWIFT_CLASS("_TtC9servicely10CosmosView")
 @class UITextView;
 
 SWIFT_CLASS("_TtC9servicely33CreateClientRequestViewController")
-@interface CreateClientRequestViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface CreateClientRequestViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate>
 @property (nonatomic, weak) IBOutlet UIPickerView * _Null_unspecified serviceTypePickerView;
 @property (nonatomic, weak) IBOutlet UITextView * _Null_unspecified requestDescription;
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified location;
@@ -410,13 +410,15 @@ SWIFT_CLASS("_TtC9servicely33CreateClientRequestViewController")
 - (NSInteger)pickerView:(UIPickerView * _Nonnull)pickerView numberOfRowsInComponent:(NSInteger)component SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nullable)pickerView:(UIPickerView * _Nonnull)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component SWIFT_WARN_UNUSED_RESULT;
 - (void)pickerView:(UIPickerView * _Nonnull)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component;
+- (void)textViewDidBeginEditing:(UITextView * _Nonnull)textView;
+- (void)textViewDidEndEditing:(UITextView * _Nonnull)textView;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
 SWIFT_CLASS("_TtC9servicely32CreateServiceOfferViewController")
-@interface CreateServiceOfferViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface CreateServiceOfferViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate>
 @property (nonatomic, weak) IBOutlet UIPickerView * _Null_unspecified serviceTypePickerView;
 @property (nonatomic, weak) IBOutlet UITextView * _Null_unspecified serviceDescription;
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified askingPrice;
@@ -433,6 +435,8 @@ SWIFT_CLASS("_TtC9servicely32CreateServiceOfferViewController")
 - (NSInteger)pickerView:(UIPickerView * _Nonnull)pickerView numberOfRowsInComponent:(NSInteger)component SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nullable)pickerView:(UIPickerView * _Nonnull)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component SWIFT_WARN_UNUSED_RESULT;
 - (void)pickerView:(UIPickerView * _Nonnull)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component;
+- (void)textViewDidBeginEditing:(UITextView * _Nonnull)textView;
+- (void)textViewDidEndEditing:(UITextView * _Nonnull)textView;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
