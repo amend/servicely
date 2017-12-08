@@ -64,7 +64,8 @@ class ClientProfileViewController: UIViewController{
         
         let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
         
-        // ***** check if profilePicImageView is grey default image *****
+        // ***** check if profilePicImageView is grey default image,
+        // if so execute this below, if not dont execute *****
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary

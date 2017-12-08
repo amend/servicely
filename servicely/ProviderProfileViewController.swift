@@ -63,28 +63,29 @@ class ProviderProfileViewController: UIViewController {
         viewOurServicesButton.backgroundColor = colorScheme
         loadInfo()
         
-        if(profilePicImageView.image == nil) {
-            // ************* start db stuff, wrap this chunk and others in class *************
-            let userID = FIRAuth.auth()?.currentUser?.uid
+        // ************* start db stuff, wrap this chunk and others in class *************
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        
+        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
+        
+        // ***** check if profilePicImageView is grey default image,
+        // if so execute this below, if not dont execute *****
+        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            //let username = value?["username"] as? String ?? ""
+            //let user = User(username: username)
+            let profilePicURL = value?["profilePic"] as? String ?? ""
             
-            let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-            
-            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user value
-                let value = snapshot.value as? NSDictionary
-                //let username = value?["username"] as? String ?? ""
-                //let user = User(username: username)
-                let profilePicURL = value?["profilePic"] as? String ?? ""
-                
-                if(profilePicURL != "") {
-                    self.retrieveImage(profilePicURL, completionBlock: {_ in })
-                }
-                
-            }) { (error) in
-                print(error.localizedDescription)
+            if(profilePicURL != "") {
+                self.retrieveImage(profilePicURL, completionBlock: {_ in })
             }
-            // ************* end db stuff, wrap this chunk and others in class *************
+            
+        }) { (error) in
+            print(error.localizedDescription)
         }
+        // ************* end db stuff, wrap this chunk and others in class *************
+        
     }
     
     func loadInfo() {
