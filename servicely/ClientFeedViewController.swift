@@ -35,7 +35,7 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
         
         self.feedTableView.dataSource = self
         self.feedTableView.delegate = self
-        
+        self.title = "Feed"
         checkLoggedIn()
     }
 

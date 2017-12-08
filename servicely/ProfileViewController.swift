@@ -18,9 +18,7 @@ class ProfileViewController: UIViewController {
         let providerProfileVC = storyboard?.instantiateViewController(withIdentifier: "providerProfile") as! ProviderProfileViewController
         let clientProfileVC = storyboard?.instantiateViewController(withIdentifier: "clientProfile") as! ClientProfileViewController
         ifClientProfilePage(clientProfileVC, providerProfileVC)
-        
-        
-
+        self.title = "Your Profile"
         // Do any additional setup after loading the view.
     }
 
