@@ -62,6 +62,29 @@ class ChangeProfilePictureViewController: UIViewController, UINavigationControll
         headerView.backgroundColor = colorScheme
         choosePictureButton.backgroundColor = colorScheme
         setPictureButton.backgroundColor = colorScheme
+        
+        if(imageView.image == nil) {
+            // ************* start db stuff, wrap this chunk and others in class *************
+            let userID = FIRAuth.auth()?.currentUser?.uid
+            
+            let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
+            
+            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let value = snapshot.value as? NSDictionary
+                //let username = value?["username"] as? String ?? ""
+                //let user = User(username: username)
+                let profilePicURL = value?["profilePic"] as? String ?? ""
+                
+                if(profilePicURL != "") {
+                    self.retrieveImage(profilePicURL, completionBlock: {_ in })
+                }
+                
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+            // ************* end db stuff, wrap this chunk and others in class *************
+        }
     }
     
     @IBAction func choosePicture(_ sender: Any) {
@@ -82,7 +105,9 @@ class ChangeProfilePictureViewController: UIViewController, UINavigationControll
     }
     
     func uploadPhoto(_ image: UIImage, completionBlock: @escaping () -> Void) {
-        let ref = FIRStorage.storage().reference().child("images/").child("myFileName.jpg")    // you may want to use UUID().uuidString + ".jpg" instead of "myFileName.jpg" if you want to upload multiple files with unique names
+        let userID = FIRAuth.auth()?.currentUser?.uid
+
+        let ref = FIRStorage.storage().reference().child("images/").child("\(userID!).jpg")    // you may want to use UUID().uuidString + ".jpg" instead of "myFileName.jpg" if you want to upload multiple files with unique names
         
         let meta = FIRStorageMetadata()
         meta.contentType = "image/jpg"
