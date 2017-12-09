@@ -1642,12 +1642,24 @@
                                     <action selector="choosePicture:" destination="pEa-bl-KQb" eventType="touchUpInside" id="eng-vf-l33"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yW7-md-iPP">
+                                <rect key="frame" x="134" y="475" width="146" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="146" id="KtE-bi-gaY"/>
+                                    <constraint firstAttribute="height" constant="21" id="OOb-rZ-KAb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="8zE-hZ-Ucz" firstAttribute="centerX" secondItem="2Gx-1g-1cY" secondAttribute="centerX" id="AaH-9i-DBb"/>
                             <constraint firstItem="5om-46-vmi" firstAttribute="top" secondItem="s0A-R7-ag0" secondAttribute="top" id="CQq-Vc-VL6"/>
+                            <constraint firstItem="yW7-md-iPP" firstAttribute="centerX" secondItem="2Gx-1g-1cY" secondAttribute="centerX" id="Hen-Nt-Cbt"/>
                             <constraint firstItem="76k-JM-QTQ" firstAttribute="centerX" secondItem="2Gx-1g-1cY" secondAttribute="centerX" id="J5j-jR-X30"/>
+                            <constraint firstItem="yW7-md-iPP" firstAttribute="top" secondItem="8zE-hZ-Ucz" secondAttribute="bottom" constant="8" id="MUw-vC-b4C"/>
                             <constraint firstItem="wvh-L1-Jyq" firstAttribute="top" secondItem="DsX-5t-Eyf" secondAttribute="bottom" constant="33" id="UKH-Cl-hKE"/>
                             <constraint firstItem="5om-46-vmi" firstAttribute="leading" secondItem="s0A-R7-ag0" secondAttribute="leading" id="VcL-8O-GH4"/>
                             <constraint firstItem="wvh-L1-Jyq" firstAttribute="centerX" secondItem="2Gx-1g-1cY" secondAttribute="centerX" id="YCG-GE-HLd"/>
@@ -1663,12 +1675,13 @@
                         <outlet property="choosePictureButton" destination="wvh-L1-Jyq" id="nPR-fb-iSs"/>
                         <outlet property="headerView" destination="5om-46-vmi" id="3wI-TV-Wie"/>
                         <outlet property="imageView" destination="DsX-5t-Eyf" id="ctd-gU-9sW"/>
+                        <outlet property="savingPicLabel" destination="yW7-md-iPP" id="jaq-sf-gAr"/>
                         <outlet property="setPictureButton" destination="8zE-hZ-Ucz" id="bzK-M4-keD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7EY-sP-xuq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2460" y="-610"/>
+            <point key="canvasLocation" x="2459.4202898550725" y="-610.19021739130437"/>
         </scene>
         <!--Service Type View Controller-->
         <scene sceneID="pzn-E9-tmj">

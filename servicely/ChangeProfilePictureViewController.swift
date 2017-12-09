@@ -19,6 +19,7 @@ class ChangeProfilePictureViewController: UIViewController, UINavigationControll
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var choosePictureButton: UIButton!
     @IBOutlet weak var setPictureButton: UIButton!
+    @IBOutlet weak var savingPicLabel: UILabel!
     
     var sourceImage: UIImage? = nil
     var imagePicker = UIImagePickerController()
@@ -101,6 +102,7 @@ class ChangeProfilePictureViewController: UIViewController, UINavigationControll
     }
     
     @IBAction func setPicture(_ sender: Any) {
+        self.savingPicLabel.text = "Saving profile pic..."
         uploadPhoto(sourceImage!, completionBlock: {})
     }
     
@@ -138,6 +140,8 @@ class ChangeProfilePictureViewController: UIViewController, UINavigationControll
             ref.child("users/\(userID!)/profilePic").setValue(downloadURL)
             // ************* end db stuff, wrap this chunk and others in class *************
 
+            self.savingPicLabel.text = ""
+            
             completionBlock()
         })
         
