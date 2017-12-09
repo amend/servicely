@@ -19,6 +19,7 @@ class ProviderProfileViewController: UIViewController {
     @IBOutlet weak var viewOurServicesButton: UIButton!
     @IBOutlet weak var viewMyRequestsButton: UIButton!
     @IBOutlet weak var profilePicImageView: UIImageView!
+    @IBOutlet weak var loadingPicLabel: UILabel!
     
     
     
@@ -41,6 +42,7 @@ class ProviderProfileViewController: UIViewController {
             let profilePicURL = value?["profilePic"] as? String ?? ""
             
             if(profilePicURL != "") {
+                self.loadingPicLabel.text = "Loading profile pic..."
                 self.retrieveImage(profilePicURL, completionBlock: {_ in })
             }
             
@@ -78,6 +80,7 @@ class ProviderProfileViewController: UIViewController {
             let profilePicURL = value?["profilePic"] as? String ?? ""
             
             if(profilePicURL != "") {
+                self.loadingPicLabel.text = "Loading profile pic..."
                 self.retrieveImage(profilePicURL, completionBlock: {_ in })
             }
             
@@ -129,6 +132,8 @@ class ProviderProfileViewController: UIViewController {
             
             let image = UIImage(data: retrievedData!)!
             self.profilePicImageView.image = image
+            
+            self.loadingPicLabel.text = ""
             
             completionBlock(image)
         })
