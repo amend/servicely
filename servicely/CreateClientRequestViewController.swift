@@ -10,7 +10,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 
-class CreateClientRequestViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate {
+class CreateClientRequestViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var serviceTypePickerView: UIPickerView!
     
@@ -39,6 +39,14 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
         requestDescription.text = "Say something about the service you are looking for..."
         requestDescription.textColor = UIColor.lightGray
         
+        // dismiss text field keyboards
+        // uses functions: textFieldShouldReturn and textView
+        self.requestDescription.delegate = self
+        self.location.delegate = self
+        self.contactInfo.delegate = self
+        let tap = UITapGestureRecognizer(target: self.view, action: Selector("endEditing:"))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +62,19 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true;
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
     @IBAction func submitButton(_ sender: Any) {
