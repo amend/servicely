@@ -23,14 +23,6 @@ class ServicesRequestsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getRatings()
-        /*if(client) {
-            getRequets()
-        } else {
-            getServices()
-        }
-         */
-
         self.tableView.rowHeight = 80.0
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -41,84 +33,49 @@ class ServicesRequestsTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
 
-        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-        let userRef = ref.child("users")
+        // users for ratings
+        // if self.client then get clientRequests
+        // else get serviceOffers
         
-        userRef.observeSingleEvent(of: .value, with: { snapshot in
+        let db:Database = Database()
+        
+        // there's probably a better way to get ratings for users, so think of one
+        // and delete this
+        db.getUsers() { (snapshot) in
             print(snapshot.childrenCount)
             for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
                 if let dict = rest.value as? NSDictionary {
                     let rating = dict["rating"] as? Double ?? -1
+                    //let userID = dict["userID"] as? String ?? ""
+                    
                     self.ratings[rest.key] = rating
                 } else {
                     print("could not convert snaptshot to dictionary")
                 }
             }
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-            })
             
             if(self.client) {
-                
                 self.requests.removeAll()
-                
-                let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-                let serviceOfferRef = ref.child("clientRequest")
-                
-                serviceOfferRef.observeSingleEvent(of: .value, with: { snapshot in
-                    print(snapshot.childrenCount)
-                    for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                        print("adding to services array...")
-                        
-                        if let dict = rest.value as? NSDictionary {
-                            let serviceType = (dict["serviceType"] as? String)!
-                            if (serviceType == self.category) {
-                                self.requests.append(ClientRequest.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["requestDescription"] as? String)!, location: (dict["location"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!, userName: (dict["userName"] as? String)!))
-                                
-                                /*
-                                 self.services.append(ServiceOffer.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!))
-                                 */
-                            }
-                            print("added \(rest.value)")
-                        } else {
-                            print("could not convert snaptshot to dictionary")
-                        }
-                    }
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                })
-                
-            } else {
-                
-                self.services.removeAll()
-                
-                let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-                let serviceOfferRef = ref.child("serviceOffer")
-                
-                serviceOfferRef.observeSingleEvent(of: .value, with: { snapshot in
-                    print(snapshot.childrenCount)
-                    for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                        print("adding to services array...")
-                        
-                        if let dict = rest.value as? NSDictionary {
-                            let serviceType = (dict["serviceType"] as? String)!
-                            if (serviceType == self.category) {
-                                self.services.append(ServiceOffer.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!))
-                            }
-                            print("added \(rest.value)")
-                        } else {
-                            print("could not convert snaptshot to dictionary")
-                        }
-                    }
+
+                db.getRequestsOfCategory(category: self.category) { (requestsOfCategory) in
+                    self.requests = requestsOfCategory
                     
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
-                })
+                }
+            } else {
+                self.services.removeAll()
+
+                db.getServicesOfCategory(category: self.category) { (servicesOfCategory) in
+                    self.services = servicesOfCategory
+                
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
             }
-        
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -140,84 +97,6 @@ class ServicesRequestsTableViewController: UITableViewController {
         } else {
             return requests.count
         }
-    }
-
-    func getServices() {
-        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-        let serviceOfferRef = ref.child("serviceOffer")
-        
-        serviceOfferRef.observeSingleEvent(of: .value, with: { snapshot in
-            print(snapshot.childrenCount)
-            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                print("adding to services array...")
-                
-                if let dict = rest.value as? NSDictionary {
-                    let serviceType = (dict["serviceType"] as? String)!
-                    if (serviceType == self.category) {
-                        self.services.append(ServiceOffer.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!))
-                    }
-                    print("added \(rest.value)")
-                } else {
-                    print("could not convert snaptshot to dictionary")
-                }
-            }
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
-    }
-    
-    func getRequets() {
-        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-        let serviceOfferRef = ref.child("clientRequest")
-        
-        serviceOfferRef.observeSingleEvent(of: .value, with: { snapshot in
-            print(snapshot.childrenCount)
-            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                print("adding to services array...")
-                
-                if let dict = rest.value as? NSDictionary {
-                    let serviceType = (dict["serviceType"] as? String)!
-                    if (serviceType == self.category) {
-                        self.requests.append(ClientRequest.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["requestDescription"] as? String)!, location: (dict["location"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!, userName: (dict["userName"] as? String)!))
-                        
-                        /*
-                        self.services.append(ServiceOffer.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!))
-                        */
-                    }
-                    print("added \(rest.value)")
-                } else {
-                    print("could not convert snaptshot to dictionary")
-                }
-            }
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
-    }
-    
-    func getRatings(){
-        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-        let userRef = ref.child("users")
-        
-        userRef.observeSingleEvent(of: .value, with: { snapshot in
-            print(snapshot.childrenCount)
-            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                if let dict = rest.value as? NSDictionary {
-                    let rating = dict["rating"] as? Double ?? -1
-                    let userID = dict["userID"] as? String ?? ""
-                    self.ratings[userID] = rating
-                } else {
-                    print("could not convert snaptshot to dictionary")
-                }
-            }
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

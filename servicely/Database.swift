@@ -82,5 +82,74 @@ class Database {
             completion(requests)
         })
     }
+    
+    func getCurrentUsersServices(completion: @escaping (_ usersServices: [ServiceOffer])->()) {
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        
+        ref.child("serviceOffer").queryOrdered(byChild: "userID").queryEqual(toValue: userID!).observeSingleEvent(of: .value, with: { snapshot in
+            print(snapshot.childrenCount)
+            
+            var services = [ServiceOffer]()
+            
+            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                print("adding to requests array...")
+                if let dict = rest.value as? NSDictionary {
+                    
+                    services.append(ServiceOffer.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!))
+                    
+                    print("added \(rest.value)")
+                } else {
+                    print("could not convert snapshot to dictionary")
+                }
+            }
+            
+            completion(services)
+        })
+    }
+    
+    func getServicesOfCategory(category: String, completion: @escaping (_ services: [ServiceOffer])->()) {
+        ref.child("serviceOffer").queryOrdered(byChild: "serviceType").queryEqual(toValue: category).observeSingleEvent(of: .value, with: { snapshot in
+            print(snapshot.childrenCount)
+            
+            var services = [ServiceOffer]()
+            
+            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                print("adding to services array...")
+                if let dict = rest.value as? NSDictionary {
+                    
+                    services.append(ServiceOffer.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!))
+                    
+                    print("added \(rest.value)")
+                } else {
+                    print("could not convert snapshot to dictionary")
+                }
+            }
+            
+            completion(services)
+        })
+    }
+    
+    func getRequestsOfCategory(category: String, completion: @escaping (_ requests: [ClientRequest])->()) {
+        ref.child("clientRequest").queryOrdered(byChild: "serviceType").queryEqual(toValue: category).observeSingleEvent(of: .value, with: { snapshot in
+            print(snapshot.childrenCount)
+            
+            var requests = [ClientRequest]()
+            
+            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                print("adding to requests array...")
+                if let dict = rest.value as? NSDictionary {
+                    
+                    requests.append(ClientRequest.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["requestDescription"] as? String)!, location: (dict["location"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!, userName: (dict["userName"] as? String)!))
+                    
+                    print("added \(rest.value)")
+                } else {
+                    print("could not convert snapshot to dictionary")
+                }
+            }
+            
+            completion(requests)
+        })
+    }
+    
 }
 
