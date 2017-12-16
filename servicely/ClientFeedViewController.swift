@@ -66,24 +66,15 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "serviceTypeViewController")
                 self.present(vc!, animated: true, completion: nil)
             }
+            
             self.services.removeAll()
             
-            db.getServicesOffered() { (snapshot) in
-                print(snapshot.childrenCount) // I got the expected number of items
-                for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                    print("adding to services array...")
-                    
-                    if let dict = rest.value as? NSDictionary {
-                        //let postContent = dict["companyName"] as? String
-                        
-                        self.services.append(ServiceOffer.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!))
-                        
-                        print("added \(rest.value)")
-                    } else {
-                        print("could not convert snapshot to dictionay")
-                    }
-                }
+            db.getServicesOffered() { (servicesArray) in
                 
+                self.services = servicesArray
+                
+                // there's probably a better way to get ratings for users, so think of one
+                // and delete this
                 db.getUsers() { (snapshot) in
                     print(snapshot.childrenCount)
                     for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {

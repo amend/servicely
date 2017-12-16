@@ -20,21 +20,11 @@ class MyRequetsTableViewController: UITableViewController {
         self.title = "My Requests"
         self.tableView.rowHeight = 80.0
 
-        
         let db:Database = Database()
-        db.getCurrentUsersRequests() {(snapshot) in
-            print(snapshot.childrenCount)
-            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                print("adding to requests array...")
-                
-                if let dict = rest.value as? NSDictionary {
-                    self.requests.append(ClientRequest.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["requestDescription"] as? String)!, location: (dict["location"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!, userName: (dict["userName"] as? String)!))
-                    
-                    print("added \(rest.value)")
-                } else {
-                    print("could not convert snapshot to dictionary")
-                }
-            }
+        db.getCurrentUsersRequests() {(usersRequests) in
+            print(usersRequests.count)
+
+            self.requests = usersRequests
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
