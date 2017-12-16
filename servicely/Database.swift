@@ -42,5 +42,17 @@ class Database {
             completion(snapshot)
         })
     }
+    
+    // kinda shitty cuz getting dicts from snapshot will be done outside of this function
+    // TODO: do the convertion here
+    func getCurrentUsersRequests(completion: @escaping (_ snapshot: FIRDataSnapshot)->()) {
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        print("*** userID: " + userID! + "****")
+        ref.child("clientRequest").queryOrdered(byChild: "userID").queryEqual(toValue: userID!).observeSingleEvent(of: .value, with: { snapshot in
+            print(snapshot.childrenCount)
+            completion(snapshot)
+
+        })
+    }
 }
 

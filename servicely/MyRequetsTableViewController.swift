@@ -19,8 +19,28 @@ class MyRequetsTableViewController: UITableViewController {
         super.viewDidLoad()
         self.title = "My Requests"
         self.tableView.rowHeight = 80.0
-        getRequests()
 
+        
+        let db:Database = Database()
+        db.getCurrentUsersRequests() {(snapshot) in
+            print(snapshot.childrenCount)
+            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                print("adding to requests array...")
+                
+                if let dict = rest.value as? NSDictionary {
+                    self.requests.append(ClientRequest.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["requestDescription"] as? String)!, location: (dict["location"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!, userName: (dict["userName"] as? String)!))
+                    
+                    print("added \(rest.value)")
+                } else {
+                    print("could not convert snapshot to dictionary")
+                }
+            }
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -43,34 +63,6 @@ class MyRequetsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return requests.count
-    }
-
-    func getRequests() {
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        
-        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-        let requestOfferRef = ref.child("clientRequest")
-        
-        requestOfferRef.observeSingleEvent(of: .value, with: { snapshot in
-            print(snapshot.childrenCount)
-            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                print("adding to requests array...")
-                
-                if let dict = rest.value as? NSDictionary {
-                    let _userID = (dict["userID"] as? String)!
-                    if (_userID == userID!) {
-                        self.requests.append(ClientRequest.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["requestDescription"] as? String)!, location: (dict["location"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!, userName: (dict["userName"] as? String)!))
-                    }
-                    print("added \(rest.value)")
-                } else {
-                    print("could not convert snapshot to dictionary")
-                }
-            }
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
