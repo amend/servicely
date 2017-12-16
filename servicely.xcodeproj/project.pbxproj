@@ -40,6 +40,7 @@
 		9083B3A11F86D5B20079E309 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9083B3A01F86D5B20079E309 /* Assets.xcassets */; };
 		9083B3A41F86D5B20079E309 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9083B3A21F86D5B20079E309 /* LaunchScreen.storyboard */; };
 		909C3B101FD9077200C0A207 /* CreateServiceOrRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C3B0F1FD9077200C0A207 /* CreateServiceOrRequestViewController.swift */; };
+		90C96DC01FE4FC8C00A1E8BA /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C96DBF1FE4FC8C00A1E8BA /* Database.swift */; };
 		90CA841A1F995EFA00EDB7AC /* ServicelyLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CA84191F995EFA00EDB7AC /* ServicelyLogoViewController.swift */; };
 		F7EB9A05A452C6086BD6CA17 /* Pods_servicely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B904A9DEB1102FB134E43A /* Pods_servicely.framework */; };
 /* End PBXBuildFile section */
@@ -81,6 +82,7 @@
 		9083B3A31F86D5B20079E309 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9083B3A51F86D5B20079E309 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		909C3B0F1FD9077200C0A207 /* CreateServiceOrRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceOrRequestViewController.swift; sourceTree = "<group>"; };
+		90C96DBF1FE4FC8C00A1E8BA /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		90CA84191F995EFA00EDB7AC /* ServicelyLogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicelyLogoViewController.swift; sourceTree = "<group>"; };
 		C767318476A40047FD5CA7B6 /* Pods-servicely.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-servicely.debug.xcconfig"; path = "Pods/Target Support Files/Pods-servicely/Pods-servicely.debug.xcconfig"; sourceTree = "<group>"; };
 		E7B904A9DEB1102FB134E43A /* Pods_servicely.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_servicely.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +147,7 @@
 				9083B3A01F86D5B20079E309 /* Assets.xcassets */,
 				9083B3A21F86D5B20079E309 /* LaunchScreen.storyboard */,
 				9083B3A51F86D5B20079E309 /* Info.plist */,
+				90C96DBF1FE4FC8C00A1E8BA /* Database.swift */,
 				909C3B0F1FD9077200C0A207 /* CreateServiceOrRequestViewController.swift */,
 				901677261F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift */,
 				90280E8C1FC3CAF5006C5542 /* CreateClientRequestViewController.swift */,
@@ -341,6 +344,7 @@
 				901FDE8E1FA6AE4400BA2163 /* ServiceTypeViewController.swift in Sources */,
 				7FBB2EB51FC36430002067C1 /* CategoriesServiceTableViewCell.swift in Sources */,
 				7F2217E11FA820740004D67D /* EditProviderViewController.swift in Sources */,
+				90C96DC01FE4FC8C00A1E8BA /* Database.swift in Sources */,
 				7FBB2EB31FC281A4002067C1 /* ServicesRequestsTableViewController.swift in Sources */,
 				7F9E39761FD72290008CB750 /* OurServicesTableViewController.swift in Sources */,
 				901677271F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift in Sources */,

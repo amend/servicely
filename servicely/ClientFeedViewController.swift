@@ -23,6 +23,8 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     var requests = [ClientRequest]()
     var ratings = [String: Double]()
     
+    // number of posts to paginate through
+    let numberOfPosts:Int = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,20 +49,17 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // No need for semicolon
         
-        var userID = FIRAuth.auth()?.currentUser?.uid
+        let userID = FIRAuth.auth()?.currentUser?.uid
         
         if(userID == nil) {
             checkLoggedIn()
             //var userID = FIRAuth.auth()?.currentUser?.uid
             return
         }
+
+        let db:Database = Database()
         
-        let ref1:FIRDatabaseReference! = FIRDatabase.database().reference()
-        let usersRef = ref1.child("users")
-        
-        usersRef.child(userID!).observeSingleEvent(of: .value, with: { snapshot in
-            let user = snapshot.value as? NSDictionary
-            
+        db.getCurrentUser(userID: userID) { (user) in
             if(user == nil) {
                 // present service type view controller
                 //let vc = ServiceTypeViewController()
@@ -69,11 +68,7 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
             }
             self.services.removeAll()
             
-            // get serviceOffers from Firebase.
-            let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-            let serviceOfferRef = ref.child("serviceOffer")
-            
-            serviceOfferRef.observeSingleEvent(of: .value, with: { snapshot in
+            db.getServicesOffered() { (snapshot) in
                 print(snapshot.childrenCount) // I got the expected number of items
                 for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
                     print("adding to services array...")
@@ -89,16 +84,13 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
                     }
                 }
                 
-                let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-                let userRef = ref.child("users")
-                
-                userRef.observeSingleEvent(of: .value, with: { snapshot in
+                db.getUsers() { (snapshot) in
                     print(snapshot.childrenCount)
                     for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
                         if let dict = rest.value as? NSDictionary {
                             let rating = dict["rating"] as? Double ?? -1
                             //let userID = dict["userID"] as? String ?? ""
-                          
+                            
                             self.ratings[rest.key] = rating
                         } else {
                             print("could not convert snaptshot to dictionary")
@@ -107,9 +99,9 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
                     DispatchQueue.main.async{
                         self.feedTableView.reloadData()
                     }
-                })
-            })
-        })
+                }
+            }
+        }
     }
 
     func getRatings(){
