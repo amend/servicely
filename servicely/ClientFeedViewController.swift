@@ -103,27 +103,6 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
             }
         }
     }
-
-    func getRatings(){
-        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-        let userRef = ref.child("users")
-        
-        userRef.observeSingleEvent(of: .value, with: { snapshot in
-            print(snapshot.childrenCount)
-            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                if let dict = rest.value as? NSDictionary {
-                    let rating = dict["rating"] as? Double ?? -1
-                    let userID = dict["userID"] as? String ?? ""
-                    self.ratings[userID] = rating
-                } else {
-                    print("could not convert snaptshot to dictionary")
-                }
-            }
-            DispatchQueue.main.async{
-                self.feedTableView.reloadData()
-            }
-        })
-    }
     
     // MARK: - Firebase auth
     
@@ -247,6 +226,7 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     }
     */
 
+    // TODO: is this necessary? find out what calls this
     @IBAction func postItem(_ sender: Any) {
         let defaults = UserDefaults.standard
         let serviceType:String = defaults.string(forKey: "serviceType" )!

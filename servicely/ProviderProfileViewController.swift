@@ -17,7 +17,6 @@ class ProviderProfileViewController: UIViewController {
     @IBOutlet weak var aboutUs: UILabel!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var viewOurServicesButton: UIButton!
-    @IBOutlet weak var viewMyRequestsButton: UIButton!
     @IBOutlet weak var profilePicImageView: UIImageView!
     @IBOutlet weak var loadingPicLabel: UILabel!
     
@@ -61,7 +60,6 @@ class ProviderProfileViewController: UIViewController {
         super.viewWillAppear(animated)
         let colorScheme = ColorScheme.getColorScheme()
         headerView.backgroundColor = colorScheme
-        viewMyRequestsButton.backgroundColor = colorScheme
         viewOurServicesButton.backgroundColor = colorScheme
         loadInfo()
         

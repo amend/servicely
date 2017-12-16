@@ -860,21 +860,6 @@
                                     <constraint firstItem="OMK-pW-diO" firstAttribute="top" secondItem="UAm-29-hgY" secondAttribute="top" constant="84" id="UkX-Ql-J7h"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3zj-Qh-RYs">
-                                <rect key="frame" x="107" y="542.66666666666663" width="200" height="50"/>
-                                <color key="backgroundColor" red="0.99434119460000003" green="0.3587232232" blue="0.37387704849999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="GAx-CK-YRk"/>
-                                    <constraint firstAttribute="height" constant="50" id="fpq-Wc-5XF"/>
-                                </constraints>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="View My Requests"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="7"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoLogo" translatesAutoresizingMaskIntoConstraints="NO" id="hQu-3f-47q">
                                 <rect key="frame" x="25" y="173" width="131" height="131"/>
                                 <constraints>
@@ -893,7 +878,7 @@
                                     <segue destination="jI6-Vy-aP0" kind="show" id="9qh-td-heH"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A08-YI-XD9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A08-YI-XD9">
                                 <rect key="frame" x="129.66666666666666" y="608" width="154.99999999999997" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="1uT-AP-s3e"/>
@@ -906,9 +891,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3zj-Qh-RYs" firstAttribute="top" secondItem="1hl-Og-9NZ" secondAttribute="bottom" constant="25" id="093-v3-i42"/>
                             <constraint firstItem="hQu-3f-47q" firstAttribute="leading" secondItem="oLN-AK-e6U" secondAttribute="leading" constant="25" id="5ef-WR-x61"/>
-                            <constraint firstItem="A08-YI-XD9" firstAttribute="top" secondItem="3zj-Qh-RYs" secondAttribute="bottom" constant="15.33" id="7Hq-PI-Wf6"/>
                             <constraint firstItem="iw5-g4-EzS" firstAttribute="top" secondItem="KBh-Fy-MBK" secondAttribute="bottom" constant="8" id="8bO-pk-GtR"/>
                             <constraint firstItem="1hl-Og-9NZ" firstAttribute="top" secondItem="iw5-g4-EzS" secondAttribute="bottom" constant="25" id="8n2-Oc-pzV"/>
                             <constraint firstItem="OMK-pW-diO" firstAttribute="leading" secondItem="hQu-3f-47q" secondAttribute="trailing" constant="10" id="8qu-1h-1Ci"/>
@@ -918,7 +901,6 @@
                             <constraint firstItem="hQu-3f-47q" firstAttribute="top" secondItem="UAm-29-hgY" secondAttribute="bottom" constant="-63" id="MT6-qz-dqU"/>
                             <constraint firstItem="KBh-Fy-MBK" firstAttribute="leading" secondItem="oLN-AK-e6U" secondAttribute="leading" constant="25" id="MW5-1u-dt6"/>
                             <constraint firstItem="iw5-g4-EzS" firstAttribute="leading" secondItem="oLN-AK-e6U" secondAttribute="leading" constant="25" id="RNS-Qc-pCG"/>
-                            <constraint firstItem="3zj-Qh-RYs" firstAttribute="centerX" secondItem="gId-px-bfQ" secondAttribute="centerX" id="YS1-eM-v38"/>
                             <constraint firstItem="hL9-eC-vXE" firstAttribute="leading" secondItem="KBh-Fy-MBK" secondAttribute="trailing" constant="5" id="aLa-IK-cd5"/>
                             <constraint firstItem="oLN-AK-e6U" firstAttribute="trailing" secondItem="UAm-29-hgY" secondAttribute="trailing" id="aoL-t6-EWb"/>
                             <constraint firstItem="KBh-Fy-MBK" firstAttribute="top" secondItem="hQu-3f-47q" secondAttribute="bottom" constant="8" id="ixc-jP-xK1"/>
@@ -934,7 +916,6 @@
                         <outlet property="headerView" destination="UAm-29-hgY" id="EBI-JJ-ccq"/>
                         <outlet property="loadingPicLabel" destination="A08-YI-XD9" id="Ipv-Cc-xBT"/>
                         <outlet property="profilePicImageView" destination="hQu-3f-47q" id="qIZ-ax-zsy"/>
-                        <outlet property="viewMyRequestsButton" destination="3zj-Qh-RYs" id="2Ql-xg-Zfe"/>
                         <outlet property="viewOurServicesButton" destination="1hl-Og-9NZ" id="yDE-TU-YFB"/>
                     </connections>
                 </viewController>
@@ -2243,7 +2224,7 @@
         <image name="settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BdC-VP-eEj"/>
+        <segue reference="IUH-sR-iFB"/>
         <segue reference="Lir-cw-YDj"/>
     </inferredMetricsTieBreakers>
 </document>
