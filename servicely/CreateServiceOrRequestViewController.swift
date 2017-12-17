@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseAuth
+//import Firebase
+//import FirebaseAuth
 
 class CreateServiceOrRequestViewController: UIViewController {
 
@@ -31,14 +31,8 @@ class CreateServiceOrRequestViewController: UIViewController {
     }
     
     func ifCreateRequest(_ requestVC: UIViewController, _ providerVC: UIViewController) {
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        
-        let ref1:FIRDatabaseReference! = FIRDatabase.database().reference()
-        let usersRef = ref1.child("users")
-        
-        usersRef.child(userID!).observeSingleEvent(of: .value, with: { snapshot in
-            let user = snapshot.value as? NSDictionary
-            
+        let db:Database = Database()
+        db.getCurrentUser() { (user: NSDictionary?) in
             let serviceType = user?["serviceType"] as? String ?? ""
             print("ServiceType: \(serviceType)")
             
@@ -50,8 +44,7 @@ class CreateServiceOrRequestViewController: UIViewController {
             }else{
                 self.showCreateView(requestVC)
             }
-        })
-        
+        }
     }
     
     func showCreateView(_ vc: UIViewController){

@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseAuth
+//import Firebase
+//import FirebaseAuth
 
 class EditProfileViewController: UIViewController, UITextViewDelegate {
 
@@ -38,20 +38,30 @@ class EditProfileViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func saveButton(_ sender: Any) {
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        let ref1:FIRDatabaseReference! = FIRDatabase.database().reference()
-        let userRef = ref1.child("users")
-        
         var about = ""
 
         if let a = aboutMe.text, !a.isEmpty {
             about = aboutMe.text!
         }
  
-        userRef.child("\(userID!)/aboutMe").setValue(about)
-        
-        savedLabel.text = "Saved!"
-        
+        let db:Database = Database()
+        db.writeToCurrentUser(path: "aboutMe", valueToWrite: about) { (didWrite:Bool) in
+            
+            var message = ""
+            if(didWrite) {
+                message = "Saved!"
+            } else {
+                message = "Couldn't save"
+            }
+
+            // this calls main thread for UI updates
+            // undefined behavior if attempt to update UI
+            // on non-main thread
+            DispatchQueue.main.async{
+                self.savedLabel.text = message
+            }
+            
+        }
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
