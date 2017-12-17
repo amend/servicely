@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseDatabase
+//import Firebase
+//import FirebaseDatabase
 import FirebaseAuth
-import FirebaseAuthUI
-import FirebaseStorage
+//import FirebaseAuthUI
+//import FirebaseStorage
 
 class ClientProfileViewController: UIViewController{
 

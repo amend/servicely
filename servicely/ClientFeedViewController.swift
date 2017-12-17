@@ -179,11 +179,6 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75
     }
-    /*
-    @IBAction func tempSignOutButton(_ sender: Any) {
-        try! FIRAuth.auth()!.signOut()
-    }
- */
     
     /*
     // Override to support conditional editing of the table view.
@@ -192,11 +187,6 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
         return true
     }
     */
-
-    
-    
-    
-    
 
     /*
     // Override to support editing the table view.
@@ -216,19 +206,6 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
 
     }
     */
-
-    // TODO: is this necessary? find out what calls this
-    @IBAction func postItem(_ sender: Any) {
-        let defaults = UserDefaults.standard
-        let serviceType:String = defaults.string(forKey: "serviceType" )!
-        if(serviceType == "serviceProvider") {
-            
-        } else if(serviceType == "client") {
-            
-        } else {
-            
-        }
-    }
 
     /*
     // Override to support conditional rearranging of the table view.

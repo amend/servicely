@@ -21,6 +21,7 @@ class Database {
         ref = FIRDatabase.database().reference()
     }
     
+    // gets user that is currently logged in
     func getCurrentUser(completion: @escaping (_ user:NSDictionary?)->() ) {
         let userID = FIRAuth.auth()?.currentUser?.uid
         
@@ -31,6 +32,7 @@ class Database {
         })
     }
     
+    // writes to child "path" of currently logged in user
     // path "example" will be expanded to users/userID/example by this function
     func writeToCurrentUser(path: String, valueToWrite: String, completion: @escaping(_ didWrite: Bool)->()) {
         let userID = FIRAuth.auth()?.currentUser?.uid
@@ -49,6 +51,25 @@ class Database {
             })
     }
     
+    // writes ratings of user specified by "userID"
+    // path "example" will be expanded to users/userID/example by this function
+    func writeRatingOfUser(userID: String, path: String, valueToWrite: Double, completion: @escaping(_ didWrite: Bool)->()) {
+        // write
+        ref.child("users")
+            .child("\(userID)/\(path)")
+            .setValue(valueToWrite, withCompletionBlock: { (error, snapshot) in
+                // check if write successful
+                if(error != nil) {
+                    print("error in writeToCurrentUser")
+                    completion(false)
+                } else {
+                    completion(true)
+                }
+            })
+    }
+    
+    // gets all services offered
+    // need to make this paginate when reaching end of table view
     func getServicesOffered(completion: @escaping (_ servicesArray: [ServiceOffer])->()) {
         ref.child("serviceOffer").observeSingleEvent(of: .value, with: { snapshot in
            print(snapshot.childrenCount)
@@ -82,6 +103,7 @@ class Database {
         })
     }
     
+    // gets client requests of currently logged in user
     func getCurrentUsersRequests(completion: @escaping (_ usersRequests: [ClientRequest])->()) {
         let userID = FIRAuth.auth()?.currentUser?.uid
 
@@ -105,7 +127,7 @@ class Database {
             completion(requests)
         })
     }
-    
+    // gets offered services of currently logged in user
     func getCurrentUsersServices(completion: @escaping (_ usersServices: [ServiceOffer])->()) {
         let userID = FIRAuth.auth()?.currentUser?.uid
         
@@ -130,6 +152,8 @@ class Database {
         })
     }
     
+    // gets all offered services of specified category
+    // need to paginate this too
     func getServicesOfCategory(category: String, completion: @escaping (_ services: [ServiceOffer])->()) {
         ref.child("serviceOffer").queryOrdered(byChild: "serviceType").queryEqual(toValue: category).observeSingleEvent(of: .value, with: { snapshot in
             print(snapshot.childrenCount)
@@ -152,6 +176,8 @@ class Database {
         })
     }
     
+    // gets all client requests of specified category
+    // need to paginate this
     func getRequestsOfCategory(category: String, completion: @escaping (_ requests: [ClientRequest])->()) {
         ref.child("clientRequest").queryOrdered(byChild: "serviceType").queryEqual(toValue: category).observeSingleEvent(of: .value, with: { snapshot in
             print(snapshot.childrenCount)
@@ -174,6 +200,7 @@ class Database {
         })
     }
     
+    // retreives image from firebase storage when given a url
     func retrieveImage(_ URL: String, completionBlock: @escaping (UIImage) -> Void) {
         let ref = FIRStorage.storage().reference(forURL: URL)
         

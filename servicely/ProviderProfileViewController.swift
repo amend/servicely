@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import Firebase
+//import Firebase
 import FirebaseAuth
-import FirebaseStorage
+//import FirebaseStorage
 
 class ProviderProfileViewController: UIViewController {
 
@@ -51,11 +51,9 @@ class ProviderProfileViewController: UIViewController {
         
         db.getCurrentUser() { (user: NSDictionary?) in
             let about = user?["aboutUs"] as? String ?? ""
-            
             self.aboutUs.text = about
             
             let profilePicURL = user?["profilePic"] as? String ?? ""
-            
             if(profilePicURL != "") {
                 self.loadingPicLabel.text = "Loading profile pic..."
                 db.retrieveImage(profilePicURL) { (image: UIImage) in
