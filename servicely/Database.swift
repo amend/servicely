@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 import FirebaseDatabase
+import FirebaseAuth
 
 
 class Database {
@@ -19,12 +20,31 @@ class Database {
         ref = FIRDatabase.database().reference()
     }
     
-    func getCurrentUser(userID:String?, completion: @escaping (_ user:NSDictionary?)->() ) {
+    func getCurrentUser(completion: @escaping (_ user:NSDictionary?)->() ) {
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { snapshot in
             let user = snapshot.value as? NSDictionary
             
             completion(user)
         })
+    }
+    
+    func writeToCurrentUser(path: String, valueToWrite: String, completion: @escaping(_ didWrite: Bool)->()) {
+        let userID = FIRAuth.auth()?.currentUser?.uid
+
+        // write
+        ref.child("users")
+            .child("\(userID!)/\(path)")
+            .setValue(valueToWrite, withCompletionBlock: { (error, snapshot) in
+                // check if write successful
+                if(error != nil) {
+                    print("error in writeToCurrentUser")
+                    completion(false)
+                } else {
+                    completion(true)
+                }
+            })
     }
     
     func getServicesOffered(completion: @escaping (_ servicesArray: [ServiceOffer])->()) {

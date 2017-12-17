@@ -59,7 +59,7 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
 
         let db:Database = Database()
         
-        db.getCurrentUser(userID: userID) { (user) in
+        db.getCurrentUser() { (user) in
             if(user == nil) {
                 // present service type view controller
                 //let vc = ServiceTypeViewController()
