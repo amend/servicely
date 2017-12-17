@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
+import FirebaseStorage
 
 
 class Database {
@@ -30,6 +31,7 @@ class Database {
         })
     }
     
+    // path "example" will be expanded to users/userID/example by this function
     func writeToCurrentUser(path: String, valueToWrite: String, completion: @escaping(_ didWrite: Bool)->()) {
         let userID = FIRAuth.auth()?.currentUser?.uid
 
@@ -70,7 +72,8 @@ class Database {
         })
     }
     
-    // kinda shitty cuz getting dicts from snapshot will be done outside of this function
+    // gets all users for ratings. not the best approach to get ratings.
+    // this refactoring is kinda shitty cuz getting dicts from snapshot will be done outside of this function
     // there's probably a better way to get ratings for users, so think of one
     // and delete this
     func getUsers(completion: @escaping (_ snapshot: FIRDataSnapshot)->()) {
@@ -171,5 +174,20 @@ class Database {
         })
     }
     
+    func retrieveImage(_ URL: String, completionBlock: @escaping (UIImage) -> Void) {
+        let ref = FIRStorage.storage().reference(forURL: URL)
+        
+        // max download size limit is 10Mb in this case
+        ref.data(withMaxSize: 10 * 1024 * 1024, completion: { retrievedData, error in
+            if error != nil {
+                // handle the error
+                print("error in retrieveImage")
+                return
+            }
+            
+            let image = UIImage(data: retrievedData!)!
+            completionBlock(image)
+        })
+    }
 }
 
