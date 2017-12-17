@@ -30,27 +30,6 @@ class ChangeProfilePictureViewController: UIViewController, UINavigationControll
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        // ************* start db stuff, wrap this chunk and others in class *************
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        
-        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-        
-        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            //let username = value?["username"] as? String ?? ""
-            //let user = User(username: username)
-            let profilePicURL = value?["profilePic"] as? String ?? ""
-            
-            if(profilePicURL != "") {
-                self.retrieveImage(profilePicURL, completionBlock: {_ in })
-            }
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        // ************* end db stuff, wrap this chunk and others in class *************
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,26 +44,17 @@ class ChangeProfilePictureViewController: UIViewController, UINavigationControll
         setPictureButton.backgroundColor = colorScheme
         
         if(imageView.image == nil) {
-            // ************* start db stuff, wrap this chunk and others in class *************
-            let userID = FIRAuth.auth()?.currentUser?.uid
-            
-            let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-            
-            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user value
-                let value = snapshot.value as? NSDictionary
-                //let username = value?["username"] as? String ?? ""
-                //let user = User(username: username)
-                let profilePicURL = value?["profilePic"] as? String ?? ""
+            let db:Database = Database()
+            db.getCurrentUser() { (user:NSDictionary?) in
+                let profilePicURL = user?["profilePic"] as? String ?? ""
                 
                 if(profilePicURL != "") {
-                    self.retrieveImage(profilePicURL, completionBlock: {_ in })
+                    db.retrieveImage(profilePicURL) { (image:UIImage) in
+                        self.imageView.image = image
+                    }
                 }
                 
-            }) { (error) in
-                print(error.localizedDescription)
             }
-            // ************* end db stuff, wrap this chunk and others in class *************
         }
     }
     
@@ -145,23 +115,6 @@ class ChangeProfilePictureViewController: UIViewController, UINavigationControll
             completionBlock()
         })
         
-    }
-    
-    func retrieveImage(_ URL: String, completionBlock: @escaping (UIImage) -> Void) {
-        let ref = FIRStorage.storage().reference(forURL: URL)
-        
-        // max download size limit is 10Mb in this case
-        ref.data(withMaxSize: 10 * 1024 * 1024, completion: { retrievedData, error in
-            if error != nil {
-                // handle the error
-                return
-            }
-            
-            let image = UIImage(data: retrievedData!)!
-            self.imageView.image = image
-            
-            completionBlock(image)
-        })
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
