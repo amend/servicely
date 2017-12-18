@@ -10,7 +10,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 
-class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate {
+class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var serviceTypePickerView: UIPickerView!
     
@@ -42,6 +42,17 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         serviceDescription.delegate = self
         serviceDescription.text = "Say something about the service you are offering..."
         serviceDescription.textColor = UIColor.lightGray
+        
+        // dismiss text field keyboards
+        // uses functions: textFieldShouldReturn and textView
+        self.serviceDescription.delegate = self
+        self.askingPrice.delegate = self
+        self.location.delegate = self
+        self.companyName.delegate = self
+        self.contactInfo.delegate = self
+        let tap = UITapGestureRecognizer(target: self.view, action: Selector("endEditing:"))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,6 +68,23 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // called when 'return' key pressed. return NO to ignore.
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true;
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    
     
     @IBAction func submitButton(_ sender: Any) {
         let userID = FIRAuth.auth()?.currentUser?.uid

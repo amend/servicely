@@ -13,8 +13,14 @@ import UIKit
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var containerView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
         let providerProfileVC = storyboard?.instantiateViewController(withIdentifier: "providerProfile") as! ProviderProfileViewController
         let clientProfileVC = storyboard?.instantiateViewController(withIdentifier: "clientProfile") as! ClientProfileViewController
         ifClientProfilePage(clientProfileVC, providerProfileVC)

@@ -10,7 +10,7 @@ import UIKit
 //import Firebase
 //import FirebaseAuth
 
-class EditProfileViewController: UIViewController, UITextViewDelegate {
+class EditProfileViewController: UIViewController, UITextViewDelegate  {
 
     @IBOutlet weak var aboutMe: UITextView!
     @IBOutlet weak var savedLabel: UILabel!
@@ -24,7 +24,11 @@ class EditProfileViewController: UIViewController, UITextViewDelegate {
         aboutMe.text = "Tell us about yourself...."
         aboutMe.textColor = UIColor.lightGray
 
-        // Do any additional setup after loading the view.
+        // dismiss keyboards
+        self.aboutMe.delegate = self
+        let tap = UITapGestureRecognizer(target: self.view, action: Selector("endEditing:"))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,6 +39,19 @@ class EditProfileViewController: UIViewController, UITextViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         let colorScheme = ColorScheme.getColorScheme()
         saveButton.backgroundColor = colorScheme
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true;
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
     @IBAction func saveButton(_ sender: Any) {
