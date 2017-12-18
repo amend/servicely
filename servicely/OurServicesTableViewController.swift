@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseDatabase
-import FirebaseAuth
+//import Firebase
+//import FirebaseDatabase
+//import FirebaseAuth
 
 class OurServicesTableViewController: UITableViewController {
 
@@ -19,8 +19,16 @@ class OurServicesTableViewController: UITableViewController {
         super.viewDidLoad()
         self.title = "Our Services"
         self.tableView.rowHeight = 80.0
-        getServices()
-
+        
+        let db:Database = Database()
+        db.getCurrentUsersServices() { (usersServices) in
+            self.services = usersServices
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -43,34 +51,6 @@ class OurServicesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return services.count
-    }
-    
-    func getServices() {
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        
-        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-        let serviceOfferRef = ref.child("serviceOffer")
-        
-        serviceOfferRef.observeSingleEvent(of: .value, with: { snapshot in
-            print(snapshot.childrenCount)
-            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                print("adding to services array...")
-                
-                if let dict = rest.value as? NSDictionary {
-                    let _userID = (dict["userID"] as? String)!
-                    if (_userID == userID!) {
-                        self.services.append(ServiceOffer.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!))
-                    }
-                    print ("added \(rest.value)")
-                } else {
-                    print("could not convert snapshot to dictionary")
-                }
-            }
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

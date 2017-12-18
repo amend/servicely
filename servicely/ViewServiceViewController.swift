@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseDatabase
-import FirebaseAuth
+//import Firebase
+//import FirebaseDatabase
+//import FirebaseAuth
 
 class ViewServiceViewController: UIViewController {
 
@@ -73,22 +73,24 @@ class ViewServiceViewController: UIViewController {
         }else{
             newRating = (ratingBar.rating + oldRating)/2
         }
-        setRating(newRating)
-    }
-    
-    func setRating(_ rating: Double){
-        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
         
-        var string = ""
+        var userID:String = ""
         if(client) {
-            string  = "users/" + (request?.userID)! + "/rating"
+            userID = (request?.userID)!
         } else {
-            string = "users/" + (service?.userID)! + "/rating"
+            userID = (service?.userID)!
         }
         
-        ref.child(string).setValue(rating)
+        let db:Database = Database()
+        db.writeRatingOfUser(userID: userID, path: "rating", valueToWrite: newRating) { (didWrite: Bool) in
+            if(!didWrite) {
+                print("could not save rating")
+            } else {
+                print("updated rating")
+            }
+        }
     }
-
+    
     /*
     // MARK: - Navigation
 

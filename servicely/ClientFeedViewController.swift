@@ -23,6 +23,8 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     var requests = [ClientRequest]()
     var ratings = [String: Double]()
     
+    // number of posts to paginate through
+    let numberOfPosts:Int = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,58 +49,39 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // No need for semicolon
         
-        var userID = FIRAuth.auth()?.currentUser?.uid
+        let userID = FIRAuth.auth()?.currentUser?.uid
         
         if(userID == nil) {
             checkLoggedIn()
             //var userID = FIRAuth.auth()?.currentUser?.uid
             return
         }
+
+        let db:Database = Database()
         
-        let ref1:FIRDatabaseReference! = FIRDatabase.database().reference()
-        let usersRef = ref1.child("users")
-        
-        usersRef.child(userID!).observeSingleEvent(of: .value, with: { snapshot in
-            let user = snapshot.value as? NSDictionary
-            
+        db.getCurrentUser() { (user) in
             if(user == nil) {
                 // present service type view controller
                 //let vc = ServiceTypeViewController()
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "serviceTypeViewController")
                 self.present(vc!, animated: true, completion: nil)
             }
+            
             self.services.removeAll()
             
-            // get serviceOffers from Firebase.
-            let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-            let serviceOfferRef = ref.child("serviceOffer")
-            
-            serviceOfferRef.observeSingleEvent(of: .value, with: { snapshot in
-                print(snapshot.childrenCount) // I got the expected number of items
-                for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                    print("adding to services array...")
-                    
-                    if let dict = rest.value as? NSDictionary {
-                        //let postContent = dict["companyName"] as? String
-                        
-                        self.services.append(ServiceOffer.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!))
-                        
-                        print("added \(rest.value)")
-                    } else {
-                        print("could not convert snapshot to dictionay")
-                    }
-                }
+            db.getServicesOffered() { (servicesArray) in
                 
-                let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-                let userRef = ref.child("users")
+                self.services = servicesArray
                 
-                userRef.observeSingleEvent(of: .value, with: { snapshot in
+                // there's probably a better way to get ratings for users, so think of one
+                // and delete this
+                db.getUsers() { (snapshot) in
                     print(snapshot.childrenCount)
                     for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
                         if let dict = rest.value as? NSDictionary {
                             let rating = dict["rating"] as? Double ?? -1
                             //let userID = dict["userID"] as? String ?? ""
-                          
+                            
                             self.ratings[rest.key] = rating
                         } else {
                             print("could not convert snaptshot to dictionary")
@@ -107,30 +90,9 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
                     DispatchQueue.main.async{
                         self.feedTableView.reloadData()
                     }
-                })
-            })
-        })
-    }
-
-    func getRatings(){
-        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-        let userRef = ref.child("users")
-        
-        userRef.observeSingleEvent(of: .value, with: { snapshot in
-            print(snapshot.childrenCount)
-            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                if let dict = rest.value as? NSDictionary {
-                    let rating = dict["rating"] as? Double ?? -1
-                    let userID = dict["userID"] as? String ?? ""
-                    self.ratings[userID] = rating
-                } else {
-                    print("could not convert snaptshot to dictionary")
                 }
             }
-            DispatchQueue.main.async{
-                self.feedTableView.reloadData()
-            }
-        })
+        }
     }
     
     // MARK: - Firebase auth
@@ -217,11 +179,6 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75
     }
-    /*
-    @IBAction func tempSignOutButton(_ sender: Any) {
-        try! FIRAuth.auth()!.signOut()
-    }
- */
     
     /*
     // Override to support conditional editing of the table view.
@@ -230,11 +187,6 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
         return true
     }
     */
-
-    
-    
-    
-    
 
     /*
     // Override to support editing the table view.
@@ -254,18 +206,6 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
 
     }
     */
-
-    @IBAction func postItem(_ sender: Any) {
-        let defaults = UserDefaults.standard
-        let serviceType:String = defaults.string(forKey: "serviceType" )!
-        if(serviceType == "serviceProvider") {
-            
-        } else if(serviceType == "client") {
-            
-        } else {
-            
-        }
-    }
 
     /*
     // Override to support conditional rearranging of the table view.

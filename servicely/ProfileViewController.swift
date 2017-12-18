@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseAuth
+//import Firebase
+//import FirebaseAuth
 
 class ProfileViewController: UIViewController {
 
@@ -33,16 +33,10 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     func ifClientProfilePage(_ clientVC: UIViewController, _ providerVC: UIViewController){
-        let userID = FIRAuth.auth()?.currentUser?.uid
+        let db:Database = Database()
         
-        let ref1:FIRDatabaseReference! = FIRDatabase.database().reference()
-        let usersRef = ref1.child("users")
-        
-        usersRef.child(userID!).observeSingleEvent(of: .value, with: { snapshot in
-            let user = snapshot.value as? NSDictionary
-            
+        db.getCurrentUser() { (user:NSDictionary?) in
             let serviceType = user?["serviceType"] as? String ?? ""
             print("ServiceType: \(serviceType)")
             
@@ -54,7 +48,7 @@ class ProfileViewController: UIViewController {
             }else{
                 self.showProfile(clientVC)
             }
-        })
+        }
     }
     
     func showProfile(_ vc: UIViewController){

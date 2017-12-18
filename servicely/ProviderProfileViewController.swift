@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import Firebase
+//import Firebase
 import FirebaseAuth
-import FirebaseStorage
+//import FirebaseStorage
 
 class ProviderProfileViewController: UIViewController , UITextViewDelegate {
 
@@ -17,7 +17,6 @@ class ProviderProfileViewController: UIViewController , UITextViewDelegate {
     @IBOutlet weak var aboutUs: UILabel!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var viewOurServicesButton: UIButton!
-    @IBOutlet weak var viewMyRequestsButton: UIButton!
     @IBOutlet weak var profilePicImageView: UIImageView!
     @IBOutlet weak var loadingPicLabel: UILabel!
     
@@ -28,28 +27,6 @@ class ProviderProfileViewController: UIViewController , UITextViewDelegate {
         self.title = "Provider Profile"
 
         // Do any additional setup after loading the view.
-        
-        // ************* start db stuff, wrap this chunk and others in class *************
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        
-        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-        
-        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            //let username = value?["username"] as? String ?? ""
-            //let user = User(username: username)
-            let profilePicURL = value?["profilePic"] as? String ?? ""
-            
-            if(profilePicURL != "") {
-                self.loadingPicLabel.text = "Loading profile pic..."
-                self.retrieveImage(profilePicURL, completionBlock: {_ in })
-            }
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        // ************* end db stuff, wrap this chunk and others in class *************
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,82 +38,30 @@ class ProviderProfileViewController: UIViewController , UITextViewDelegate {
         super.viewWillAppear(animated)
         let colorScheme = ColorScheme.getColorScheme()
         headerView.backgroundColor = colorScheme
-        viewMyRequestsButton.backgroundColor = colorScheme
         viewOurServicesButton.backgroundColor = colorScheme
-        loadInfo()
         
-        // ************* start db stuff, wrap this chunk and others in class *************
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        
-        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-        
-        // ***** check if profilePicImageView is grey default image,
-        // if so execute this below, if not dont execute *****
-        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            //let username = value?["username"] as? String ?? ""
-            //let user = User(username: username)
-            let profilePicURL = value?["profilePic"] as? String ?? ""
-            
-            if(profilePicURL != "") {
-                self.loadingPicLabel.text = "Loading profile pic..."
-                self.retrieveImage(profilePicURL, completionBlock: {_ in })
-            }
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        // ************* end db stuff, wrap this chunk and others in class *************
-        
-    }
-    
-    func loadInfo() {
         let user = FIRAuth.auth()?.currentUser
         if user != nil {
             displayName.text = user?.displayName
+        } else {
+            print("no user logged in")
         }
         
-        let userID = FIRAuth.auth()?.currentUser?.uid
+        let db:Database = Database()
         
-        let ref1:FIRDatabaseReference! = FIRDatabase.database().reference()
-        let usersRef = ref1.child("users")
-        
-        usersRef.child(userID!).observeSingleEvent(of: .value, with: { snapshot in
-            let user = snapshot.value as? NSDictionary
-            
+        db.getCurrentUser() { (user: NSDictionary?) in
             let about = user?["aboutUs"] as? String ?? ""
-            
             self.aboutUs.text = about
             
-            DispatchQueue.main.async {
-                self.view.reloadInputViews()
+            let profilePicURL = user?["profilePic"] as? String ?? ""
+            if(profilePicURL != "") {
+                self.loadingPicLabel.text = "Loading profile pic..."
+                db.retrieveImage(profilePicURL) { (image: UIImage) in
+                    self.profilePicImageView.image = image
+                    self.loadingPicLabel.text = ""
+                }
             }
-        })
-        
-    }
-    
-    func feedButtonPressed() {
-    
-    }
-    
-    func retrieveImage(_ URL: String, completionBlock: @escaping (UIImage) -> Void) {
-        let ref = FIRStorage.storage().reference(forURL: URL)
-        
-        // max download size limit is 10Mb in this case
-        ref.data(withMaxSize: 10 * 1024 * 1024, completion: { retrievedData, error in
-            if error != nil {
-                // handle the error
-                return
-            }
-            
-            let image = UIImage(data: retrievedData!)!
-            self.profilePicImageView.image = image
-            
-            self.loadingPicLabel.text = ""
-            
-            completionBlock(image)
-        })
+        }
     }
 
     /*
