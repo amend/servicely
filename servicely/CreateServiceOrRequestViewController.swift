@@ -7,8 +7,6 @@
 //
 
 import UIKit
-//import Firebase
-//import FirebaseAuth
 
 class CreateServiceOrRequestViewController: UIViewController {
 
