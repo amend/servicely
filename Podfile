@@ -12,4 +12,5 @@ target 'servicely' do
   pod 'FirebaseUI'
   pod 'Firebase/Core'
   pod 'Firebase/Storage'
+  pod 'JSQMessagesViewController'
 end
