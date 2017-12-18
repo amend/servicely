@@ -1,0 +1,13 @@
+# gitignore
+
+# BSD/macOS
+.DS_Store
+
+# vim
+*.netrwhist
+*.swo
+*.swp
+
+# tags
+tags
+TAGS
