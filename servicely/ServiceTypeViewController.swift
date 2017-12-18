@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseAuth
+//import Firebase
+//import FirebaseAuth
 
 class ServiceTypeViewController: UIViewController {
     
@@ -39,11 +39,6 @@ class ServiceTypeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-     
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        
-        let ref1:FIRDatabaseReference! = FIRDatabase.database().reference()
-        let usersRef = ref1.child("users")
         
         var serviceType = ""
         if(serviceTypeSegmentedControl.selectedSegmentIndex == 0) {
@@ -56,15 +51,22 @@ class ServiceTypeViewController: UIViewController {
             print("Error. Service type segmented control in ServiceTypeViewController did not have a selected index")
         }
         
+        /*
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        let ref1:FIRDatabaseReference! = FIRDatabase.database().reference()
+        let usersRef = ref1.child("users")
         usersRef.child(userID!).setValue(["serviceType":serviceType])
-
-        let defaults = UserDefaults.standard
-        defaults.set(serviceType, forKey: "serviceType")
-        defaults.synchronize()
-
-        
-        print("exiting prepare for segue")
+        */
+    
+        let db:Database = Database()
+        db.writeToCurrentUser(path: "serviceType", valueToWrite: serviceType) { (didWrite: Bool) in
+            if(!didWrite) {
+                print("could not save serviceType to user")
+            } else {
+                let defaults = UserDefaults.standard
+                defaults.set(serviceType, forKey: "serviceType")
+                defaults.synchronize()
+            }
+        }
     }
-
-
 }
