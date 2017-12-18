@@ -24,7 +24,11 @@ class EditProviderViewController: UIViewController, UITextViewDelegate {
         aboutUs.text = "Tell us about your company..."
         aboutUs.textColor = UIColor.lightGray
 
-        // Do any additional setup after loading the view.
+        // dismiss keyboards
+        self.aboutUs.delegate = self
+        let tap = UITapGestureRecognizer(target: self.view, action: Selector("endEditing:"))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,6 +39,19 @@ class EditProviderViewController: UIViewController, UITextViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         let colorScheme = ColorScheme.getColorScheme()
         saveButton.backgroundColor = colorScheme
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true;
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
     @IBAction func saveButton(_ sender: Any) {

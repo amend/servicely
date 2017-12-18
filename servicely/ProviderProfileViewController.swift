@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseStorage
 
-class ProviderProfileViewController: UIViewController {
+class ProviderProfileViewController: UIViewController , UITextViewDelegate {
 
     @IBOutlet weak var displayName: UILabel!
     @IBOutlet weak var aboutUs: UILabel!
