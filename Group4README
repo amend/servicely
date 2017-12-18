@@ -20,12 +20,13 @@ Differences:
 
 
 Special Instructions:
-  when viewing the categories view, select "lawn & garden" to see
-  the entries for the segmented control "services offered".
+  When using categories view, if viewing service provider categories, select
+  cell/mobile. If viewing client categories, select creative. Other categories
+  work, but we didnt make posts for every category.
 
-  if selected "client requests" on segmented control, choose
-  "cell/mobile".
+  We used cocoapods - open the grey workspace.
 
-  This is because we have not created offerings/requests for every category
-
-  We used cocoapods - open the grey workspace
+  Feel free to use accounts:
+  provider@provider.com and client@client.com with passwords: 123456
+  to see app as a service provider or client. Or make your own
+  accounts.
