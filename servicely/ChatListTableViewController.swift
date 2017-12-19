@@ -28,7 +28,7 @@ class ChatListTableViewController: UITableViewController {
         super.viewWillAppear(animated) // No need for semicolon
         
         let db:Database = Database()
-        db.getCurrentUsersChats() { (chats:[Chat]) in
+        db.getCurrentUsersThreads() { (threads:[ChatMetadata]) in
             print("here")
         }
     }

@@ -2226,7 +2226,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="uGU-ez-QzY" kind="show" id="3HW-Ni-bmq"/>
+                                    <segue destination="GZL-qm-osv" kind="show" identifier="viewServiceToChatSegue" id="X7F-05-Omp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2366,7 +2366,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BdC-VP-eEj"/>
-        <segue reference="3HW-Ni-bmq"/>
+        <segue reference="X7F-05-Omp"/>
         <segue reference="Lir-cw-YDj"/>
     </inferredMetricsTieBreakers>
 </document>

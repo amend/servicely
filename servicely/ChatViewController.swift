@@ -11,19 +11,29 @@ import JSQMessagesViewController
 
 class ChatViewController: JSQMessagesViewController {
 
+    var providerID = ""
+    var clientID = ""
+    var providerName = ""
+    var clientName = ""
+    var timestamp = ""
+    var threadID = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // TODO: look up why JSQMessagesViewController requires these
         self.senderId = "1234"
         self.senderDisplayName = "TEST"
+        
+        //self.navigationItem.title = "Example Name"
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation
