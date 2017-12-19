@@ -12,7 +12,6 @@ import FirebaseDatabase
 import FirebaseAuth
 import FirebaseStorage
 
-
 class Database {
     
     private var ref:FIRDatabaseReference!
@@ -215,6 +214,23 @@ class Database {
             let image = UIImage(data: retrievedData!)!
             completionBlock(image)
         })
+    }
+    
+    // will delete this soon and rewrite after restructuring chat json
+    func getCurrentUsersChats(completion: @escaping (_ chats: [Chat])->()) {
+        let userID = FIRAuth.auth()?.currentUser?.uid
+
+        getCurrentUser() { (user:NSDictionary?) in
+            
+            let serviceType:String = user?["serviceType"] as! String
+            
+            self.ref.child("chats")
+                .queryOrdered(byChild: serviceType)
+                .queryEqual(toValue: userID)
+                .observeSingleEvent(of: .value, with: { (snapshot) in
+                    print("\(snapshot.key)")
+                })
+        }
     }
 }
 

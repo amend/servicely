@@ -42,6 +42,7 @@
 		9083B39F1F86D5B20079E309 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9083B39D1F86D5B20079E309 /* Main.storyboard */; };
 		9083B3A11F86D5B20079E309 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9083B3A01F86D5B20079E309 /* Assets.xcassets */; };
 		9083B3A41F86D5B20079E309 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9083B3A21F86D5B20079E309 /* LaunchScreen.storyboard */; };
+		908CD2A91FE89F3500372C29 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908CD2A81FE89F3500372C29 /* Chat.swift */; };
 		909C3B101FD9077200C0A207 /* CreateServiceOrRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C3B0F1FD9077200C0A207 /* CreateServiceOrRequestViewController.swift */; };
 		90C96DC01FE4FC8C00A1E8BA /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C96DBF1FE4FC8C00A1E8BA /* Database.swift */; };
 		90CA841A1F995EFA00EDB7AC /* ServicelyLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CA84191F995EFA00EDB7AC /* ServicelyLogoViewController.swift */; };
@@ -87,6 +88,7 @@
 		9083B3A01F86D5B20079E309 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9083B3A31F86D5B20079E309 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9083B3A51F86D5B20079E309 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		908CD2A81FE89F3500372C29 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		909C3B0F1FD9077200C0A207 /* CreateServiceOrRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceOrRequestViewController.swift; sourceTree = "<group>"; };
 		90C96DBF1FE4FC8C00A1E8BA /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		90CA84191F995EFA00EDB7AC /* ServicelyLogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicelyLogoViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				902588521F93DC7200F57059 /* ServiceOffer.swift */,
 				90280E8A1FC3C431006C5542 /* ClientRequest.swift */,
 				7F9E23231FA3A6C600865172 /* Client.swift */,
+				908CD2A81FE89F3500372C29 /* Chat.swift */,
 				90CA84191F995EFA00EDB7AC /* ServicelyLogoViewController.swift */,
 				901FDE8D1FA6AE4400BA2163 /* ServiceTypeViewController.swift */,
 				3762DAD81FA705990065FA87 /* ChangeColorSchemeViewController.swift */,
@@ -361,6 +364,7 @@
 				7F7F23141FA78B7D00EEA294 /* ProviderProfileViewController.swift in Sources */,
 				90280E8D1FC3CAF5006C5542 /* CreateClientRequestViewController.swift in Sources */,
 				379650A41FA8954C00EF72ED /* SettingsViewController.swift in Sources */,
+				908CD2A91FE89F3500372C29 /* Chat.swift in Sources */,
 				901677291F92B87C00F1E1D5 /* ClientFeedViewController.swift in Sources */,
 				901FDE8E1FA6AE4400BA2163 /* ServiceTypeViewController.swift in Sources */,
 				7FBB2EB51FC36430002067C1 /* CategoriesServiceTableViewCell.swift in Sources */,

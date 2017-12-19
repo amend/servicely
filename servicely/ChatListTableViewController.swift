@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ChatListTableViewController: UITableViewController {
 
@@ -22,6 +23,16 @@ class ChatListTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated) // No need for semicolon
+        
+        let db:Database = Database()
+        db.getCurrentUsersChats() { (chats:[Chat]) in
+            print("here")
+        }
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

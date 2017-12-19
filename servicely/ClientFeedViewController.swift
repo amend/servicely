@@ -18,7 +18,6 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     
     @IBOutlet weak var feedTableView: UITableView!
     
-    
     var services = [ServiceOffer]()
     var requests = [ClientRequest]()
     var ratings = [String: Double]()
