@@ -11,6 +11,9 @@ import Firebase
 
 class ChatListTableViewController: UITableViewController {
 
+    var currentUserID:String = ""
+    var serviceType:String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,15 +25,14 @@ class ChatListTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.currentUserID = (FIRAuth.auth()?.currentUser?.uid)!
+
+        observeChats()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // No need for semicolon
         
-        let db:Database = Database()
-        db.getCurrentUsersThreads() { (threads:[ChatMetadata]) in
-            print("here")
-        }
     }
 
 
@@ -38,7 +40,57 @@ class ChatListTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    private func observeChats() {
+        let db:Database = Database()
+        db.getCurrentUser() { (user:NSDictionary?) in
+            self.serviceType = user?["serviceType"] as! String
+            
+            let ref:FIRDatabaseReference = FIRDatabase.database().reference()
+            
+            var userType:String = ""
+            if(self.serviceType == "client") {
+                userType = "clientID"
+            } else if(self.serviceType == "serviceProvider") {
+                userType = "providerID"
+            } else {
+                print("Error, user must be client or serviceProvider")
+            }
+            
+            let chatListQuery = ref.child("threads")
+                .queryOrdered(byChild: "details/" + userType)
+                .queryEqual(toValue: self.currentUserID)
+            
+            let newChatsRefHandle = chatListQuery.observe(.childAdded, with: { (snapshot) -> Void in
+                print(snapshot)
+                print("printed snapshot")
+                if(snapshot.childrenCount == 0) {
+                    // no converasations, tell them to message other users
+                    print("no conversations")
+                }
+                //let chatData = snapshot.value as! Dictionary<String, String>
+                let chatData = snapshot.value as! NSDictionary
+                chatData["details"] as! NSDictionary
+                print(chatData)
+                print("printed chatData")
+                let detailsDict:NSDictionary = chatData["details"] as! NSDictionary
+                print(detailsDict)
+                print("printed chatData")
+                
+                
+                
+                /*
+                if let name = channelData["name"] as! String!, name.characters.count > 0 { // 3
+                    self.channels.append(Channel(id: id, name: name))
+                    self.tableView.reloadData()
+                } else {
+                    print("Error! Could not decode channel data")
+                }
+                */
+            })
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

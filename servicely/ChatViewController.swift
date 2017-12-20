@@ -61,25 +61,26 @@ class ChatViewController: JSQMessagesViewController {
             print("Error, user must be client or serviceProvider")
         }
         
+        // this threadID, firstTimeConvo, and calls observeMessages if
+        // first time convo is false
+        // TODO: there miiight be a better way to set those.
         ref.child("threads")
             .queryOrdered(byChild: "details/" + userType)
             .queryEqual(toValue: currentUserID)
             .observeSingleEvent(of: .value, with: { snapshot in
                 print(snapshot)
                 print(snapshot.childrenCount)
-                
-                if(snapshot.childrenCount != 0) {
-                    self.firstTimeConvo = false
-                } else {
-                    self.firstTimeConvo = true
-                    return
-                }
-                
+                                
                 // above query found threads that current user
                 // is involved with. this will go through the threads
                 // and find the single thread that the recepiant
                 // is also involved in
+                var threadCount:Int = 0
                 for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                    print(rest)
+                    print("printed rest")
+                    print("rest has children: " + String(rest.hasChildren()))
+                    print("rest count: " + String(rest.childrenCount))
                     if let dict = rest.value as? NSDictionary {
                         print(dict)
 
@@ -87,7 +88,9 @@ class ChatViewController: JSQMessagesViewController {
                         if((detailsDict["clientID"] as! String == self.clientID)
                             && (detailsDict["providerID"] as! String == self.providerID)) {
                             self.threadID = rest.key
+                            self.firstTimeConvo = false
                             print("threadID: " + self.threadID)
+                            print("not first time convo")
                             print("break point reached")
                             break
                         }
@@ -96,15 +99,63 @@ class ChatViewController: JSQMessagesViewController {
                     } else {
                         print("could not convert snapshot to dictionary")
                     }
+                    threadCount += 1
+                }
+                if(threadCount == snapshot.childrenCount) {
+                    self.firstTimeConvo = true
+                    print("first time convo")
+                }
+                if(!self.firstTimeConvo) {
+                    self.observeMessages()
                 }
         })
         
         print("exiting viewdidload")
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated) // No need for semicolon
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    private func observeMessages() {
+        let ref:FIRDatabaseReference = FIRDatabase.database().reference()
+
+        let messageQuery = ref.child("threads").child(self.threadID).child("messages")
+        
+        // 1.
+        // let messageQuery = messageRef.queryLimited(toLast:25)
+        
+        // 2. We can use the observe method to listen for new
+        // messages being written to the Firebase DB
+        let newMessageRefHandle = messageQuery.observe(.childAdded, with: { (snapshot) -> Void in
+            // 3
+            let messageData = snapshot.value as! Dictionary<String, String>
+
+            var senderName:String? = ""
+            if(self.currentUserID == self.providerID) {
+                senderName! = self.providerName
+            } else if(self.currentUserID == self.clientID) {
+                senderName! = self.clientName
+            } else {
+                print("could not get senderName")
+            }
+            
+            if let id = messageData["userID"] as String!, let name = senderName, let text = messageData["text"] as String!, text.characters.count > 0 {
+                // 4
+                self.addMessage(withId: id, name: name, text: text)
+                
+                // 5
+                self.finishReceivingMessage()
+            } else {
+                print("Error! Could not decode message data")
+            }
+        })
     }
     
     private func addMessage(withId id: String, name: String, text: String) {
@@ -147,6 +198,7 @@ class ChatViewController: JSQMessagesViewController {
                 ])
             
             firstTimeConvo = false
+            self.observeMessages()
         } else {
             // not first convo between users, so
             // update threads/threadID/messages/childByAutoID/(info)
