@@ -2076,7 +2076,7 @@
         <!--Chat View Controller-->
         <scene sceneID="0AL-yZ-vZK">
             <objects>
-                <viewController id="GZL-qm-osv" customClass="ChatViewController" customModule="servicely" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="GZL-qm-osv" customClass="ChatViewController" customModule="servicely" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vrI-EV-CIl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
