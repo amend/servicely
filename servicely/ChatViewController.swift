@@ -26,6 +26,7 @@ class ChatViewController: JSQMessagesViewController {
     var clientName = ""
     var timestamp = ""
     var threadID = ""
+    var serviceType = ""
     
     let currentUserID = FIRAuth.auth()?.currentUser?.uid
     
@@ -45,39 +46,59 @@ class ChatViewController: JSQMessagesViewController {
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
-        //self.navigationItem.title = "Example Name"
-        
-        // check if users have chatted before
+        // self.navigationItem.title = "Example Name"
+
+        // get all threads that have user's clientID or providerID
+        // in threads/threadID/detail/clientID or providerID
         let ref:FIRDatabaseReference = FIRDatabase.database().reference()
-        ref.child("users")
-            .child(currentUserID!)
-            .child("threads")
+        
+        var userType:String = ""
+        if(self.serviceType == "client") {
+            userType = "clientID"
+        } else if(self.serviceType == "serviceProvider") {
+            userType = "providerID"
+        } else {
+            print("Error, user must be client or serviceProvider")
+        }
+        
+        ref.child("threads")
+            .queryOrdered(byChild: "details/" + userType)
+            .queryEqual(toValue: currentUserID)
             .observeSingleEvent(of: .value, with: { snapshot in
-                let threads = snapshot.value as? NSDictionary
-                if(threads == nil) {
+                print(snapshot)
+                print(snapshot.childrenCount)
+                
+                if(snapshot.childrenCount != 0) {
+                    self.firstTimeConvo = false
+                } else {
                     self.firstTimeConvo = true
                     return
                 }
-                let keys:[String] = threads?.allKeys as! [String]
-                var i:Int = 0
-                for key in keys {
-                    let v = threads?[key] as! NSDictionary
-                    let cID = v["clientID"] as! String
-                    let pID = v["providerID"] as! String
-                    
-                    // check if this a first-time chat. if so, then function
-                    // didPressSend will create users/uids/threads/threadID/(info)
-                    // with the .self vars above and also threads/threadID/(info)
-                    if(cID == self.clientID && pID == self.providerID) {
-                        break
-                    }
-                    i += 1
-                }
-                if(i == keys.count) {
-                    self.firstTimeConvo = true
-                }
-            })
+                
+                // above query found threads that current user
+                // is involved with. this will go through the threads
+                // and find the single thread that the recepiant
+                // is also involved in
+                for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                    if let dict = rest.value as? NSDictionary {
+                        print(dict)
 
+                        let detailsDict:NSDictionary = (dict["details"] as? NSDictionary)!
+                        if((detailsDict["clientID"] as! String == self.clientID)
+                            && (detailsDict["providerID"] as! String == self.providerID)) {
+                            self.threadID = rest.key
+                            print("threadID: " + self.threadID)
+                            print("break point reached")
+                            break
+                        }
+
+                        // init(serviceType: (dict["serviceType"] as? String)!,
+                    } else {
+                        print("could not convert snapshot to dictionary")
+                    }
+                }
+        })
+        
         print("exiting viewdidload")
     }
     
@@ -93,30 +114,31 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        
         let ref:FIRDatabaseReference = FIRDatabase.database().reference()
         
-        // if first time convo between users, then create /users/userID/threads/threadID/(info)
+        // if first time convo between users, then
+        // create threads/(childByAutoID)/details/(info)
+        // and threads/(childByAutoID)/messages/(childByAutoID)/(info)
         if(firstTimeConvo) {
-            let newUsersThreadRef = ref.child("users").child(self.currentUserID!).child("threads").childByAutoId()
-
-            self.threadID = newUsersThreadRef.key
+            // this sets:
+            // threads/(childByAutoID)/details/(info)
+            //let newDetailsRef = ref.child("threads").childByAutoId().child("details")
             
-            newUsersThreadRef.setValue([
+            var newDetailsRef = ref.child("threads").childByAutoId()
+            self.threadID = newDetailsRef.key
+            print("new threadID:")
+            print(self.threadID)
+            newDetailsRef = newDetailsRef.child("details")
+            
+            newDetailsRef.setValue([
                     "providerID": self.providerID,
                     "clientID": self.clientID,
-                    "providerName": self.providerName,
-                    "clientName": self.clientName,
-                    "timestamp": "123456",
+                    "creationDate": "123456",
                     "threadID": self.threadID
                 ])
             
-            let detailsRef = ref.child("threads").child(self.threadID).child("details")
-            detailsRef.setValue([
-                "creationDate": "123456",
-                "lastMessageAdded": "123456"
-                ])
-            
+            // this sets:
+            // threads/self.threadID/messages/(childByAutoID)/(info)
             let messagesRef = ref.child("threads").child(self.threadID).child("messages").childByAutoId()
             messagesRef.setValue([
                 "timestamp" : "123456",
@@ -126,7 +148,8 @@ class ChatViewController: JSQMessagesViewController {
             
             firstTimeConvo = false
         } else {
-            // not first convo between users, so update threads/threadID/messages/autoID/(info)
+            // not first convo between users, so
+            // update threads/threadID/messages/childByAutoID/(info)
             let messagesRef = ref.child("threads").child(self.threadID).child("messages").childByAutoId()
             messagesRef.setValue([
                 "timestamp": "123456",

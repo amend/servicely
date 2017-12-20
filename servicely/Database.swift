@@ -215,26 +215,5 @@ class Database {
             completionBlock(image)
         })
     }
-    
-    // probs have to rewrite this
-    func getCurrentUsersThreads(completion: @escaping (_ chats: [ChatMetadata])->()) {
-        getCurrentUser() { (user:NSDictionary?) in
-            // see which one has user name
-            let currentUser = FIRAuth.auth()?.currentUser
-            let threads:NSDictionary = user?["threads"] as! NSDictionary
-            
-            
-            var meta:[ChatMetadata] = [ChatMetadata]()
-            
-            /*
-            for value in threads.allValues {
-                meta.append(ChatMetadata.init(providerID: (user?["providerID"] as? String)!, clientID: (user?["clientID"] as? String)!, providerName: (user?["providerName"] as? String)!, clientName: (user?["clientName"] as? String)!, timestamp: (user?["timestamp"] as? String)!, threadID: (user?["threadID"] as? String)!))
-            }
-            */
-            
-            completion(meta)
-        }
-    }
-        
 }
 
