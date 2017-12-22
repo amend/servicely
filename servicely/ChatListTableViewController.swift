@@ -26,14 +26,17 @@ class ChatListTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        self.currentUserID = (FIRAuth.auth()?.currentUser?.uid)!
 
-        observeChats()
+        // not sure if this is better placed here or in viewWillAppear
+        // observeChats()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // No need for semicolon
         
+        self.chatList.removeAll()
+        self.currentUserID = (FIRAuth.auth()?.currentUser?.uid)!
+        observeChats()
     }
 
 
@@ -127,18 +130,24 @@ class ChatListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return chatList.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatListCell", for: indexPath) as! ChatListTableViewCell
+    
+        if(self.serviceType == "client") {
+            cell.nameLabel.text = self.chatList[indexPath.row].providerName
+        } else if(self.serviceType == "serviceProvider") {
+            cell.nameLabel.text = self.chatList[indexPath.row].clientName
+        }
         
-        cell.nameLabel.text = "example1"
-        cell.categoryLabel.text = "example2"
+        cell.categoryLabel.text = self.chatList[indexPath.row].category
         
-        // Configure the cell...
-
+        //cell.nameLabel.text = "example1"
+        //cell.categoryLabel.text = "example2"
+        
         return cell
     }
  
