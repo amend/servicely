@@ -31,6 +31,15 @@ class Database {
         })
     }
     
+    func getUser(userID: String, completion: @escaping (_ user: NSDictionary?)->()) {
+        ref.child("users").child(userID).observeSingleEvent(of: .value, with: { snapshot in
+         let user = snapshot.value as? NSDictionary
+            
+        completion(user)
+        })
+    }
+    
+    
     // writes to child "path" of currently logged in user
     // path "example" will be expanded to users/userID/example by this function
     func writeToCurrentUser(path: String, valueToWrite: String, completion: @escaping(_ didWrite: Bool)->()) {
@@ -80,7 +89,7 @@ class Database {
                 
                 if let dict = rest.value as? NSDictionary {
                     
-                    services.append(ServiceOffer.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!))
+                    services.append(ServiceOffer.init(category: (dict["category"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!))
                     
                     print("added \(rest.value)")
                 } else {
@@ -139,7 +148,7 @@ class Database {
                 print("adding to requests array...")
                 if let dict = rest.value as? NSDictionary {
                     
-                    services.append(ServiceOffer.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!))
+                    services.append(ServiceOffer.init(category: (dict["category"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!))
                     
                     print("added \(rest.value)")
                 } else {
@@ -163,7 +172,7 @@ class Database {
                 print("adding to services array...")
                 if let dict = rest.value as? NSDictionary {
                     
-                    services.append(ServiceOffer.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!))
+                    services.append(ServiceOffer.init(category: (dict["category"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!))
                     
                     print("added \(rest.value)")
                 } else {

@@ -106,6 +106,9 @@ class ViewServiceViewController: UIViewController {
                 chatVC.providerName = (self.service?.companyName)!
                 chatVC.providerID = (self.service?.userID)!
                 chatVC.serviceType = "client"
+                // really confusing, self.service.serviceType should
+                // be category
+                chatVC.category = (self.service?.category)!
                 
                 // so we get current user's info
                 if let currentUser = FIRAuth.auth()?.currentUser {

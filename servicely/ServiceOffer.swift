@@ -10,7 +10,7 @@ import Foundation
 
 class ServiceOffer {
 
-    private var _serviceType:String = ""
+    private var _category:String = ""
     private var _serviceDescription:String = ""
     private var _askingPrice:String = ""
     private var _location:String = ""
@@ -18,9 +18,9 @@ class ServiceOffer {
     private var _contactInfo:String = ""
     private var _userID:String = ""
     
-    var serviceType:String {
-        get { return _serviceType}
-        set(v) {_serviceType = v}
+    var category:String {
+        get { return _category}
+        set(v) {_category = v}
     }
     
     var serviceDescription:String {
@@ -53,8 +53,8 @@ class ServiceOffer {
         set(v) { _userID = v }
     }
     
-    init(serviceType:String, serviceDescription:String, askingPrice:String, location:String, companyName:String, contactInfo:String, userID:String) {
-        self.serviceType = serviceType
+    init(category:String, serviceDescription:String, askingPrice:String, location:String, companyName:String, contactInfo:String, userID:String) {
+        self.category = category
         self.serviceDescription = serviceDescription
         self.askingPrice = askingPrice
         self.location = location

@@ -13,6 +13,7 @@ class ChatListTableViewController: UITableViewController {
 
     var currentUserID:String = ""
     var serviceType:String = ""
+    var chatList:[ChatMetadata] = [ChatMetadata]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,23 +71,49 @@ class ChatListTableViewController: UITableViewController {
                 }
                 //let chatData = snapshot.value as! Dictionary<String, String>
                 let chatData = snapshot.value as! NSDictionary
-                chatData["details"] as! NSDictionary
+                //chatData["details"] as! NSDictionary
                 print(chatData)
                 print("printed chatData")
                 let detailsDict:NSDictionary = chatData["details"] as! NSDictionary
                 print(detailsDict)
-                print("printed chatData")
+                print("printed detailsDict")
                 
+                // what needs to be .init'd:
+                //  1. clientID
+                //  2. clientName
+                //  3. providerID
+                //  4. providerName
+                //  5. service type
+                //  6. pic? stretch goal
+
+                let clientID:String = detailsDict["clientID"] as! String
+                let providerID:String = detailsDict["providerID"] as! String
+                let serviceType:String = self.serviceType
+                let timestamp:String = "12345"
+                let category:String = detailsDict["category"] as! String
                 
-                
-                /*
-                if let name = channelData["name"] as! String!, name.characters.count > 0 { // 3
-                    self.channels.append(Channel(id: id, name: name))
-                    self.tableView.reloadData()
-                } else {
-                    print("Error! Could not decode channel data")
+                let db:Database = Database()
+                var targetUserID:String = ""
+                if(self.serviceType == "client") {
+                    targetUserID = providerID
+                } else if(self.serviceType == "serviceProvider") {
+                    targetUserID = clientID
                 }
-                */
+                db.getUser(userID: targetUserID) { (targetUser:NSDictionary?) in
+                    var clientName:String = ""
+                    var providerName:String = ""
+                    if(self.serviceType == "client") {
+                        clientName = user?["username"] as! String
+                        providerName = targetUser?["companyName"] as! String
+                    } else if(self.serviceType == "serviceProvider") {
+                        clientName = targetUser?["username"] as! String
+                        providerName = user?["companyName"] as! String
+                    }
+                    
+                    
+                    self.chatList.append(ChatMetadata.init(providerID: providerID , clientID: clientID, providerName: providerName, clientName: clientName, timestamp: timestamp,  serviceType: serviceType, category: category))
+                    self.tableView.reloadData()
+                }
             })
         }
     }

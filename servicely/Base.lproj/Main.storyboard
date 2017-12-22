@@ -587,7 +587,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;typeOfService&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRb-bh-epF">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;category&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRb-bh-epF">
                                                     <rect key="frame" x="15" y="47" width="131" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="J5N-jh-Ff8"/>
@@ -648,9 +648,9 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="askingPrice" destination="gRr-3m-d9t" id="EKP-Yp-wsk"/>
+                                            <outlet property="category" destination="jRb-bh-epF" id="y3V-C4-WTt"/>
                                             <outlet property="companyName" destination="25Q-ZU-baf" id="6oz-iM-MOX"/>
                                             <outlet property="ratingBar" destination="Olr-mU-kQr" id="Khp-Kg-vJR"/>
-                                            <outlet property="serviceType" destination="jRb-bh-epF" id="Kct-Ho-BvR"/>
                                             <segue destination="7AL-4b-v6o" kind="show" identifier="viewService" id="IUH-sR-iFB"/>
                                         </connections>
                                     </tableViewCell>
@@ -1768,7 +1768,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="O0k-a1-GKq" kind="show" id="mqa-IA-GHP"/>
+                                    <segue destination="YKL-ot-RJm" kind="show" id="NcG-d0-wXG"/>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qtf-xu-5aA">
@@ -1809,7 +1809,76 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aO8-Ln-HZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1276" y="133"/>
+            <point key="canvasLocation" x="-1431" y="-610"/>
+        </scene>
+        <!--Choose Name View Controller-->
+        <scene sceneID="TBI-qN-egb">
+            <objects>
+                <viewController id="YKL-ot-RJm" customClass="ChooseNameViewController" customModule="servicely" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GP6-zU-Rad">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;company name or user name&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Izp-8q-NUL">
+                                <rect key="frame" x="66" y="117" width="243" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Dzx-JG-Yp6"/>
+                                    <constraint firstAttribute="width" constant="243" id="LKW-ai-2KA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FqP-dz-g9T">
+                                <rect key="frame" x="68" y="188" width="239" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="239" id="VSo-ij-95s"/>
+                                    <constraint firstAttribute="height" constant="30" id="pw4-Ej-PUL"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRb-mg-S4p">
+                                <rect key="frame" x="129" y="311" width="117" height="45"/>
+                                <color key="backgroundColor" red="0.99434119460000003" green="0.3587232232" blue="0.37387704849999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="117" id="QDJ-7a-SQL"/>
+                                    <constraint firstAttribute="height" constant="45" id="frJ-ig-77a"/>
+                                </constraints>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="submitButton:" destination="YKL-ot-RJm" eventType="touchUpInside" id="QEB-Ub-Rgf"/>
+                                    <segue destination="O0k-a1-GKq" kind="show" id="a3X-13-hbj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Izp-8q-NUL" firstAttribute="centerX" secondItem="GP6-zU-Rad" secondAttribute="centerX" id="2EZ-KQ-f8B"/>
+                            <constraint firstItem="Izp-8q-NUL" firstAttribute="top" secondItem="Kcn-IR-Uk3" secondAttribute="top" constant="97" id="5YZ-9E-cTO"/>
+                            <constraint firstItem="FqP-dz-g9T" firstAttribute="centerX" secondItem="GP6-zU-Rad" secondAttribute="centerX" id="HW5-pr-eql"/>
+                            <constraint firstItem="NRb-mg-S4p" firstAttribute="top" secondItem="FqP-dz-g9T" secondAttribute="bottom" constant="93" id="dnc-fp-zAU"/>
+                            <constraint firstItem="FqP-dz-g9T" firstAttribute="top" secondItem="Izp-8q-NUL" secondAttribute="bottom" constant="50" id="geC-6w-jJV"/>
+                            <constraint firstItem="NRb-mg-S4p" firstAttribute="centerX" secondItem="GP6-zU-Rad" secondAttribute="centerX" id="jkM-YM-nU6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Kcn-IR-Uk3"/>
+                    </view>
+                    <connections>
+                        <outlet property="instructionsLabel" destination="Izp-8q-NUL" id="Nrh-OQ-LzP"/>
+                        <outlet property="nameLabel" destination="FqP-dz-g9T" id="A2s-GF-qY2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LfL-Oi-8QR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-561" y="-610"/>
         </scene>
         <!--Nav Controller-->
         <scene sceneID="Xvq-Sf-rYD">
@@ -2365,7 +2434,7 @@
         <image name="settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BdC-VP-eEj"/>
+        <segue reference="IUH-sR-iFB"/>
         <segue reference="X7F-05-Omp"/>
         <segue reference="Lir-cw-YDj"/>
     </inferredMetricsTieBreakers>
