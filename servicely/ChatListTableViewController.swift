@@ -94,6 +94,7 @@ class ChatListTableViewController: UITableViewController {
                 let serviceType:String = self.serviceType
                 let timestamp:String = "12345"
                 let category:String = detailsDict["category"] as! String
+                let threadID:String = detailsDict["threadID"] as! String
                 
                 let db:Database = Database()
                 var targetUserID:String = ""
@@ -114,7 +115,7 @@ class ChatListTableViewController: UITableViewController {
                     }
                     
                     
-                    self.chatList.append(ChatMetadata.init(providerID: providerID , clientID: clientID, providerName: providerName, clientName: clientName, timestamp: timestamp,  serviceType: serviceType, category: category))
+                    self.chatList.append(ChatMetadata.init(providerID: providerID , clientID: clientID, providerName: providerName, clientName: clientName, timestamp: timestamp,  serviceType: serviceType, category: category, threadID: threadID))
                     self.tableView.reloadData()
                 }
             })
@@ -191,14 +192,32 @@ class ChatListTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "viewChat" {
+            let vc:ChatViewController = segue.destination as! ChatViewController
+            let indexPath = self.tableView.indexPathForSelectedRow?.row
+            let chat = self.chatList[indexPath!]
+            
+            vc.providerID = chat.providerID
+            vc.clientID = chat.clientID
+            vc.providerName = chat.providerName
+            vc.clientName = chat.clientName
+            vc.timestamp = "123456"
+            vc.threadID = chat.threadID
+            vc.serviceType = chat.serviceType
+            vc.category = chat.category
+            
+            print("about to segue to chat view")
+        }
+        
     }
-    */
+    
 
 }

@@ -2126,7 +2126,7 @@
                                 <connections>
                                     <outlet property="categoryLabel" destination="J1g-Uo-QL6" id="6SS-wa-TfJ"/>
                                     <outlet property="nameLabel" destination="h2U-d1-kOM" id="ZFO-BM-v0s"/>
-                                    <segue destination="GZL-qm-osv" kind="show" id="lxj-tR-OBK"/>
+                                    <segue destination="GZL-qm-osv" kind="show" identifier="viewChat" id="lxj-tR-OBK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -2435,7 +2435,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="IUH-sR-iFB"/>
-        <segue reference="X7F-05-Omp"/>
+        <segue reference="lxj-tR-OBK"/>
         <segue reference="Lir-cw-YDj"/>
     </inferredMetricsTieBreakers>
 </document>

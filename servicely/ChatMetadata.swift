@@ -17,6 +17,7 @@ class ChatMetadata {
     private var _timestamp:String = "" // string cuz not sure what format it will be
     private var _serviceType:String = ""
     private var _category:String = ""
+    private var _threadID:String = ""
     
     var providerID:String {
         get { return _providerID}
@@ -46,8 +47,12 @@ class ChatMetadata {
         get { return _category}
         set(v) { _category = v}
     }
+    var threadID:String {
+        get { return _threadID}
+        set(v) { _threadID = v}
+    }
     
-    init(providerID:String, clientID:String, providerName:String, clientName:String, timestamp:String, serviceType:String, category:String) {
+    init(providerID:String, clientID:String, providerName:String, clientName:String, timestamp:String, serviceType:String, category:String, threadID:String) {
         self.providerID = providerID
         self.clientID = clientID
         self.providerName = providerName
@@ -55,6 +60,7 @@ class ChatMetadata {
         self.timestamp = timestamp
         self.serviceType = serviceType
         self.category = category
+        self.threadID = threadID
     }
 }
 
