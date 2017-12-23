@@ -9,7 +9,7 @@
 import UIKit
 //import Firebase
 //import FirebaseDatabase
-//import FirebaseAuth
+import FirebaseAuth
 
 class ViewServiceViewController: UIViewController {
 
@@ -91,14 +91,42 @@ class ViewServiceViewController: UIViewController {
         }
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if(segue.identifier == "viewServiceToChatSegue") {
+            // TODO: Make ViewRequestVieController
+            if let chatVC = segue.destination as? ChatViewController{
+                // bc this is a service being viewed, we know these
+                chatVC.providerName = (self.service?.companyName)!
+                chatVC.providerID = (self.service?.userID)!
+                chatVC.serviceType = "client"
+                // really confusing, self.service.serviceType should
+                // be category
+                chatVC.category = (self.service?.category)!
+                
+                // so we get current user's info
+                if let currentUser = FIRAuth.auth()?.currentUser {
+                    chatVC.clientID = currentUser.uid
+                    chatVC.clientName = currentUser.displayName!
+                }
+                
+                print("exiting prepare for segue")
+                /*
+                let db:Database = Database()
+                db.getCurrentUser() { (user:NSDictionary?) in
+                    
+                }
+                */
+                
+            }
+        }
     }
-    */
+ 
 
 }

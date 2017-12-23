@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		292166623E8119BD1F1DE293 /* Pods_servicely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 678E9F49BDB6D7B13DC0A318 /* Pods_servicely.framework */; };
 		3745B96E1FD79E0400622BCE /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3745B96D1FD79E0400622BCE /* CosmosDistrib.swift */; };
 		3762DAD91FA705990065FA87 /* ChangeColorSchemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3762DAD81FA705990065FA87 /* ChangeColorSchemeViewController.swift */; };
 		3762DAFF1FA7144C0065FA87 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3762DAFE1FA7144C0065FA87 /* ColorScheme.swift */; };
@@ -34,14 +35,18 @@
 		902588531F93DC7200F57059 /* ServiceOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902588521F93DC7200F57059 /* ServiceOffer.swift */; };
 		90280E8B1FC3C431006C5542 /* ClientRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90280E8A1FC3C431006C5542 /* ClientRequest.swift */; };
 		90280E8D1FC3CAF5006C5542 /* CreateClientRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90280E8C1FC3CAF5006C5542 /* CreateClientRequestViewController.swift */; };
+		903204321FEB13A600F45B0F /* ChooseNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903204311FEB13A600F45B0F /* ChooseNameViewController.swift */; };
+		903C46041FE8538D00D80D58 /* ChatListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903C46031FE8538D00D80D58 /* ChatListTableViewController.swift */; };
+		903C46061FE8559E00D80D58 /* ChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903C46051FE8559E00D80D58 /* ChatListTableViewCell.swift */; };
+		903C46081FE856CC00D80D58 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903C46071FE856CC00D80D58 /* ChatViewController.swift */; };
 		9083B39A1F86D5B20079E309 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9083B3991F86D5B20079E309 /* AppDelegate.swift */; };
 		9083B39F1F86D5B20079E309 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9083B39D1F86D5B20079E309 /* Main.storyboard */; };
 		9083B3A11F86D5B20079E309 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9083B3A01F86D5B20079E309 /* Assets.xcassets */; };
 		9083B3A41F86D5B20079E309 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9083B3A21F86D5B20079E309 /* LaunchScreen.storyboard */; };
+		908CD2A91FE89F3500372C29 /* ChatMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908CD2A81FE89F3500372C29 /* ChatMetadata.swift */; };
 		909C3B101FD9077200C0A207 /* CreateServiceOrRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C3B0F1FD9077200C0A207 /* CreateServiceOrRequestViewController.swift */; };
 		90C96DC01FE4FC8C00A1E8BA /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C96DBF1FE4FC8C00A1E8BA /* Database.swift */; };
 		90CA841A1F995EFA00EDB7AC /* ServicelyLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CA84191F995EFA00EDB7AC /* ServicelyLogoViewController.swift */; };
-		F7EB9A05A452C6086BD6CA17 /* Pods_servicely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B904A9DEB1102FB134E43A /* Pods_servicely.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +59,9 @@
 		379650A31FA8954C00EF72ED /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		379650A51FA8956400EF72ED /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		37A974DB1FC501AF000D5493 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		663C9C56D0E640BCE58EE219 /* Pods-servicely.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-servicely.release.xcconfig"; path = "Pods/Target Support Files/Pods-servicely/Pods-servicely.release.xcconfig"; sourceTree = "<group>"; };
+		6614193002671127BD6A9542 /* Pods-servicely.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-servicely.debug.xcconfig"; path = "Pods/Target Support Files/Pods-servicely/Pods-servicely.debug.xcconfig"; sourceTree = "<group>"; };
+		678E9F49BDB6D7B13DC0A318 /* Pods_servicely.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_servicely.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A88FAA5A4E412742F5C967C /* Pods-servicely.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-servicely.release.xcconfig"; path = "Pods/Target Support Files/Pods-servicely/Pods-servicely.release.xcconfig"; sourceTree = "<group>"; };
 		7F2217E01FA820740004D67D /* EditProviderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProviderViewController.swift; sourceTree = "<group>"; };
 		7F3E1B0C1FA7EB3B0034EE46 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		7F7F230F1FA68DC200EEA294 /* ClientProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProfileViewController.swift; sourceTree = "<group>"; };
@@ -73,17 +80,20 @@
 		902588521F93DC7200F57059 /* ServiceOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceOffer.swift; sourceTree = "<group>"; };
 		90280E8A1FC3C431006C5542 /* ClientRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientRequest.swift; sourceTree = "<group>"; };
 		90280E8C1FC3CAF5006C5542 /* CreateClientRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateClientRequestViewController.swift; sourceTree = "<group>"; };
+		903204311FEB13A600F45B0F /* ChooseNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseNameViewController.swift; sourceTree = "<group>"; };
+		903C46031FE8538D00D80D58 /* ChatListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewController.swift; sourceTree = "<group>"; };
+		903C46051FE8559E00D80D58 /* ChatListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewCell.swift; sourceTree = "<group>"; };
+		903C46071FE856CC00D80D58 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		9083B3961F86D5B20079E309 /* servicely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = servicely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9083B3991F86D5B20079E309 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9083B39E1F86D5B20079E309 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9083B3A01F86D5B20079E309 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9083B3A31F86D5B20079E309 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9083B3A51F86D5B20079E309 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		908CD2A81FE89F3500372C29 /* ChatMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMetadata.swift; sourceTree = "<group>"; };
 		909C3B0F1FD9077200C0A207 /* CreateServiceOrRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceOrRequestViewController.swift; sourceTree = "<group>"; };
 		90C96DBF1FE4FC8C00A1E8BA /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		90CA84191F995EFA00EDB7AC /* ServicelyLogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicelyLogoViewController.swift; sourceTree = "<group>"; };
-		C767318476A40047FD5CA7B6 /* Pods-servicely.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-servicely.debug.xcconfig"; path = "Pods/Target Support Files/Pods-servicely/Pods-servicely.debug.xcconfig"; sourceTree = "<group>"; };
-		E7B904A9DEB1102FB134E43A /* Pods_servicely.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_servicely.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,17 +101,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7EB9A05A452C6086BD6CA17 /* Pods_servicely.framework in Frameworks */,
+				292166623E8119BD1F1DE293 /* Pods_servicely.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5C8D978032974C97F2E58A5D /* Frameworks */ = {
+		03ED8AA1EEC851C7AF416CEB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E7B904A9DEB1102FB134E43A /* Pods_servicely.framework */,
+				6614193002671127BD6A9542 /* Pods-servicely.debug.xcconfig */,
+				7A88FAA5A4E412742F5C967C /* Pods-servicely.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		362DA306D9237F109495D680 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				678E9F49BDB6D7B13DC0A318 /* Pods_servicely.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -111,8 +130,8 @@
 			children = (
 				9083B3981F86D5B20079E309 /* servicely */,
 				9083B3971F86D5B20079E309 /* Products */,
-				C3A3BCE3C49EDA41FBF0ABCD /* Pods */,
-				5C8D978032974C97F2E58A5D /* Frameworks */,
+				03ED8AA1EEC851C7AF416CEB /* Pods */,
+				362DA306D9237F109495D680 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,7 +146,6 @@
 		9083B3981F86D5B20079E309 /* servicely */ = {
 			isa = PBXGroup;
 			children = (
-				909C3B141FDF671800C0A207 /* Firebase */,
 				3745B96D1FD79E0400622BCE /* CosmosDistrib.swift */,
 				9083B3991F86D5B20079E309 /* AppDelegate.swift */,
 				9083B39D1F86D5B20079E309 /* Main.storyboard */,
@@ -154,8 +172,10 @@
 				902588521F93DC7200F57059 /* ServiceOffer.swift */,
 				90280E8A1FC3C431006C5542 /* ClientRequest.swift */,
 				7F9E23231FA3A6C600865172 /* Client.swift */,
+				908CD2A81FE89F3500372C29 /* ChatMetadata.swift */,
 				90CA84191F995EFA00EDB7AC /* ServicelyLogoViewController.swift */,
 				901FDE8D1FA6AE4400BA2163 /* ServiceTypeViewController.swift */,
+				903204311FEB13A600F45B0F /* ChooseNameViewController.swift */,
 				3762DAD81FA705990065FA87 /* ChangeColorSchemeViewController.swift */,
 				3762DAFE1FA7144C0065FA87 /* ColorScheme.swift */,
 				3796509F1FA889AD00EF72ED /* ChangePasswordViewController.swift */,
@@ -163,17 +183,11 @@
 				379650A31FA8954C00EF72ED /* SettingsViewController.swift */,
 				379650A51FA8956400EF72ED /* SettingsTableViewController.swift */,
 				3785C1F01FA9391200774BCE /* ChangeProfilePictureViewController.swift */,
+				903C46031FE8538D00D80D58 /* ChatListTableViewController.swift */,
+				903C46051FE8559E00D80D58 /* ChatListTableViewCell.swift */,
+				903C46071FE856CC00D80D58 /* ChatViewController.swift */,
 			);
 			path = servicely;
-			sourceTree = "<group>";
-		};
-		C3A3BCE3C49EDA41FBF0ABCD /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C767318476A40047FD5CA7B6 /* Pods-servicely.debug.xcconfig */,
-				663C9C56D0E640BCE58EE219 /* Pods-servicely.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,7 +277,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		909C3B151FDF67B300C0A207 /* Setup Firebase Environment GoogleService-Info.plist */ = {
@@ -339,6 +353,8 @@
 				379650A01FA889AD00EF72ED /* ChangePasswordViewController.swift in Sources */,
 				90280E8B1FC3C431006C5542 /* ClientRequest.swift in Sources */,
 				7F9E23241FA3A6C600865172 /* Client.swift in Sources */,
+				903C46061FE8559E00D80D58 /* ChatListTableViewCell.swift in Sources */,
+				903204321FEB13A600F45B0F /* ChooseNameViewController.swift in Sources */,
 				3762DAFF1FA7144C0065FA87 /* ColorScheme.swift in Sources */,
 				902588531F93DC7200F57059 /* ServiceOffer.swift in Sources */,
 				909C3B101FD9077200C0A207 /* CreateServiceOrRequestViewController.swift in Sources */,
@@ -352,13 +368,16 @@
 				7F7F23141FA78B7D00EEA294 /* ProviderProfileViewController.swift in Sources */,
 				90280E8D1FC3CAF5006C5542 /* CreateClientRequestViewController.swift in Sources */,
 				379650A41FA8954C00EF72ED /* SettingsViewController.swift in Sources */,
+				908CD2A91FE89F3500372C29 /* ChatMetadata.swift in Sources */,
 				901677291F92B87C00F1E1D5 /* ClientFeedViewController.swift in Sources */,
 				901FDE8E1FA6AE4400BA2163 /* ServiceTypeViewController.swift in Sources */,
 				7FBB2EB51FC36430002067C1 /* CategoriesServiceTableViewCell.swift in Sources */,
 				7F2217E11FA820740004D67D /* EditProviderViewController.swift in Sources */,
 				90C96DC01FE4FC8C00A1E8BA /* Database.swift in Sources */,
+				903C46081FE856CC00D80D58 /* ChatViewController.swift in Sources */,
 				7FBB2EB31FC281A4002067C1 /* ServicesRequestsTableViewController.swift in Sources */,
 				7F9E39761FD72290008CB750 /* OurServicesTableViewController.swift in Sources */,
+				903C46041FE8538D00D80D58 /* ChatListTableViewController.swift in Sources */,
 				901677271F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift in Sources */,
 				7FF61A771FC0CC3B00DFE2E7 /* CategoriesTableViewController.swift in Sources */,
 			);
@@ -495,7 +514,7 @@
 		};
 		9083B3A91F86D5B20079E309 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C767318476A40047FD5CA7B6 /* Pods-servicely.debug.xcconfig */;
+			baseConfigurationReference = 6614193002671127BD6A9542 /* Pods-servicely.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -511,7 +530,7 @@
 		};
 		9083B3AA1F86D5B20079E309 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 663C9C56D0E640BCE58EE219 /* Pods-servicely.release.xcconfig */;
+			baseConfigurationReference = 7A88FAA5A4E412742F5C967C /* Pods-servicely.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

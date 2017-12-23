@@ -30,7 +30,7 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
     
     let pickerViewData:[String] = ["Automotive", "Cell/Mobile", "Computer", "Creative", "Event", "Farm + Garden", "Financial", "Household", "Labor/Move", "Legal", "Lessons", "Real Estate", "Skilled Trade", "Trave/Vac", "Mechanic", "Carpentry", "Tutoring", "Care provider", "Lawn & Garden", "Pet care", "Plumbing", "Health & Beauty", "Other"]
     
-    var serviceType:String = ""
+    var category:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +61,7 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         // if user wants first item in pickerview and doesn't need to scroll, no
         // item will be selected
         serviceTypePickerView.selectRow(0, inComponent: 0, animated: false)
-        serviceType = pickerViewData[0]
+        category = pickerViewData[0]
     }
 
     override func didReceiveMemoryWarning() {
@@ -92,7 +92,7 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         // define array of key/value pairs to store for this person.
         let serviceOfferRecord = [
             "companyName": companyName.text!,
-            "serviceType": serviceType,
+            "category": self.category,
             "serviceDescription": serviceDescription.text!,
             "askingPrice": askingPrice.text!,
             "location": location.text!,
@@ -131,7 +131,7 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if(component == 0) {
-            serviceType = pickerViewData[row]
+            self.category = pickerViewData[row]
         }
     }
     
