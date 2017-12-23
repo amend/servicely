@@ -18,7 +18,6 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     
     @IBOutlet weak var feedTableView: UITableView!
     
-    
     var services = [ServiceOffer]()
     var requests = [ClientRequest]()
     var ratings = [String: Double]()
@@ -147,7 +146,7 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
             let service = services[indexPath.row]
             let colorScheme = ColorScheme.getColorScheme()
             cell.companyName.text = service.companyName
-            cell.serviceType.text = service.serviceType
+            cell.category.text = service.category
             cell.askingPrice.text = service.askingPrice
             cell.service = service
             

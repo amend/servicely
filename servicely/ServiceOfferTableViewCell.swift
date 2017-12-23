@@ -14,7 +14,7 @@ class ServiceOfferTableViewCell: UITableViewCell {
 
     @IBOutlet weak var companyName: UILabel!
     
-    @IBOutlet weak var serviceType: UILabel!
+    @IBOutlet weak var category: UILabel!
     
     @IBOutlet weak var askingPrice: UILabel!
     
