@@ -52,7 +52,7 @@ class ViewServiceViewController: UIViewController {
     }
     
     func setValues() {
-        if(client == false) {
+        if(client) {
             self.name.text = service?.companyName
             self.serviceDescription.text = service?.serviceDescription
             self.contactNumber.text = service?.contactInfo
@@ -102,28 +102,38 @@ class ViewServiceViewController: UIViewController {
         if(segue.identifier == "viewServiceToChatSegue") {
             // TODO: Make ViewRequestVieController
             if let chatVC = segue.destination as? ChatViewController{
-                // bc this is a service being viewed, we know these
-                chatVC.providerName = (self.service?.companyName)!
-                chatVC.providerID = (self.service?.userID)!
-                chatVC.serviceType = "client"
-                // really confusing, self.service.serviceType should
-                // be category
-                chatVC.category = (self.service?.category)!
-                
-                // so we get current user's info
-                if let currentUser = FIRAuth.auth()?.currentUser {
-                    chatVC.clientID = currentUser.uid
-                    chatVC.clientName = currentUser.displayName!
+
+                if(client) {
+                    chatVC.serviceType = "client"
+                    chatVC.category = (self.service?.category)!
+                    
+                    chatVC.providerName = (self.service?.companyName)!
+                    chatVC.providerID = (self.service?.userID)!
+                    
+                    if let currentUser = FIRAuth.auth()?.currentUser {
+                        chatVC.clientID = currentUser.uid
+                    }
+                    let db:Database = Database()
+                    db.getCurrentUser() { (user:NSDictionary?) in
+                        chatVC.clientName = user?["username"] as! String
+                    }
+                } else {
+                    chatVC.serviceType = "serviceProvider"
+                    chatVC.category = (self.request?.category)!
+                    
+                    chatVC.clientName = (self.request?.userName)!
+                    chatVC.clientID = (self.request?.userID)!
+                    
+                    if let currentUser = FIRAuth.auth()?.currentUser {
+                        chatVC.providerID = currentUser.uid
+                        let db:Database = Database()
+                        db.getCurrentUser() { (user:NSDictionary?) in
+                            chatVC.providerName = user?["companyName"] as! String
+                        }
+                    }
                 }
                 
                 print("exiting prepare for segue")
-                /*
-                let db:Database = Database()
-                db.getCurrentUser() { (user:NSDictionary?) in
-                    
-                }
-                */
-                
             }
         }
     }

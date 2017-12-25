@@ -83,7 +83,7 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
 
         // define array of key/value pairs to store for this person.
         let clientRequestRecord = [
-            "serviceType": serviceType,
+            "category": serviceType,
             "location": location.text!,
             "contactInfo": contactInfo.text!,
             "requestDescription": requestDescription.text!,
