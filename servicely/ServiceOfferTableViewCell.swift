@@ -13,11 +13,8 @@ import UIKit
 class ServiceOfferTableViewCell: UITableViewCell {
 
     @IBOutlet weak var companyName: UILabel!
-    
     @IBOutlet weak var category: UILabel!
-    
     @IBOutlet weak var askingPrice: UILabel!
-    
     @IBOutlet weak var ratingBar: CosmosView!
     
     var service:ServiceOffer? = nil

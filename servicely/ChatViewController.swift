@@ -26,6 +26,7 @@ class ChatViewController: JSQMessagesViewController {
     var clientName = ""
     var timestamp = ""
     var threadID = ""
+    
     var serviceType = ""
     var category = ""
     
