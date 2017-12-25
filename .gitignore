@@ -31,3 +31,6 @@ xcuserdata
 
 # CocoaPods
 Pods/
+
+# user state
+xcuserdata/
