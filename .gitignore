@@ -31,3 +31,7 @@ xcuserdata
 
 # CocoaPods
 Pods/
+
+#user specific
+.xcuserstate
+.xcbkptlist
