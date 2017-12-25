@@ -21,6 +21,7 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     var services = [ServiceOffer]()
     var requests = [ClientRequest]()
     var ratings = [String: Double]()
+    var user:NSDictionary? = nil
     
     // number of posts to paginate through
     let numberOfPosts:Int = 2
@@ -64,30 +65,58 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
                 //let vc = ServiceTypeViewController()
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "serviceTypeViewController")
                 self.present(vc!, animated: true, completion: nil)
+            } else {
+                self.user = user
             }
             
-            self.services.removeAll()
-            
-            db.getServicesOffered() { (servicesArray) in
-                
-                self.services = servicesArray
-                
-                // there's probably a better way to get ratings for users, so think of one
-                // and delete this
-                db.getUsers() { (snapshot) in
-                    print(snapshot.childrenCount)
-                    for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                        if let dict = rest.value as? NSDictionary {
-                            let rating = dict["rating"] as? Double ?? -1
-                            //let userID = dict["userID"] as? String ?? ""
-                            
-                            self.ratings[rest.key] = rating
-                        } else {
-                            print("could not convert snaptshot to dictionary")
+            if((user?["serviceType"] as! String) == "client") {
+                self.services.removeAll()
+                db.getServicesOffered() { (servicesArray) in
+                    
+                    self.services = servicesArray
+                    
+                    // there's probably a better way to get ratings for users, so think of one
+                    // and delete this
+                    db.getUsers() { (snapshot) in
+                        print(snapshot.childrenCount)
+                        for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                            if let dict = rest.value as? NSDictionary {
+                                let rating = dict["rating"] as? Double ?? -1
+                                //let userID = dict["userID"] as? String ?? ""
+                                
+                                self.ratings[rest.key] = rating
+                            } else {
+                                print("could not convert snaptshot to dictionary")
+                            }
+                        }
+                        DispatchQueue.main.async{
+                            self.feedTableView.reloadData()
                         }
                     }
-                    DispatchQueue.main.async{
-                        self.feedTableView.reloadData()
+                }
+            } else if((user?["serviceType"] as! String) == "serviceProvider") {
+                self.requests.removeAll()
+                db.getClientRequests() { (requestsArray) in
+                    
+                    self.requests = requestsArray
+                    
+                    // there's probably a better way to get ratings for users, so think of one
+                    // and delete this
+                    db.getUsers() { (snapshot) in
+                        print(snapshot.childrenCount)
+                        for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                            if let dict = rest.value as? NSDictionary {
+                                let rating = dict["rating"] as? Double ?? -1
+                                //let userID = dict["userID"] as? String ?? ""
+                                
+                                self.ratings[rest.key] = rating
+                            } else {
+                                print("could not convert snaptshot to dictionary")
+                            }
+                        }
+                        DispatchQueue.main.async{
+                            self.feedTableView.reloadData()
+                        }
                     }
                 }
             }
@@ -140,30 +169,49 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     // MARK: - Table view data source
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "serviceOfferCell", for: indexPath) as! ServiceOfferTableViewCell
-        if(services.count > 0) {
-            // Configure the cell...
-            let service = services[indexPath.row]
-            let colorScheme = ColorScheme.getColorScheme()
-            cell.companyName.text = service.companyName
-            cell.category.text = service.category
-            cell.askingPrice.text = service.askingPrice
-            cell.service = service
-            
-            if(ratings.keys.contains(service.userID)) {
-                let rating = ratings[service.userID]!
-
-                if(rating != -1){
-                    cell.ratingBar.rating = rating
-                    cell.ratingBar.filledColor = colorScheme
-                    cell.ratingBar.filledBorderColor = colorScheme
-                    cell.ratingBar.emptyBorderColor = colorScheme
-                }else{
-                    cell.ratingBar.isHidden = true
+        if((user != nil)
+            && ((user?["serviceType"] as! String) == "client")
+            && ((self.services.count - 1 ) >= indexPath.row)) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "serviceOfferCell", for: indexPath) as! ServiceOfferTableViewCell
+            //if(services.count > 0) {
+                // Configure the cell...
+                let service = services[indexPath.row]
+                let colorScheme = ColorScheme.getColorScheme()
+                cell.companyName.text = service.companyName
+                cell.category.text = service.category
+                cell.askingPrice.text = service.askingPrice
+                cell.service = service
+                
+                if(ratings.keys.contains(service.userID)) {
+                    let rating = ratings[service.userID]!
+                    
+                    if(rating != -1){
+                        cell.ratingBar.rating = rating
+                        cell.ratingBar.filledColor = colorScheme
+                        cell.ratingBar.filledBorderColor = colorScheme
+                        cell.ratingBar.emptyBorderColor = colorScheme
+                    }else{
+                        cell.ratingBar.isHidden = true
+                    }
                 }
-            }
+            //}
             
+            return cell
+        } else if((user != nil)
+        && ((user?["serviceType"] as! String) == "serviceProvider")
+            && ((self.requests.count - 1 ) >= indexPath.row)) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "clientRequestCell", for: indexPath) as! ClientRequestTableViewCell
+            let request = self.requests[indexPath.row]
+            //let colorScheme = ColorScheme.getColorScheme()
+            
+            cell.usernameLabel.text = request.userName
+            cell.categoryLabel.text = request.category
+            return cell
         }
+        
+        // TODO: make emtpy cell to show if table view loads cellers before callbacks
+        // viewWillAppear populate services or requests arrays
+        let cell = tableView.dequeueReusableCell(withIdentifier: "emptyCell", for: indexPath) as! ServiceOfferTableViewCell
         return cell
     }
     
@@ -172,7 +220,17 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return services.count
+        if(user != nil) {
+            if((self.user?["serviceType"] as! String) == "client") {
+                return services.count
+            } else if((self.user?["serviceType"] as! String) == "serviceProvider") {
+                return requests.count
+            } else {
+                return 0
+            }
+        } else {
+            return 0
+        }
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -217,28 +275,35 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "viewService" {
-            let vc:ViewServiceViewController = segue.destination as! ViewServiceViewController
-                
-            let indexPath = self.feedTableView.indexPathForSelectedRow?.row
-            let service = services[indexPath!]
-                
-            vc.service = service
-            vc.client = false
-            
-            if(ratings.keys.contains(service.userID)) {
-                let rating = ratings[service.userID]!
-                
-                if(rating != -1){
-    
-                    vc.oldRating = ratings[service.userID]!
-                }else{
-                    
-                }
-            }
-
-            //vc.oldRating = ratings[service.userID]!
         
+        if segue.identifier == "viewService" || segue.identifier == "viewRequest" {
+            let vc:ViewServiceViewController = segue.destination as! ViewServiceViewController
+            let indexPath = self.feedTableView.indexPathForSelectedRow?.row
+            
+            if segue.identifier == "viewService" {
+                let service = services[indexPath!]
+                
+                vc.service = service
+                vc.client = true
+                
+                if(ratings.keys.contains(service.userID)) {
+                    let rating = ratings[service.userID]!
+                    
+                    if(rating != -1){
+        
+                        vc.oldRating = ratings[service.userID]!
+                    }else{
+                        
+                    }
+                }
+
+                //vc.oldRating = ratings[service.userID]!
+            } else if(segue.identifier == "viewRequest") {
+                let request = self.requests[indexPath!]
+                
+                vc.request = request
+                vc.client = false
+            }
         }
     }
 

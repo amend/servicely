@@ -101,6 +101,31 @@ class Database {
         })
     }
     
+    // gets all services offered
+    // need to make this paginate when reaching end of table view
+    func getClientRequests(completion: @escaping (_ requestsArray: [ClientRequest])->()) {
+        ref.child("clientRequest").observeSingleEvent(of: .value, with: { snapshot in
+            print(snapshot.childrenCount)
+            
+            var requests = [ClientRequest]()
+            
+            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                print("adding to services array...")
+                
+                if let dict = rest.value as? NSDictionary {
+                    
+                    requests.append(ClientRequest.init(serviceDescription: dict["requestDescription"] as! String, location: dict["location"] as! String, contactInfo: dict["contactInfo"] as! String, userID: dict["userID"] as! String, userName: dict["userName"] as! String, category: dict["category"] as! String))
+                    
+                    print("added \(rest.value)")
+                } else {
+                    print("could not convert snapshot to dictionay")
+                }
+            }
+            
+            completion(requests)
+        })
+    }
+    
     // gets all users for ratings. not the best approach to get ratings.
     // this refactoring is kinda shitty cuz getting dicts from snapshot will be done outside of this function
     // there's probably a better way to get ratings for users, so think of one
@@ -124,7 +149,7 @@ class Database {
                 print("adding to requests array...")
                 if let dict = rest.value as? NSDictionary {
                     
-                    requests.append(ClientRequest.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["requestDescription"] as? String)!, location: (dict["location"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!, userName: (dict["userName"] as? String)!))
+                    requests.append(ClientRequest.init(serviceDescription: (dict["requestDescription"] as? String)!, location: (dict["location"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!, userName: (dict["userName"] as? String)!, category: (dict["category"] as? String)!))
         
                     print("added \(rest.value)")
                 } else {
@@ -196,7 +221,7 @@ class Database {
                 print("adding to requests array...")
                 if let dict = rest.value as? NSDictionary {
                     
-                    requests.append(ClientRequest.init(serviceType: (dict["serviceType"] as? String)!, serviceDescription: (dict["requestDescription"] as? String)!, location: (dict["location"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!, userName: (dict["userName"] as? String)!))
+                    requests.append(ClientRequest.init(serviceDescription: (dict["requestDescription"] as? String)!, location: (dict["location"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!, userName: (dict["userName"] as? String)!, category: (dict["cateogory"] as? String)!))
                     
                     print("added \(rest.value)")
                 } else {

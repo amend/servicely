@@ -5,22 +5,16 @@
 //  Created by Andoni Mendoza on 10/15/17.
 //  Copyright © 2017 Andoni Mendoza. All rights reserved.
 //
-
 import Foundation
 
 class ClientRequest {
     
-    private var _serviceType:String = ""
     private var _serviceDescription:String = ""
     private var _location:String = ""
     private var _contactInfo:String = ""
     private var _userID:String = ""
     private var _userName:String = ""
-    
-    var serviceType:String {
-        get { return _serviceType}
-        set(v) {_serviceType = v}
-    }
+    private var _category:String = ""
     
     var serviceDescription:String {
         get {return _serviceDescription}
@@ -47,13 +41,18 @@ class ClientRequest {
         set(v) {_userName = v}
     }
     
+    var category:String {
+        get { return _category }
+        set(v) {_category = v}
+    }
     
-    init(serviceType:String, serviceDescription:String, location:String, contactInfo:String, userID:String, userName:String) {
-        self.serviceType = serviceType
+    
+    init(serviceDescription:String, location:String, contactInfo:String, userID:String, userName:String, category:String) {
         self.serviceDescription = serviceDescription
         self.location = location
         self.contactInfo = contactInfo
         self.userID = userID
         self.userName = userName
+        self.category = category
     }
 }
