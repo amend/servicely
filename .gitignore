@@ -33,4 +33,5 @@ xcuserdata
 Pods/
 
 # user state
-xcuserdata/
+servicely.xcodeproj/xcuserdata/
+servicely.xcworkspace/xcuserdata/
