@@ -9,8 +9,9 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import CoreLocation
 
-class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, UITextFieldDelegate {
+class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, UITextFieldDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var serviceTypePickerView: UIPickerView!
     
@@ -31,6 +32,8 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
     let pickerViewData:[String] = ["Automotive", "Cell/Mobile", "Computer", "Creative", "Event", "Farm + Garden", "Financial", "Household", "Labor/Move", "Legal", "Lessons", "Real Estate", "Skilled Trade", "Trave/Vac", "Mechanic", "Carpentry", "Tutoring", "Care provider", "Lawn & Garden", "Pet care", "Plumbing", "Health & Beauty", "Other"]
     
     var category:String = ""
+    
+    var locationManager: CLLocationManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +56,12 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         let tap = UITapGestureRecognizer(target: self.view, action: Selector("endEditing:"))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        
+        // core location
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -109,6 +118,8 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         
     }
     
+    // picker view
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -133,6 +144,65 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         if(component == 0) {
             self.category = pickerViewData[row]
         }
+    }
+    
+    // core location
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .notDetermined {
+            locationManager.requestWhenInUseAuthorization()
+        } else if status == .authorizedWhenInUse {
+            print("location use authorized")
+            locationManager = manager
+            setLocation()
+        } else if status == .denied {
+            print("user chose not to authorize locatin")
+        } else if status == .restricted {
+            print("Access denied - likely parental controls are restricting use in this app.")
+        }
+    }
+    
+    func setLocation() {
+        print("in setLocation")
+        
+        // Get user's current location name
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(self.locationManager.location!) { (placemarksArray, error) in
+            print("convertion to city location")
+            if (placemarksArray?.count)! > 0 {
+                
+                /*
+                let placemark = placemarksArray?.first
+                let number = placemark!.subThoroughfare
+                let bairro = placemark!.subLocality
+                let street = placemark!.thoroughfare
+                
+                print("\(street!), \(number!) - \(bairro!)")
+                */
+                
+                //self.addressLabel.text = "\(street!), \(number!) - \(bairro!)"
+                
+                //let cityDict = placemark!.dictionaryWithValues(forKeys: ["City"])
+                let placemark = placemarksArray?.first
+                let city:String? = placemark?.locality
+                let country:String? = placemark?.country
+                let postalCode:String? = placemark?.postalCode
+                let state:String? = placemark?.administrativeArea
+                
+                print("got city: " + city! + " country: " + country! + " postal code: " + postalCode! + " state: " + state!)
+
+            }
+            print("exiting setLocation")
+        }
+    }
+    
+    func locationManager(_: CLLocationManager, didUpdateLocations: [CLLocation]) {
+      print("did update location")
+    }
+    
+    func locationManager(_ manager: CLLocationManager,
+                         didFailWithError error: Error) {
+        print("location manager failed!")
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
