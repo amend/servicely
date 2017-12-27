@@ -14,20 +14,14 @@ import CoreLocation
 class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, UITextFieldDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var serviceTypePickerView: UIPickerView!
-    
     @IBOutlet weak var serviceDescription: UITextView!
-    
     @IBOutlet weak var askingPrice: UITextField!
-    
-    @IBOutlet weak var location: UITextField!
-    
     @IBOutlet weak var companyName: UITextField!
-    
     @IBOutlet weak var contactInfo: UITextField!
-    
     @IBOutlet weak var savedLabel: UILabel!
-    
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var addressLabel: UILabel!
+    
     
     let pickerViewData:[String] = ["Automotive", "Cell/Mobile", "Computer", "Creative", "Event", "Farm + Garden", "Financial", "Household", "Labor/Move", "Legal", "Lessons", "Real Estate", "Skilled Trade", "Trave/Vac", "Mechanic", "Carpentry", "Tutoring", "Care provider", "Lawn & Garden", "Pet care", "Plumbing", "Health & Beauty", "Other"]
     
@@ -58,7 +52,7 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         // uses functions: textFieldShouldReturn and textView
         self.serviceDescription.delegate = self
         self.askingPrice.delegate = self
-        self.location.delegate = self
+        //self.location.delegate = self
         self.companyName.delegate = self
         self.contactInfo.delegate = self
         let tap = UITapGestureRecognizer(target: self.view, action: Selector("endEditing:"))
@@ -111,7 +105,7 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
             "category": self.category,
             "serviceDescription": serviceDescription.text!,
             "askingPrice": askingPrice.text!,
-            "location": location.text!,
+            "location": self.cityAddress!,
             "contactInfo": contactInfo.text!,
             "userID": userID
         ]
@@ -185,15 +179,15 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
                 
                 print("got city: " + city! + " country: " + country! + " postal code: " + postalCode! + " state: " + state!)
                 
-                self.city! = city!
-                self.state! = state!
-                self.country! = country!
-                self.postalCode! = postalCode!
+                self.city = city
+                self.state = state
+                self.country = country
+                self.postalCode = postalCode
                 
                 // let address = "1 Infinite Loop, Cupertino, CA 95014"
-                let address = city! + " " + state! + " " + country!
+                let address = city! + " " + state! + " " + country! + " " + postalCode!
                 
-                self.cityAddress! = address
+                self.cityAddress = address
                 
                 let geoCoder = CLGeocoder()
                 geoCoder.geocodeAddressString(address) { (placemarks, error) in
@@ -212,8 +206,24 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
                     print("lat: " + String(lat))
                     print("long: " + String(long))
 
-                    self.latitude! = lat
+                    self.latitude = lat
                     self.longitude = long
+                    
+                    var addr:String = ""
+                    if(self.city != nil) {
+                        addr += self.city!
+                    }
+                    if(self.state != nil){
+                        addr += " " + self.state!
+                    }
+                    if(self.country != nil) {
+                        addr += " " + self.country!
+                    }
+                    if(self.postalCode != nil) {
+                        addr += " " + self.postalCode!
+                    }
+                    
+                    self.addressLabel.text = addr
                 }
             }
             print("exiting setLocation")
