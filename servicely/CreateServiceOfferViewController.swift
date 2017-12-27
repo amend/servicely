@@ -35,6 +35,14 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
     
     var locationManager: CLLocationManager!
     
+    var city:String? = nil
+    var state:String? = nil
+    var country:String? = nil
+    var postalCode:String? = nil
+    var cityAddress:String? = nil
+    var latitude:Double? = nil
+    var longitude:Double? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -61,7 +69,6 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -170,19 +177,6 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         geocoder.reverseGeocodeLocation(self.locationManager.location!) { (placemarksArray, error) in
             print("convertion to city location")
             if (placemarksArray?.count)! > 0 {
-                
-                /*
-                let placemark = placemarksArray?.first
-                let number = placemark!.subThoroughfare
-                let bairro = placemark!.subLocality
-                let street = placemark!.thoroughfare
-                
-                print("\(street!), \(number!) - \(bairro!)")
-                */
-                
-                //self.addressLabel.text = "\(street!), \(number!) - \(bairro!)"
-                
-                //let cityDict = placemark!.dictionaryWithValues(forKeys: ["City"])
                 let placemark = placemarksArray?.first
                 let city:String? = placemark?.locality
                 let country:String? = placemark?.country
@@ -190,7 +184,37 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
                 let state:String? = placemark?.administrativeArea
                 
                 print("got city: " + city! + " country: " + country! + " postal code: " + postalCode! + " state: " + state!)
+                
+                self.city! = city!
+                self.state! = state!
+                self.country! = country!
+                self.postalCode! = postalCode!
+                
+                // let address = "1 Infinite Loop, Cupertino, CA 95014"
+                let address = city! + " " + state! + " " + country!
+                
+                self.cityAddress! = address
+                
+                let geoCoder = CLGeocoder()
+                geoCoder.geocodeAddressString(address) { (placemarks, error) in
+                    guard
+                        let placemarks = placemarks,
+                        let location = placemarks.first?.location,
+                        let lat:Double =  location.coordinate.latitude,
+                        let long:Double = location.coordinate.longitude
+                    else {
+                            // handle no location found
+                            print("could not convert address to lat and long")
+                            return
+                    }
+                    
+                    // Use location
+                    print("lat: " + String(lat))
+                    print("long: " + String(long))
 
+                    self.latitude! = lat
+                    self.longitude = long
+                }
             }
             print("exiting setLocation")
         }
