@@ -9,24 +9,29 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import CoreLocation
 
-class CreateClientRequestViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, UITextFieldDelegate {
+class CreateClientRequestViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, UITextFieldDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var serviceTypePickerView: UIPickerView!
-    
     @IBOutlet weak var requestDescription: UITextView!
-    
-    @IBOutlet weak var location: UITextField!
-    
-    @IBOutlet weak var contactInfo: UITextField!
-    
     @IBOutlet weak var savedLabel: UILabel!
-    
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var addressLabel: UILabel!
     
     let pickerViewData:[String] = ["Automotive", "Cell/Mobile", "Computer", "Creative", "Event", "Farm + Garden", "Financial", "Household", "Labor/Move", "Legal", "Lessons", "Real Estate", "Skilled Trade", "Trave/Vac", "Mechanic", "Carpentry", "Tutoring", "Care provider", "Lawn & Garden", "Pet care", "Plumbing", "Health & Beauty", "Other"]
     
     var serviceType:String = ""
+    
+    var locationManager: CLLocationManager!
+    
+    var city:String? = nil
+    var state:String? = nil
+    var country:String? = nil
+    var postalCode:String? = nil
+    var cityAddress:String? = nil
+    var latitude:Double? = nil
+    var longitude:Double? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,11 +47,14 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
         // dismiss text field keyboards
         // uses functions: textFieldShouldReturn and textView
         self.requestDescription.delegate = self
-        self.location.delegate = self
-        self.contactInfo.delegate = self
         let tap = UITapGestureRecognizer(target: self.view, action: Selector("endEditing:"))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        
+        // core location
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,15 +89,21 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
         let userID = FIRAuth.auth()?.currentUser?.uid
         let userName = FIRAuth.auth()?.currentUser?.displayName
 
+        if(addressLabel.text == "" || addressLabel.text == nil) {
+            savedLabel.text = "Getting city location... Please wait"
+            return
+        }
+        
         // define array of key/value pairs to store for this person.
         let clientRequestRecord = [
             "category": serviceType,
-            "location": location.text!,
-            "contactInfo": contactInfo.text!,
             "requestDescription": requestDescription.text!,
             "userID": userID,
-            "userName": userName
-        ]
+            "userName": userName,
+            "location": self.cityAddress!,
+            "latitude": self.latitude!,
+            "longitude": self.longitude!
+            ] as [String : Any]
         
         // Save to Firebase.
         let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
@@ -99,6 +113,8 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
         savedLabel.text = "saved!"
 
     }
+    
+    // picker view
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -125,6 +141,104 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
             serviceType = pickerViewData[row]
         }
     }
+    
+    // core location
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .notDetermined {
+            locationManager.requestWhenInUseAuthorization()
+        } else if status == .authorizedWhenInUse {
+            print("location use authorized")
+            locationManager = manager
+            setLocation()
+        } else if status == .denied {
+            print("user chose not to authorize locatin")
+        } else if status == .restricted {
+            print("Access denied - likely parental controls are restricting use in this app.")
+        }
+    }
+    
+    func setLocation() {
+        print("in setLocation")
+        
+        // Get user's current location name
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(self.locationManager.location!) { (placemarksArray, error) in
+            print("convertion to city location")
+            if (placemarksArray?.count)! > 0 {
+                let placemark = placemarksArray?.first
+                let city:String? = placemark?.locality
+                let country:String? = placemark?.country
+                let postalCode:String? = placemark?.postalCode
+                let state:String? = placemark?.administrativeArea
+                
+                print("got city: " + city! + " country: " + country! + " postal code: " + postalCode! + " state: " + state!)
+                
+                self.city = city
+                self.state = state
+                self.country = country
+                self.postalCode = postalCode
+                
+                // let address = "1 Infinite Loop, Cupertino, CA 95014"
+                let address = city! + " " + state! + " " + country! + " " + postalCode!
+                
+                self.cityAddress = address
+                
+                let geoCoder = CLGeocoder()
+                geoCoder.geocodeAddressString(address) { (placemarks, error) in
+                    guard
+                        let placemarks = placemarks,
+                        let location = placemarks.first?.location,
+                        let lat:Double =  location.coordinate.latitude,
+                        let long:Double = location.coordinate.longitude
+                        else {
+                            // handle no location found
+                            print("could not convert address to lat and long")
+                            return
+                    }
+                    
+                    // Use location
+                    print("lat: " + String(lat))
+                    print("long: " + String(long))
+                    
+                    self.latitude = lat
+                    self.longitude = long
+                    
+                    var addr:String = ""
+                    if(self.city != nil) {
+                        addr += self.city!
+                    }
+                    if(self.state != nil){
+                        addr += " " + self.state!
+                    }
+                    if(self.country != nil) {
+                        addr += " " + self.country!
+                    }
+                    if(self.postalCode != nil) {
+                        addr += " " + self.postalCode!
+                    }
+                    
+                    self.addressLabel.text = addr
+                    self.savedLabel.text = ""
+                }
+            }
+            print("exiting setLocation")
+        }
+    }
+    
+    func locationManager(_: CLLocationManager, didUpdateLocations: [CLLocation]) {
+        print("did update location")
+    }
+    
+    func locationManager(_ manager: CLLocationManager,
+                         didFailWithError error: Error) {
+        print("location manager failed!")
+    }
+    
+
+    
+    
+    // keyboard dismiss
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {

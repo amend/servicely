@@ -248,6 +248,8 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         print("location manager failed!")
     }
     
+    // keyboard dismiss
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {
             textView.text = nil
