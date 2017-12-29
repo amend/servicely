@@ -32,6 +32,10 @@ xcuserdata
 # CocoaPods
 Pods/
 
+#user specific
+.xcuserstate
+.xcbkptlist
+
 # user state
 servicely.xcodeproj/xcuserdata/
 servicely.xcworkspace/xcuserdata/
