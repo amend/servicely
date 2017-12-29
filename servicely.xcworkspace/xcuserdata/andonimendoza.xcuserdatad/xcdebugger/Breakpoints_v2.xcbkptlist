@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "servicely/CreateServiceOfferViewController.swift"
-            timestampString = "536042492.141442"
+            timestampString = "536203376.410152"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
             landmarkName = "setLocation()"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "servicely/CreateServiceOfferViewController.swift"
-            timestampString = "536042492.141708"
+            timestampString = "536203376.410787"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "setLocation()"
             landmarkType = "7">
          </BreakpointContent>

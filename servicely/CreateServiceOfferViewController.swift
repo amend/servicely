@@ -13,6 +13,7 @@ import CoreLocation
 
 class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, UITextFieldDelegate, CLLocationManagerDelegate {
 
+    
     @IBOutlet weak var serviceTypePickerView: UIPickerView!
     @IBOutlet weak var serviceDescription: UITextView!
     @IBOutlet weak var askingPrice: UITextField!
@@ -99,6 +100,11 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
     @IBAction func submitButton(_ sender: Any) {
         let userID = FIRAuth.auth()?.currentUser?.uid
         
+        if(addressLabel.text == "" || addressLabel.text == nil) {
+            savedLabel.text = "Getting city location... Please wait"
+            return
+        }
+        
         // define array of key/value pairs to store for this person.
         let serviceOfferRecord = [
             "companyName": companyName.text!,
@@ -106,9 +112,11 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
             "serviceDescription": serviceDescription.text!,
             "askingPrice": askingPrice.text!,
             "location": self.cityAddress!,
+            "latitude": self.latitude!,
+            "longitude": self.longitude!,
             "contactInfo": contactInfo.text!,
             "userID": userID
-        ]
+            ] as [String : Any]
         
         // Save to Firebase.
         let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
@@ -224,6 +232,7 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
                     }
                     
                     self.addressLabel.text = addr
+                    self.savedLabel.text = ""
                 }
             }
             print("exiting setLocation")
