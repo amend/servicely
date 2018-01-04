@@ -10,6 +10,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 import CoreLocation
+import GeoFire
 
 class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, UITextFieldDelegate, CLLocationManagerDelegate {
 
@@ -121,10 +122,27 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         // Save to Firebase.
         let ref:DatabaseReference! = Database.database().reference()
         
-        ref.child("serviceOffer").childByAutoId().setValue(serviceOfferRecord)
+        //ref.child("serviceOffer").childByAutoId().setValue(serviceOfferRecord)
+        let postID = ref.child("serviceOffer").childByAutoId()
+        postID.setValue(serviceOfferRecord)
+
+        
+        let geoFireRef:DatabaseReference! = Database.database().reference().child("location-serviceOffers")
+        let geoFire = GeoFire(firebaseRef: geoFireRef)
+        geoFire?.setLocation(CLLocation(latitude: self.latitude!, longitude: self.longitude!), forKey: postID.key) { (error) in
+            if (error != nil) {
+                self.savedLabel.text = "Error - not saved"
+                
+                print("An error occured: \(error)")
+            } else {
+                self.savedLabel.text = "saved!"
+                
+                print("Saved location successfully!")
+            }
+        }
         
         // update ui
-        savedLabel.text = "saved!"
+        //savedLabel.text = "saved!"
     }
     
     // picker view
