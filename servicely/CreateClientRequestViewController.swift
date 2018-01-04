@@ -11,6 +11,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import CoreLocation
 
+
 class CreateClientRequestViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, UITextFieldDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var serviceTypePickerView: UIPickerView!
@@ -24,6 +25,7 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
     var serviceType:String = ""
     
     var locationManager: CLLocationManager!
+    var location:CLLocation? = nil
     
     var city:String? = nil
     var state:String? = nil
@@ -50,11 +52,6 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
         let tap = UITapGestureRecognizer(target: self.view, action: Selector("endEditing:"))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
-        
-        // core location
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,6 +62,11 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
         // item will be selected
         serviceTypePickerView.selectRow(0, inComponent: 0, animated: false)
         serviceType = pickerViewData[0]
+        
+        // core location
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
     }
     
     override func didReceiveMemoryWarning() {
@@ -86,8 +88,8 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
     }
     
     @IBAction func submitButton(_ sender: Any) {
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        let userName = FIRAuth.auth()?.currentUser?.displayName
+        let userID = Auth.auth().currentUser?.uid
+        let userName = Auth.auth().currentUser?.displayName
 
         if(addressLabel.text == "" || addressLabel.text == nil) {
             savedLabel.text = "Getting city location... Please wait"
@@ -106,9 +108,9 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
             ] as [String : Any]
         
         // Save to Firebase.
-        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
-        
-        ref.child("clientRequest").childByAutoId().setValue(clientRequestRecord)
+        let ref:DatabaseReference! = Database.database().reference()
+
+        let postID = ref.child("clientRequest").childByAutoId().setValue(clientRequestRecord)
         
         savedLabel.text = "saved!"
 
@@ -188,14 +190,16 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
                 geoCoder.geocodeAddressString(address) { (placemarks, error) in
                     guard
                         let placemarks = placemarks,
-                        let location = placemarks.first?.location,
-                        let lat:Double =  location.coordinate.latitude,
-                        let long:Double = location.coordinate.longitude
+                        let locationTemp = placemarks.first?.location,
+                        let lat:Double =  locationTemp.coordinate.latitude,
+                        let long:Double = locationTemp.coordinate.longitude
                         else {
                             // handle no location found
                             print("could not convert address to lat and long")
                             return
                     }
+                    
+                    self.location = locationTemp
                     
                     // Use location
                     print("lat: " + String(lat))

@@ -34,7 +34,7 @@ class ProfileViewController: UIViewController {
     }
     
     func ifClientProfilePage(_ clientVC: UIViewController, _ providerVC: UIViewController){
-        let db:Database = Database()
+        let db:DatabaseWrapper = DatabaseWrapper()
         
         db.getCurrentUser() { (user:NSDictionary?) in
             let serviceType = user?["serviceType"] as? String ?? ""

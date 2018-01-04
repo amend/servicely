@@ -32,7 +32,7 @@ class SettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(indexPath.item == 3){
             //sign out
-            try! FIRAuth.auth()!.signOut()
+            try! Auth.auth().signOut()
             //show login page
         }
     }

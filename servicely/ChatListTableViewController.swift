@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 
 class ChatListTableViewController: UITableViewController {
 
@@ -35,7 +36,7 @@ class ChatListTableViewController: UITableViewController {
         super.viewWillAppear(animated) // No need for semicolon
         
         self.chatList.removeAll()
-        self.currentUserID = (FIRAuth.auth()?.currentUser?.uid)!
+        self.currentUserID = (Auth.auth().currentUser?.uid)!
         observeChats()
     }
 
@@ -46,11 +47,11 @@ class ChatListTableViewController: UITableViewController {
     }
     
     private func observeChats() {
-        let db:Database = Database()
+        let db:DatabaseWrapper = DatabaseWrapper()
         db.getCurrentUser() { (user:NSDictionary?) in
             self.serviceType = user?["serviceType"] as! String
             
-            let ref:FIRDatabaseReference = FIRDatabase.database().reference()
+            let ref = Database.database().reference()
             
             var userType:String = ""
             if(self.serviceType == "client") {
@@ -96,7 +97,7 @@ class ChatListTableViewController: UITableViewController {
                 let category:String = detailsDict["category"] as! String
                 let threadID:String = detailsDict["threadID"] as! String
                 
-                let db:Database = Database()
+                let db:DatabaseWrapper = DatabaseWrapper()
                 var targetUserID:String = ""
                 if(self.serviceType == "client") {
                     targetUserID = providerID

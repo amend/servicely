@@ -30,7 +30,7 @@ class ChatViewController: JSQMessagesViewController {
     var serviceType = ""
     var category = ""
     
-    let currentUserID = FIRAuth.auth()?.currentUser?.uid
+    let currentUserID = Auth.auth().currentUser?.uid
     
     // this should work for ensuring callbacks in viewdidload
     // complete before didPressSend. didPressSend requires the
@@ -64,7 +64,7 @@ class ChatViewController: JSQMessagesViewController {
 
         // get all threads that have user's clientID or providerID
         // in threads/threadID/detail/clientID or providerID
-        let ref:FIRDatabaseReference = FIRDatabase.database().reference()
+        let ref:DatabaseReference = Database.database().reference()
         
         var userType:String = ""
         if(self.serviceType == "client") {
@@ -93,7 +93,7 @@ class ChatViewController: JSQMessagesViewController {
                 // and find the single thread that the recepiant
                 // is also involved in
                 var threadCount:Int = 0
-                for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                for rest in snapshot.children.allObjects as! [DataSnapshot] {
                     print(rest)
                     print("printed rest")
                     print("rest has children: " + String(rest.hasChildren()))
@@ -144,7 +144,7 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     private func observeMessages() {
-        let ref:FIRDatabaseReference = FIRDatabase.database().reference()
+        let ref:DatabaseReference = Database.database().reference()
 
         let messageQuery = ref.child("threads").child(self.threadID).child("messages")
 
@@ -185,7 +185,7 @@ class ChatViewController: JSQMessagesViewController {
         
         if(self.viewDidLoadCallbacksComplete != nil && self.viewDidLoadCallbacksComplete!) {
         
-            let ref:FIRDatabaseReference = FIRDatabase.database().reference()
+            let ref:DatabaseReference = Database.database().reference()
         
             // if first time convo between users, then
             // create threads/(childByAutoID)/details/(info)

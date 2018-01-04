@@ -14,7 +14,7 @@ import FirebaseAuthUI
 import FirebaseGoogleAuthUI
 import FirebaseFacebookAuthUI
 
-class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableViewDelegate, UITableViewDataSource {
+class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var feedTableView: UITableView!
     
@@ -49,7 +49,7 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // No need for semicolon
         
-        let userID = FIRAuth.auth()?.currentUser?.uid
+        let userID = Auth.auth().currentUser?.uid
         
         if(userID == nil) {
             checkLoggedIn()
@@ -57,7 +57,7 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
             return
         }
 
-        let db:Database = Database()
+        let db:DatabaseWrapper = DatabaseWrapper()
         
         db.getCurrentUser() { (user) in
             if(user == nil) {
@@ -79,7 +79,7 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
                     // and delete this
                     db.getUsers() { (snapshot) in
                         print(snapshot.childrenCount)
-                        for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                        for rest in snapshot.children.allObjects as! [DataSnapshot] {
                             if let dict = rest.value as? NSDictionary {
                                 let rating = dict["rating"] as? Double ?? -1
                                 //let userID = dict["userID"] as? String ?? ""
@@ -104,7 +104,7 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
                     // and delete this
                     db.getUsers() { (snapshot) in
                         print(snapshot.childrenCount)
-                        for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                        for rest in snapshot.children.allObjects as! [DataSnapshot] {
                             if let dict = rest.value as? NSDictionary {
                                 let rating = dict["rating"] as? Double ?? -1
                                 //let userID = dict["userID"] as? String ?? ""
@@ -126,7 +126,7 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     // MARK: - Firebase auth
     
     func checkLoggedIn() {
-        FIRAuth.auth()?.addStateDidChangeListener { auth, user in
+        Auth.auth().addStateDidChangeListener { auth, user in
             if user != nil {
                 // User is signed in.
             } else {
@@ -137,25 +137,35 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     }
     
     func login() {
-        let authUI = FIRAuthUI.authUI()
+        // let authUI = FUIAuth.authUI()
+        let authUI = FUIAuth.defaultAuthUI()
         
         let fbAppID:String = "1969547683311551"
         let googleClientID:String = "16510907992-1rre0iqk91d75f5sp4jtbe22maomuc7k.apps.googleusercontent.com"
-        let googleProvider = FIRGoogleAuthUI(clientID: googleClientID)
-        let fbProvider = FIRFacebookAuthUI(appID: fbAppID)
+        //let googleProvider = FUIGoogleAuth(clientID: googleClientID)
+        //let fbProvider = FUIFacebookAuth(appID: fbAppID)
+        //let googleProvider = FUIGoogleAuth(scopes: [googleClientID])
+        //let fbProvider = FUIFacebookAuth(permissions: [fbAppID])
+        let providers: [FUIAuthProvider] = [
+            FUIGoogleAuth(),
+            FUIFacebookAuth(),
+            ]
         
-        authUI?.delegate = self
-        authUI?.signInProviders = [fbProvider!, googleProvider!]
+        authUI?.delegate = self as? FUIAuthDelegate
+        //authUI?.signInProviders = [fbProvider!, googleProvider!]
+        //authUI?.providers = [fbProvider, googleProvider]
+        authUI?.providers = providers
+        
         let authViewController = authUI?.authViewController()
         
         self.present(authViewController!, animated: true, completion: nil)
     }
     
-    func authPickerViewController(for authUI: FIRAuthUI) -> FIRAuthPickerViewController {
+    func authPickerViewController(for authUI: FUIAuth) -> FUIAuthPickerViewController {
         return  ServicelyLogoViewController(authUI: authUI)
     }
 
-    func authUI(_ authUI: FIRAuthUI, didSignInWith user: FIRUser?, error: Error?) {
+    func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
         if error != nil {
             //Problem signing in
             self.login()

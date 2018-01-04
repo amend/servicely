@@ -21,7 +21,7 @@ class ChooseNameViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let db:Database = Database()
+        let db:DatabaseWrapper = DatabaseWrapper()
         
         db.getCurrentUser() { (user:NSDictionary?) in
             let serviceType:String = user?["serviceType"] as! String
@@ -43,7 +43,7 @@ class ChooseNameViewController: UIViewController {
     @IBAction func submitButton(_ sender: Any) {
         self.nameValue = (self.nameLabel.text)!
         
-        let db:Database = Database()
+        let db:DatabaseWrapper = DatabaseWrapper()
         
         db.writeToCurrentUser(path: self.nameKey, valueToWrite: self.nameValue) { (didWrite: Bool) in
             if(!didWrite) {

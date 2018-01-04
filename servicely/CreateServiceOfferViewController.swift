@@ -59,11 +59,6 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         let tap = UITapGestureRecognizer(target: self.view, action: Selector("endEditing:"))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
-        
-        // core location
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,6 +68,11 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         // item will be selected
         serviceTypePickerView.selectRow(0, inComponent: 0, animated: false)
         category = pickerViewData[0]
+        
+        // core location
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,7 +98,7 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
     
     
     @IBAction func submitButton(_ sender: Any) {
-        let userID = FIRAuth.auth()?.currentUser?.uid
+        let userID = Auth.auth().currentUser?.uid
         
         if(addressLabel.text == "" || addressLabel.text == nil) {
             savedLabel.text = "Getting city location... Please wait"
@@ -119,12 +119,12 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
             ] as [String : Any]
         
         // Save to Firebase.
-        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
+        let ref:DatabaseReference! = Database.database().reference()
         
         ref.child("serviceOffer").childByAutoId().setValue(serviceOfferRecord)
         
+        // update ui
         savedLabel.text = "saved!"
-        
     }
     
     // picker view

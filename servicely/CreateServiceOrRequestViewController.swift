@@ -29,7 +29,7 @@ class CreateServiceOrRequestViewController: UIViewController {
     }
     
     func ifCreateRequest(_ requestVC: UIViewController, _ providerVC: UIViewController) {
-        let db:Database = Database()
+        let db:DatabaseWrapper = DatabaseWrapper()
         db.getCurrentUser() { (user: NSDictionary?) in
             let serviceType = user?["serviceType"] as? String ?? ""
             print("ServiceType: \(serviceType)")

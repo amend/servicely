@@ -39,14 +39,15 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
         changePasswordButton.backgroundColor = colorScheme
     }
     
+    /*
     @IBAction func changePassword(_ sender: Any) {
         self.view.endEditing(true)
         if(allTextFieldsFull()){
             errorLabel.text = ""
             if(ifPasswordsMatch()){
                 errorLabel.text = ""
-                let user = FIRAuth.auth()?.currentUser
-                let credential: FIRAuthCredential = FIREmailPasswordAuthProvider.credential(withEmail: (user?.email)!, password: currentPasswordTextField.text!)
+                let user = Auth.auth().currentUser
+                let credential: AuthCredential = FIREmailPasswordAuthProvider.credential(withEmail: (user?.email)!, password: currentPasswordTextField.text!)
         
                 user?.reauthenticate(with: credential) { error in
                     if let error = error {
@@ -68,6 +69,7 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
             errorLabel.text = "Please fill out all the fields"
         }
     }
+     */
     
     func allTextFieldsFull() -> Bool {
         return !(currentPasswordTextField.text?.isEmpty)! && !(newPasswordTextField.text?.isEmpty)! && !(reenterPasswordTextField.text?.isEmpty)!

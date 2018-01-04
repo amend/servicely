@@ -37,14 +37,14 @@ class ClientProfileViewController: UIViewController{
         nameView.backgroundColor = colorScheme
         viewMyRequestsButton.backgroundColor = colorScheme
         
-        let user = FIRAuth.auth()?.currentUser
+        let user = Auth.auth().currentUser
         if user != nil {
             displayName.text = user?.displayName
         } else {
             print("no user logged in")
         }
         
-        let db:Database = Database()
+        let db:DatabaseWrapper = DatabaseWrapper()
         
         db.getCurrentUser() { (user: NSDictionary?) in
             let about = user?["aboutMe"] as? String ?? ""

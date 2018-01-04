@@ -1,11 +1,18 @@
-// clang-format off
-/** @file FIRStorage.h
-    @brief Firebase SDK
-    @copyright Copyright 2016 Google Inc.
-    @remarks Use of this SDK is subject to the Google APIs Terms of Service:
-    https://developers.google.com/terms/
+/*
+ * Copyright 2017 Google
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
-// clang-format on
 
 #import <Foundation/Foundation.h>
 
@@ -15,6 +22,9 @@
 @class FIRStorageReference;
 
 NS_ASSUME_NONNULL_BEGIN
+
+/** Project version string for FirebaseStorage. */
+FOUNDATION_EXPORT const unsigned char *const FIRStorageVersionString;
 
 /**
  * FirebaseStorage is a service that supports uploading and downloading binary objects,
@@ -27,6 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
  * If you call [FIRStorage storageForApp:] and provide a custom instance of FIRApp,
  * the storage location will be specified via the FIROptions#storageBucket property.
  */
+NS_SWIFT_NAME(Storage)
 @interface FIRStorage : NSObject
 
 /**
@@ -41,6 +52,22 @@ NS_ASSUME_NONNULL_BEGIN
  * @return the FIRStorage instance, initialized with the custom FIRApp.
  */
 + (instancetype)storageForApp:(FIRApp *)app NS_SWIFT_NAME(storage(app:));
+
+/**
+ * Creates an instance of FIRStorage, configured with a custom storage bucket @a url.
+ * @param url The gs:// url to your Firebase Storage Bucket.
+ * @return the FIRStorage instance, initialized with the custom FIRApp.
+ */
++ (instancetype)storageWithURL:(NSString *)url NS_SWIFT_NAME(storage(url:));
+
+/**
+ * Creates an instance of FIRStorage, configured with a custom FIRApp @a app and a custom storage
+ * bucket @a url.
+ * @param app The custom FIRApp used for initialization.
+ * @param url The gs:// url to your Firebase Storage Bucket.
+ * @return the FIRStorage instance, initialized with the custom FIRApp.
+ */
++ (instancetype)storageForApp:(FIRApp *)app URL:(NSString *)url NS_SWIFT_NAME(storage(app:url:));
 
 /**
  * The Firebase App associated with this Firebase Storage instance.
@@ -79,7 +106,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Creates a FIRStorageReference given a gs:// or https:// URL pointing to a Firebase Storage
  * location. For example, you can pass in an https:// download URL retrieved from
- * [FIRStorageReference getDownloadURL] or the gs:// URI from [FIRStorageReference description].
+ * [FIRStorageReference downloadURLWithCompletion] or the gs:// URI from
+ * [FIRStorageReference description].
  * @param string A gs:// or https:// URL to initialize the reference with.
  * @return An instance of FIRStorageReference at the given child path.
  * @throws Throws an exception if passed in URL is not associated with the FIRApp used to initialize

@@ -61,7 +61,7 @@ class EditProviderViewController: UIViewController, UITextViewDelegate {
             about = aboutUs.text!
         }
                 
-        let db:Database = Database()
+        let db:DatabaseWrapper = DatabaseWrapper()
         db.writeToCurrentUser(path: "aboutUs", valueToWrite: about) { (didWrite:Bool) in
             var message = ""
             if(didWrite) {
