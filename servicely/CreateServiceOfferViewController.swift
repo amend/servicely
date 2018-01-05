@@ -30,7 +30,6 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
     var category:String = ""
     
     var locationManager: CLLocationManager!
-    
     var city:String? = nil
     var state:String? = nil
     var country:String? = nil
