@@ -61,7 +61,7 @@ class EditProfileViewController: UIViewController, UITextViewDelegate  {
             about = aboutMe.text!
         }
  
-        let db:Database = Database()
+        let db:DatabaseWrapper = DatabaseWrapper()
         db.writeToCurrentUser(path: "aboutMe", valueToWrite: about) { (didWrite:Bool) in
             
             var message = ""

@@ -20,7 +20,7 @@ class MyRequetsTableViewController: UITableViewController {
         self.title = "My Requests"
         self.tableView.rowHeight = 80.0
 
-        let db:Database = Database()
+        let db:DatabaseWrapper = DatabaseWrapper()
         db.getCurrentUsersRequests() {(usersRequests) in
             print(usersRequests.count)
 

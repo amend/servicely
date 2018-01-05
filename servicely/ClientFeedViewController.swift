@@ -13,11 +13,15 @@ import FirebaseAuth
 import FirebaseAuthUI
 import FirebaseGoogleAuthUI
 import FirebaseFacebookAuthUI
+import CoreLocation
+import GeoFire
 
-class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableViewDelegate, UITableViewDataSource {
+
+class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
     @IBOutlet weak var feedTableView: UITableView!
     
+    // TODO: make services and requests atomic
     var services = [ServiceOffer]()
     var requests = [ClientRequest]()
     var ratings = [String: Double]()
@@ -25,6 +29,20 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     
     // number of posts to paginate through
     let numberOfPosts:Int = 2
+    
+    var isClient:Bool? = nil
+    
+    // location
+    var locationManager: CLLocationManager!
+    var city:String? = nil
+    var state:String? = nil
+    var country:String? = nil
+    var postalCode:String? = nil
+    var cityAddress:String? = nil
+    var latitude:Double? = nil
+    var longitude:Double? = nil
+    
+    var keysCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +67,12 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // No need for semicolon
         
-        let userID = FIRAuth.auth()?.currentUser?.uid
+        // core location
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        
+        let userID = Auth.auth().currentUser?.uid
         
         if(userID == nil) {
             checkLoggedIn()
@@ -57,7 +80,7 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
             return
         }
 
-        let db:Database = Database()
+        let db:DatabaseWrapper = DatabaseWrapper()
         
         db.getCurrentUser() { (user) in
             if(user == nil) {
@@ -65,60 +88,26 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
                 //let vc = ServiceTypeViewController()
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "serviceTypeViewController")
                 self.present(vc!, animated: true, completion: nil)
+                return
             } else {
                 self.user = user
             }
             
             if((user?["serviceType"] as! String) == "client") {
                 self.services.removeAll()
-                db.getServicesOffered() { (servicesArray) in
-                    
-                    self.services = servicesArray
-                    
-                    // there's probably a better way to get ratings for users, so think of one
-                    // and delete this
-                    db.getUsers() { (snapshot) in
-                        print(snapshot.childrenCount)
-                        for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                            if let dict = rest.value as? NSDictionary {
-                                let rating = dict["rating"] as? Double ?? -1
-                                //let userID = dict["userID"] as? String ?? ""
-                                
-                                self.ratings[rest.key] = rating
-                            } else {
-                                print("could not convert snaptshot to dictionary")
-                            }
-                        }
-                        DispatchQueue.main.async{
-                            self.feedTableView.reloadData()
-                        }
-                    }
-                }
+                
+                self.isClient = true
+                
+                // setLocation sets location and populates self.services
+                self.setLocation()
+                
             } else if((user?["serviceType"] as! String) == "serviceProvider") {
                 self.requests.removeAll()
-                db.getClientRequests() { (requestsArray) in
-                    
-                    self.requests = requestsArray
-                    
-                    // there's probably a better way to get ratings for users, so think of one
-                    // and delete this
-                    db.getUsers() { (snapshot) in
-                        print(snapshot.childrenCount)
-                        for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                            if let dict = rest.value as? NSDictionary {
-                                let rating = dict["rating"] as? Double ?? -1
-                                //let userID = dict["userID"] as? String ?? ""
-                                
-                                self.ratings[rest.key] = rating
-                            } else {
-                                print("could not convert snaptshot to dictionary")
-                            }
-                        }
-                        DispatchQueue.main.async{
-                            self.feedTableView.reloadData()
-                        }
-                    }
-                }
+                
+                self.isClient = false
+                
+                // setLocation sets location and populates self.requests
+                self.setLocation()
             }
         }
     }
@@ -126,7 +115,7 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     // MARK: - Firebase auth
     
     func checkLoggedIn() {
-        FIRAuth.auth()?.addStateDidChangeListener { auth, user in
+        Auth.auth().addStateDidChangeListener { auth, user in
             if user != nil {
                 // User is signed in.
             } else {
@@ -137,25 +126,35 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
     }
     
     func login() {
-        let authUI = FIRAuthUI.authUI()
+        // let authUI = FUIAuth.authUI()
+        let authUI = FUIAuth.defaultAuthUI()
         
         let fbAppID:String = "1969547683311551"
         let googleClientID:String = "16510907992-1rre0iqk91d75f5sp4jtbe22maomuc7k.apps.googleusercontent.com"
-        let googleProvider = FIRGoogleAuthUI(clientID: googleClientID)
-        let fbProvider = FIRFacebookAuthUI(appID: fbAppID)
+        //let googleProvider = FUIGoogleAuth(clientID: googleClientID)
+        //let fbProvider = FUIFacebookAuth(appID: fbAppID)
+        //let googleProvider = FUIGoogleAuth(scopes: [googleClientID])
+        //let fbProvider = FUIFacebookAuth(permissions: [fbAppID])
+        let providers: [FUIAuthProvider] = [
+            FUIGoogleAuth(),
+            FUIFacebookAuth(),
+            ]
         
-        authUI?.delegate = self
-        authUI?.signInProviders = [fbProvider!, googleProvider!]
+        authUI?.delegate = self as? FUIAuthDelegate
+        //authUI?.signInProviders = [fbProvider!, googleProvider!]
+        //authUI?.providers = [fbProvider, googleProvider]
+        authUI?.providers = providers
+        
         let authViewController = authUI?.authViewController()
         
         self.present(authViewController!, animated: true, completion: nil)
     }
     
-    func authPickerViewController(for authUI: FIRAuthUI) -> FIRAuthPickerViewController {
+    func authPickerViewController(for authUI: FUIAuth) -> FUIAuthPickerViewController {
         return  ServicelyLogoViewController(authUI: authUI)
     }
 
-    func authUI(_ authUI: FIRAuthUI, didSignInWith user: FIRUser?, error: Error?) {
+    func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
         if error != nil {
             //Problem signing in
             self.login()
@@ -235,6 +234,214 @@ class ClientFeedViewController: UIViewController, FIRAuthUIDelegate, UITableView
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75
+    }
+    
+    // MARK: - core location
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .notDetermined {
+            locationManager.requestWhenInUseAuthorization()
+        } else if status == .authorizedWhenInUse {
+            print("location use authorized")
+            locationManager = manager
+            // TODO: How does contents of setLocation know locatoin has been updated?
+            // seems to work how it is, but why?
+            // setLocation()
+        } else if status == .denied {
+            print("user chose not to authorize locatin")
+        } else if status == .restricted {
+            print("Access denied - likely parental controls are restricting use in this app.")
+        }
+    }
+    
+    func setLocation() {
+        print("in setLocation")
+        
+        // Get user's current location name and info (city)
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(self.locationManager.location!) { (placemarksArray, error) in
+            print("convertion to city location")
+            if (placemarksArray?.count)! > 0 {
+                let placemark = placemarksArray?.first
+                let city:String? = placemark?.locality
+                let country:String? = placemark?.country
+                let postalCode:String? = placemark?.postalCode
+                let state:String? = placemark?.administrativeArea
+                
+                print("got city: " + city! + " country: " + country! + " postal code: " + postalCode! + " state: " + state!)
+                
+                self.city = city
+                self.state = state
+                self.country = country
+                self.postalCode = postalCode
+                
+                // let address = "1 Infinite Loop, Cupertino, CA 95014"
+                let address = city! + " " + state! + " " + country! + " " + postalCode!
+                
+                self.cityAddress = address
+                
+                let geoCoder = CLGeocoder()
+                geoCoder.geocodeAddressString(address) { (placemarks, error) in
+                    guard
+                        let placemarks = placemarks,
+                        let location = placemarks.first?.location,
+                        let lat:Double =  location.coordinate.latitude,
+                        let long:Double = location.coordinate.longitude
+                        else {
+                            // handle no location found
+                            print("could not convert address to lat and long")
+                            return
+                    }
+                    
+                    // Use location
+                    print("lat: " + String(lat))
+                    print("long: " + String(long))
+                    
+                    self.latitude = lat
+                    self.longitude = long
+                    
+                    var addr:String = ""
+                    if(self.city != nil) {
+                        addr += self.city!
+                    }
+                    if(self.state != nil){
+                        addr += " " + self.state!
+                    }
+                    if(self.country != nil) {
+                        addr += " " + self.country!
+                    }
+                    if(self.postalCode != nil) {
+                        addr += " " + self.postalCode!
+                    }
+                    
+                    print("*** users address: " + addr)
+                    print("*** users lat long: " + String(describing: self.latitude) + " " + String(describing: self.longitude))
+                    
+                    // after we have coors, geofire and firebase db queries to populate
+                    // the feed
+                    self.populateTableView()
+                }
+            }
+            print("exiting setLocation")
+        }
+    }
+    
+    func populateTableView() {
+        // check if client or proivder type flag has been set
+        var queryType:String = ""
+        if(self.isClient == nil) {
+            return
+        } else if((self.isClient!)) {
+            queryType = "location-serviceOffers"
+        } else if(!(self.isClient!)) {
+            queryType = "location-clientRequests"
+        } else {
+            print("could not get user's serviceType")
+            return
+        }
+        
+        // get geofire ref for service offers
+        let geoFireRef:DatabaseReference! = Database.database().reference().child(queryType)
+        let geoFire = GeoFire(firebaseRef: geoFireRef)
+        
+        let center = CLLocation(latitude: self.latitude!, longitude: self.longitude!)
+        // 10 kilometers
+        let defaults = UserDefaults.standard
+        let distMiles = defaults.integer(forKey: "distance")
+        let distKilo = Double(distMiles) * 1.60934
+        var circleQuery = geoFire?.query(at: center, withRadius: distKilo)
+        
+        // Query location by region
+        /*
+        let span = MKCoordinateSpanMake(0.001, 0.001)
+        let region = MKCoordinateRegionMake(center.coordinate, span)
+        var regionQuery = geoFire?.query(with: region)
+        */
+ 
+        // keys will contian keys returned by geofire query
+        // TODO: make keys atomic
+        var keys:[String] = [String]()
+        
+        // handle query
+        var queryHandle = circleQuery?.observe(.keyEntered, with: { (key: String!, location: CLLocation!) in
+            print("Key '\(key)' entered the search area and is at location '\(location)'")
+            keys.append(key)
+        })
+        // get objects from firebasedb after geofire collects all keys
+        circleQuery?.observeReady({
+            
+            // TODO: remove observeres so that tableview isnt reloaded if new post is added
+            // queryHandle.removeAllObservers
+            print("All initial data has been loaded and events have been fired!")
+            
+            self.keysCount = keys.count
+            
+            var fdbQueryType:String = ""
+            if(self.isClient == nil) {
+                print("isClient is nil in querying for posts")
+            } else if((self.isClient!)) {
+                fdbQueryType = "serviceOffer"
+            } else if(!(self.isClient!)) {
+                fdbQueryType = "clientRequest"
+            } else {
+                print("fdbQueryType not set to serviceOffer or clientRequest")
+            }
+            
+            let ref = Database.database().reference()
+            ref.child(fdbQueryType).child(keys.popLast()!).observeSingleEvent(of: .value, with: { snapshot in
+                print("snapshot children count:")
+                print(snapshot.childrenCount)
+                
+                let dict = snapshot.value as? NSDictionary
+                
+                if(self.isClient!){
+                    self.services.append(ServiceOffer.init(category: (dict!["category"] as? String)!, serviceDescription: (dict!["serviceDescription"] as? String)!, askingPrice: (dict!["askingPrice"] as? String)!, location: (dict!["location"] as? String)!, companyName: (dict!["companyName"] as? String)!, contactInfo: (dict!["contactInfo"] as? String)!, userID: (dict!["userID"] as? String)!))
+                } else {
+                    self.requests.append(ClientRequest.init(serviceDescription: dict!["requestDescription"] as! String, location: dict!["location"] as! String, userID: dict!["userID"] as! String, userName: dict!["userName"] as! String, category: dict!["category"] as! String))
+                    
+                }
+                print("added \(dict)")
+                
+                // reload table view if this is last element
+                if((self.isClient!) && (self.keysCount == self.services.count)) {
+                    self.getRatingsReloadTableView()
+                } else if(((self.isClient!) == false) && (self.keysCount == self.requests.count)) {
+                    self.getRatingsReloadTableView()
+                }
+                
+            })
+        })
+    }
+    
+    func getRatingsReloadTableView() {
+        // there's probably a better way to get ratings for users, so think of one
+        // and delete this
+        let db:DatabaseWrapper = DatabaseWrapper()
+        db.getUsers() { (snapshot) in
+            print(snapshot.childrenCount)
+            for rest in snapshot.children.allObjects as! [DataSnapshot] {
+                if let dict = rest.value as? NSDictionary {
+                    let rating = dict["rating"] as? Double ?? -1
+                    //let userID = dict["userID"] as? String ?? ""
+                    
+                    self.ratings[rest.key] = rating
+                } else {
+                    print("could not convert snaptshot to dictionary")
+                }
+            }
+            DispatchQueue.main.async{
+                self.feedTableView.reloadData()
+            }
+        }
+    }
+    
+    func locationManager(_: CLLocationManager, didUpdateLocations: [CLLocation]) {
+        print("did update location")
+    }
+    
+    func locationManager(_ manager: CLLocationManager,
+                         didFailWithError error: Error) {
+        print("location manager failed!")
     }
     
     /*

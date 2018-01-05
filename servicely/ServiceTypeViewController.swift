@@ -58,7 +58,7 @@ class ServiceTypeViewController: UIViewController {
         usersRef.child(userID!).setValue(["serviceType":serviceType])
         */
     
-        let db:Database = Database()
+        let db:DatabaseWrapper = DatabaseWrapper()
         db.writeToCurrentUser(path: "serviceType", valueToWrite: serviceType) { (didWrite: Bool) in
             if(!didWrite) {
                 print("could not save serviceType to user")

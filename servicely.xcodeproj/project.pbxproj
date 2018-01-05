@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		292166623E8119BD1F1DE293 /* Pods_servicely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 678E9F49BDB6D7B13DC0A318 /* Pods_servicely.framework */; };
 		3745B96E1FD79E0400622BCE /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3745B96D1FD79E0400622BCE /* CosmosDistrib.swift */; };
 		3762DAD91FA705990065FA87 /* ChangeColorSchemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3762DAD81FA705990065FA87 /* ChangeColorSchemeViewController.swift */; };
 		3762DAFF1FA7144C0065FA87 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3762DAFE1FA7144C0065FA87 /* ColorScheme.swift */; };
@@ -28,6 +27,7 @@
 		7FBB2EB51FC36430002067C1 /* CategoriesServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB2EB41FC36430002067C1 /* CategoriesServiceTableViewCell.swift */; };
 		7FBB2EB71FC37588002067C1 /* ViewServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB2EB61FC37588002067C1 /* ViewServiceViewController.swift */; };
 		7FF61A771FC0CC3B00DFE2E7 /* CategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF61A761FC0CC3B00DFE2E7 /* CategoriesTableViewController.swift */; };
+		900A838E1FFFC83F00E1FC6E /* ChangeDistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900A838D1FFFC83F00E1FC6E /* ChangeDistanceViewController.swift */; };
 		901677271F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901677261F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift */; };
 		901677291F92B87C00F1E1D5 /* ClientFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901677281F92B87C00F1E1D5 /* ClientFeedViewController.swift */; };
 		9016772F1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016772E1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift */; };
@@ -46,8 +46,9 @@
 		9083B3A41F86D5B20079E309 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9083B3A21F86D5B20079E309 /* LaunchScreen.storyboard */; };
 		908CD2A91FE89F3500372C29 /* ChatMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908CD2A81FE89F3500372C29 /* ChatMetadata.swift */; };
 		909C3B101FD9077200C0A207 /* CreateServiceOrRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C3B0F1FD9077200C0A207 /* CreateServiceOrRequestViewController.swift */; };
-		90C96DC01FE4FC8C00A1E8BA /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C96DBF1FE4FC8C00A1E8BA /* Database.swift */; };
+		90C96DC01FE4FC8C00A1E8BA /* DatabaseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C96DBF1FE4FC8C00A1E8BA /* DatabaseWrapper.swift */; };
 		90CA841A1F995EFA00EDB7AC /* ServicelyLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CA84191F995EFA00EDB7AC /* ServicelyLogoViewController.swift */; };
+		A48E045045EECE1353730BBE /* Pods_servicely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7FB88E9762171D187BC2BAB /* Pods_servicely.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +62,6 @@
 		379650A51FA8956400EF72ED /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		37A974DB1FC501AF000D5493 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		6614193002671127BD6A9542 /* Pods-servicely.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-servicely.debug.xcconfig"; path = "Pods/Target Support Files/Pods-servicely/Pods-servicely.debug.xcconfig"; sourceTree = "<group>"; };
-		678E9F49BDB6D7B13DC0A318 /* Pods_servicely.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_servicely.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A88FAA5A4E412742F5C967C /* Pods-servicely.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-servicely.release.xcconfig"; path = "Pods/Target Support Files/Pods-servicely/Pods-servicely.release.xcconfig"; sourceTree = "<group>"; };
 		7F2217E01FA820740004D67D /* EditProviderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProviderViewController.swift; sourceTree = "<group>"; };
 		7F3E1B0C1FA7EB3B0034EE46 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +74,7 @@
 		7FBB2EB41FC36430002067C1 /* CategoriesServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesServiceTableViewCell.swift; sourceTree = "<group>"; };
 		7FBB2EB61FC37588002067C1 /* ViewServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewServiceViewController.swift; sourceTree = "<group>"; };
 		7FF61A761FC0CC3B00DFE2E7 /* CategoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewController.swift; sourceTree = "<group>"; };
+		900A838D1FFFC83F00E1FC6E /* ChangeDistanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDistanceViewController.swift; sourceTree = "<group>"; };
 		901677261F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceOfferViewController.swift; sourceTree = "<group>"; };
 		901677281F92B87C00F1E1D5 /* ClientFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientFeedViewController.swift; sourceTree = "<group>"; };
 		9016772E1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceOfferTableViewCell.swift; sourceTree = "<group>"; };
@@ -86,6 +87,9 @@
 		903C46031FE8538D00D80D58 /* ChatListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewController.swift; sourceTree = "<group>"; };
 		903C46051FE8559E00D80D58 /* ChatListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewCell.swift; sourceTree = "<group>"; };
 		903C46071FE856CC00D80D58 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		9082AE961FFC8D50004767E2 /* FileProviderUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FileProviderUI.framework; path = System/Library/Frameworks/FileProviderUI.framework; sourceTree = SDKROOT; };
+		9082AE981FFC8D8F004767E2 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		9082AE9A1FFC8EE4004767E2 /* FirebaseTwitterAuthUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseTwitterAuthUI.framework; path = Pods/FirebaseUI/FirebaseUIFrameworks/FirebaseTwitterAuthUI/Frameworks/FirebaseTwitterAuthUI.framework; sourceTree = "<group>"; };
 		9083B3961F86D5B20079E309 /* servicely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = servicely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9083B3991F86D5B20079E309 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9083B39E1F86D5B20079E309 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -94,8 +98,9 @@
 		9083B3A51F86D5B20079E309 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		908CD2A81FE89F3500372C29 /* ChatMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMetadata.swift; sourceTree = "<group>"; };
 		909C3B0F1FD9077200C0A207 /* CreateServiceOrRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceOrRequestViewController.swift; sourceTree = "<group>"; };
-		90C96DBF1FE4FC8C00A1E8BA /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		90C96DBF1FE4FC8C00A1E8BA /* DatabaseWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseWrapper.swift; sourceTree = "<group>"; };
 		90CA84191F995EFA00EDB7AC /* ServicelyLogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicelyLogoViewController.swift; sourceTree = "<group>"; };
+		F7FB88E9762171D187BC2BAB /* Pods_servicely.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_servicely.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				292166623E8119BD1F1DE293 /* Pods_servicely.framework in Frameworks */,
+				A48E045045EECE1353730BBE /* Pods_servicely.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,9 +127,20 @@
 		362DA306D9237F109495D680 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				678E9F49BDB6D7B13DC0A318 /* Pods_servicely.framework */,
+				9082AE9A1FFC8EE4004767E2 /* FirebaseTwitterAuthUI.framework */,
+				9082AE981FFC8D8F004767E2 /* Twitter.framework */,
+				9082AE961FFC8D50004767E2 /* FileProviderUI.framework */,
+				F7FB88E9762171D187BC2BAB /* Pods_servicely.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		900A838C1FFD803800E1FC6E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9083B3A51F86D5B20079E309 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		9083B38D1F86D5B20079E309 = {
@@ -148,7 +164,6 @@
 		9083B3981F86D5B20079E309 /* servicely */ = {
 			isa = PBXGroup;
 			children = (
-				3745B96D1FD79E0400622BCE /* CosmosDistrib.swift */,
 				9083B3991F86D5B20079E309 /* AppDelegate.swift */,
 				9083B39D1F86D5B20079E309 /* Main.storyboard */,
 				7F9E39771FD7326A008CB750 /* MyRequetsTableViewController.swift */,
@@ -162,10 +177,11 @@
 				37A974DB1FC501AF000D5493 /* ProfileViewController.swift */,
 				7F7F23131FA78B7D00EEA294 /* ProviderProfileViewController.swift */,
 				7F7F230F1FA68DC200EEA294 /* ClientProfileViewController.swift */,
+				3745B96D1FD79E0400622BCE /* CosmosDistrib.swift */,
 				9083B3A01F86D5B20079E309 /* Assets.xcassets */,
 				9083B3A21F86D5B20079E309 /* LaunchScreen.storyboard */,
-				9083B3A51F86D5B20079E309 /* Info.plist */,
-				90C96DBF1FE4FC8C00A1E8BA /* Database.swift */,
+				900A838C1FFD803800E1FC6E /* Supporting Files */,
+				90C96DBF1FE4FC8C00A1E8BA /* DatabaseWrapper.swift */,
 				909C3B0F1FD9077200C0A207 /* CreateServiceOrRequestViewController.swift */,
 				901677261F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift */,
 				90280E8C1FC3CAF5006C5542 /* CreateClientRequestViewController.swift */,
@@ -186,6 +202,7 @@
 				379650A31FA8954C00EF72ED /* SettingsViewController.swift */,
 				379650A51FA8956400EF72ED /* SettingsTableViewController.swift */,
 				3785C1F01FA9391200774BCE /* ChangeProfilePictureViewController.swift */,
+				900A838D1FFFC83F00E1FC6E /* ChangeDistanceViewController.swift */,
 				903C46031FE8538D00D80D58 /* ChatListTableViewController.swift */,
 				903C46051FE8559E00D80D58 /* ChatListTableViewCell.swift */,
 				903C46071FE856CC00D80D58 /* ChatViewController.swift */,
@@ -280,7 +297,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		909C3B151FDF67B300C0A207 /* Setup Firebase Environment GoogleService-Info.plist */ = {
@@ -304,10 +321,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-servicely/Pods-servicely-resources.sh",
-				"${PODS_ROOT}/FirebaseUI/FirebaseUIFrameworks/Auth/Resources/FirebaseAuthUIBundle.bundle",
-				"${PODS_ROOT}/FirebaseUI/FirebaseUIFrameworks/Facebook/Resources/FirebaseFacebookAuthUIBundle.bundle",
-				"${PODS_ROOT}/FirebaseUI/FirebaseUIFrameworks/Google/Resources/FirebaseGoogleAuthUIBundle.bundle",
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseFacebookAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseGoogleAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebasePhoneAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseTwitterAuthUI.bundle,
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -326,14 +346,42 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-servicely/Pods-servicely-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GeoFire/GeoFire.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GeoFire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -368,6 +416,7 @@
 				902295081FEF5DD300BC39EA /* ClientRequest.swift in Sources */,
 				3762DAD91FA705990065FA87 /* ChangeColorSchemeViewController.swift in Sources */,
 				9083B39A1F86D5B20079E309 /* AppDelegate.swift in Sources */,
+				900A838E1FFFC83F00E1FC6E /* ChangeDistanceViewController.swift in Sources */,
 				7F7F23141FA78B7D00EEA294 /* ProviderProfileViewController.swift in Sources */,
 				90280E8D1FC3CAF5006C5542 /* CreateClientRequestViewController.swift in Sources */,
 				379650A41FA8954C00EF72ED /* SettingsViewController.swift in Sources */,
@@ -376,7 +425,7 @@
 				901FDE8E1FA6AE4400BA2163 /* ServiceTypeViewController.swift in Sources */,
 				7FBB2EB51FC36430002067C1 /* CategoriesServiceTableViewCell.swift in Sources */,
 				7F2217E11FA820740004D67D /* EditProviderViewController.swift in Sources */,
-				90C96DC01FE4FC8C00A1E8BA /* Database.swift in Sources */,
+				90C96DC01FE4FC8C00A1E8BA /* DatabaseWrapper.swift in Sources */,
 				903C46081FE856CC00D80D58 /* ChatViewController.swift in Sources */,
 				7FBB2EB31FC281A4002067C1 /* ServicesRequestsTableViewController.swift in Sources */,
 				7F9E39761FD72290008CB750 /* OurServicesTableViewController.swift in Sources */,
@@ -521,9 +570,15 @@
 			baseConfigurationReference = 6614193002671127BD6A9542 /* Pods-servicely.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6Q3CS3983P;
-				INFOPLIST_FILE = servicely/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/FirebaseUI/FirebaseUIFrameworks/FirebaseTwitterAuthUI/Frameworks",
+				);
+				INFOPLIST_FILE = "servicely/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "neat-org.servicely";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -537,9 +592,15 @@
 			baseConfigurationReference = 7A88FAA5A4E412742F5C967C /* Pods-servicely.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6Q3CS3983P;
-				INFOPLIST_FILE = servicely/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/FirebaseUI/FirebaseUIFrameworks/FirebaseTwitterAuthUI/Frameworks",
+				);
+				INFOPLIST_FILE = "servicely/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "neat-org.servicely";
 				PRODUCT_NAME = "$(TARGET_NAME)";

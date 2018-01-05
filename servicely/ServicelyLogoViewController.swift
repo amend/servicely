@@ -9,7 +9,7 @@
 import Foundation
 import FirebaseAuthUI
 
-class ServicelyLogoViewController: FIRAuthPickerViewController {
+class ServicelyLogoViewController: FUIAuthPickerViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

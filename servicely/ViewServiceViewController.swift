@@ -60,7 +60,7 @@ class ViewServiceViewController: UIViewController {
         } else {
             self.name.text = request?.userName
             self.serviceDescription.text = request?.serviceDescription
-            self.contactNumber.text = request?.contactInfo
+            self.contactNumber.text = "delete this label, cilent's requetss should not have contact info"
             self.price.text = ""
             self.priceLabel.text = ""
         }
@@ -81,7 +81,7 @@ class ViewServiceViewController: UIViewController {
             userID = (service?.userID)!
         }
         
-        let db:Database = Database()
+        let db:DatabaseWrapper = DatabaseWrapper()
         db.writeRatingOfUser(userID: userID, path: "rating", valueToWrite: newRating) { (didWrite: Bool) in
             if(!didWrite) {
                 print("could not save rating")
@@ -110,10 +110,10 @@ class ViewServiceViewController: UIViewController {
                     chatVC.providerName = (self.service?.companyName)!
                     chatVC.providerID = (self.service?.userID)!
                     
-                    if let currentUser = FIRAuth.auth()?.currentUser {
+                    if let currentUser = Auth.auth().currentUser {
                         chatVC.clientID = currentUser.uid
                     }
-                    let db:Database = Database()
+                    let db:DatabaseWrapper = DatabaseWrapper()
                     db.getCurrentUser() { (user:NSDictionary?) in
                         chatVC.clientName = user?["username"] as! String
                     }
@@ -124,9 +124,9 @@ class ViewServiceViewController: UIViewController {
                     chatVC.clientName = (self.request?.userName)!
                     chatVC.clientID = (self.request?.userID)!
                     
-                    if let currentUser = FIRAuth.auth()?.currentUser {
+                    if let currentUser = Auth.auth().currentUser {
                         chatVC.providerID = currentUser.uid
-                        let db:Database = Database()
+                        let db:DatabaseWrapper = DatabaseWrapper()
                         db.getCurrentUser() { (user:NSDictionary?) in
                             chatVC.providerName = user?["companyName"] as! String
                         }

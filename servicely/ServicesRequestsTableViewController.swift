@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-//import FirebaseDatabase
+import FirebaseDatabase
 //import FirebaseAuth
 
 class ServicesRequestsTableViewController: UITableViewController {
@@ -37,13 +37,13 @@ class ServicesRequestsTableViewController: UITableViewController {
         // if self.client then get clientRequests
         // else get serviceOffers
         
-        let db:Database = Database()
+        let db:DatabaseWrapper = DatabaseWrapper()
         
         // there's probably a better way to get ratings for users, so think of one
         // and delete this
         db.getUsers() { (snapshot) in
             print(snapshot.childrenCount)
-            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+            for rest in snapshot.children.allObjects as! [DataSnapshot] {
                 if let dict = rest.value as? NSDictionary {
                     let rating = dict["rating"] as? Double ?? -1
                     //let userID = dict["userID"] as? String ?? ""

@@ -10,6 +10,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 import CoreLocation
+import GeoFire
 
 class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate, UITextFieldDelegate, CLLocationManagerDelegate {
 
@@ -29,7 +30,6 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
     var category:String = ""
     
     var locationManager: CLLocationManager!
-    
     var city:String? = nil
     var state:String? = nil
     var country:String? = nil
@@ -59,11 +59,6 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         let tap = UITapGestureRecognizer(target: self.view, action: Selector("endEditing:"))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
-        
-        // core location
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,6 +68,11 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         // item will be selected
         serviceTypePickerView.selectRow(0, inComponent: 0, animated: false)
         category = pickerViewData[0]
+        
+        // core location
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,7 +98,7 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
     
     
     @IBAction func submitButton(_ sender: Any) {
-        let userID = FIRAuth.auth()?.currentUser?.uid
+        let userID = Auth.auth().currentUser?.uid
         
         if(addressLabel.text == "" || addressLabel.text == nil) {
             savedLabel.text = "Getting city location... Please wait"
@@ -119,12 +119,29 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
             ] as [String : Any]
         
         // Save to Firebase.
-        let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
+        let ref:DatabaseReference! = Database.database().reference()
         
-        ref.child("serviceOffer").childByAutoId().setValue(serviceOfferRecord)
+        //ref.child("serviceOffer").childByAutoId().setValue(serviceOfferRecord)
+        let postID = ref.child("serviceOffer").childByAutoId()
+        postID.setValue(serviceOfferRecord)
+
         
-        savedLabel.text = "saved!"
+        let geoFireRef:DatabaseReference! = Database.database().reference().child("location-serviceOffers")
+        let geoFire = GeoFire(firebaseRef: geoFireRef)
+        geoFire?.setLocation(CLLocation(latitude: self.latitude!, longitude: self.longitude!), forKey: postID.key) { (error) in
+            if (error != nil) {
+                self.savedLabel.text = "Error - not saved"
+                
+                print("An error occured: \(error)")
+            } else {
+                self.savedLabel.text = "saved!"
+                
+                print("Saved location successfully!")
+            }
+        }
         
+        // update ui
+        //savedLabel.text = "saved!"
     }
     
     // picker view

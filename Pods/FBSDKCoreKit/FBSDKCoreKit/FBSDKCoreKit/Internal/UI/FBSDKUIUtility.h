@@ -37,6 +37,8 @@ FBSDK_STATIC_INLINE CGSize FBSDKEdgeInsetsInsetSize(CGSize size, UIEdgeInsets in
  */
 FBSDK_STATIC_INLINE CGSize FBSDKEdgeInsetsOutsetSize(CGSize size, UIEdgeInsets insets)
 {
+  CGRect rect = CGRectZero;
+  rect.size = size;
   return CGSizeMake(insets.left + size.width + insets.right,
                     insets.top + size.height + insets.bottom);
 }

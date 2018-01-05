@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "servicely/CreateServiceOfferViewController.swift"
-            timestampString = "536209589.405505"
+            filePath = "servicely/ClientFeedViewController.swift"
+            timestampString = "536861808.592719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
-            landmarkName = "setLocation()"
+            startingLineNumber = "349"
+            endingLineNumber = "349"
+            landmarkName = "populateTableView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

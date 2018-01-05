@@ -44,7 +44,7 @@ class ChangeProfilePictureViewController: UIViewController, UINavigationControll
         setPictureButton.backgroundColor = colorScheme
         
         if(imageView.image == nil) {
-            let db:Database = Database()
+            let db:DatabaseWrapper = DatabaseWrapper()
             db.getCurrentUser() { (user:NSDictionary?) in
                 let profilePicURL = user?["profilePic"] as? String ?? ""
                 
@@ -77,15 +77,17 @@ class ChangeProfilePictureViewController: UIViewController, UINavigationControll
     }
     
     func uploadPhoto(_ image: UIImage, completionBlock: @escaping () -> Void) {
-        let userID = FIRAuth.auth()?.currentUser?.uid
+        let userID = Auth.auth().currentUser?.uid
 
-        let ref = FIRStorage.storage().reference().child("images/").child("\(userID!).jpg")    // you may want to use UUID().uuidString + ".jpg" instead of "myFileName.jpg" if you want to upload multiple files with unique names
+        let ref = Storage.storage().reference().child("images/").child("\(userID!).jpg")    // you may want to use UUID().uuidString + ".jpg" instead of "myFileName.jpg" if you want to upload multiple files with unique names
         
-        let meta = FIRStorageMetadata()
+        let meta = StorageMetadata()
         meta.contentType = "image/jpg"
         
         // 0.8 here is the compression quality percentage
-        ref.put(UIImageJPEGRepresentation(image, 0.8)!, metadata: meta, completion: { (imageMeta, error) in
+        
+        //ref.put(UIImageJPEGRepresentation(image, 0.8)!, metadata: meta, completion: { (imageMeta, error) in
+        ref.putData(UIImageJPEGRepresentation(image, 0.8)!, metadata: meta, completion: { (imageMeta, error) in
             if error != nil {
                 // handle the error
                 return
@@ -102,12 +104,14 @@ class ChangeProfilePictureViewController: UIViewController, UINavigationControll
             // ----- should save these data in your database at this point -----
             
             // ************* start db stuff, wrap this chunk and others in class *************
-            let userID = FIRAuth.auth()?.currentUser?.uid
+            let userID = Auth.auth().currentUser?.uid
             
             // Save to Firebase.
-            let ref:FIRDatabaseReference! = FIRDatabase.database().reference()
+            let refDatabaseReference = Database.database().reference()
             
-            ref.child("users/\(userID!)/profilePic").setValue(downloadURL)
+            //\ref.child("users/\(userID!)/profilePic").setValue(downloadURL)
+            ref.child("users/\(userID!)/profilePic").setValue(downloadURL, forKey: "profilePic")
+            
             // ************* end db stuff, wrap this chunk and others in class *************
 
             self.savingPicLabel.text = ""

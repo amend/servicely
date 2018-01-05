@@ -110,7 +110,8 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
   if (buttonIndex == 0) {
-    [_loginManager logOut];
+    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+    [login logOut];
     [self.delegate loginButtonDidLogOut:self];
   }
 }
@@ -156,14 +157,14 @@
 
   [self addTarget:self action:@selector(_buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
   [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(_accessTokenDidChangeNotification:)
+                                           selector:@selector(_acessTokenDidChangeNotification:)
                                                name:FBSDKAccessTokenDidChangeNotification
                                              object:nil];
 }
 
 #pragma mark - Helper Methods
 
-- (void)_accessTokenDidChangeNotification:(NSNotification *)notification
+- (void)_acessTokenDidChangeNotification:(NSNotification *)notification
 {
   if (notification.userInfo[FBSDKAccessTokenDidChangeUserID]) {
     [self _updateContent];
@@ -197,36 +198,15 @@
     NSLocalizedStringWithDefaultValue(@"LoginButton.ConfirmLogOut", @"FacebookSDK", [FBSDKInternalUtility bundleForStrings],
                                       @"Log Out",
                                       @"The label for the FBSDKLoginButton action sheet to confirm logging out");
-    if ([UIAlertController class]) {
-      UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
-                                                                               message:nil
-                                                                        preferredStyle:UIAlertControllerStyleActionSheet];
-      UIAlertAction *cancel = [UIAlertAction actionWithTitle:cancelTitle
-                                                       style:UIAlertActionStyleCancel
-                                                     handler:nil];
-      UIAlertAction *logout = [UIAlertAction actionWithTitle:logOutTitle
-                                                       style:UIAlertActionStyleDestructive
-                                                     handler:^(UIAlertAction * _Nonnull action) {
-                                                       [_loginManager logOut];
-                                                       [self.delegate loginButtonDidLogOut:self];
-                                                     }];
-      [alertController addAction:cancel];
-      [alertController addAction:logout];
-      UIViewController *topMostViewController = [FBSDKInternalUtility topMostViewController];
-      [topMostViewController presentViewController:alertController
-                                          animated:YES
-                                        completion:nil];
-    } else {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-      UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:title
-                                                         delegate:self
-                                                cancelButtonTitle:cancelTitle
-                                           destructiveButtonTitle:logOutTitle
-                                                otherButtonTitles:nil];
-      [sheet showInView:self];
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:title
+                                                       delegate:self
+                                              cancelButtonTitle:cancelTitle
+                                         destructiveButtonTitle:logOutTitle
+                                              otherButtonTitles:nil];
+    [sheet showInView:self];
 #pragma clang diagnostic pop
-    }
   } else {
     if ([self.delegate respondsToSelector:@selector(loginButtonWillLogin:)]) {
       if (![self.delegate loginButtonWillLogin:self]) {
@@ -242,11 +222,11 @@
 
     if (self.publishPermissions.count > 0) {
       [_loginManager logInWithPublishPermissions:self.publishPermissions
-                              fromViewController:[FBSDKInternalUtility viewControllerForView:self]
+                              fromViewController:[FBSDKInternalUtility viewControllerforView:self]
                                          handler:handler];
     } else {
       [_loginManager logInWithReadPermissions:self.readPermissions
-                           fromViewController:[FBSDKInternalUtility viewControllerForView:self]
+                           fromViewController:[FBSDKInternalUtility viewControllerforView:self]
                                       handler:handler];
     }
   }

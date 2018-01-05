@@ -20,7 +20,7 @@ class OurServicesTableViewController: UITableViewController {
         self.title = "Our Services"
         self.tableView.rowHeight = 80.0
         
-        let db:Database = Database()
+        let db:DatabaseWrapper = DatabaseWrapper()
         db.getCurrentUsersServices() { (usersServices) in
             self.services = usersServices
             

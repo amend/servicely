@@ -30,13 +30,13 @@ class DeleteAccountViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         headerView.backgroundColor = ColorScheme.getColorScheme()
     }
-    
+    /*
     @IBAction func deleteAccount(_ sender: Any) {
         if(!(passwordTextField.text?.isEmpty)!){
             errorLabel.text = ""
-            let user = FIRAuth.auth()?.currentUser
+            let user = Auth.auth().currentUser
             let credential: FIRAuthCredential = FIREmailPasswordAuthProvider.credential(withEmail: (user?.email)!, password: passwordTextField.text!)
-                
+                            
             user?.reauthenticate(with: credential) { error in
                 if let error = error {
                     // An error happened.
@@ -55,6 +55,7 @@ class DeleteAccountViewController: UIViewController, UITextFieldDelegate {
             errorLabel.text = "Please enter your password"
         }
     }
+     */
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)

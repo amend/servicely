@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -1321,6 +1322,26 @@
                                             <segue destination="xmF-jb-HeK" kind="show" id="Iw1-gP-1l8"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="3gT-gP-XFn" style="IBUITableViewCellStyleDefault" id="VBb-ob-Usw">
+                                        <rect key="frame" x="0.0" y="276" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VBb-ob-Usw" id="ayB-kO-rUk">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Change distance for fetching posts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3gT-gP-XFn">
+                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="zkd-Sx-yaR" kind="show" id="mzb-pw-ioS"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -1681,6 +1702,78 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uht-aV-5zR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2799.1999999999998" y="-117.84107946026987"/>
+        </scene>
+        <!--Change Distance View Controller-->
+        <scene sceneID="O54-xv-bFa">
+            <objects>
+                <viewController id="zkd-Sx-yaR" customClass="ChangeDistanceViewController" customModule="servicely" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ybO-xf-1eV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="456"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ro5-Jg-7rb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change distance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KkP-Nn-6Tm">
+                                        <rect key="frame" x="73" y="31.5" width="230" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="230" id="9Cf-1u-TPk"/>
+                                            <constraint firstAttribute="height" constant="36" id="ifE-uJ-WuW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.99434119460000003" green="0.3587232232" blue="0.37387704849999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="KkP-Nn-6Tm" firstAttribute="top" secondItem="Ro5-Jg-7rb" secondAttribute="top" constant="31.5" id="04N-ie-fM4"/>
+                                    <constraint firstAttribute="width" constant="375" id="LRU-gu-kb3"/>
+                                    <constraint firstItem="KkP-Nn-6Tm" firstAttribute="centerX" secondItem="Ro5-Jg-7rb" secondAttribute="centerX" id="Qen-hM-fjA"/>
+                                    <constraint firstAttribute="height" constant="99" id="ubn-4f-xkU"/>
+                                </constraints>
+                            </view>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="1" maxValue="70" translatesAutoresizingMaskIntoConstraints="NO" id="9Vv-nd-2bx">
+                                <rect key="frame" x="26" y="220" width="322" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="318" id="AIL-ya-IWg"/>
+                                    <constraint firstAttribute="height" constant="29" id="e53-DZ-Fux"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="sliderChanged:" destination="zkd-Sx-yaR" eventType="valueChanged" id="tOF-GS-7EK"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;distance&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2s-03-m3V">
+                                <rect key="frame" x="97" y="183" width="180" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="V3l-kR-oZn"/>
+                                    <constraint firstAttribute="height" constant="21" id="eU5-Ql-aF0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="N2s-03-m3V" firstAttribute="top" secondItem="Ro5-Jg-7rb" secondAttribute="bottom" constant="84" id="CYN-4E-MwS"/>
+                            <constraint firstItem="N2s-03-m3V" firstAttribute="centerX" secondItem="ybO-xf-1eV" secondAttribute="centerX" id="OUd-UR-Gts"/>
+                            <constraint firstItem="Ro5-Jg-7rb" firstAttribute="trailing" secondItem="Neb-P5-a56" secondAttribute="trailing" id="RTP-8W-feh"/>
+                            <constraint firstItem="9Vv-nd-2bx" firstAttribute="top" secondItem="N2s-03-m3V" secondAttribute="bottom" constant="16" id="XAD-ZO-xdU"/>
+                            <constraint firstItem="Ro5-Jg-7rb" firstAttribute="top" secondItem="Neb-P5-a56" secondAttribute="top" id="aH9-s6-hEr"/>
+                            <constraint firstItem="Ro5-Jg-7rb" firstAttribute="leading" secondItem="Neb-P5-a56" secondAttribute="leading" id="hMx-Lg-YjH"/>
+                            <constraint firstItem="9Vv-nd-2bx" firstAttribute="centerX" secondItem="ybO-xf-1eV" secondAttribute="centerX" id="tTz-Bx-AOp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Neb-P5-a56"/>
+                    </view>
+                    <connections>
+                        <outlet property="distanceLabel" destination="N2s-03-m3V" id="96N-zq-9Bd"/>
+                        <outlet property="distanceSlider" destination="9Vv-nd-2bx" id="Ree-W6-nLt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="08m-Gh-qga" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1620" y="-617.09145427286364"/>
         </scene>
         <!--Change Profile Picture View Controller-->
         <scene sceneID="Au3-tA-kZc">
