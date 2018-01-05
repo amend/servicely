@@ -27,6 +27,7 @@
 		7FBB2EB51FC36430002067C1 /* CategoriesServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB2EB41FC36430002067C1 /* CategoriesServiceTableViewCell.swift */; };
 		7FBB2EB71FC37588002067C1 /* ViewServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB2EB61FC37588002067C1 /* ViewServiceViewController.swift */; };
 		7FF61A771FC0CC3B00DFE2E7 /* CategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF61A761FC0CC3B00DFE2E7 /* CategoriesTableViewController.swift */; };
+		900A838E1FFFC83F00E1FC6E /* ChangeDistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900A838D1FFFC83F00E1FC6E /* ChangeDistanceViewController.swift */; };
 		901677271F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901677261F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift */; };
 		901677291F92B87C00F1E1D5 /* ClientFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901677281F92B87C00F1E1D5 /* ClientFeedViewController.swift */; };
 		9016772F1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016772E1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift */; };
@@ -73,6 +74,7 @@
 		7FBB2EB41FC36430002067C1 /* CategoriesServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesServiceTableViewCell.swift; sourceTree = "<group>"; };
 		7FBB2EB61FC37588002067C1 /* ViewServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewServiceViewController.swift; sourceTree = "<group>"; };
 		7FF61A761FC0CC3B00DFE2E7 /* CategoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewController.swift; sourceTree = "<group>"; };
+		900A838D1FFFC83F00E1FC6E /* ChangeDistanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDistanceViewController.swift; sourceTree = "<group>"; };
 		901677261F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceOfferViewController.swift; sourceTree = "<group>"; };
 		901677281F92B87C00F1E1D5 /* ClientFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientFeedViewController.swift; sourceTree = "<group>"; };
 		9016772E1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceOfferTableViewCell.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				379650A31FA8954C00EF72ED /* SettingsViewController.swift */,
 				379650A51FA8956400EF72ED /* SettingsTableViewController.swift */,
 				3785C1F01FA9391200774BCE /* ChangeProfilePictureViewController.swift */,
+				900A838D1FFFC83F00E1FC6E /* ChangeDistanceViewController.swift */,
 				903C46031FE8538D00D80D58 /* ChatListTableViewController.swift */,
 				903C46051FE8559E00D80D58 /* ChatListTableViewCell.swift */,
 				903C46071FE856CC00D80D58 /* ChatViewController.swift */,
@@ -413,6 +416,7 @@
 				902295081FEF5DD300BC39EA /* ClientRequest.swift in Sources */,
 				3762DAD91FA705990065FA87 /* ChangeColorSchemeViewController.swift in Sources */,
 				9083B39A1F86D5B20079E309 /* AppDelegate.swift in Sources */,
+				900A838E1FFFC83F00E1FC6E /* ChangeDistanceViewController.swift in Sources */,
 				7F7F23141FA78B7D00EEA294 /* ProviderProfileViewController.swift in Sources */,
 				90280E8D1FC3CAF5006C5542 /* CreateClientRequestViewController.swift in Sources */,
 				379650A41FA8954C00EF72ED /* SettingsViewController.swift in Sources */,

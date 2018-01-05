@@ -88,6 +88,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
                 //let vc = ServiceTypeViewController()
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "serviceTypeViewController")
                 self.present(vc!, animated: true, completion: nil)
+                return
             } else {
                 self.user = user
             }
@@ -345,7 +346,10 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         
         let center = CLLocation(latitude: self.latitude!, longitude: self.longitude!)
         // 10 kilometers
-        var circleQuery = geoFire?.query(at: center, withRadius: 10)
+        let defaults = UserDefaults.standard
+        let distMiles = defaults.integer(forKey: "distance")
+        let distKilo = Double(distMiles) * 1.60934
+        var circleQuery = geoFire?.query(at: center, withRadius: distKilo)
         
         // Query location by region
         /*
@@ -387,11 +391,6 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
             ref.child(fdbQueryType).child(keys.popLast()!).observeSingleEvent(of: .value, with: { snapshot in
                 print("snapshot children count:")
                 print(snapshot.childrenCount)
-                /*
-                if(snapshot.childrenCount != 1) {
-                    print("snapshot children count != to 1: " + String(snapshot.childrenCount))
-                }
-                */
                 
                 let dict = snapshot.value as? NSDictionary
                 
@@ -402,25 +401,6 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
                     
                 }
                 print("added \(dict)")
-                
-                /*
-                for rest in snapshot.children.allObjects as! [DataSnapshot] {
-                    print("adding to services array...")
-                    
-                    if let dict = rest.value as? NSDictionary {
-                        
-                        if(self.isClient!){
-                            self.services.append(ServiceOffer.init(category: (dict["category"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!))
-                        } else {
-                            self.requests.append(ClientRequest.init(serviceDescription: dict["requestDescription"] as! String, location: dict["location"] as! String, userID: dict["userID"] as! String, userName: dict["userName"] as! String, category: dict["category"] as! String))
-                            
-                        }
-                        print("added \(rest.value)")
-                    } else {
-                        print("could not convert snapshot to dictionay")
-                    }
-                }
-                 */
                 
                 // reload table view if this is last element
                 if((self.isClient!) && (self.keysCount == self.services.count)) {

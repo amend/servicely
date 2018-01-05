@@ -51,6 +51,9 @@ class ChooseNameViewController: UIViewController {
             } else {
                 let defaults = UserDefaults.standard
                 defaults.set(self.nameKey, forKey: self.nameValue)
+                
+                // set default distance
+                defaults.set(10, forKey:"distance")
                 defaults.synchronize()
             }
         }
