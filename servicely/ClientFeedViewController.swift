@@ -42,7 +42,17 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
     var latitude:Double? = nil
     var longitude:Double? = nil
     
-    var keysCount = 0
+    // keys will contian keys returned by geofire query
+    // TODO: make keys atomic
+    var keys:[String] = [String]()
+    
+    // pagination
+    var postsPerBatch = 5
+    var postsLoadedTotal = 0
+    var postsLoadedTemp = 0
+    var loadedAllPosts = false
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +82,11 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         
+        // pagination
+        self.postsLoadedTotal = 0
+        self.postsLoadedTemp = 0
+        self.loadedAllPosts = false
+        
         let userID = Auth.auth().currentUser?.uid
         
         if(userID == nil) {
@@ -93,8 +108,10 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
                 self.user = user
             }
             
+            self.keys.removeAll()
             if((user?["serviceType"] as! String) == "client") {
                 self.services.removeAll()
+                
                 
                 self.isClient = true
                 
@@ -206,6 +223,8 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
             cell.usernameLabel.text = request.userName
             cell.categoryLabel.text = request.category
             return cell
+        } else {
+            
         }
         
         // TODO: make emtpy cell to show if table view loads cellers before callbacks
@@ -236,7 +255,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         return 75
     }
     
-    // MARK: - core location
+    // MARK: - core location, query data, populate table view
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .notDetermined {
@@ -319,14 +338,14 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
                     
                     // after we have coors, geofire and firebase db queries to populate
                     // the feed
-                    self.populateTableView()
+                    self.getPostsKeys()
                 }
             }
             print("exiting setLocation")
         }
     }
     
-    func populateTableView() {
+    func getPostsKeys() {
         // check if client or proivder type flag has been set
         var queryType:String = ""
         if(self.isClient == nil) {
@@ -350,68 +369,129 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         let distMiles = defaults.integer(forKey: "distance")
         let distKilo = Double(distMiles) * 1.60934
         var circleQuery = geoFire?.query(at: center, withRadius: distKilo)
-        
-        // Query location by region
-        /*
-        let span = MKCoordinateSpanMake(0.001, 0.001)
-        let region = MKCoordinateRegionMake(center.coordinate, span)
-        var regionQuery = geoFire?.query(with: region)
-        */
- 
-        // keys will contian keys returned by geofire query
-        // TODO: make keys atomic
-        var keys:[String] = [String]()
-        
+                
         // handle query
         var queryHandle = circleQuery?.observe(.keyEntered, with: { (key: String!, location: CLLocation!) in
             print("Key '\(key)' entered the search area and is at location '\(location)'")
-            keys.append(key)
+            self.keys.append(key)
         })
         // get objects from firebasedb after geofire collects all keys
         circleQuery?.observeReady({
+            circleQuery?.removeObserver(withFirebaseHandle: queryHandle!)
             
-            // TODO: remove observeres so that tableview isnt reloaded if new post is added
-            // queryHandle.removeAllObservers
+            self.paginate()
+            
             print("All initial data has been loaded and events have been fired!")
-            
-            self.keysCount = keys.count
-            
-            var fdbQueryType:String = ""
-            if(self.isClient == nil) {
-                print("isClient is nil in querying for posts")
-            } else if((self.isClient!)) {
-                fdbQueryType = "serviceOffer"
-            } else if(!(self.isClient!)) {
-                fdbQueryType = "clientRequest"
-            } else {
-                print("fdbQueryType not set to serviceOffer or clientRequest")
-            }
-            
-            let ref = Database.database().reference()
-            ref.child(fdbQueryType).child(keys.popLast()!).observeSingleEvent(of: .value, with: { snapshot in
-                print("snapshot children count:")
-                print(snapshot.childrenCount)
-                
-                let dict = snapshot.value as? NSDictionary
-                
-                if(self.isClient!){
-                    self.services.append(ServiceOffer.init(category: (dict!["category"] as? String)!, serviceDescription: (dict!["serviceDescription"] as? String)!, askingPrice: (dict!["askingPrice"] as? String)!, location: (dict!["location"] as? String)!, companyName: (dict!["companyName"] as? String)!, contactInfo: (dict!["contactInfo"] as? String)!, userID: (dict!["userID"] as? String)!))
-                } else {
-                    self.requests.append(ClientRequest.init(serviceDescription: dict!["requestDescription"] as! String, location: dict!["location"] as! String, userID: dict!["userID"] as! String, userName: dict!["userName"] as! String, category: dict!["category"] as! String))
-                    
-                }
-                print("added \(dict)")
-                
-                // reload table view if this is last element
-                if((self.isClient!) && (self.keysCount == self.services.count)) {
-                    self.getRatingsReloadTableView()
-                } else if(((self.isClient!) == false) && (self.keysCount == self.requests.count)) {
-                    self.getRatingsReloadTableView()
-                }
-                
-            })
         })
     }
+    
+    func paginate() {
+        if(self.keys.count == 0) {
+            print("no keys loaded from geofire query")
+            return
+        }
+        
+        if(loadedAllPosts) {
+            print("loaded all posts already, returning from pagination")
+            return
+        }
+        
+        
+        var endIndex = 0
+        
+        // check if at end of posts
+        if((self.postsLoadedTotal + self.postsPerBatch - 1) > (self.keys.count - 1)) {
+            endIndex = self.keys.count - 1
+            self.loadedAllPosts = true
+        } else {
+            endIndex = self.postsLoadedTotal + self.postsPerBatch - 1
+        }
+        
+        for i in self.postsLoadedTotal...endIndex {
+            getPost(key: self.keys[i], index:i, targetLoadCount:self.postsLoadedTotal+endIndex)
+        }
+        
+        self.postsLoadedTotal = endIndex + 1
+    }
+    
+    func getPost(key:String, index:Int, targetLoadCount:Int) {
+        var fdbQueryType:String = ""
+        if(self.isClient == nil) {
+            print("isClient is nil in querying for posts")
+        } else if((self.isClient!)) {
+            fdbQueryType = "serviceOffer"
+        } else if(!(self.isClient!)) {
+            fdbQueryType = "clientRequest"
+        } else {
+            print("fdbQueryType not set to serviceOffer or clientRequest")
+        }
+        
+        var postsLoaded:Int = 0
+        
+        let ref = Database.database().reference()
+        ref.child(fdbQueryType).child(self.keys[index]).observeSingleEvent(of: .value, with: { snapshot in
+            print("snapshot children count:")
+            print(snapshot.childrenCount)
+            
+            let dict = snapshot.value as? NSDictionary
+            
+            if(self.isClient!){
+                self.services.append(ServiceOffer.init(category: (dict!["category"] as? String)!, serviceDescription: (dict!["serviceDescription"] as? String)!, askingPrice: (dict!["askingPrice"] as? String)!, location: (dict!["location"] as? String)!, companyName: (dict!["companyName"] as? String)!, contactInfo: (dict!["contactInfo"] as? String)!, userID: (dict!["userID"] as? String)!))
+            } else {
+                self.requests.append(ClientRequest.init(serviceDescription: dict!["requestDescription"] as! String, location: dict!["location"] as! String, userID: dict!["userID"] as! String, userName: dict!["userName"] as! String, category: dict!["category"] as! String))
+                
+            }
+            print("added \(dict)")
+            
+            // reload table view if this is last element
+            print("keys: " + String(self.keys.count))
+            if(self.isClient)! {
+                print("services count: " + String(self.services.count))
+            } else {
+                print("requests count: " + String(self.requests.count))
+            }
+            
+            self.postsLoadedTemp += 1
+            if(self.postsLoadedTemp == self.postsLoadedTotal) {
+                // self.postsLoadedTemp = 0
+                if(self.isClient!) {
+                    self.getRatingsReloadTableView()
+                } else {
+                    self.getRatingsReloadTableView()
+                }
+            }
+            
+            // reload table view if this is last element
+            /*
+            print("keys: " + String(self.keys.count))
+            if(self.isClient)! {
+                print("services count: " + String(self.services.count))
+            } else {
+                print("requests count: " + String(self.requests.count))
+            }
+            if((self.isClient!) && (self.keys.count == self.services.count)) {
+                self.getRatingsReloadTableView()
+            } else if(((self.isClient!) == false) && (self.keys.count == self.requests.count)) {
+                self.getRatingsReloadTableView()
+            }
+             */
+        })
+    }
+    
+    // checks if user has reached last row to load more
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
+    {
+        var dataArray:[Any] = [Any]()
+        if(self.isClient != nil && self.isClient!) {
+            dataArray = self.services
+        } else if(self.isClient != nil && !(self.isClient!)) {
+            dataArray = self.requests
+        }
+        if ((indexPath.row == (dataArray.count - 1)) && ((indexPath.row) != (self.keys.count - 1))) {
+            self.paginate()
+        }
+    }
+    
     
     func getRatingsReloadTableView() {
         // there's probably a better way to get ratings for users, so think of one
