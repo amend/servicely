@@ -21,6 +21,7 @@ class ViewServiceViewController: UIViewController {
     @IBOutlet weak var ratingBar: CosmosView!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var contactNumberLabel: UILabel!
     
     var service:ServiceOffer? = nil
     var request:ClientRequest? = nil
@@ -53,16 +54,20 @@ class ViewServiceViewController: UIViewController {
     
     func setValues() {
         if(client) {
+            self.name.text = request?.userName
+            self.serviceDescription.text = request?.serviceDescription
+            // if client or client-type post from categories, then these labels shouldnt show
+            self.contactNumber.text = ""
+            self.contactNumberLabel.text = ""
+            self.price.text = ""
+            self.priceLabel.text = ""
+            self.ratingBar.isHidden = true
+            self.submitButton.isHidden = true
+        } else {            
             self.name.text = service?.companyName
             self.serviceDescription.text = service?.serviceDescription
             self.contactNumber.text = service?.contactInfo
             self.price.text = service?.askingPrice
-        } else {
-            self.name.text = request?.userName
-            self.serviceDescription.text = request?.serviceDescription
-            self.contactNumber.text = "delete this label, cilent's requetss should not have contact info"
-            self.price.text = ""
-            self.priceLabel.text = ""
         }
  }
     
