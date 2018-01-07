@@ -186,7 +186,7 @@ class ServicesRequestsTableViewController: UITableViewController {
                 let service = services[indexPath!]
             
                 vc.service = service
-                vc.client = client
+                vc.viewingRequest = false
                 if(ratings.keys.contains(service.userID)) {
                     vc.oldRating = ratings[service.userID]!
                 }
@@ -197,7 +197,7 @@ class ServicesRequestsTableViewController: UITableViewController {
                 let request = requests[indexPath!]
                 
                 vc.request = request
-                vc.client = client
+                vc.viewingRequest = true
             }
         }
     }

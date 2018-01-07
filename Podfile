@@ -17,9 +17,12 @@ target 'servicely' do
   pod 'Firebase/Storage'
   pod 'JSQMessagesViewController'
   pod 'gRPC', '~> 1.7.1'
-  pod 'FBSDKCoreKit', '~> 4.10.0'
-  pod 'FBSDKLoginKit', '~> 4.10.0'
-  pod 'FBSDKShareKit', '~> 4.10.0'
+  #pod 'FBSDKCoreKit', '~> 4.10.0'
+  #pod 'FBSDKLoginKit', '~> 4.10.0'
+  #pod 'FBSDKShareKit', '~> 4.10.0'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
+  pod 'FBSDKShareKit'
   # Geofire installation finally worked after deleting Pods/ and Podfile.lock
   # and then first installing pods above, adding line below, and rnning pod install
   #pod 'Firebase', '~> 2.5.1' #takes care of core and database

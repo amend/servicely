@@ -366,7 +366,11 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         let center = CLLocation(latitude: self.latitude!, longitude: self.longitude!)
         // 10 kilometers
         let defaults = UserDefaults.standard
-        let distMiles = defaults.integer(forKey: "distance")
+        var distMiles = defaults.integer(forKey: "distance")
+        if(distMiles == 0) {
+            distMiles = 10
+            defaults.set(10, forKey: "distance")
+        }
         let distKilo = Double(distMiles) * 1.60934
         var circleQuery = geoFire?.query(at: center, withRadius: distKilo)
                 
@@ -571,7 +575,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
                 let service = services[indexPath!]
                 
                 vc.service = service
-                vc.client = true
+                vc.viewingRequest = false
                 
                 if(ratings.keys.contains(service.userID)) {
                     let rating = ratings[service.userID]!
@@ -589,7 +593,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
                 let request = self.requests[indexPath!]
                 
                 vc.request = request
-                vc.client = false
+                vc.viewingRequest = true
             }
         }
     }

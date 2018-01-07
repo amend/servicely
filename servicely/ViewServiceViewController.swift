@@ -27,7 +27,7 @@ class ViewServiceViewController: UIViewController {
     var request:ClientRequest? = nil
     var oldRating: Double = -1.0
     
-    var client:Bool = false
+    var viewingRequest:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +53,7 @@ class ViewServiceViewController: UIViewController {
     }
     
     func setValues() {
-        if(client) {
+        if(self.viewingRequest) {            
             self.name.text = request?.userName
             self.serviceDescription.text = request?.serviceDescription
             // if client or client-type post from categories, then these labels shouldnt show
@@ -63,7 +63,8 @@ class ViewServiceViewController: UIViewController {
             self.priceLabel.text = ""
             self.ratingBar.isHidden = true
             self.submitButton.isHidden = true
-        } else {            
+
+        } else {
             self.name.text = service?.companyName
             self.serviceDescription.text = service?.serviceDescription
             self.contactNumber.text = service?.contactInfo
@@ -80,7 +81,7 @@ class ViewServiceViewController: UIViewController {
         }
         
         var userID:String = ""
-        if(client) {
+        if(self.viewingRequest) {
             userID = (request?.userID)!
         } else {
             userID = (service?.userID)!
@@ -108,7 +109,7 @@ class ViewServiceViewController: UIViewController {
             // TODO: Make ViewRequestVieController
             if let chatVC = segue.destination as? ChatViewController{
 
-                if(client) {
+                if(self.viewingRequest) {
                     chatVC.serviceType = "client"
                     chatVC.category = (self.service?.category)!
                     
