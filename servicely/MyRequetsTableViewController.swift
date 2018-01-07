@@ -114,7 +114,7 @@ class MyRequetsTableViewController: UITableViewController {
             let request = requests[indexPath!]
             
             vc.request = request
-            vc.client = true
+            vc.viewingRequest = true
         }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

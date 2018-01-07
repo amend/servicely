@@ -54,7 +54,7 @@ class ChooseNameViewController: UIViewController {
                 
                 // set default distance
                 defaults.set(10, forKey:"distance")
-                defaults.synchronize()
+                //defaults.synchronize()
             }
         }
     }

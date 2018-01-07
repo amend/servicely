@@ -114,7 +114,7 @@ class OurServicesTableViewController: UITableViewController {
             let service = services[indexPath!]
             
             vc.service = service
-            vc.client = false
+            vc.viewingRequest = false
         }
     }
     
