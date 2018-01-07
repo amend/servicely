@@ -188,7 +188,7 @@ class DatabaseWrapper {
     // gets all offered services of specified category
     // need to paginate this too
     func getServicesOfCategory(category: String, completion: @escaping (_ services: [ServiceOffer])->()) {
-        ref.child("serviceOffer").queryOrdered(byChild: "serviceType").queryEqual(toValue: category).observeSingleEvent(of: .value, with: { snapshot in
+        ref.child("serviceOffer").queryOrdered(byChild: "category").queryEqual(toValue: category).observeSingleEvent(of: .value, with: { snapshot in
             print(snapshot.childrenCount)
             
             var services = [ServiceOffer]()
@@ -212,7 +212,7 @@ class DatabaseWrapper {
     // gets all client requests of specified category
     // need to paginate this
     func getRequestsOfCategory(category: String, completion: @escaping (_ requests: [ClientRequest])->()) {
-        ref.child("clientRequest").queryOrdered(byChild: "serviceType").queryEqual(toValue: category).observeSingleEvent(of: .value, with: { snapshot in
+        ref.child("clientRequest").queryOrdered(byChild: "category").queryEqual(toValue: category).observeSingleEvent(of: .value, with: { snapshot in
             print(snapshot.childrenCount)
             
             var requests = [ClientRequest]()
@@ -221,7 +221,7 @@ class DatabaseWrapper {
                 print("adding to requests array...")
                 if let dict = rest.value as? NSDictionary {
                     
-                    requests.append(ClientRequest.init(serviceDescription: (dict["requestDescription"] as? String)!, location: (dict["location"] as? String)!, userID: (dict["userID"] as? String)!, userName: (dict["userName"] as? String)!, category: (dict["cateogory"] as? String)!))
+                    requests.append(ClientRequest.init(serviceDescription: (dict["requestDescription"] as? String)!, location: (dict["location"] as? String)!, userID: (dict["userID"] as? String)!, userName: (dict["userName"] as? String)!, category: (dict["category"] as? String)!))
                     
                     print("added \(rest.value)")
                 } else {

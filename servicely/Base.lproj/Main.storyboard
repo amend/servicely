@@ -187,7 +187,7 @@
                                 </constraints>
                             </pickerView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Say something about the service you are offering..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7tZ-vU-xXM">
-                                <rect key="frame" x="68" y="254" width="240" height="101"/>
+                                <rect key="frame" x="67.5" y="254" width="240" height="101"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="Re7-ol-1mj"/>
                                     <constraint firstAttribute="height" constant="101" id="TwE-Od-84N"/>
@@ -1734,7 +1734,7 @@
                                 </constraints>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="1" maxValue="70" translatesAutoresizingMaskIntoConstraints="NO" id="9Vv-nd-2bx">
-                                <rect key="frame" x="26" y="220" width="322" height="30"/>
+                                <rect key="frame" x="26.5" y="220" width="322" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="318" id="AIL-ya-IWg"/>
                                     <constraint firstAttribute="height" constant="29" id="e53-DZ-Fux"/>
@@ -1744,7 +1744,7 @@
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;distance&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2s-03-m3V">
-                                <rect key="frame" x="97" y="183" width="180" height="21"/>
+                                <rect key="frame" x="97.5" y="183" width="180" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="V3l-kR-oZn"/>
                                     <constraint firstAttribute="height" constant="21" id="eU5-Ql-aF0"/>
@@ -2520,6 +2520,7 @@
                     <navigationItem key="navigationItem" id="UUH-m3-4Hk"/>
                     <connections>
                         <outlet property="contactNumber" destination="LEN-il-UPz" id="D78-wU-7Ql"/>
+                        <outlet property="contactNumberLabel" destination="RQC-OQ-V9l" id="nci-vq-khu"/>
                         <outlet property="name" destination="5Fk-5T-Rhe" id="Twh-yZ-STW"/>
                         <outlet property="price" destination="Xj7-cU-7hK" id="dNc-7n-LI7"/>
                         <outlet property="priceLabel" destination="XOD-y6-dcI" id="1Tv-3k-eSC"/>
@@ -2623,7 +2624,7 @@
         <image name="settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c26-QJ-OID"/>
+        <segue reference="BdC-VP-eEj"/>
         <segue reference="X7F-05-Omp"/>
         <segue reference="Lir-cw-YDj"/>
     </inferredMetricsTieBreakers>
