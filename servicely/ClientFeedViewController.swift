@@ -17,7 +17,7 @@ import CoreLocation
 import GeoFire
 
 
-class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
+class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var feedTableView: UITableView!
     
@@ -27,23 +27,16 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
     var ratings = [String: Double]()
     var user:NSDictionary? = nil
     
-    // number of posts to paginate through
-    let numberOfPosts:Int = 2
-    
     var isClient:Bool? = nil
     
+    // number of posts to paginate through
+    let numberOfPosts:Int = 2
+        
     // location
-    var locationManager: CLLocationManager!
-    var city:String? = nil
-    var state:String? = nil
-    var country:String? = nil
-    var postalCode:String? = nil
-    var cityAddress:String? = nil
-    var latitude:Double? = nil
-    var longitude:Double? = nil
+    var location:Location? = nil
     
     // keys will contian keys returned by geofire query
-    // TODO: make keys atomic
+    // TODO: make keys atomic. update: seems to work fine for mass posts without being atomic. is something happening so that it's already thread-safe?
     var keys:[String] = [String]()
     
     // pagination
@@ -77,54 +70,49 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // No need for semicolon
         
-        // core location
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
+        self.location = Location.init()
+        self.location?.setLocation {
         
-        // pagination
-        self.postsLoadedTotal = 0
-        self.postsLoadedTemp = 0
-        self.loadedAllPosts = false
+            // pagination
+            self.postsLoadedTotal = 0
+            self.postsLoadedTemp = 0
+            self.loadedAllPosts = false
         
-        let userID = Auth.auth().currentUser?.uid
+            let userID = Auth.auth().currentUser?.uid
         
-        if(userID == nil) {
-            checkLoggedIn()
-            //var userID = FIRAuth.auth()?.currentUser?.uid
-            return
-        }
-
-        let db:DatabaseWrapper = DatabaseWrapper()
-        
-        db.getCurrentUser() { (user) in
-            if(user == nil) {
-                // present service type view controller
-                //let vc = ServiceTypeViewController()
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "serviceTypeViewController")
-                self.present(vc!, animated: true, completion: nil)
+            if(userID == nil) {
+                self.checkLoggedIn()
+                //var userID = FIRAuth.auth()?.currentUser?.uid
                 return
-            } else {
-                self.user = user
             }
-            
-            self.keys.removeAll()
-            if((user?["serviceType"] as! String) == "client") {
-                self.services.removeAll()
+
+            let db:DatabaseWrapper = DatabaseWrapper()
+        
+            db.getCurrentUser() { (user) in
+                if(user == nil) {
+                    // present service type view controller
+                    //let vc = ServiceTypeViewController()
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "serviceTypeViewController")
+                    self.present(vc!, animated: true, completion: nil)
+                    return
+                } else {
+                    self.user = user
+                }
                 
-                
-                self.isClient = true
-                
-                // setLocation sets location and populates self.services
-                self.setLocation()
-                
-            } else if((user?["serviceType"] as! String) == "serviceProvider") {
-                self.requests.removeAll()
-                
-                self.isClient = false
-                
-                // setLocation sets location and populates self.requests
-                self.setLocation()
+                self.keys.removeAll()
+                if((user?["serviceType"] as! String) == "client") {
+                    self.services.removeAll()
+                    
+                    self.isClient = true
+                    
+                    self.getPostsKeys()
+                } else if((user?["serviceType"] as! String) == "serviceProvider") {
+                    self.requests.removeAll()
+                    
+                    self.isClient = false
+                    
+                    self.getPostsKeys()
+                }
             }
         }
     }
@@ -257,94 +245,6 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
     
     // MARK: - core location, query data, populate table view
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .notDetermined {
-            locationManager.requestWhenInUseAuthorization()
-        } else if status == .authorizedWhenInUse {
-            print("location use authorized")
-            locationManager = manager
-            // TODO: How does contents of setLocation know locatoin has been updated?
-            // seems to work how it is, but why?
-            // setLocation()
-        } else if status == .denied {
-            print("user chose not to authorize locatin")
-        } else if status == .restricted {
-            print("Access denied - likely parental controls are restricting use in this app.")
-        }
-    }
-    
-    func setLocation() {
-        print("in setLocation")
-        
-        // Get user's current location name and info (city)
-        let geocoder = CLGeocoder()
-        geocoder.reverseGeocodeLocation(self.locationManager.location!) { (placemarksArray, error) in
-            print("convertion to city location")
-            if (placemarksArray?.count)! > 0 {
-                let placemark = placemarksArray?.first
-                let city:String? = placemark?.locality
-                let country:String? = placemark?.country
-                let postalCode:String? = placemark?.postalCode
-                let state:String? = placemark?.administrativeArea
-                
-                print("got city: " + city! + " country: " + country! + " postal code: " + postalCode! + " state: " + state!)
-                
-                self.city = city
-                self.state = state
-                self.country = country
-                self.postalCode = postalCode
-                
-                // let address = "1 Infinite Loop, Cupertino, CA 95014"
-                let address = city! + " " + state! + " " + country! + " " + postalCode!
-                
-                self.cityAddress = address
-                
-                let geoCoder = CLGeocoder()
-                geoCoder.geocodeAddressString(address) { (placemarks, error) in
-                    guard
-                        let placemarks = placemarks,
-                        let location = placemarks.first?.location,
-                        let lat:Double =  location.coordinate.latitude,
-                        let long:Double = location.coordinate.longitude
-                        else {
-                            // handle no location found
-                            print("could not convert address to lat and long")
-                            return
-                    }
-                    
-                    // Use location
-                    print("lat: " + String(lat))
-                    print("long: " + String(long))
-                    
-                    self.latitude = lat
-                    self.longitude = long
-                    
-                    var addr:String = ""
-                    if(self.city != nil) {
-                        addr += self.city!
-                    }
-                    if(self.state != nil){
-                        addr += " " + self.state!
-                    }
-                    if(self.country != nil) {
-                        addr += " " + self.country!
-                    }
-                    if(self.postalCode != nil) {
-                        addr += " " + self.postalCode!
-                    }
-                    
-                    print("*** users address: " + addr)
-                    print("*** users lat long: " + String(describing: self.latitude) + " " + String(describing: self.longitude))
-                    
-                    // after we have coors, geofire and firebase db queries to populate
-                    // the feed
-                    self.getPostsKeys()
-                }
-            }
-            print("exiting setLocation")
-        }
-    }
-    
     func getPostsKeys() {
         // check if client or proivder type flag has been set
         var queryType:String = ""
@@ -363,7 +263,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         let geoFireRef:DatabaseReference! = Database.database().reference().child(queryType)
         let geoFire = GeoFire(firebaseRef: geoFireRef)
         
-        let center = CLLocation(latitude: self.latitude!, longitude: self.longitude!)
+        let center = CLLocation(latitude: (self.location?.latitude!)!, longitude: (self.location?.longitude)!)
         // 10 kilometers
         let defaults = UserDefaults.standard
         var distMiles = defaults.integer(forKey: "distance")
@@ -464,21 +364,6 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
                     self.getRatingsReloadTableView()
                 }
             }
-            
-            // reload table view if this is last element
-            /*
-            print("keys: " + String(self.keys.count))
-            if(self.isClient)! {
-                print("services count: " + String(self.services.count))
-            } else {
-                print("requests count: " + String(self.requests.count))
-            }
-            if((self.isClient!) && (self.keys.count == self.services.count)) {
-                self.getRatingsReloadTableView()
-            } else if(((self.isClient!) == false) && (self.keys.count == self.requests.count)) {
-                self.getRatingsReloadTableView()
-            }
-             */
         })
     }
     
