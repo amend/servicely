@@ -110,20 +110,6 @@ class ViewServiceViewController: UIViewController {
             if let chatVC = segue.destination as? ChatViewController{
 
                 if(self.viewingRequest) {
-                    chatVC.serviceType = "client"
-                    chatVC.category = (self.service?.category)!
-                    
-                    chatVC.providerName = (self.service?.companyName)!
-                    chatVC.providerID = (self.service?.userID)!
-                    
-                    if let currentUser = Auth.auth().currentUser {
-                        chatVC.clientID = currentUser.uid
-                    }
-                    let db:DatabaseWrapper = DatabaseWrapper()
-                    db.getCurrentUser() { (user:NSDictionary?) in
-                        chatVC.clientName = user?["username"] as! String
-                    }
-                } else {
                     chatVC.serviceType = "serviceProvider"
                     chatVC.category = (self.request?.category)!
                     
@@ -136,6 +122,23 @@ class ViewServiceViewController: UIViewController {
                         db.getCurrentUser() { (user:NSDictionary?) in
                             chatVC.providerName = user?["companyName"] as! String
                         }
+                    }
+
+                    
+                    
+                } else {
+                    chatVC.serviceType = "client"
+                    chatVC.category = (self.service?.category)!
+                    
+                    chatVC.providerName = (self.service?.companyName)!
+                    chatVC.providerID = (self.service?.userID)!
+                    
+                    if let currentUser = Auth.auth().currentUser {
+                        chatVC.clientID = currentUser.uid
+                    }
+                    let db:DatabaseWrapper = DatabaseWrapper()
+                    db.getCurrentUser() { (user:NSDictionary?) in
+                        chatVC.clientName = user?["username"] as! String
                     }
                 }
                 
