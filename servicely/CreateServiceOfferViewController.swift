@@ -39,7 +39,6 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
     var latitude:Double? = nil
     var longitude:Double? = nil
     var location:CLLocation? = nil
-    
     var updatedLocation:Bool = false
 
     override func viewDidLoad() {

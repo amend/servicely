@@ -25,9 +25,8 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
     
     var serviceType:String = ""
     
+    // location
     var locationManager: CLLocationManager!
-    var location:CLLocation? = nil
-    
     var city:String? = nil
     var state:String? = nil
     var country:String? = nil
@@ -35,7 +34,9 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
     var cityAddress:String? = nil
     var latitude:Double? = nil
     var longitude:Double? = nil
-    
+    var location:CLLocation? = nil
+    var updatedLocation:Bool = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,10 +65,20 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
         serviceTypePickerView.selectRow(0, inComponent: 0, animated: false)
         serviceType = pickerViewData[0]
         
-        // core location
         locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
+        self.isAuthorizedtoGetUserLocation()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        }
+        
+        if CLLocationManager.locationServicesEnabled() {
+            print("requesting location")
+            self.locationManager.requestLocation();
+            print("done requesting locatin")
+        } else {
+            print("location services not enabled, ask user to enable")
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -91,8 +102,8 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
     @IBAction func submitButton(_ sender: Any) {
         let userID = Auth.auth().currentUser?.uid
         let userName = Auth.auth().currentUser?.displayName
-
-        if(addressLabel.text == "" || addressLabel.text == nil) {
+        
+        if(!self.updatedLocation || addressLabel.text == "" || addressLabel.text == nil) {
             savedLabel.text = "Getting city location... Please wait"
             return
         }
@@ -160,7 +171,14 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
         }
     }
     
-    // core location
+    // MARK: - location
+    
+    //if we have no permission to access user location, then ask user for permission.
+    func isAuthorizedtoGetUserLocation() {
+        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse     {
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .notDetermined {
@@ -168,7 +186,9 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
         } else if status == .authorizedWhenInUse {
             print("location use authorized")
             locationManager = manager
-            setLocation()
+            // TODO: How does contents of setLocation know locatoin has been updated?
+            // seems to work how it is, but why?
+            // setLocation()
         } else if status == .denied {
             print("user chose not to authorize locatin")
         } else if status == .restricted {
@@ -176,10 +196,11 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
         }
     }
     
-    func setLocation() {
+    func setLocation(completion: @escaping ()->()) {
         print("in setLocation")
         
-        // Get user's current location name
+        print("going to use location")
+        // Get user's current location name and info (city)
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(self.locationManager.location!) { (placemarksArray, error) in
             print("convertion to city location")
@@ -206,16 +227,14 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
                 geoCoder.geocodeAddressString(address) { (placemarks, error) in
                     guard
                         let placemarks = placemarks,
-                        let locationTemp = placemarks.first?.location,
-                        let lat:Double =  locationTemp.coordinate.latitude,
-                        let long:Double = locationTemp.coordinate.longitude
+                        let location = placemarks.first?.location,
+                        let lat:Double =  location.coordinate.latitude,
+                        let long:Double = location.coordinate.longitude
                         else {
                             // handle no location found
                             print("could not convert address to lat and long")
                             return
                     }
-                    
-                    self.location = locationTemp
                     
                     // Use location
                     print("lat: " + String(lat))
@@ -238,8 +257,14 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
                         addr += " " + self.postalCode!
                     }
                     
+                    print("*** users address: " + addr)
+                    print("*** users lat long: " + String(describing: self.latitude) + " " + String(describing: self.longitude))
+                    
                     self.addressLabel.text = addr
                     self.savedLabel.text = ""
+                    
+                    print("got location")
+                    completion()
                 }
             }
             print("exiting setLocation")
@@ -247,16 +272,15 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
     }
     
     func locationManager(_: CLLocationManager, didUpdateLocations: [CLLocation]) {
-        print("did update location")
+        self.setLocation {
+            print("did update location")
+            self.updatedLocation = true
+        }
     }
     
-    func locationManager(_ manager: CLLocationManager,
-                         didFailWithError error: Error) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("location manager failed!")
     }
-    
-
-    
     
     // keyboard dismiss
     
