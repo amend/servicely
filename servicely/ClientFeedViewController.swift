@@ -17,7 +17,7 @@ import CoreLocation
 import GeoFire
 
 
-class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDelegate, UITableViewDataSource {
+class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
     @IBOutlet weak var feedTableView: UITableView!
     
@@ -33,7 +33,16 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
     let numberOfPosts:Int = 2
         
     // location
-    var location:Location? = nil
+    var locationManager: CLLocationManager!
+    var city:String? = nil
+    var state:String? = nil
+    var country:String? = nil
+    var postalCode:String? = nil
+    var cityAddress:String? = nil
+    var latitude:Double? = nil
+    var longitude:Double? = nil
+    var location:CLLocation? = nil
+    
     
     // keys will contian keys returned by geofire query
     // TODO: make keys atomic. update: seems to work fine for mass posts without being atomic. is something happening so that it's already thread-safe?
@@ -44,8 +53,6 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
     var postsLoadedTotal = 0
     var postsLoadedTemp = 0
     var loadedAllPosts = false
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,48 +77,49 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // No need for semicolon
         
-        self.location = Location.init()
-        self.location?.setLocation {
+        locationManager = CLLocationManager()
+        self.isAuthorizedtoGetUserLocation()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        }
         
-            // pagination
-            self.postsLoadedTotal = 0
-            self.postsLoadedTemp = 0
-            self.loadedAllPosts = false
-        
-            let userID = Auth.auth().currentUser?.uid
-        
-            if(userID == nil) {
-                self.checkLoggedIn()
-                //var userID = FIRAuth.auth()?.currentUser?.uid
-                return
-            }
+        // pagination
+        self.postsLoadedTotal = 0
+        self.postsLoadedTemp = 0
+        self.loadedAllPosts = false
+    
+        let userID = Auth.auth().currentUser?.uid
+    
+        if(userID == nil) {
+            self.checkLoggedIn()
+            //var userID = FIRAuth.auth()?.currentUser?.uid
+            return
+        }
 
-            let db:DatabaseWrapper = DatabaseWrapper()
-        
-            db.getCurrentUser() { (user) in
-                if(user == nil) {
-                    // present service type view controller
-                    //let vc = ServiceTypeViewController()
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "serviceTypeViewController")
-                    self.present(vc!, animated: true, completion: nil)
-                    return
-                } else {
-                    self.user = user
+        let db:DatabaseWrapper = DatabaseWrapper()
+        db.getCurrentUser() { (user) in
+            if(user == nil) {
+                // present service type view controller
+                //let vc = ServiceTypeViewController()
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "serviceTypeViewController")
+                self.present(vc!, animated: true, completion: nil)
+                return
+            } else {
+                self.user = user
+                
+                if((user?["serviceType"] as! String) == "client") {
+                    self.isClient = true
+                } else if((user?["serviceType"] as! String) == "serviceProvider") {
+                    self.isClient = false
                 }
                 
-                self.keys.removeAll()
-                if((user?["serviceType"] as! String) == "client") {
-                    self.services.removeAll()
-                    
-                    self.isClient = true
-                    
-                    self.getPostsKeys()
-                } else if((user?["serviceType"] as! String) == "serviceProvider") {
-                    self.requests.removeAll()
-                    
-                    self.isClient = false
-                    
-                    self.getPostsKeys()
+                if CLLocationManager.locationServicesEnabled() {
+                    print("requesting location")
+                    self.locationManager.requestLocation();
+                    print("done requesting locatin")
+                } else {
+                    print("location services not enabled, ask user to enable")
                 }
             }
         }
@@ -243,7 +251,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         return 75
     }
     
-    // MARK: - core location, query data, populate table view
+    // MARK: - query data, populate table view
     
     func getPostsKeys() {
         // check if client or proivder type flag has been set
@@ -263,7 +271,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         let geoFireRef:DatabaseReference! = Database.database().reference().child(queryType)
         let geoFire = GeoFire(firebaseRef: geoFireRef)
         
-        let center = CLLocation(latitude: (self.location?.latitude!)!, longitude: (self.location?.longitude)!)
+        let center = CLLocation(latitude: (self.latitude)!, longitude: (self.longitude)!)
         // 10 kilometers
         let defaults = UserDefaults.standard
         var distMiles = defaults.integer(forKey: "distance")
@@ -404,14 +412,134 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         }
     }
     
-    func locationManager(_: CLLocationManager, didUpdateLocations: [CLLocation]) {
-        print("did update location")
+    // MARK: - location
+
+    //if we have no permission to access user location, then ask user for permission.
+    func isAuthorizedtoGetUserLocation() {
+        
+        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse     {
+            locationManager.requestWhenInUseAuthorization()
+        }
     }
     
-    func locationManager(_ manager: CLLocationManager,
-                         didFailWithError error: Error) {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .notDetermined {
+            locationManager.requestWhenInUseAuthorization()
+        } else if status == .authorizedWhenInUse {
+            print("location use authorized")
+            locationManager = manager
+            // TODO: How does contents of setLocation know locatoin has been updated?
+            // seems to work how it is, but why?
+            // setLocation()
+        } else if status == .denied {
+            print("user chose not to authorize locatin")
+        } else if status == .restricted {
+            print("Access denied - likely parental controls are restricting use in this app.")
+        }
+    }
+    
+    func setLocation(completion: @escaping ()->()) {
+        print("in setLocation")
+        
+        print("going to use location")
+        // Get user's current location name and info (city)
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(self.locationManager.location!) { (placemarksArray, error) in
+            print("convertion to city location")
+            if (placemarksArray?.count)! > 0 {
+                let placemark = placemarksArray?.first
+                let city:String? = placemark?.locality
+                let country:String? = placemark?.country
+                let postalCode:String? = placemark?.postalCode
+                let state:String? = placemark?.administrativeArea
+                
+                print("got city: " + city! + " country: " + country! + " postal code: " + postalCode! + " state: " + state!)
+                
+                self.city = city
+                self.state = state
+                self.country = country
+                self.postalCode = postalCode
+                
+                // let address = "1 Infinite Loop, Cupertino, CA 95014"
+                let address = city! + " " + state! + " " + country! + " " + postalCode!
+                
+                self.cityAddress = address
+                
+                let geoCoder = CLGeocoder()
+                geoCoder.geocodeAddressString(address) { (placemarks, error) in
+                    guard
+                        let placemarks = placemarks,
+                        let location = placemarks.first?.location,
+                        let lat:Double =  location.coordinate.latitude,
+                        let long:Double = location.coordinate.longitude
+                        else {
+                            // handle no location found
+                            print("could not convert address to lat and long")
+                            return
+                    }
+                    
+                    // Use location
+                    print("lat: " + String(lat))
+                    print("long: " + String(long))
+                    
+                    self.latitude = lat
+                    self.longitude = long
+                    
+                    var addr:String = ""
+                    if(self.city != nil) {
+                        addr += self.city!
+                    }
+                    if(self.state != nil){
+                        addr += " " + self.state!
+                    }
+                    if(self.country != nil) {
+                        addr += " " + self.country!
+                    }
+                    if(self.postalCode != nil) {
+                        addr += " " + self.postalCode!
+                    }
+                    
+                    print("*** users address: " + addr)
+                    print("*** users lat long: " + String(describing: self.latitude) + " " + String(describing: self.longitude))
+                    
+                    // after we have coors, geofire and firebase db queries to populate
+                    // the feed
+                    print("got location")
+                    completion()
+                }
+            }
+            print("exiting setLocation")
+        }
+    }
+    
+    func locationManager(_: CLLocationManager, didUpdateLocations: [CLLocation]) {
+        self.setLocation {
+            print("did update location")
+            self.getData()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("location manager failed!")
     }
+    
+    func getData() {
+        self.keys.removeAll()
+        
+        if(self.isClient == nil) {
+            print("isClient is nil in getData")
+            return
+        }
+        
+        if(self.isClient!) {
+            self.services.removeAll()
+        } else {
+            self.requests.removeAll()
+        }
+        
+        self.getPostsKeys()
+    }
+    
     
     /*
     // Override to support conditional editing of the table view.

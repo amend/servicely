@@ -29,6 +29,7 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
     
     var category:String = ""
     
+    // location
     var locationManager: CLLocationManager!
     var city:String? = nil
     var state:String? = nil
@@ -37,7 +38,10 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
     var cityAddress:String? = nil
     var latitude:Double? = nil
     var longitude:Double? = nil
+    var location:CLLocation? = nil
     
+    var updatedLocation:Bool = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -69,10 +73,20 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         serviceTypePickerView.selectRow(0, inComponent: 0, animated: false)
         category = pickerViewData[0]
         
-        // core location
         locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
+        self.isAuthorizedtoGetUserLocation()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        }
+        
+        if CLLocationManager.locationServicesEnabled() {
+            print("requesting location")
+            self.locationManager.requestLocation();
+            print("done requesting locatin")
+        } else {
+            print("location services not enabled, ask user to enable")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -95,12 +109,10 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         return true
     }
     
-    
-    
     @IBAction func submitButton(_ sender: Any) {
         let userID = Auth.auth().currentUser?.uid
         
-        if(addressLabel.text == "" || addressLabel.text == nil) {
+        if(!self.updatedLocation || addressLabel.text == "" || addressLabel.text == nil) {
             savedLabel.text = "Getting city location... Please wait"
             return
         }
@@ -172,7 +184,14 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         }
     }
     
-    // core location
+    // MARK: - location
+    
+    //if we have no permission to access user location, then ask user for permission.
+    func isAuthorizedtoGetUserLocation() {
+        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse     {
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .notDetermined {
@@ -180,7 +199,9 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         } else if status == .authorizedWhenInUse {
             print("location use authorized")
             locationManager = manager
-            setLocation()
+            // TODO: How does contents of setLocation know locatoin has been updated?
+            // seems to work how it is, but why?
+            // setLocation()
         } else if status == .denied {
             print("user chose not to authorize locatin")
         } else if status == .restricted {
@@ -188,10 +209,11 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         }
     }
     
-    func setLocation() {
+    func setLocation(completion: @escaping ()->()) {
         print("in setLocation")
         
-        // Get user's current location name
+        print("going to use location")
+        // Get user's current location name and info (city)
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(self.locationManager.location!) { (placemarksArray, error) in
             print("convertion to city location")
@@ -221,7 +243,7 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
                         let location = placemarks.first?.location,
                         let lat:Double =  location.coordinate.latitude,
                         let long:Double = location.coordinate.longitude
-                    else {
+                        else {
                             // handle no location found
                             print("could not convert address to lat and long")
                             return
@@ -230,7 +252,7 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
                     // Use location
                     print("lat: " + String(lat))
                     print("long: " + String(long))
-
+                    
                     self.latitude = lat
                     self.longitude = long
                     
@@ -248,8 +270,14 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
                         addr += " " + self.postalCode!
                     }
                     
+                    print("*** users address: " + addr)
+                    print("*** users lat long: " + String(describing: self.latitude) + " " + String(describing: self.longitude))
+                    
                     self.addressLabel.text = addr
                     self.savedLabel.text = ""
+                    
+                    print("got location")
+                    completion()
                 }
             }
             print("exiting setLocation")
@@ -257,11 +285,13 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
     }
     
     func locationManager(_: CLLocationManager, didUpdateLocations: [CLLocation]) {
-      print("did update location")
+        self.setLocation {
+            print("did update location")
+            self.updatedLocation = true
+        }
     }
     
-    func locationManager(_ manager: CLLocationManager,
-                         didFailWithError error: Error) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("location manager failed!")
     }
     

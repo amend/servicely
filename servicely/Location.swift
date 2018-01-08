@@ -5,12 +5,11 @@
 //  Created by Andoni Mendoza on 1/7/18.
 //  Copyright © 2018 Andoni Mendoza. All rights reserved.
 //
-
 import Foundation
 import CoreLocation
 
 class Location: NSObject, CLLocationManagerDelegate {
-
+    
     
     
     // location
@@ -118,7 +117,7 @@ class Location: NSObject, CLLocationManagerDelegate {
             print("exiting setLocation")
         }
     }
-
+    
     
     func locationManager(_: CLLocationManager, didUpdateLocations: [CLLocation]) {
         print("did update location")
