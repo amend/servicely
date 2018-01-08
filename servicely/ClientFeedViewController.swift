@@ -364,21 +364,6 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
                     self.getRatingsReloadTableView()
                 }
             }
-            
-            // reload table view if this is last element
-            /*
-            print("keys: " + String(self.keys.count))
-            if(self.isClient)! {
-                print("services count: " + String(self.services.count))
-            } else {
-                print("requests count: " + String(self.requests.count))
-            }
-            if((self.isClient!) && (self.keys.count == self.services.count)) {
-                self.getRatingsReloadTableView()
-            } else if(((self.isClient!) == false) && (self.keys.count == self.requests.count)) {
-                self.getRatingsReloadTableView()
-            }
-             */
         })
     }
     
