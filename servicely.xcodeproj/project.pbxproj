@@ -40,7 +40,6 @@
 		903C46041FE8538D00D80D58 /* ChatListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903C46031FE8538D00D80D58 /* ChatListTableViewController.swift */; };
 		903C46061FE8559E00D80D58 /* ChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903C46051FE8559E00D80D58 /* ChatListTableViewCell.swift */; };
 		903C46081FE856CC00D80D58 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903C46071FE856CC00D80D58 /* ChatViewController.swift */; };
-		90709FC52002EAF700819A6B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90709FC42002EAF700819A6B /* Location.swift */; };
 		9083B39A1F86D5B20079E309 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9083B3991F86D5B20079E309 /* AppDelegate.swift */; };
 		9083B39F1F86D5B20079E309 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9083B39D1F86D5B20079E309 /* Main.storyboard */; };
 		9083B3A11F86D5B20079E309 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9083B3A01F86D5B20079E309 /* Assets.xcassets */; };
@@ -88,7 +87,6 @@
 		903C46031FE8538D00D80D58 /* ChatListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewController.swift; sourceTree = "<group>"; };
 		903C46051FE8559E00D80D58 /* ChatListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewCell.swift; sourceTree = "<group>"; };
 		903C46071FE856CC00D80D58 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		90709FC42002EAF700819A6B /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		9082AE961FFC8D50004767E2 /* FileProviderUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FileProviderUI.framework; path = System/Library/Frameworks/FileProviderUI.framework; sourceTree = SDKROOT; };
 		9082AE981FFC8D8F004767E2 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		9082AE9A1FFC8EE4004767E2 /* FirebaseTwitterAuthUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseTwitterAuthUI.framework; path = Pods/FirebaseUI/FirebaseUIFrameworks/FirebaseTwitterAuthUI/Frameworks/FirebaseTwitterAuthUI.framework; sourceTree = "<group>"; };
@@ -186,7 +184,6 @@
 				9083B3A21F86D5B20079E309 /* LaunchScreen.storyboard */,
 				900A838C1FFD803800E1FC6E /* Supporting Files */,
 				90C96DBF1FE4FC8C00A1E8BA /* DatabaseWrapper.swift */,
-				90709FC42002EAF700819A6B /* Location.swift */,
 				909C3B0F1FD9077200C0A207 /* CreateServiceOrRequestViewController.swift */,
 				901677261F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift */,
 				90280E8C1FC3CAF5006C5542 /* CreateClientRequestViewController.swift */,
@@ -436,7 +433,6 @@
 				9016772F1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift in Sources */,
 				7FBB2EB71FC37588002067C1 /* ViewServiceViewController.swift in Sources */,
 				902295081FEF5DD300BC39EA /* ClientRequest.swift in Sources */,
-				90709FC52002EAF700819A6B /* Location.swift in Sources */,
 				3762DAD91FA705990065FA87 /* ChangeColorSchemeViewController.swift in Sources */,
 				9083B39A1F86D5B20079E309 /* AppDelegate.swift in Sources */,
 				900A838E1FFFC83F00E1FC6E /* ChangeDistanceViewController.swift in Sources */,
