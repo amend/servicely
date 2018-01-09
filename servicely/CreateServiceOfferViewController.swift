@@ -126,7 +126,8 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
             "latitude": self.latitude!,
             "longitude": self.longitude!,
             "contactInfo": contactInfo.text!,
-            "userID": userID
+            "userID": userID,
+            "timestamp": ServerValue.timestamp()
             ] as [String : Any]
         
         // Save to Firebase.

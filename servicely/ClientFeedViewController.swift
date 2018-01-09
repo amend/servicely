@@ -347,29 +347,48 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
             let dict = snapshot.value as? NSDictionary
             
             if(self.isClient!){
-                self.services.append(ServiceOffer.init(category: (dict!["category"] as? String)!, serviceDescription: (dict!["serviceDescription"] as? String)!, askingPrice: (dict!["askingPrice"] as? String)!, location: (dict!["location"] as? String)!, companyName: (dict!["companyName"] as? String)!, contactInfo: (dict!["contactInfo"] as? String)!, userID: (dict!["userID"] as? String)!))
+                self.services.append(ServiceOffer.init(
+                    category: (dict!["category"] as? String)!,
+                    serviceDescription: (dict!["serviceDescription"] as? String)!,
+                    askingPrice: (dict!["askingPrice"] as? String)!,
+                    location: (dict!["location"] as? String)!,
+                    companyName: (dict!["companyName"] as? String)!,
+                    contactInfo: (dict!["contactInfo"] as? String)!,
+                    userID: (dict!["userID"] as? String)!,
+                    timestamp: (dict!["timestamp"] as? Double)!
+                    )
+                )
             } else {
-                self.requests.append(ClientRequest.init(serviceDescription: dict!["requestDescription"] as! String, location: dict!["location"] as! String, userID: dict!["userID"] as! String, userName: dict!["userName"] as! String, category: dict!["category"] as! String))
+                self.requests.append(ClientRequest.init(
+                    serviceDescription: dict!["requestDescription"] as! String,
+                    location: dict!["location"] as! String,
+                    userID: dict!["userID"] as! String,
+                    userName: dict!["userName"] as! String,
+                    category: dict!["category"] as! String,
+                    timestamp: dict!["timestamp"] as! Double
+                    )
+                )
                 
             }
             print("added \(dict)")
             
             // reload table view if this is last element
             print("keys: " + String(self.keys.count))
+            
+            // sort by timestamp, most recent posts first
             if(self.isClient)! {
-                print("services count: " + String(self.services.count))
+                self.services.sort {
+                    $0.timestamp > $1.timestamp
+                }
             } else {
-                print("requests count: " + String(self.requests.count))
+                self.requests.sort {
+                    $0.timestamp > $1.timestamp
+                }
             }
             
             self.postsLoadedTemp += 1
             if(self.postsLoadedTemp == self.postsLoadedTotal) {
-                // self.postsLoadedTemp = 0
-                if(self.isClient!) {
-                    self.getRatingsReloadTableView()
-                } else {
-                    self.getRatingsReloadTableView()
-                }
+                self.getRatingsReloadTableView()
             }
         })
     }
@@ -405,6 +424,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
                     print("could not convert snaptshot to dictionary")
                 }
             }
+            
             DispatchQueue.main.async{
                 self.feedTableView.reloadData()
             }

@@ -117,7 +117,8 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
             "userName": userName,
             "location": self.cityAddress!,
             "latitude": self.latitude!,
-            "longitude": self.longitude!
+            "longitude": self.longitude!,
+            "timestamp": ServerValue.timestamp()
             ] as [String : Any]
         
         // Save to Firebase.
