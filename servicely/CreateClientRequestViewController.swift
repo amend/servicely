@@ -66,6 +66,9 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
         serviceTypePickerView.selectRow(0, inComponent: 0, animated: false)
         serviceType = pickerViewData[0]
         
+        
+        savedLabel.text = "Getting city location... Please wait"
+        
         locationManager = CLLocationManager()
         self.isAuthorizedtoGetUserLocation()
         if CLLocationManager.locationServicesEnabled() {
@@ -105,7 +108,7 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
         let userName = Auth.auth().currentUser?.displayName
         
         if(!self.updatedLocation || addressLabel.text == "" || addressLabel.text == nil) {
-            savedLabel.text = "Getting city location... Please wait"
+            print("did not update locatoin. returning from submitButton")
             return
         }
         
