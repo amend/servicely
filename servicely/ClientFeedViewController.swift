@@ -49,7 +49,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
     var keys:[String] = [String]()
     
     // pagination
-    var postsPerBatch = 5
+    var postsPerBatch = 20
     var postsLoadedTotal = 0
     var postsLoadedTemp = 0
     var loadedAllPosts = false
@@ -311,7 +311,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         var endIndex = 0
         
         // check if at end of posts
-        if((self.postsLoadedTotal + self.postsPerBatch - 1) > (self.keys.count - 1)) {
+        if((self.postsLoadedTotal + self.postsPerBatch) >= (self.keys.count)) {
             endIndex = self.keys.count - 1
             self.loadedAllPosts = true
         } else {
