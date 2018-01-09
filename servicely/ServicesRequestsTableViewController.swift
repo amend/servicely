@@ -24,7 +24,7 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
     var isClient:Bool? = nil
     
     // pagination
-    var postsPerBatch = 5
+    var postsPerBatch = 20
     var postsLoadedTotal = 0
     var postsLoadedTemp = 0
     var loadedAllPosts = false
@@ -215,7 +215,7 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
         var endIndex = 0
         
         // check if at end of posts
-        if((self.postsLoadedTotal + self.postsPerBatch - 1) > (self.keys.count - 1)) {
+        if((self.postsLoadedTotal + self.postsPerBatch) >= (self.keys.count)) {
             endIndex = self.keys.count - 1
             self.loadedAllPosts = true
         } else {
@@ -253,12 +253,30 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
             if(self.isClient!){
                 if(self.category == (dict!["category"] as? String)!) {
                 
-                    self.services.append(ServiceOffer.init(category: (dict!["category"] as? String)!, serviceDescription: (dict!["serviceDescription"] as? String)!, askingPrice: (dict!["askingPrice"] as? String)!, location: (dict!["location"] as? String)!, companyName: (dict!["companyName"] as? String)!, contactInfo: (dict!["contactInfo"] as? String)!, userID: (dict!["userID"] as? String)!))
+                    self.services.append(ServiceOffer.init(
+                        category: (dict!["category"] as? String)!,
+                        serviceDescription: (dict!["serviceDescription"] as? String)!,
+                        askingPrice: (dict!["askingPrice"] as? String)!,
+                        location: (dict!["location"] as? String)!,
+                        companyName: (dict!["companyName"] as? String)!,
+                        contactInfo: (dict!["contactInfo"] as? String)!,
+                        userID: (dict!["userID"] as? String)!,
+                        timestamp: (dict!["timestamp"] as? Double)!
+                        )
+                    )
                 }
             } else {
                 if(self.category == (dict!["category"] as? String)!) {
                     
-                    self.requests.append(ClientRequest.init(serviceDescription: dict!["requestDescription"] as! String, location: dict!["location"] as! String, userID: dict!["userID"] as! String, userName: dict!["userName"] as! String, category: dict!["category"] as! String))
+                    self.requests.append(ClientRequest.init(
+                        serviceDescription: dict!["requestDescription"] as! String,
+                        location: dict!["location"] as! String,
+                        userID: dict!["userID"] as! String,
+                        userName: dict!["userName"] as! String,
+                        category: dict!["category"] as! String,
+                        timestamp: dict!["timestamp"] as! Double
+                        )
+                    )
                 }
             }
             print("added \(dict)")
@@ -269,6 +287,18 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
                 print("services count: " + String(self.services.count))
             } else {
                 print("requests count: " + String(self.requests.count))
+            }
+            
+            
+            // sort by timestamp, most recent posts first
+            if(self.isClient)! {
+                self.services.sort {
+                    $0.timestamp > $1.timestamp
+                }
+            } else {
+                self.requests.sort {
+                    $0.timestamp > $1.timestamp
+                }
             }
             
             self.postsLoadedTemp += 1

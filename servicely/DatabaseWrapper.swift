@@ -89,7 +89,17 @@ class DatabaseWrapper {
                 
                 if let dict = rest.value as? NSDictionary {
                     
-                    services.append(ServiceOffer.init(category: (dict["category"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!))
+                    services.append(ServiceOffer.init(
+                        category: (dict["category"] as? String)!,
+                        serviceDescription: (dict["serviceDescription"] as? String)!,
+                        askingPrice: (dict["askingPrice"] as? String)!,
+                        location: (dict["location"] as? String)!,
+                        companyName: (dict["companyName"] as? String)!,
+                        contactInfo: (dict["contactInfo"] as? String)!,
+                        userID: (dict["userID"] as? String)!,
+                        timestamp: (dict["timestamp"] as? Double)!
+                        )
+                    )
                     
                     print("added \(rest.value)")
                 } else {
@@ -114,7 +124,15 @@ class DatabaseWrapper {
                 
                 if let dict = rest.value as? NSDictionary {
                     
-                    requests.append(ClientRequest.init(serviceDescription: dict["requestDescription"] as! String, location: dict["location"] as! String, userID: dict["userID"] as! String, userName: dict["userName"] as! String, category: dict["category"] as! String))
+                    requests.append(ClientRequest.init(
+                        serviceDescription: dict["requestDescription"] as! String,
+                        location: dict["location"] as! String,
+                        userID: dict["userID"] as! String,
+                        userName: dict["userName"] as! String,
+                        category: dict["category"] as! String,
+                        timestamp: dict["timestamp"] as! Double
+                        )
+                    )
                     
                     print("added \(rest.value)")
                 } else {
@@ -149,7 +167,15 @@ class DatabaseWrapper {
                 print("adding to requests array...")
                 if let dict = rest.value as? NSDictionary {
                     
-                    requests.append(ClientRequest.init(serviceDescription: (dict["requestDescription"] as? String)!, location: (dict["location"] as? String)!, userID: (dict["userID"] as? String)!, userName: (dict["userName"] as? String)!, category: (dict["category"] as? String)!))
+                    requests.append(ClientRequest.init(
+                        serviceDescription: (dict["requestDescription"] as? String)!,
+                        location: (dict["location"] as? String)!,
+                        userID: (dict["userID"] as? String)!,
+                        userName: (dict["userName"] as? String)!,
+                        category: (dict["category"] as? String)!,
+                        timestamp: (dict["timestamp"] as? Double)!
+                        )
+                    )
         
                     print("added \(rest.value)")
                 } else {
@@ -173,7 +199,17 @@ class DatabaseWrapper {
                 print("adding to requests array...")
                 if let dict = rest.value as? NSDictionary {
                     
-                    services.append(ServiceOffer.init(category: (dict["category"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!))
+                    services.append(ServiceOffer.init(
+                        category: (dict["category"] as? String)!,
+                        serviceDescription: (dict["serviceDescription"] as? String)!,
+                        askingPrice: (dict["askingPrice"] as? String)!,
+                        location: (dict["location"] as? String)!,
+                        companyName: (dict["companyName"] as? String)!,
+                        contactInfo: (dict["contactInfo"] as? String)!,
+                        userID: (dict["userID"] as? String)!,
+                        timestamp: (dict["timestamp"] as? Double)!
+                        )
+                    )
                     
                     print("added \(rest.value)")
                 } else {
@@ -197,7 +233,17 @@ class DatabaseWrapper {
                 print("adding to services array...")
                 if let dict = rest.value as? NSDictionary {
                     
-                    services.append(ServiceOffer.init(category: (dict["category"] as? String)!, serviceDescription: (dict["serviceDescription"] as? String)!, askingPrice: (dict["askingPrice"] as? String)!, location: (dict["location"] as? String)!, companyName: (dict["companyName"] as? String)!, contactInfo: (dict["contactInfo"] as? String)!, userID: (dict["userID"] as? String)!))
+                    services.append(ServiceOffer.init(
+                        category: (dict["category"] as? String)!,
+                        serviceDescription: (dict["serviceDescription"] as? String)!,
+                        askingPrice: (dict["askingPrice"] as? String)!,
+                        location: (dict["location"] as? String)!,
+                        companyName: (dict["companyName"] as? String)!,
+                        contactInfo: (dict["contactInfo"] as? String)!,
+                        userID: (dict["userID"] as? String)!,
+                        timestamp: (dict["timestamp"] as? Double)!
+                        )
+                    )
                     
                     print("added \(rest.value)")
                 } else {
@@ -221,7 +267,15 @@ class DatabaseWrapper {
                 print("adding to requests array...")
                 if let dict = rest.value as? NSDictionary {
                     
-                    requests.append(ClientRequest.init(serviceDescription: (dict["requestDescription"] as? String)!, location: (dict["location"] as? String)!, userID: (dict["userID"] as? String)!, userName: (dict["userName"] as? String)!, category: (dict["category"] as? String)!))
+                    requests.append(ClientRequest.init(
+                        serviceDescription: (dict["requestDescription"] as? String)!,
+                        location: (dict["location"] as? String)!,
+                        userID: (dict["userID"] as? String)!,
+                        userName: (dict["userName"] as? String)!,
+                        category: (dict["category"] as? String)!,
+                        timestamp: (dict["timestamp"] as? Double)!
+                        )
+                    )
                     
                     print("added \(rest.value)")
                 } else {

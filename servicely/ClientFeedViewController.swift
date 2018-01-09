@@ -49,7 +49,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
     var keys:[String] = [String]()
     
     // pagination
-    var postsPerBatch = 5
+    var postsPerBatch = 20
     var postsLoadedTotal = 0
     var postsLoadedTemp = 0
     var loadedAllPosts = false
@@ -308,11 +308,10 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
             return
         }
         
-        
         var endIndex = 0
         
         // check if at end of posts
-        if((self.postsLoadedTotal + self.postsPerBatch - 1) > (self.keys.count - 1)) {
+        if((self.postsLoadedTotal + self.postsPerBatch) >= (self.keys.count)) {
             endIndex = self.keys.count - 1
             self.loadedAllPosts = true
         } else {
@@ -348,29 +347,48 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
             let dict = snapshot.value as? NSDictionary
             
             if(self.isClient!){
-                self.services.append(ServiceOffer.init(category: (dict!["category"] as? String)!, serviceDescription: (dict!["serviceDescription"] as? String)!, askingPrice: (dict!["askingPrice"] as? String)!, location: (dict!["location"] as? String)!, companyName: (dict!["companyName"] as? String)!, contactInfo: (dict!["contactInfo"] as? String)!, userID: (dict!["userID"] as? String)!))
+                self.services.append(ServiceOffer.init(
+                    category: (dict!["category"] as? String)!,
+                    serviceDescription: (dict!["serviceDescription"] as? String)!,
+                    askingPrice: (dict!["askingPrice"] as? String)!,
+                    location: (dict!["location"] as? String)!,
+                    companyName: (dict!["companyName"] as? String)!,
+                    contactInfo: (dict!["contactInfo"] as? String)!,
+                    userID: (dict!["userID"] as? String)!,
+                    timestamp: (dict!["timestamp"] as? Double)!
+                    )
+                )
             } else {
-                self.requests.append(ClientRequest.init(serviceDescription: dict!["requestDescription"] as! String, location: dict!["location"] as! String, userID: dict!["userID"] as! String, userName: dict!["userName"] as! String, category: dict!["category"] as! String))
+                self.requests.append(ClientRequest.init(
+                    serviceDescription: dict!["requestDescription"] as! String,
+                    location: dict!["location"] as! String,
+                    userID: dict!["userID"] as! String,
+                    userName: dict!["userName"] as! String,
+                    category: dict!["category"] as! String,
+                    timestamp: dict!["timestamp"] as! Double
+                    )
+                )
                 
             }
             print("added \(dict)")
             
             // reload table view if this is last element
             print("keys: " + String(self.keys.count))
+            
+            // sort by timestamp, most recent posts first
             if(self.isClient)! {
-                print("services count: " + String(self.services.count))
+                self.services.sort {
+                    $0.timestamp > $1.timestamp
+                }
             } else {
-                print("requests count: " + String(self.requests.count))
+                self.requests.sort {
+                    $0.timestamp > $1.timestamp
+                }
             }
             
             self.postsLoadedTemp += 1
             if(self.postsLoadedTemp == self.postsLoadedTotal) {
-                // self.postsLoadedTemp = 0
-                if(self.isClient!) {
-                    self.getRatingsReloadTableView()
-                } else {
-                    self.getRatingsReloadTableView()
-                }
+                self.getRatingsReloadTableView()
             }
         })
     }
@@ -406,6 +424,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
                     print("could not convert snaptshot to dictionary")
                 }
             }
+            
             DispatchQueue.main.async{
                 self.feedTableView.reloadData()
             }
@@ -444,7 +463,18 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         print("going to use location")
         // Get user's current location name and info (city)
         let geocoder = CLGeocoder()
-        geocoder.reverseGeocodeLocation(self.locationManager.location!) { (placemarksArray, error) in
+        if(self.location == nil) {
+            print("didUpdateLocation did not assign self.locatoin")
+            if CLLocationManager.locationServicesEnabled() {
+                print("requesting location")
+                self.locationManager.requestLocation();
+                print("done requesting locatin")
+            } else {
+                print("location services not enabled, ask user to enable")
+            }
+            return
+        }
+        geocoder.reverseGeocodeLocation(self.location!) { (placemarksArray, error) in
             print("convertion to city location")
             if (placemarksArray?.count)! > 0 {
                 let placemark = placemarksArray?.first
@@ -513,6 +543,9 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
     }
     
     func locationManager(_: CLLocationManager, didUpdateLocations: [CLLocation]) {
+        self.location = didUpdateLocations.last
+        print(self.location?.coordinate.latitude)
+        print(self.location?.coordinate.longitude)
         self.setLocation {
             print("did update location")
             self.getData()
@@ -520,7 +553,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("location manager failed!")
+        print("location manager failed with error: " + error.localizedDescription)
     }
     
     func getData() {

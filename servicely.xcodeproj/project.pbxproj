@@ -46,10 +46,21 @@
 		9083B3A41F86D5B20079E309 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9083B3A21F86D5B20079E309 /* LaunchScreen.storyboard */; };
 		908CD2A91FE89F3500372C29 /* ChatMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908CD2A81FE89F3500372C29 /* ChatMetadata.swift */; };
 		909C3B101FD9077200C0A207 /* CreateServiceOrRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C3B0F1FD9077200C0A207 /* CreateServiceOrRequestViewController.swift */; };
+		90BDE641200425DB005488D8 /* servicelyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BDE640200425DB005488D8 /* servicelyUITests.swift */; };
 		90C96DC01FE4FC8C00A1E8BA /* DatabaseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C96DBF1FE4FC8C00A1E8BA /* DatabaseWrapper.swift */; };
 		90CA841A1F995EFA00EDB7AC /* ServicelyLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CA84191F995EFA00EDB7AC /* ServicelyLogoViewController.swift */; };
 		A48E045045EECE1353730BBE /* Pods_servicely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7FB88E9762171D187BC2BAB /* Pods_servicely.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		90BDE643200425DB005488D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9083B38E1F86D5B20079E309 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9083B3951F86D5B20079E309;
+			remoteInfo = servicely;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3745B96D1FD79E0400622BCE /* CosmosDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosDistrib.swift; sourceTree = "<group>"; };
@@ -98,6 +109,9 @@
 		9083B3A51F86D5B20079E309 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		908CD2A81FE89F3500372C29 /* ChatMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMetadata.swift; sourceTree = "<group>"; };
 		909C3B0F1FD9077200C0A207 /* CreateServiceOrRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceOrRequestViewController.swift; sourceTree = "<group>"; };
+		90BDE63E200425DB005488D8 /* servicelyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = servicelyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		90BDE640200425DB005488D8 /* servicelyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = servicelyUITests.swift; sourceTree = "<group>"; };
+		90BDE642200425DB005488D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90C96DBF1FE4FC8C00A1E8BA /* DatabaseWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseWrapper.swift; sourceTree = "<group>"; };
 		90CA84191F995EFA00EDB7AC /* ServicelyLogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicelyLogoViewController.swift; sourceTree = "<group>"; };
 		90CF54532002B25F00FBCA8A /* servicely.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = servicely.entitlements; sourceTree = "<group>"; };
@@ -110,6 +124,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A48E045045EECE1353730BBE /* Pods_servicely.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90BDE63B200425DB005488D8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				9083B3981F86D5B20079E309 /* servicely */,
+				90BDE63F200425DB005488D8 /* servicelyUITests */,
 				9083B3971F86D5B20079E309 /* Products */,
 				03ED8AA1EEC851C7AF416CEB /* Pods */,
 				362DA306D9237F109495D680 /* Frameworks */,
@@ -158,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				9083B3961F86D5B20079E309 /* servicely.app */,
+				90BDE63E200425DB005488D8 /* servicelyUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -212,6 +235,15 @@
 			path = servicely;
 			sourceTree = "<group>";
 		};
+		90BDE63F200425DB005488D8 /* servicelyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				90BDE640200425DB005488D8 /* servicelyUITests.swift */,
+				90BDE642200425DB005488D8 /* Info.plist */,
+			);
+			path = servicelyUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -236,13 +268,31 @@
 			productReference = 9083B3961F86D5B20079E309 /* servicely.app */;
 			productType = "com.apple.product-type.application";
 		};
+		90BDE63D200425DB005488D8 /* servicelyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90BDE645200425DB005488D8 /* Build configuration list for PBXNativeTarget "servicelyUITests" */;
+			buildPhases = (
+				90BDE63A200425DB005488D8 /* Sources */,
+				90BDE63B200425DB005488D8 /* Frameworks */,
+				90BDE63C200425DB005488D8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				90BDE644200425DB005488D8 /* PBXTargetDependency */,
+			);
+			name = servicelyUITests;
+			productName = servicelyUITests;
+			productReference = 90BDE63E200425DB005488D8 /* servicelyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		9083B38E1F86D5B20079E309 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0900;
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Andoni Mendoza";
 				TargetAttributes = {
@@ -261,6 +311,11 @@
 							};
 						};
 					};
+					90BDE63D200425DB005488D8 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 9083B3951F86D5B20079E309;
+					};
 				};
 			};
 			buildConfigurationList = 9083B3911F86D5B20079E309 /* Build configuration list for PBXProject "servicely" */;
@@ -277,6 +332,7 @@
 			projectRoot = "";
 			targets = (
 				9083B3951F86D5B20079E309 /* servicely */,
+				90BDE63D200425DB005488D8 /* servicelyUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -289,6 +345,13 @@
 				9083B3A41F86D5B20079E309 /* LaunchScreen.storyboard in Resources */,
 				9083B3A11F86D5B20079E309 /* Assets.xcassets in Resources */,
 				9083B39F1F86D5B20079E309 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90BDE63C200425DB005488D8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,7 +518,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		90BDE63A200425DB005488D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90BDE641200425DB005488D8 /* servicelyUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		90BDE644200425DB005488D8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9083B3951F86D5B20079E309 /* servicely */;
+			targetProxy = 90BDE643200425DB005488D8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9083B39D1F86D5B20079E309 /* Main.storyboard */ = {
@@ -526,7 +605,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -578,7 +657,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -637,6 +716,38 @@
 			};
 			name = Release;
 		};
+		90BDE646200425DB005488D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6Q3CS3983P;
+				INFOPLIST_FILE = servicelyUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = loveclub.servicelyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = servicely;
+			};
+			name = Debug;
+		};
+		90BDE647200425DB005488D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6Q3CS3983P;
+				INFOPLIST_FILE = servicelyUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = loveclub.servicelyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = servicely;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -654,6 +765,15 @@
 			buildConfigurations = (
 				9083B3A91F86D5B20079E309 /* Debug */,
 				9083B3AA1F86D5B20079E309 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		90BDE645200425DB005488D8 /* Build configuration list for PBXNativeTarget "servicelyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90BDE646200425DB005488D8 /* Debug */,
+				90BDE647200425DB005488D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
