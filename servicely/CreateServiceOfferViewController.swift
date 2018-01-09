@@ -214,7 +214,20 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         print("going to use location")
         // Get user's current location name and info (city)
         let geocoder = CLGeocoder()
-        geocoder.reverseGeocodeLocation(self.locationManager.location!) { (placemarksArray, error) in
+        
+        if(self.location == nil) {
+            print("didUpdateLocation did not assign self.locatoin")
+            if CLLocationManager.locationServicesEnabled() {
+                print("requesting location")
+                self.locationManager.requestLocation();
+                print("done requesting locatin")
+            } else {
+                print("location services not enabled, ask user to enable")
+            }
+            return
+        }
+        
+        geocoder.reverseGeocodeLocation(self.location!) { (placemarksArray, error) in
             print("convertion to city location")
             if (placemarksArray?.count)! > 0 {
                 let placemark = placemarksArray?.first
@@ -284,6 +297,7 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
     }
     
     func locationManager(_: CLLocationManager, didUpdateLocations: [CLLocation]) {
+        self.location = didUpdateLocations.last
         self.setLocation {
             print("did update location")
             self.updatedLocation = true

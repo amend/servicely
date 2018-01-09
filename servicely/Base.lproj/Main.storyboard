@@ -765,6 +765,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="feedView"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="feedTableView" destination="5f9-Fw-Mvs" id="LGP-ah-NXt"/>
                     </connections>
@@ -2624,7 +2627,7 @@
         <image name="settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BdC-VP-eEj"/>
+        <segue reference="c26-QJ-OID"/>
         <segue reference="X7F-05-Omp"/>
         <segue reference="Lir-cw-YDj"/>
     </inferredMetricsTieBreakers>
