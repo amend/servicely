@@ -19,6 +19,8 @@ import GeoFire
 
 class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
+    let feedTableViewController:UITableViewController = UITableViewController()
+    
     @IBOutlet weak var feedTableView: UITableView!
     
     // TODO: make services and requests atomic
@@ -58,24 +60,18 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
+        //self.clearsSelectionOnViewWillAppear = false
+        self.feedTableView.dataSource = self
+        self.feedTableView.delegate = self
+        self.feedTableViewController.tableView = feedTableView
+        self.feedTableViewController.clearsSelectionOnViewWillAppear = false
+        
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        self.feedTableView.dataSource = self
-        self.feedTableView.delegate = self
         self.title = "Feed"
         checkLoggedIn()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated) // No need for semicolon
         
         // clean up
         self.services.removeAll()
@@ -93,15 +89,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         self.postsLoadedTotal = 0
         self.postsLoadedTemp = 0
         self.loadedAllPosts = false
-    
-        let userID = Auth.auth().currentUser?.uid
-    
-        if(userID == nil) {
-            self.checkLoggedIn()
-            //var userID = FIRAuth.auth()?.currentUser?.uid
-            return
-        }
-
+        
         let db:DatabaseWrapper = DatabaseWrapper()
         db.getCurrentUser() { (user) in
             if(user == nil) {
@@ -127,6 +115,24 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
                     print("location services not enabled, ask user to enable")
                 }
             }
+        }
+
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated) // No need for semicolon
+        
+        // check if logged in
+        let userID = Auth.auth().currentUser?.uid
+        if(userID == nil) {
+            self.checkLoggedIn()
+            //var userID = FIRAuth.auth()?.currentUser?.uid
+            return
         }
     }
     
