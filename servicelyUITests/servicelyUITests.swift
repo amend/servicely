@@ -44,8 +44,6 @@ class servicelyUITests: XCTestCase {
     }
     
     func testCreateClientRequestSaves() {
-        //app.launch()
-
         // button tap not going into handler unless login process is done
         // weird, but i couldnt find a solution, so this does the login and
         // navigaet to feed
@@ -96,6 +94,50 @@ class servicelyUITests: XCTestCase {
             
             app.staticTexts["saved!"].waitForExistence(timeout: 10)
 
+            XCTAssert(app.staticTexts["saved!"].exists)
+        }
+    }
+    
+    func testCreateServiceOfferSaves() {
+        // button tap not going into handler unless login process is done
+        // weird, but i couldnt find a solution, so this does the login and
+        // navigaet to feed
+        loginProviderUser()
+        goToFeed()
+        
+        app.navigationBars["Feed"].buttons["Post"].tap()
+
+
+        let scrollViewsQuery = app.scrollViews
+        let textView = scrollViewsQuery.otherElements.containing(.staticText, identifier:"What type of service offer?").children(matching: .textView).element
+        textView.tap()
+        textView.typeText("Test")
+
+        
+        
+        
+        
+        
+        
+
+        if(app.staticTexts["Getting city location... Please wait"].exists) {
+            // could not recreate this part if coditinal. might fail
+            let predicate = NSPredicate(format: "exists == 0")
+            let query = app.staticTexts["Getting city location... Please wait"]
+            expectation(for: predicate, evaluatedWith: query, handler: nil)
+            waitForExpectations(timeout: 10, handler: nil)
+            
+            // after dely
+            let submitButton = app.buttons["Submit"].tap()
+            
+            app.staticTexts["saved!"].waitForExistence(timeout: 10)
+            
+            XCTAssert(app.staticTexts["saved!"].exists)
+        } else {
+            app.buttons["Submit"].tap()
+            
+            app.staticTexts["saved!"].waitForExistence(timeout: 10)
+            
             XCTAssert(app.staticTexts["saved!"].exists)
         }
     }
