@@ -32,7 +32,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
     var isClient:Bool? = nil
     
     // number of posts to paginate through
-    let numberOfPosts:Int = 2
+    //let numberOfPosts:Int = 2
         
     // location
     var locationManager: CLLocationManager!
@@ -56,6 +56,9 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
     var postsLoadedTemp = 0
     var loadedAllPosts = false
     
+    // pull to refresh
+    var refreshControl: UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -66,16 +69,19 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         self.feedTableViewController.tableView = feedTableView
         self.feedTableViewController.clearsSelectionOnViewWillAppear = false
         
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // pull to refresh
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Getting more posts...")
+        //refreshControl.addTarget(self, action: "refresh:", for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action: #selector(self.refresh(sender:)), for: UIControlEvents.valueChanged)
+        feedTableView.addSubview(refreshControl) // not required when using UITableViewController
         
         self.title = "Feed"
+        
         checkLoggedIn()
         
         // clean up
-        self.services.removeAll()
-        self.requests.removeAll()
+        self.cleanUpData()
         self.feedTableView.reloadData()
         
         locationManager = CLLocationManager()
@@ -186,6 +192,23 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
             //User is in! Here is where we code after signing in
             
         }
+    }
+    
+    // MARK: - pull to refresh
+    @objc func refresh(sender:AnyObject) {
+        // Code to refresh table view
+        self.cleanUpData()
+        
+        self.getData()
+    }
+    
+    func cleanUpData() {
+        self.services.removeAll()
+        self.requests.removeAll()
+        self.ratings.removeAll()
+        self.postsLoadedTotal = 0
+        self.postsLoadedTemp = 0
+        self.loadedAllPosts = false
     }
 
 
@@ -442,6 +465,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
             
             DispatchQueue.main.async{
                 self.feedTableView.reloadData()
+                self.refreshControl.endRefreshing()
             }
         }
     }
@@ -563,6 +587,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         print(self.location?.coordinate.longitude)
         self.setLocation {
             print("did update location")
+            self.cleanUpData()
             self.getData()
         }
     }
@@ -579,11 +604,8 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
             return
         }
         
-        if(self.isClient!) {
-            self.services.removeAll()
-        } else {
-            self.requests.removeAll()
-        }
+
+        self.cleanUpData()
         
         self.getPostsKeys()
     }
