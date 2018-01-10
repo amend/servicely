@@ -77,6 +77,11 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // No need for semicolon
         
+        // clean up
+        self.services.removeAll()
+        self.requests.removeAll()
+        self.feedTableView.reloadData()
+        
         locationManager = CLLocationManager()
         self.isAuthorizedtoGetUserLocation()
         if CLLocationManager.locationServicesEnabled() {
@@ -225,7 +230,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         
         // TODO: make emtpy cell to show if table view loads cellers before callbacks
         // viewWillAppear populate services or requests arrays
-        let cell = tableView.dequeueReusableCell(withIdentifier: "emptyCell", for: indexPath) as! ServiceOfferTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "emptyCell", for: indexPath) as! UITableViewCell
         return cell
     }
     
@@ -338,6 +343,10 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         }
         
         var postsLoaded:Int = 0
+        
+        if(!(self.isClient!)) {
+            print("logged in as a service provider")
+        }
         
         let ref = Database.database().reference()
         ref.child(fdbQueryType).child(self.keys[index]).observeSingleEvent(of: .value, with: { snapshot in

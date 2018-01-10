@@ -46,9 +46,12 @@
 		9083B3A41F86D5B20079E309 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9083B3A21F86D5B20079E309 /* LaunchScreen.storyboard */; };
 		908CD2A91FE89F3500372C29 /* ChatMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908CD2A81FE89F3500372C29 /* ChatMetadata.swift */; };
 		909C3B101FD9077200C0A207 /* CreateServiceOrRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909C3B0F1FD9077200C0A207 /* CreateServiceOrRequestViewController.swift */; };
-		90BDE641200425DB005488D8 /* servicelyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BDE640200425DB005488D8 /* servicelyUITests.swift */; };
+		90BDE641200425DB005488D8 /* loginSignupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BDE640200425DB005488D8 /* loginSignupUITests.swift */; };
 		90C96DC01FE4FC8C00A1E8BA /* DatabaseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C96DBF1FE4FC8C00A1E8BA /* DatabaseWrapper.swift */; };
+		90C982D72005A7AD0007FB6D /* createPostsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C982D62005A7AD0007FB6D /* createPostsUITests.swift */; };
+		90C982DA2005A8A70007FB6D /* feedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C982D92005A8A70007FB6D /* feedUITests.swift */; };
 		90CA841A1F995EFA00EDB7AC /* ServicelyLogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CA84191F995EFA00EDB7AC /* ServicelyLogoViewController.swift */; };
+		90F320282005B485002D1BFA /* messagingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F320272005B485002D1BFA /* messagingUITests.swift */; };
 		A48E045045EECE1353730BBE /* Pods_servicely.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7FB88E9762171D187BC2BAB /* Pods_servicely.framework */; };
 /* End PBXBuildFile section */
 
@@ -110,11 +113,14 @@
 		908CD2A81FE89F3500372C29 /* ChatMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMetadata.swift; sourceTree = "<group>"; };
 		909C3B0F1FD9077200C0A207 /* CreateServiceOrRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceOrRequestViewController.swift; sourceTree = "<group>"; };
 		90BDE63E200425DB005488D8 /* servicelyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = servicelyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		90BDE640200425DB005488D8 /* servicelyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = servicelyUITests.swift; sourceTree = "<group>"; };
+		90BDE640200425DB005488D8 /* loginSignupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginSignupUITests.swift; sourceTree = "<group>"; };
 		90BDE642200425DB005488D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90C96DBF1FE4FC8C00A1E8BA /* DatabaseWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseWrapper.swift; sourceTree = "<group>"; };
+		90C982D62005A7AD0007FB6D /* createPostsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createPostsUITests.swift; sourceTree = "<group>"; };
+		90C982D92005A8A70007FB6D /* feedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = feedUITests.swift; sourceTree = "<group>"; };
 		90CA84191F995EFA00EDB7AC /* ServicelyLogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicelyLogoViewController.swift; sourceTree = "<group>"; };
 		90CF54532002B25F00FBCA8A /* servicely.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = servicely.entitlements; sourceTree = "<group>"; };
+		90F320272005B485002D1BFA /* messagingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = messagingUITests.swift; sourceTree = "<group>"; };
 		F7FB88E9762171D187BC2BAB /* Pods_servicely.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_servicely.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -238,10 +244,45 @@
 		90BDE63F200425DB005488D8 /* servicelyUITests */ = {
 			isa = PBXGroup;
 			children = (
-				90BDE640200425DB005488D8 /* servicelyUITests.swift */,
+				90F320262005B458002D1BFA /* messagingUITests */,
+				90C982DB2005A94B0007FB6D /* loginSignupUITests */,
+				90C982D82005A8910007FB6D /* feedUITests */,
+				90C982D52005A7700007FB6D /* createPostsUITests */,
 				90BDE642200425DB005488D8 /* Info.plist */,
 			);
 			path = servicelyUITests;
+			sourceTree = "<group>";
+		};
+		90C982D52005A7700007FB6D /* createPostsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				90C982D62005A7AD0007FB6D /* createPostsUITests.swift */,
+			);
+			path = createPostsUITests;
+			sourceTree = "<group>";
+		};
+		90C982D82005A8910007FB6D /* feedUITests */ = {
+			isa = PBXGroup;
+			children = (
+				90C982D92005A8A70007FB6D /* feedUITests.swift */,
+			);
+			path = feedUITests;
+			sourceTree = "<group>";
+		};
+		90C982DB2005A94B0007FB6D /* loginSignupUITests */ = {
+			isa = PBXGroup;
+			children = (
+				90BDE640200425DB005488D8 /* loginSignupUITests.swift */,
+			);
+			path = loginSignupUITests;
+			sourceTree = "<group>";
+		};
+		90F320262005B458002D1BFA /* messagingUITests */ = {
+			isa = PBXGroup;
+			children = (
+				90F320272005B485002D1BFA /* messagingUITests.swift */,
+			);
+			path = messagingUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -522,7 +563,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90BDE641200425DB005488D8 /* servicelyUITests.swift in Sources */,
+				90F320282005B485002D1BFA /* messagingUITests.swift in Sources */,
+				90BDE641200425DB005488D8 /* loginSignupUITests.swift in Sources */,
+				90C982D72005A7AD0007FB6D /* createPostsUITests.swift in Sources */,
+				90C982DA2005A8A70007FB6D /* feedUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

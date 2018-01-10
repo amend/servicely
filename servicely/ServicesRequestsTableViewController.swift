@@ -56,6 +56,12 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        // clean up
+        self.services.removeAll()
+        self.requests.removeAll()
+        self.tableView.reloadData()
+        
         locationManager = CLLocationManager()
         self.isAuthorizedtoGetUserLocation()
         if CLLocationManager.locationServicesEnabled() {
@@ -150,8 +156,16 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
                 cell.name?.text = request.userName
                 cell.price?.text = request.serviceDescription
                 cell.rating?.isHidden = true
+            } else {
+                return UITableViewCell()
             }
+        } else {
+            return UITableViewCell()
         }
+        
+        
+        
+        
         return cell
     }
     
