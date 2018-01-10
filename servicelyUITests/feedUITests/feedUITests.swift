@@ -71,6 +71,8 @@ class feedUITests: XCTestCase {
         tablesQuery.secureTextFields["Enter your password"].typeText("123456\r")
         tabBarsQuery.buttons["Feed"].tap()
         
+        XCUIApplication().tables.children(matching: .cell).element(boundBy: 0).staticTexts["C C"].waitForExistence(timeout: 10)
+        
         XCUIApplication().tables.children(matching: .cell).element(boundBy: 0).staticTexts["C C"].tap()
         
         XCTAssertTrue(app.staticTexts[randomString].exists)
@@ -130,6 +132,8 @@ class feedUITests: XCTestCase {
         tablesQuery.secureTextFields["Enter your password"].typeText("123456\r")
         tabBarsQuery.buttons["Feed"].tap()
         
+        
+        app.tables.children(matching: .cell).element(boundBy: 0).staticTexts["Test Inc"].waitForExistence(timeout: 10)
         
         app.tables.children(matching: .cell).element(boundBy: 0).staticTexts["Test Inc"].tap()
         
