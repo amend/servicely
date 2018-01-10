@@ -133,12 +133,34 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // No need for semicolon
         
-        // check if logged in
-        let userID = Auth.auth().currentUser?.uid
-        if(userID == nil) {
+        let db:DatabaseWrapper = DatabaseWrapper()
+        db.getCurrentUser() { (user) in
+            if(user == nil) {
+                // present service type view controller
+                //let vc = ServiceTypeViewController()
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "serviceTypeViewController")
+                self.present(vc!, animated: true, completion: nil)
+                return
+            } else {
+                self.user = user
+                if(self.user!["serviceType"] as! String == "client") {
+                    self.isClient = true
+                } else if(self.user!["serviceType"] as! String == "serviceProvider") {
+                    self.isClient = false
+                } else {
+                    // TODO: error handling here
+                }
+            }
+        
             self.checkLoggedIn()
-            //var userID = FIRAuth.auth()?.currentUser?.uid
-            return
+            
+            // check if logged in
+            let userID = Auth.auth().currentUser?.uid
+            if(userID == nil) {
+                self.checkLoggedIn()
+                //var userID = FIRAuth.auth()?.currentUser?.uid
+                return
+            }
         }
     }
     
@@ -378,6 +400,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         }
         
         let ref = Database.database().reference()
+    
         ref.child(fdbQueryType).child(self.keys[index]).observeSingleEvent(of: .value, with: { snapshot in
             print("snapshot children count:")
             print(snapshot.childrenCount)
