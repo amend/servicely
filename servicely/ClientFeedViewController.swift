@@ -263,6 +263,13 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
             }
         } else if (self.latitude == nil || self.longitude == nil) {
             LocationHelper.setLocation(location: self.location) { (cityAddress, lat, long) in
+                print("got location")
+                
+                self.cityAddress = cityAddress
+                self.latitude = lat
+                self.longitude = long
+                
+                print("set location")
                 
                 self.getData()
             }

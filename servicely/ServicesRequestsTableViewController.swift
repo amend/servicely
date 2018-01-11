@@ -14,8 +14,7 @@ import GeoFire
 class ServicesRequestsTableViewController: UITableViewController, CLLocationManagerDelegate {
 
     var category:String = ""
-    var client:Bool = false
-    
+
     var services = [ServiceOffer]()
     var requests = [ClientRequest]()
     var ratings = [String:Double]()
@@ -71,35 +70,50 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
         
         let db:DatabaseWrapper = DatabaseWrapper()
         
-        self.isClient = !self.client
-        
-        // there's probably a better way to get ratings for users, so think of one
-        // and delete this
-        db.getUsers() { (snapshot) in
-            print(snapshot.childrenCount)
-            for rest in snapshot.children.allObjects as! [DataSnapshot] {
-                if let dict = rest.value as? NSDictionary {
-                    let rating = dict["rating"] as? Double ?? -1
-                    //let userID = dict["userID"] as? String ?? ""
-                    
-                    self.ratings[rest.key] = rating
-                } else {
-                    print("could not convert snaptshot to dictionary")
+        db.getCurrentUser() {
+            (user) in
+
+            if(user == nil) {
+                // TODO: throw exception that use is nil after db.getCurrentUser
+                print("user is nil in ServicesRequestsTableViewController")
+            }
+            
+            if(user?["serviceType"] as! String == "client") {
+                self.isClient = true
+                self.title = "Services"
+            } else if(user?["serviceType"] as! String == "serviceProvider") {
+                self.isClient = false
+                self.title = "Requests"
+            }
+            
+            
+            // there's probably a better way to get ratings for users, so think of one
+            // and delete this
+            db.getUsers() { (snapshot) in
+                print(snapshot.childrenCount)
+                for rest in snapshot.children.allObjects as! [DataSnapshot] {
+                    if let dict = rest.value as? NSDictionary {
+                        let rating = dict["rating"] as? Double ?? -1
+                        //let userID = dict["userID"] as? String ?? ""
+                        
+                        self.ratings[rest.key] = rating
+                    } else {
+                        print("could not convert snaptshot to dictionary")
+                    }
                 }
-            }
-            
-            if(self.client) {
-                self.requests.removeAll()
-            } else {
-                self.services.removeAll()
-            }
-            
-            if CLLocationManager.locationServicesEnabled() {
-                print("requesting location")
-                self.locationManager.requestLocation();
-                print("done requesting locatin")
-            } else {
-                print("location services not enabled, ask user to enable")
+                
+                if(self.isClient!) {
+                    self.requests.removeAll()
+                } else {
+                    self.services.removeAll()
+                }
+                
+                if CLLocationManager.locationServicesEnabled() {
+                    print("requesting location")
+                    self.locationManager.requestLocation();
+                } else {
+                    print("location services not enabled, ask user to enable")
+                }
             }
         }
     }
@@ -118,7 +132,12 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if (client == false) {
+        
+        if(self.isClient == nil) {
+            return 0
+        }
+        
+        if (self.isClient!) {
             return services.count
         } else {
             return requests.count
@@ -128,9 +147,13 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoriesServiceCell", for: indexPath) as! CategoriesServiceTableViewCell
         
+        if(self.isClient == nil) {
+            return UITableViewCell()
+        }
+        
         if(ratings.count > 0 ) {
         
-            if(self.client == false && services.count > 0) {
+            if(self.isClient! && services.count > 0) {
                 let service = services[indexPath.row]
                 let colorScheme = ColorScheme.getColorScheme()
                 cell.name?.text = service.companyName
@@ -390,83 +413,17 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
         }
     }
     
-    func setLocation(completion: @escaping ()->()) {
-        print("in setLocation")
-        
-        print("going to use location")
-        // Get user's current location name and info (city)
-        let geocoder = CLGeocoder()
-        geocoder.reverseGeocodeLocation(self.locationManager.location!) { (placemarksArray, error) in
-            print("convertion to city location")
-            if (placemarksArray?.count)! > 0 {
-                let placemark = placemarksArray?.first
-                let city:String? = placemark?.locality
-                let country:String? = placemark?.country
-                let postalCode:String? = placemark?.postalCode
-                let state:String? = placemark?.administrativeArea
-                
-                print("got city: " + city! + " country: " + country! + " postal code: " + postalCode! + " state: " + state!)
-                
-                self.city = city
-                self.state = state
-                self.country = country
-                self.postalCode = postalCode
-                
-                // let address = "1 Infinite Loop, Cupertino, CA 95014"
-                let address = city! + " " + state! + " " + country! + " " + postalCode!
-                
-                self.cityAddress = address
-                
-                let geoCoder = CLGeocoder()
-                geoCoder.geocodeAddressString(address) { (placemarks, error) in
-                    guard
-                        let placemarks = placemarks,
-                        let location = placemarks.first?.location,
-                        let lat:Double =  location.coordinate.latitude,
-                        let long:Double = location.coordinate.longitude
-                        else {
-                            // handle no location found
-                            print("could not convert address to lat and long")
-                            return
-                    }
-                    
-                    // Use location
-                    print("lat: " + String(lat))
-                    print("long: " + String(long))
-                    
-                    self.latitude = lat
-                    self.longitude = long
-                    
-                    var addr:String = ""
-                    if(self.city != nil) {
-                        addr += self.city!
-                    }
-                    if(self.state != nil){
-                        addr += " " + self.state!
-                    }
-                    if(self.country != nil) {
-                        addr += " " + self.country!
-                    }
-                    if(self.postalCode != nil) {
-                        addr += " " + self.postalCode!
-                    }
-                    
-                    print("*** users address: " + addr)
-                    print("*** users lat long: " + String(describing: self.latitude) + " " + String(describing: self.longitude))
-                    
-                    // after we have coors, geofire and firebase db queries to populate
-                    // the feed
-                    print("got location")
-                    completion()
-                }
-            }
-            print("exiting setLocation")
-        }
-    }
-    
     func locationManager(_: CLLocationManager, didUpdateLocations: [CLLocation]) {
-        self.setLocation {
+       
+        self.location = didUpdateLocations.last
+        
+        LocationHelper.setLocation(location: location) { (cityAddress:String?, lat:Double?, long:Double?) in
             print("did update location")
+            
+            self.cityAddress = cityAddress!
+            self.latitude = lat!
+            self.longitude = long!
+            
             self.getPostsKeys()
         }
     }
@@ -518,7 +475,7 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "viewService" {
-            if(self.client == false) {
+            if(self.isClient!) {
                 let vc:ViewServiceViewController = segue.destination as! ViewServiceViewController
             
                 let indexPath = self.tableView.indexPathForSelectedRow?.row
