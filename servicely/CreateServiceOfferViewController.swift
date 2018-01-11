@@ -209,99 +209,17 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
         }
     }
     
-    func setLocation(completion: @escaping ()->()) {
-        print("in setLocation")
-        
-        print("going to use location")
-        // Get user's current location name and info (city)
-        let geocoder = CLGeocoder()
-        
-        if(self.location == nil) {
-            print("didUpdateLocation did not assign self.locatoin")
-            if CLLocationManager.locationServicesEnabled() {
-                print("requesting location")
-                self.locationManager.requestLocation();
-                print("done requesting locatin")
-            } else {
-                print("location services not enabled, ask user to enable")
-            }
-            return
-        }
-        
-        geocoder.reverseGeocodeLocation(self.location!) { (placemarksArray, error) in
-            print("convertion to city location")
-            if (placemarksArray?.count)! > 0 {
-                let placemark = placemarksArray?.first
-                let city:String? = placemark?.locality
-                let country:String? = placemark?.country
-                let postalCode:String? = placemark?.postalCode
-                let state:String? = placemark?.administrativeArea
-                
-                print("got city: " + city! + " country: " + country! + " postal code: " + postalCode! + " state: " + state!)
-                
-                self.city = city
-                self.state = state
-                self.country = country
-                self.postalCode = postalCode
-                
-                // let address = "1 Infinite Loop, Cupertino, CA 95014"
-                let address = city! + " " + state! + " " + country! + " " + postalCode!
-                
-                self.cityAddress = address
-                
-                let geoCoder = CLGeocoder()
-                geoCoder.geocodeAddressString(address) { (placemarks, error) in
-                    guard
-                        let placemarks = placemarks,
-                        let location = placemarks.first?.location,
-                        let lat:Double =  location.coordinate.latitude,
-                        let long:Double = location.coordinate.longitude
-                        else {
-                            // handle no location found
-                            print("could not convert address to lat and long")
-                            return
-                    }
-                    
-                    // Use location
-                    print("lat: " + String(lat))
-                    print("long: " + String(long))
-                    
-                    self.latitude = lat
-                    self.longitude = long
-                    
-                    var addr:String = ""
-                    if(self.city != nil) {
-                        addr += self.city!
-                    }
-                    if(self.state != nil){
-                        addr += " " + self.state!
-                    }
-                    if(self.country != nil) {
-                        addr += " " + self.country!
-                    }
-                    if(self.postalCode != nil) {
-                        addr += " " + self.postalCode!
-                    }
-                    
-                    print("*** users address: " + addr)
-                    print("*** users lat long: " + String(describing: self.latitude) + " " + String(describing: self.longitude))
-                    
-                    self.addressLabel.text = addr
-                    self.savedLabel.text = ""
-                    
-                    print("got location")
-                    completion()
-                }
-            }
-            print("exiting setLocation")
-        }
-    }
-    
     func locationManager(_: CLLocationManager, didUpdateLocations: [CLLocation]) {
         self.location = didUpdateLocations.last
-        self.setLocation {
+        LocationHelper.setLocation(location: self.location) { (cityAddress, lat, long) in
             print("did update location")
+            self.cityAddress = cityAddress
+            self.latitude = lat
+            self.longitude = long
             self.updatedLocation = true
+            
+            self.savedLabel.text = ""
+            self.addressLabel.text = self.cityAddress
         }
     }
     
