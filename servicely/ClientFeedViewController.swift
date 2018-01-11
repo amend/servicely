@@ -16,7 +16,6 @@ import FirebaseFacebookAuthUI
 import CoreLocation
 import GeoFire
 
-
 class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
     let feedTableViewController:UITableViewController = UITableViewController()
@@ -78,8 +77,6 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         
         self.title = "Feed"
         
-        checkLoggedIn()
-        
         // clean up
         self.cleanUpData()
         self.feedTableView.reloadData()
@@ -96,29 +93,45 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         self.postsLoadedTemp = 0
         self.loadedAllPosts = false
         
-        let db:DatabaseWrapper = DatabaseWrapper()
-        db.getCurrentUser() { (user) in
-            if(user == nil) {
-                // present service type view controller
-                //let vc = ServiceTypeViewController()
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "serviceTypeViewController")
-                self.present(vc!, animated: true, completion: nil)
-                return
-            } else {
-                self.user = user
-                
-                if((user?["serviceType"] as! String) == "client") {
-                    self.isClient = true
-                } else if((user?["serviceType"] as! String) == "serviceProvider") {
-                    self.isClient = false
-                }
-                
-                if CLLocationManager.locationServicesEnabled() {
-                    print("requesting location")
-                    self.locationManager.requestLocation();
-                    print("done requesting locatin")
+        
+        checkLoggedIn() {
+            
+            let db:DatabaseWrapper = DatabaseWrapper()
+            db.getCurrentUser() { (user) in
+                if(user == nil) {
+                    
+                    // TODO: this happens bc we're using FirebaseUI for log in
+                    // and viewDidLoad continues to execute after we present the
+                    // firebaseUI login. the below is a temp fix.
+                    // TODO: make custom login view controllers
+                    let u = Auth.auth().currentUser?.uid
+                    if(u == nil) {
+                        print("no user logged in from Auth, returning from viewWillLoad")
+                        return
+                    }
+
+                    
+                    // present service type view controller
+                    //let vc = ServiceTypeViewController()
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "serviceTypeViewController")
+                    self.present(vc!, animated: true, completion: nil)
+                    return
                 } else {
-                    print("location services not enabled, ask user to enable")
+                    self.user = user
+                    
+                    if((user?["serviceType"] as! String) == "client") {
+                        self.isClient = true
+                    } else if((user?["serviceType"] as! String) == "serviceProvider") {
+                        self.isClient = false
+                    }
+                    
+                    if(LocationHelper.isLocationEnabled()) {
+                        self.locationManager.requestLocation()
+                    } else {
+                        // display alert view that location must be enabled
+                        // for the app to get posts
+                        return
+                    }
                 }
             }
         }
@@ -133,51 +146,62 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // No need for semicolon
         
-        let db:DatabaseWrapper = DatabaseWrapper()
-        db.getCurrentUser() { (user) in
-            if(user == nil) {
-                // present service type view controller
-                //let vc = ServiceTypeViewController()
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "serviceTypeViewController")
-                self.present(vc!, animated: true, completion: nil)
-                return
-            } else {
-                self.user = user
-                if(self.user!["serviceType"] as! String == "client") {
-                    self.isClient = true
-                } else if(self.user!["serviceType"] as! String == "serviceProvider") {
-                    self.isClient = false
-                } else {
-                    // TODO: error handling here
-                }
-            }
-        
-            self.checkLoggedIn()
+        checkLoggedIn() {
             
-            // check if logged in
-            let userID = Auth.auth().currentUser?.uid
-            if(userID == nil) {
-                self.checkLoggedIn()
-                //var userID = FIRAuth.auth()?.currentUser?.uid
-                return
+            let db:DatabaseWrapper = DatabaseWrapper()
+            db.getCurrentUser() { (user) in
+                if(user == nil) {
+                    // present service type view controller
+                    //let vc = ServiceTypeViewController()
+                    
+                    // TODO: this happens bc we're using FirebaseUI for log in
+                    // and viewDidLoad continues to execute after we present the
+                    // firebaseUI login. the below is a temp fix.
+                    // TODO: make custom login view controllers
+                    let u = Auth.auth().currentUser?.uid
+                    if(u == nil) {
+                        print("no user logged in from Auth, returning from viewWillLoad")
+                        return
+                    }
+                    
+                    
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "serviceTypeViewController")
+                    self.present(vc!, animated: true, completion: nil)
+                    return
+                } else {
+                    self.user = user
+                    if(self.user!["serviceType"] as! String == "client") {
+                        self.isClient = true
+                    } else if(self.user!["serviceType"] as! String == "serviceProvider") {
+                        self.isClient = false
+                    } else {
+                        // TODO: error handling here
+                    }
+                }
             }
         }
     }
     
     // MARK: - Firebase auth
     
-    func checkLoggedIn() {
+    func checkLoggedIn(completion: @escaping ()->()) {
         Auth.auth().addStateDidChangeListener { auth, user in
             if user != nil {
                 // User is signed in.
+                print("user is signed in")
+                completion()
             } else {
                 // No user is signed in.
-                self.login()
+                print("user is not signed in")
+                self.login() {
+                    print("back from login() callback")
+                    completion()
+                }
             }
         }
     }
     
-    func login() {
+    func login(completion: @escaping ()->()) {
         // let authUI = FUIAuth.authUI()
         let authUI = FUIAuth.defaultAuthUI()
         
@@ -199,7 +223,11 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         
         let authViewController = authUI?.authViewController()
         
-        self.present(authViewController!, animated: true, completion: nil)
+        self.present(authViewController!, animated: true, completion: {
+            print("finished presenting authViewController")
+            completion()
+        })
+        
     }
     
     func authPickerViewController(for authUI: FUIAuth) -> FUIAuthPickerViewController {
@@ -209,7 +237,9 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
     func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
         if error != nil {
             //Problem signing in
-            self.login()
+            self.login() {
+                
+            }
         }else {
             //User is in! Here is where we code after signing in
             
@@ -217,11 +247,27 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
     }
     
     // MARK: - pull to refresh
+    
     @objc func refresh(sender:AnyObject) {
         // Code to refresh table view
         self.cleanUpData()
         
-        self.getData()
+        if(self.location == nil) {
+            if(LocationHelper.isLocationEnabled()) {
+                self.locationManager.requestLocation()
+                return
+            } else {
+                // TODO: display alert view that location must be enabled
+                // for the app to get posts
+                return
+            }
+        } else if (self.latitude == nil || self.longitude == nil) {
+            self.setLocation {
+                self.getData()
+            }
+        } else {
+            self.getData()
+        }
     }
     
     func cleanUpData() {
@@ -436,17 +482,6 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
             // reload table view if this is last element
             print("keys: " + String(self.keys.count))
             
-            // sort by timestamp, most recent posts first
-            if(self.isClient)! {
-                self.services.sort {
-                    $0.timestamp > $1.timestamp
-                }
-            } else {
-                self.requests.sort {
-                    $0.timestamp > $1.timestamp
-                }
-            }
-            
             self.postsLoadedTemp += 1
             if(self.postsLoadedTemp == self.postsLoadedTotal) {
                 self.getRatingsReloadTableView()
@@ -483,6 +518,17 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
                     self.ratings[rest.key] = rating
                 } else {
                     print("could not convert snaptshot to dictionary")
+                }
+            }
+            
+            // sort by timestamp, most recent posts first
+            if(self.isClient)! {
+                self.services.sort {
+                    $0.timestamp > $1.timestamp
+                }
+            } else {
+                self.requests.sort {
+                    $0.timestamp > $1.timestamp
                 }
             }
             
@@ -523,19 +569,9 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         print("in setLocation")
         
         print("going to use location")
+        
         // Get user's current location name and info (city)
         let geocoder = CLGeocoder()
-        if(self.location == nil) {
-            print("didUpdateLocation did not assign self.locatoin")
-            if CLLocationManager.locationServicesEnabled() {
-                print("requesting location")
-                self.locationManager.requestLocation();
-                print("done requesting locatin")
-            } else {
-                print("location services not enabled, ask user to enable")
-            }
-            return
-        }
         geocoder.reverseGeocodeLocation(self.location!) { (placemarksArray, error) in
             print("convertion to city location")
             if (placemarksArray?.count)! > 0 {
@@ -627,9 +663,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
             return
         }
         
-
         self.cleanUpData()
-        
         self.getPostsKeys()
     }
     
