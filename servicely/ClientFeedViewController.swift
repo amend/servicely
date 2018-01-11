@@ -128,7 +128,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
                     if(LocationHelper.isLocationEnabled()) {
                         self.locationManager.requestLocation()
                     } else {
-                        // display alert view that location must be enabled
+                        // TODO: display alert view that location must be enabled
                         // for the app to get posts
                         return
                     }
@@ -262,7 +262,8 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
                 return
             }
         } else if (self.latitude == nil || self.longitude == nil) {
-            self.setLocation {
+            LocationHelper.setLocation(location: self.location) { (cityAddress, lat, long) in
+                
                 self.getData()
             }
         } else {
@@ -565,6 +566,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         }
     }
     
+    /*
     func setLocation(completion: @escaping ()->()) {
         print("in setLocation")
         
@@ -639,13 +641,19 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
             print("exiting setLocation")
         }
     }
+    */
     
     func locationManager(_: CLLocationManager, didUpdateLocations: [CLLocation]) {
         self.location = didUpdateLocations.last
         print(self.location?.coordinate.latitude)
         print(self.location?.coordinate.longitude)
-        self.setLocation {
+        LocationHelper.setLocation(location: self.location) { (cityAddress, lat, long) in
             print("did update location")
+            
+            self.cityAddress = cityAddress
+            self.latitude = lat
+            self.longitude = long
+            
             self.cleanUpData()
             self.getData()
         }
