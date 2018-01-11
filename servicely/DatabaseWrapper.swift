@@ -24,6 +24,12 @@ class DatabaseWrapper {
     func getCurrentUser(completion: @escaping (_ user:NSDictionary?)->() ) {
         let userID = Auth.auth().currentUser?.uid
         
+        if(userID == nil) {
+            print("userID is nil from Auth in get current user")
+            completion(nil)
+            return
+        }
+        
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { snapshot in
             let user = snapshot.value as? NSDictionary
             
