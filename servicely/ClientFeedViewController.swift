@@ -22,10 +22,16 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
     
     @IBOutlet weak var feedTableView: UITableView!
     
+    var postsHelper:PostsHelper? = nil
+    
     // TODO: make services and requests atomic
     var services = [ServiceOffer]()
     var requests = [ClientRequest]()
     var ratings = [String: Double]()
+    // keys will contian keys returned by geofire query
+    // TODO: make keys atomic. update: seems to work fine for mass posts without being atomic. is something happening so that it's already thread-safe?
+    var keys:[String] = [String]()
+    
     var user:NSDictionary? = nil
     
     var isClient:Bool? = nil
@@ -35,10 +41,10 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         
     // location
     var locationManager: CLLocationManager!
-    var city:String? = nil
-    var state:String? = nil
-    var country:String? = nil
-    var postalCode:String? = nil
+    //var city:String? = nil
+    //var state:String? = nil
+    //var country:String? = nil
+    //var postalCode:String? = nil
     var cityAddress:String? = nil
     var latitude:Double? = nil
     var longitude:Double? = nil
@@ -47,13 +53,15 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
     
     // keys will contian keys returned by geofire query
     // TODO: make keys atomic. update: seems to work fine for mass posts without being atomic. is something happening so that it's already thread-safe?
-    var keys:[String] = [String]()
+    //var keys:[String] = [String]()
     
+    /*
     // pagination
     var postsPerBatch = 20
     var postsLoadedTotal = 0
     var postsLoadedTemp = 0
     var loadedAllPosts = false
+    */
     
     // pull to refresh
     var refreshControl: UIRefreshControl!
@@ -78,7 +86,13 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         
         // clean up
         self.cleanUpData()
-        self.feedTableView.reloadData()
+        /*
+        self.services.removeAll()
+        self.requests.removeAll()
+        self.ratings.removeAll()
+         */
+        
+        //self.feedTableView.reloadData()
         
         locationManager = CLLocationManager()
         self.isAuthorizedtoGetUserLocation()
@@ -92,10 +106,11 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         }
         
         // pagination
-        self.postsLoadedTotal = 0
-        self.postsLoadedTemp = 0
-        self.loadedAllPosts = false
+        //self.postsLoadedTotal = 0
+        //self.postsLoadedTemp = 0
+        //self.loadedAllPosts = false
         
+        //self.postsHelper = PostsHelper.init()
         
         checkLoggedIn() {
             
@@ -127,6 +142,8 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
                     } else if((user?["serviceType"] as! String) == "serviceProvider") {
                         self.isClient = false
                     }
+                    
+                    self.postsHelper = PostsHelper.init(isClient: self.isClient)
                     
                     if(LocationHelper.isLocationEnabled()) {
                         self.locationManager.requestLocation()
@@ -255,6 +272,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         // Code to refresh table view
         self.cleanUpData()
         
+        
         if(self.location == nil) {
             if(LocationHelper.isLocationEnabled()) {
                 self.locationManager.requestLocation()
@@ -274,13 +292,36 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
                 
                 print("set location")
                 
-                self.getData()
+                //self.getData()
+                self.postsHelper?.getData(self.latitude!, self.longitude!) { (services, requests, ratings, keys) in
+                    self.services = services
+                    self.requests = requests
+                    self.ratings = ratings
+                    self.keys = keys
+                    
+                    DispatchQueue.main.async{
+                        self.feedTableView.reloadData()
+                        self.refreshControl.endRefreshing()
+                    }
+                }
             }
         } else {
-            self.getData()
+            //self.getData()
+            self.postsHelper?.getData(self.latitude!, self.longitude!) { (services, requests, ratings, keys) in
+                self.services = services
+                self.requests = requests
+                self.ratings = ratings
+                self.keys = keys
+                
+                DispatchQueue.main.async{
+                    self.feedTableView.reloadData()
+                    self.refreshControl.endRefreshing()
+                }
+            }
         }
     }
     
+    /*
     func cleanUpData() {
         self.keys.removeAll()
         self.services.removeAll()
@@ -290,6 +331,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         self.postsLoadedTemp = 0
         self.loadedAllPosts = false
     }
+     */
 
 
     // MARK: - Table view data source
@@ -367,6 +409,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
     
     // MARK: - query data, populate table view
     
+    /*
     func getPostsKeys() {
         // check if client or proivder type flag has been set
         var queryType:String = ""
@@ -410,7 +453,9 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
             print("All initial data has been loaded and events have been fired!")
         })
     }
+     */
     
+    /*
     func paginate() {
         if(self.keys.count == 0) {
             print("no keys loaded from geofire query")
@@ -438,7 +483,9 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         
         self.postsLoadedTotal = endIndex + 1
     }
+    */
     
+    /*
     func getPost(key:String, index:Int, targetLoadCount:Int) {
         var fdbQueryType:String = ""
         if(self.isClient == nil) {
@@ -500,6 +547,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
             }
         })
     }
+     */
     
     // checks if user has reached last row to load more
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
@@ -511,11 +559,23 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
             dataArray = self.requests
         }
         if ((indexPath.row == (dataArray.count - 1)) && ((indexPath.row) != (self.keys.count - 1))) {
-            self.paginate()
+            //self.paginate() { (services, requests, ratings) in
+            self.postsHelper?.paginate(self.latitude!, self.longitude!) { (services, requests, ratings, keys) in
+                self.services = services
+                self.requests = requests
+                self.ratings = ratings
+                self.keys = keys
+                
+                DispatchQueue.main.async{
+                    // TODO: display activity idicator that feed is paginating
+                    self.feedTableView.reloadData()
+                    //self.refreshControl.endRefreshing()
+                }
+            }
         }
     }
     
-    
+    /*
     func getRatingsReloadTableView() {
         // there's probably a better way to get ratings for users, so think of one
         // and delete this
@@ -550,6 +610,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
             }
         }
     }
+     */
     
     // MARK: - location
 
@@ -588,8 +649,20 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
             self.latitude = lat
             self.longitude = long
             
-            self.cleanUpData()
-            self.getData()
+            //self.cleanUpData()
+            //self.getData()
+            
+            self.postsHelper?.getData(self.latitude!, self.longitude!) { (services, requests, ratings, keys) in
+                self.services = services
+                self.requests = requests
+                self.ratings = ratings
+                self.keys = keys
+                
+                DispatchQueue.main.async{
+                    self.feedTableView.reloadData()
+                    self.refreshControl.endRefreshing()
+                }
+            }
         }
     }
     
@@ -597,6 +670,14 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         print("location manager failed with error: " + error.localizedDescription)
     }
     
+    func cleanUpData() {
+        self.services.removeAll()
+        self.requests.removeAll()
+        self.ratings.removeAll()
+        self.keys.removeAll()
+    }
+    
+    /*
     func getData() {
         self.keys.removeAll()
         
@@ -608,6 +689,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         self.cleanUpData()
         self.getPostsKeys()
     }
+     */
     
     
     /*
