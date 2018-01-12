@@ -25,6 +25,7 @@ class DatabaseWrapper {
         let userID = Auth.auth().currentUser?.uid
         
         if(userID == nil) {
+            // TODO: throw exception if user is nil
             print("userID is nil from Auth in get current user")
             completion(nil)
             return
