@@ -52,9 +52,7 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+        
         
         // clean up
         self.services.removeAll()
@@ -66,16 +64,45 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        } else {
+            // TODO: display alert that approving locaiotn use is
+            // required for getting posts
+            print("location use not approved, cant get posts")
         }
+        
+        // so that cell selection remains selected when exiting
+        // and returning from categories
+        self.clearsSelectionOnViewWillAppear = false
+        
+        // pull to refresh
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: "Getting more posts...")
+        refreshControl?.addTarget(self, action: #selector(self.refresh(sender:)), for: UIControlEvents.valueChanged)
+        //feedTableView.addSubview(refreshControl) // not required when using UITableViewController
+        
+        // clean up
+        self.cleanUpData()
+        self.tableView.reloadData()
+
         
         let db:DatabaseWrapper = DatabaseWrapper()
         
         db.getCurrentUser() {
             (user) in
-
+            
             if(user == nil) {
                 // TODO: throw exception that use is nil after db.getCurrentUser
                 print("user is nil in ServicesRequestsTableViewController")
+                
+                // TODO: this happens bc we're using FirebaseUI for log in
+                // and viewDidLoad continues to execute after we present the
+                // firebaseUI login. the below is a temp fix.
+                // TODO: make custom login view controllers
+                let u = Auth.auth().currentUser?.uid
+                if(u == nil) {
+                    print("no user logged in from Auth, returning from viewWillLoad")
+                    return
+                }
             }
             
             if(user?["serviceType"] as! String == "client") {
@@ -102,18 +129,45 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
                     }
                 }
                 
-                if(self.isClient!) {
-                    self.requests.removeAll()
-                } else {
-                    self.services.removeAll()
-                }
-                
                 if CLLocationManager.locationServicesEnabled() {
                     print("requesting location")
                     self.locationManager.requestLocation();
                 } else {
+                    // TODO: display alert that approving locaiotn use is
+                    // required for getting posts
+                    print("location use not approved, cant get posts")
                     print("location services not enabled, ask user to enable")
                 }
+            }
+        }
+
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {        
+        locationManager = CLLocationManager()
+        self.isAuthorizedtoGetUserLocation()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        }
+        
+        let db:DatabaseWrapper = DatabaseWrapper()
+        
+        db.getCurrentUser() {
+            (user) in
+
+            if(user == nil) {
+                // TODO: throw exception that use is nil after db.getCurrentUser
+                print("user is nil in ServicesRequestsTableViewController")
+            }
+            
+            if(user?["serviceType"] as! String == "client") {
+                self.isClient = true
+                self.title = "Services"
+            } else if(user?["serviceType"] as! String == "serviceProvider") {
+                self.isClient = false
+                self.title = "Requests"
             }
         }
     }
@@ -190,6 +244,38 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
         
         
         return cell
+    }
+    
+    // MARK: - pull to refresh
+    
+    @objc func refresh(sender:AnyObject) {
+        // Code to refresh table view
+        self.cleanUpData()
+        
+        if(self.location == nil) {
+            if(LocationHelper.isLocationEnabled()) {
+                self.locationManager.requestLocation()
+                return
+            } else {
+                // TODO: display alert view that location must be enabled
+                // for the app to get posts
+                return
+            }
+        } else if (self.latitude == nil || self.longitude == nil) {
+            LocationHelper.setLocation(location: self.location) { (cityAddress, lat, long) in
+                print("got location")
+                
+                self.cityAddress = cityAddress
+                self.latitude = lat
+                self.longitude = long
+                
+                print("set location")
+                
+                self.getData()
+            }
+        } else {
+            self.getData()
+        }
     }
     
     // MARK: - populate table view data source arrays
@@ -383,6 +469,7 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
             DispatchQueue.main.async{
                 //self.feedTableView.reloadData()
                 self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
             }
         }
     }
@@ -424,12 +511,35 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
             self.latitude = lat!
             self.longitude = long!
             
-            self.getPostsKeys()
+            self.getData()
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("location manager failed!")
+    }
+    
+    // MARK: - helper functions
+    func cleanUpData() {
+        self.keys.removeAll()
+        self.services.removeAll()
+        self.requests.removeAll()
+        self.ratings.removeAll()
+        self.postsLoadedTotal = 0
+        self.postsLoadedTemp = 0
+        self.loadedAllPosts = false
+    }
+    
+    func getData() {
+        self.keys.removeAll()
+        
+        if(self.isClient == nil) {
+            print("isClient is nil in getData")
+            return
+        }
+        
+        self.cleanUpData()
+        self.getPostsKeys()
     }
 
     /*
