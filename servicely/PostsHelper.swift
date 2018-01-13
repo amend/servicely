@@ -39,7 +39,7 @@ class PostsHelper {
         self.isClient = isClient
     }
     
-    func getData(latitude: latitude, longitude:longitude,  completion: @escaping (_ services:[ServiceOffer],_ requests:[ClientRequest],_ ratings:[String: Double],_ keys:[String])->()) {
+    func getData(latitude:Double, longitude:Double,  completion: @escaping (_ services:[ServiceOffer],_ requests:[ClientRequest],_ ratings:[String: Double],_ keys:[String])->()) {
         self.keys.removeAll()
         
         self.latitude = latitude
@@ -96,7 +96,7 @@ class PostsHelper {
         circleQuery?.observeReady({
             circleQuery?.removeObserver(withFirebaseHandle: queryHandle!)
             
-            self.paginate(self.latitude!, self.longitude!) { (services, requests, ratings, keys) in
+            self.paginate(latitude: self.latitude!, longitude: self.longitude!) { (services, requests, ratings, keys) in
                 completion(services, requests, ratings)
             }
             
@@ -106,7 +106,7 @@ class PostsHelper {
     
     
     
-    func paginate(latitude: latitude, longitude:longitude, completion: @escaping (_ services:[ServiceOffer],_ requests:[ClientRequest],_ ratings:[String: Double],_ keys:[String])->()) {
+    func paginate(latitude:Double, longitude:Double, completion: @escaping (_ services:[ServiceOffer],_ requests:[ClientRequest],_ ratings:[String: Double],_ keys:[String])->()) {
         if(self.keys.count == 0) {
             print("no keys loaded from geofire query")
             return
@@ -127,8 +127,6 @@ class PostsHelper {
             endIndex = self.postsLoadedTotal + self.postsPerBatch - 1
         }
         
-        self.postsLoadedTotal = endIndex + 1
-        
         for i in self.postsLoadedTotal...endIndex {
             getPost(key: self.keys[i], index:i) { (shouldReloadData) in
                 if(shouldReloadData) {
@@ -147,6 +145,7 @@ class PostsHelper {
                 }
             }
         }
+        self.postsLoadedTotal = endIndex + 1
     }
 
 

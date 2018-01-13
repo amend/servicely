@@ -293,7 +293,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
                 print("set location")
                 
                 //self.getData()
-                self.postsHelper?.getData(self.latitude!, self.longitude!) { (services, requests, ratings, keys) in
+                self.postsHelper?.getData(latitude: self.latitude!, longitude: self.longitude!) { (services, requests, ratings, keys) in
                     self.services = services
                     self.requests = requests
                     self.ratings = ratings
@@ -307,7 +307,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
             }
         } else {
             //self.getData()
-            self.postsHelper?.getData(self.latitude!, self.longitude!) { (services, requests, ratings, keys) in
+            self.postsHelper?.getData(latitude: self.latitude!, longitude: self.longitude!) { (services, requests, ratings, keys) in
                 self.services = services
                 self.requests = requests
                 self.ratings = ratings
@@ -560,7 +560,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
         }
         if ((indexPath.row == (dataArray.count - 1)) && ((indexPath.row) != (self.keys.count - 1))) {
             //self.paginate() { (services, requests, ratings) in
-            self.postsHelper?.paginate(self.latitude!, self.longitude!) { (services, requests, ratings, keys) in
+            self.postsHelper?.paginate(latitude: self.latitude!, longitude: self.longitude!) { (services, requests, ratings, keys) in
                 self.services = services
                 self.requests = requests
                 self.ratings = ratings
@@ -652,7 +652,7 @@ class ClientFeedViewController: UIViewController, AuthUIDelegate, UITableViewDel
             //self.cleanUpData()
             //self.getData()
             
-            self.postsHelper?.getData(self.latitude!, self.longitude!) { (services, requests, ratings, keys) in
+            self.postsHelper?.getData(latitude: self.latitude!, longitude: self.longitude!) { (services, requests, ratings, keys) in
                 self.services = services
                 self.requests = requests
                 self.ratings = ratings
