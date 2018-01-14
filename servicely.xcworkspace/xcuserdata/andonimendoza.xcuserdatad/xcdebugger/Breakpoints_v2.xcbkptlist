@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "servicely/ServicesRequestsTableViewController.swift"
-            timestampString = "537656453.524438"
+            timestampString = "537657619.689406"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "256"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "servicely/ClientFeedViewController.swift"
-            timestampString = "537656453.5248621"
+            timestampString = "537657619.6897531"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "servicely/ClientFeedViewController.swift"
-            timestampString = "537656453.525123"
+            timestampString = "537657619.689929"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "170"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "servicely/ServicesRequestsTableViewController.swift"
-            timestampString = "537656453.525177"
+            timestampString = "537657619.689974"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "291"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "servicely/ServicesRequestsTableViewController.swift"
-            timestampString = "537656453.5252301"
+            timestampString = "537657619.690024"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "290"
@@ -90,7 +90,7 @@
                   moduleName = "servicely"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andonimendoza/Development/ios-class/servicely/servicely/ServicesRequestsTableViewController.swift"
-                  timestampString = "537656453.930621"
+                  timestampString = "537657619.899891"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "290"
@@ -105,7 +105,7 @@
                   moduleName = "servicely"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andonimendoza/Development/ios-class/servicely/servicely/ServicesRequestsTableViewController.swift"
-                  timestampString = "537656453.934136"
+                  timestampString = "537657619.9034539"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "291"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "servicely/ServicesRequestsTableViewController.swift"
-            timestampString = "537656453.525292"
+            timestampString = "537657619.690073"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "277"
@@ -138,7 +138,7 @@
                   moduleName = "servicely"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andonimendoza/Development/ios-class/servicely/servicely/ServicesRequestsTableViewController.swift"
-                  timestampString = "537656453.940841"
+                  timestampString = "537657619.910259"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "277"
@@ -153,7 +153,7 @@
                   moduleName = "servicely"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/andonimendoza/Development/ios-class/servicely/servicely/ServicesRequestsTableViewController.swift"
-                  timestampString = "537656453.943469"
+                  timestampString = "537657619.912981"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "278"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "servicely/ServicesRequestsTableViewController.swift"
-            timestampString = "537656453.52536"
+            timestampString = "537657619.69012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "278"
@@ -182,11 +182,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "servicely/PostsHelper.swift"
-            timestampString = "537656453.525439"
+            timestampString = "537657619.690172"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "48"
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "servicely/ServicesRequestsTableViewController.swift"
-            timestampString = "537656453.52669"
+            timestampString = "537657619.690681"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
@@ -295,7 +295,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "servicely/CategoriesTableViewController.swift"
-            timestampString = "537656453.5267611"
+            timestampString = "537657619.690739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "108"
@@ -311,12 +311,139 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "servicely/PostsHelper.swift"
-            timestampString = "537656453.527017"
+            timestampString = "537657619.69093"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "326"
-            endingLineNumber = "326"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
             landmarkName = "getRatingsReloadTableView(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "servicely/PostsHelper.swift"
+            timestampString = "537657619.691159"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "getData(latitude:longitude:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "servicely/PostsHelper.swift"
+            timestampString = "537657619.691471"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "getPostsKeys(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "servicely/PostsHelper.swift"
+            timestampString = "537657619.6916831"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "getPostsKeys(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "servicely.PostsHelper.getPostsKeys(completion: (Swift.Array&lt;servicely.ServiceOffer&gt;, Swift.Array&lt;servicely.ClientRequest&gt;, Swift.Dictionary&lt;Swift.String, Swift.Double&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "servicely"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andonimendoza/Development/ios-class/servicely/servicely/PostsHelper.swift"
+                  timestampString = "537656986.126377"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "2291">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.ImplicitlyUnwrappedOptional&lt;Swift.String&gt;, Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.CLLocation&gt;) -&gt; () in servicely.PostsHelper.getPostsKeys(completion: (Swift.Array&lt;servicely.ServiceOffer&gt;, Swift.Array&lt;servicely.ClientRequest&gt;, Swift.Dictionary&lt;Swift.String, Swift.Double&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "servicely"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andonimendoza/Development/ios-class/servicely/servicely/PostsHelper.swift"
+                  timestampString = "537656986.128384"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "55">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in servicely.PostsHelper.getPostsKeys(completion: (Swift.Array&lt;servicely.ServiceOffer&gt;, Swift.Array&lt;servicely.ClientRequest&gt;, Swift.Dictionary&lt;Swift.String, Swift.Double&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "servicely"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andonimendoza/Development/ios-class/servicely/servicely/PostsHelper.swift"
+                  timestampString = "537656986.130368"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "39">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "servicely/PostsHelper.swift"
+            timestampString = "537657619.691892"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "getPostsKeys(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "servicely/PostsHelper.swift"
+            timestampString = "537657619.692106"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "getPostsKeys(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
