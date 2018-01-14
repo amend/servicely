@@ -34,9 +34,14 @@ class PostsHelper {
     var latitude:Double? = nil
     var longitude:Double? = nil
     
+    var category:String = ""
     
     init(isClient:Bool?) {
         self.isClient = isClient
+    }
+    
+    func setCategory(category:String) {
+        self.category = category
     }
     
     func getData(latitude:Double, longitude:Double,  completion: @escaping (_ services:[ServiceOffer],_ requests:[ClientRequest],_ ratings:[String: Double],_ keys:[String])->()) {
@@ -95,6 +100,8 @@ class PostsHelper {
         // get objects from firebasedb after geofire collects all keys
         circleQuery?.observeReady({
             circleQuery?.removeObserver(withFirebaseHandle: queryHandle!)
+            
+            self.keys.reverse()
             
             self.paginate(latitude: self.latitude!, longitude: self.longitude!) { (services, requests, ratings, keys) in
                 completion(services, requests, ratings)
@@ -168,53 +175,134 @@ class PostsHelper {
             print("logged in as a service provider")
         }
         
-        let ref = Database.database().reference()
+        var ref = Database.database().reference()
         
-        ref.child(fdbQueryType).child(self.keys[index]).observeSingleEvent(of: .value, with: { snapshot in
-            print("snapshot children count:")
-            print(snapshot.childrenCount)
-            
-            let dict = snapshot.value as? NSDictionary
-            
-            if(self.isClient!){
-                self.services.append(ServiceOffer.init(
-                    category: (dict!["category"] as? String)!,
-                    serviceDescription: (dict!["serviceDescription"] as? String)!,
-                    askingPrice: (dict!["askingPrice"] as? String)!,
-                    location: (dict!["location"] as? String)!,
-                    companyName: (dict!["companyName"] as? String)!,
-                    contactInfo: (dict!["contactInfo"] as? String)!,
-                    userID: (dict!["userID"] as? String)!,
-                    timestamp: (dict!["timestamp"] as? Double)!
-                    )
-                )
-            } else {
-                self.requests.append(ClientRequest.init(
-                    serviceDescription: dict!["requestDescription"] as! String,
-                    location: dict!["location"] as! String,
-                    userID: dict!["userID"] as! String,
-                    userName: dict!["userName"] as! String,
-                    category: dict!["category"] as! String,
-                    timestamp: dict!["timestamp"] as! Double
-                    )
-                )
+        if(category == "") {
+            ref.child(fdbQueryType).child(self.keys[index]).observeSingleEvent(of: .value, with: { snapshot in
+                print("snapshot children count:")
+                print(snapshot.childrenCount)
                 
-            }
-            print("added \(dict)")
-            
-            // reload table view if this is last element
-            print("keys: " + String(self.keys.count))
-            
-            self.postsLoadedTemp += 1
-            if(self.postsLoadedTemp == self.postsLoadedTotal) {
-                //self.getRatingsReloadTableView()
-                self.getRatingsReloadTableView() { (services, requests, ratings) in
-                    completion(true)
+                if(snapshot.childrenCount == 0) {
+                    self.keys.remove(at: index)
                 }
-            } else {
-                completion(false)
-            }
-        })
+                
+                let dict = snapshot.value as? NSDictionary
+                
+                if(self.isClient!){
+                    self.services.append(ServiceOffer.init(
+                        category: (dict!["category"] as? String)!,
+                        serviceDescription: (dict!["serviceDescription"] as? String)!,
+                        askingPrice: (dict!["askingPrice"] as? String)!,
+                        location: (dict!["location"] as? String)!,
+                        companyName: (dict!["companyName"] as? String)!,
+                        contactInfo: (dict!["contactInfo"] as? String)!,
+                        userID: (dict!["userID"] as? String)!,
+                        timestamp: (dict!["timestamp"] as? Double)!
+                        )
+                    )
+                } else {
+                    self.requests.append(ClientRequest.init(
+                        serviceDescription: dict!["requestDescription"] as! String,
+                        location: dict!["location"] as! String,
+                        userID: dict!["userID"] as! String,
+                        userName: dict!["userName"] as! String,
+                        category: dict!["category"] as! String,
+                        timestamp: dict!["timestamp"] as! Double
+                        )
+                    )
+                    
+                }
+                print("added \(dict)")
+                
+                // reload table view if this is last element
+                print("keys: " + String(self.keys.count))
+                /*
+                if(snapshot.childrenCount != 0) {
+                    self.postsLoadedTemp += 1
+                }
+                */
+                
+                self.postsLoadedTemp += 1
+                if(self.postsLoadedTemp == self.postsLoadedTotal) {
+                    //self.getRatingsReloadTableView()
+                    self.getRatingsReloadTableView() { (services, requests, ratings) in
+                        completion(true)
+                    }
+                } else {
+                    completion(false)
+                }
+            })
+        } else {
+            ref.child(fdbQueryType).queryOrdered(byChild: "category").queryEqual(toValue: self.category, childKey: self.keys[index]).observeSingleEvent(of: .value, with: { snapshot in
+                print("snapshot children count:")
+                print(snapshot.childrenCount)
+                
+                print("keys index: " + String(index))
+                
+                if(snapshot.childrenCount == 0) {
+                    self.keys.remove(at: index)
+                    completion(false)
+                    return
+                }
+                
+                let temp = snapshot.value as? NSDictionary
+                
+                if(temp == nil) {
+                    completion(false)
+                    return
+                }
+                
+                let temp2 = temp![temp?.allKeys.first] as! NSDictionary
+                var dict:NSDictionary? = nil
+                dict = temp2
+                
+                if(self.isClient!){
+                    self.services.append(ServiceOffer.init(
+                        category: (dict!["category"] as? String)!,
+                        serviceDescription: (dict!["serviceDescription"] as? String)!,
+                        askingPrice: (dict!["askingPrice"] as? String)!,
+                        location: (dict!["location"] as? String)!,
+                        companyName: (dict!["companyName"] as? String)!,
+                        contactInfo: (dict!["contactInfo"] as? String)!,
+                        userID: (dict!["userID"] as? String)!,
+                        timestamp: (dict!["timestamp"] as? Double)!
+                        )
+                    )
+                } else {
+                    self.requests.append(ClientRequest.init(
+                        serviceDescription: dict!["requestDescription"] as! String,
+                        location: dict!["location"] as! String,
+                        userID: dict!["userID"] as! String,
+                        userName: dict!["userName"] as! String,
+                        category: dict!["category"] as! String,
+                        timestamp: dict!["timestamp"] as! Double
+                        )
+                    )
+                    
+                }
+                print("added \(dict)")
+                
+                // reload table view if this is last element
+                print("keys: " + String(self.keys.count))
+                
+                /*
+                if(snapshot.childrenCount != 0) {
+                    self.postsLoadedTemp += 1
+                }
+                */
+                
+                self.postsLoadedTemp += 1
+                if(self.postsLoadedTemp == self.postsLoadedTotal) {
+                    //self.getRatingsReloadTableView()
+                    self.getRatingsReloadTableView() { (services, requests, ratings) in
+                        completion(true)
+                    }
+                } else {
+                    completion(false)
+                }
+            })
+            
+        }
     }
     
     func getRatingsReloadTableView(completion: @escaping (_ services:[ServiceOffer],_ requests:[ClientRequest],_ ratings:[String: Double])->()) {
