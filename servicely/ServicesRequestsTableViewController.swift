@@ -13,11 +13,16 @@ import GeoFire
 
 class ServicesRequestsTableViewController: UITableViewController, CLLocationManagerDelegate {
 
+    var postsHelper:PostsHelper? = nil
+    
     var category:String = ""
 
     var services = [ServiceOffer]()
     var requests = [ClientRequest]()
     var ratings = [String:Double]()
+    // keys will contian keys returned by geofire query
+    // TODO: make keys atomic. update: seems to work fine for mass posts without being atomic. is something happening so that it's already thread-safe?
+    var keys:[String] = [String]()
     
     // data for arrays
     var isClient:Bool? = nil
@@ -28,16 +33,12 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
     var postsLoadedTemp = 0
     var loadedAllPosts = false
     
-    // keys will contian keys returned by geofire query
-    // TODO: make keys atomic. update: seems to work fine for mass posts without being atomic. is something happening so that it's already thread-safe?
-    var keys:[String] = [String]()
-    
     // location
     var locationManager: CLLocationManager!
-    var city:String? = nil
-    var state:String? = nil
-    var country:String? = nil
-    var postalCode:String? = nil
+    //var city:String? = nil
+    //var state:String? = nil
+    //var country:String? = nil
+    //var postalCode:String? = nil
     var cityAddress:String? = nil
     var latitude:Double? = nil
     var longitude:Double? = nil
@@ -55,8 +56,7 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
         
         
         // clean up
-        self.services.removeAll()
-        self.requests.removeAll()
+        self.cleanUpData()
         self.tableView.reloadData()
         
         locationManager = CLLocationManager()
@@ -128,6 +128,9 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
                         print("could not convert snaptshot to dictionary")
                     }
                 }
+                
+                self.postsHelper = PostsHelper.init(isClient: self.isClient)
+                self.postsHelper?.setCategory(category: self.category)
                 
                 if CLLocationManager.locationServicesEnabled() {
                     print("requesting location")
@@ -271,169 +274,31 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
                 
                 print("set location")
                 
-                self.getData()
-            }
-        } else {
-            self.getData()
-        }
-    }
-    
-    // MARK: - populate table view data source arrays
-    
-    func getPostsKeys() {
-        // check if client or proivder type flag has been set
-        var queryType:String = ""
-        if(self.isClient == nil) {
-            return
-        } else if((self.isClient!)) {
-            queryType = "location-serviceOffers"
-        } else if(!(self.isClient!)) {
-            queryType = "location-clientRequests"
-        } else {
-            print("could not get user's serviceType")
-            return
-        }
-        
-        // get geofire ref for service offers
-        let geoFireRef:DatabaseReference! = Database.database().reference().child(queryType)
-        let geoFire = GeoFire(firebaseRef: geoFireRef)
-        
-        let center = CLLocation(latitude: (self.latitude)!, longitude: (self.longitude)!)
-        // 10 kilometers
-        let defaults = UserDefaults.standard
-        var distMiles = defaults.integer(forKey: "distance")
-        if(distMiles == 0) {
-            distMiles = 10
-            defaults.set(10, forKey: "distance")
-        }
-        let distKilo = Double(distMiles) * 1.60934
-        var circleQuery = geoFire?.query(at: center, withRadius: distKilo)
-        
-        // handle query
-        var queryHandle = circleQuery?.observe(.keyEntered, with: { (key: String!, location: CLLocation!) in
-            print("Key '\(key)' entered the search area and is at location '\(location)'")
-            self.keys.append(key)
-        })
-        // get objects from firebasedb after geofire collects all keys
-        circleQuery?.observeReady({
-            circleQuery?.removeObserver(withFirebaseHandle: queryHandle!)
-            
-            self.paginate()
-            
-            print("All initial data has been loaded and events have been fired!")
-        })
-    }
-    
-    func paginate() {
-        if(self.keys.count == 0) {
-            print("no keys loaded from geofire query")
-            return
-        }
-        
-        if(loadedAllPosts) {
-            print("loaded all posts already, returning from pagination")
-            return
-        }
-        
-        var endIndex = 0
-        
-        // check if at end of posts
-        if((self.postsLoadedTotal + self.postsPerBatch) >= (self.keys.count)) {
-            endIndex = self.keys.count - 1
-            self.loadedAllPosts = true
-        } else {
-            endIndex = self.postsLoadedTotal + self.postsPerBatch - 1
-        }
-        
-        for i in self.postsLoadedTotal...endIndex {
-            getPost(key: self.keys[i], index:i, targetLoadCount:self.postsLoadedTotal+endIndex)
-        }
-        
-        self.postsLoadedTotal = endIndex + 1
-    }
-    
-    func getPost(key:String, index:Int, targetLoadCount:Int) {
-        var fdbQueryType:String = ""
-        if(self.isClient == nil) {
-            print("isClient is nil in querying for posts")
-        } else if((self.isClient!)) {
-            fdbQueryType = "serviceOffer"
-        } else if(!(self.isClient!)) {
-            fdbQueryType = "clientRequest"
-        } else {
-            print("fdbQueryType not set to serviceOffer or clientRequest")
-        }
-        
-        var postsLoaded:Int = 0
-        
-        let ref = Database.database().reference()
-        ref.child(fdbQueryType).child(self.keys[index]).observeSingleEvent(of: .value, with: { snapshot in
-            print("snapshot children count:")
-            print(snapshot.childrenCount)
-            
-            let dict = snapshot.value as? NSDictionary
-            
-            if(self.isClient!){
-                if(self.category == (dict!["category"] as? String)!) {
-                
-                    self.services.append(ServiceOffer.init(
-                        category: (dict!["category"] as? String)!,
-                        serviceDescription: (dict!["serviceDescription"] as? String)!,
-                        askingPrice: (dict!["askingPrice"] as? String)!,
-                        location: (dict!["location"] as? String)!,
-                        companyName: (dict!["companyName"] as? String)!,
-                        contactInfo: (dict!["contactInfo"] as? String)!,
-                        userID: (dict!["userID"] as? String)!,
-                        timestamp: (dict!["timestamp"] as? Double)!
-                        )
-                    )
-                }
-            } else {
-                if(self.category == (dict!["category"] as? String)!) {
+                self.postsHelper?.getData(latitude: self.latitude!, longitude: self.longitude!) { (services, requests, ratings, keys) in
+                    self.services = services
+                    self.requests = requests
+                    self.ratings = ratings
+                    self.keys = keys
                     
-                    self.requests.append(ClientRequest.init(
-                        serviceDescription: dict!["requestDescription"] as! String,
-                        location: dict!["location"] as! String,
-                        userID: dict!["userID"] as! String,
-                        userName: dict!["userName"] as! String,
-                        category: dict!["category"] as! String,
-                        timestamp: dict!["timestamp"] as! Double
-                        )
-                    )
+                    DispatchQueue.main.async{
+                        self.tableView.reloadData()
+                        self.refreshControl?.endRefreshing()
+                    }
                 }
             }
-            print("added \(dict)")
-            
-            // reload table view if this is last element
-            print("keys: " + String(self.keys.count))
-            if(self.isClient)! {
-                print("services count: " + String(self.services.count))
-            } else {
-                print("requests count: " + String(self.requests.count))
-            }
-            
-            
-            // sort by timestamp, most recent posts first
-            if(self.isClient)! {
-                self.services.sort {
-                    $0.timestamp > $1.timestamp
-                }
-            } else {
-                self.requests.sort {
-                    $0.timestamp > $1.timestamp
+        } else {
+            self.postsHelper?.getData(latitude: self.latitude!, longitude: self.longitude!) { (services, requests, ratings, keys) in
+                self.services = services
+                self.requests = requests
+                self.ratings = ratings
+                self.keys = keys
+                
+                DispatchQueue.main.async{
+                    self.tableView.reloadData()
+                    self.refreshControl?.endRefreshing()
                 }
             }
-            
-            self.postsLoadedTemp += 1
-            if(self.postsLoadedTemp == self.postsLoadedTotal) {
-                // self.postsLoadedTemp = 0
-                if(self.isClient!) {
-                    self.getRatingsReloadTableView()
-                } else {
-                    self.getRatingsReloadTableView()
-                }
-            }
-        })
+        }
     }
     
     // checks if user has reached last row to load more
@@ -446,33 +311,21 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
             dataArray = self.requests
         }
         if ((indexPath.row == (dataArray.count - 1)) && ((indexPath.row) != (self.keys.count - 1))) {
-            self.paginate()
+            self.postsHelper?.paginate(latitude: self.latitude!, longitude: self.longitude!) { (services, requests, ratings, keys) in
+                self.services = services
+                self.requests = requests
+                self.ratings = ratings
+                self.keys = keys
+                
+                DispatchQueue.main.async{
+                    // TODO: display activity idicator that feed is paginating
+                    self.tableView.reloadData()
+                    //self.refreshControl.endRefreshing()
+                }
+            }
         }
     }
     
-    func getRatingsReloadTableView() {
-        // there's probably a better way to get ratings for users, so think of one
-        // and delete this
-        let db:DatabaseWrapper = DatabaseWrapper()
-        db.getUsers() { (snapshot) in
-            print(snapshot.childrenCount)
-            for rest in snapshot.children.allObjects as! [DataSnapshot] {
-                if let dict = rest.value as? NSDictionary {
-                    let rating = dict["rating"] as? Double ?? -1
-                    //let userID = dict["userID"] as? String ?? ""
-                    
-                    self.ratings[rest.key] = rating
-                } else {
-                    print("could not convert snaptshot to dictionary")
-                }
-            }
-            DispatchQueue.main.async{
-                //self.feedTableView.reloadData()
-                self.tableView.reloadData()
-                self.refreshControl?.endRefreshing()
-            }
-        }
-    }
     
     // MARK: - location
     
@@ -511,7 +364,17 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
             self.latitude = lat!
             self.longitude = long!
             
-            self.getData()
+            self.postsHelper?.getData(latitude: self.latitude!, longitude: self.longitude!) { (services, requests, ratings, keys) in
+                self.services = services
+                self.requests = requests
+                self.ratings = ratings
+                self.keys = keys
+                
+                DispatchQueue.main.async{
+                    self.tableView.reloadData()
+                    self.refreshControl?.endRefreshing()
+                }
+            }
         }
     }
     
@@ -520,28 +383,15 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
     }
     
     // MARK: - helper functions
+    
+    
     func cleanUpData() {
-        self.keys.removeAll()
         self.services.removeAll()
         self.requests.removeAll()
         self.ratings.removeAll()
-        self.postsLoadedTotal = 0
-        self.postsLoadedTemp = 0
-        self.loadedAllPosts = false
+        self.keys.removeAll()
     }
     
-    func getData() {
-        self.keys.removeAll()
-        
-        if(self.isClient == nil) {
-            print("isClient is nil in getData")
-            return
-        }
-        
-        self.cleanUpData()
-        self.getPostsKeys()
-    }
-
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
