@@ -38,6 +38,8 @@
 		902588531F93DC7200F57059 /* ServiceOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902588521F93DC7200F57059 /* ServiceOffer.swift */; };
 		90280E8D1FC3CAF5006C5542 /* CreateClientRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90280E8C1FC3CAF5006C5542 /* CreateClientRequestViewController.swift */; };
 		903204321FEB13A600F45B0F /* ChooseNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903204311FEB13A600F45B0F /* ChooseNameViewController.swift */; };
+		903883B1200D571F00ED8321 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903883B0200D571F00ED8321 /* FeedViewController.swift */; };
+		903883B3200D57DF00ED8321 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903883B2200D57DF00ED8321 /* PostCollectionViewCell.swift */; };
 		903C46041FE8538D00D80D58 /* ChatListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903C46031FE8538D00D80D58 /* ChatListTableViewController.swift */; };
 		903C46061FE8559E00D80D58 /* ChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903C46051FE8559E00D80D58 /* ChatListTableViewCell.swift */; };
 		903C46081FE856CC00D80D58 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903C46071FE856CC00D80D58 /* ChatViewController.swift */; };
@@ -101,6 +103,8 @@
 		902588521F93DC7200F57059 /* ServiceOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceOffer.swift; sourceTree = "<group>"; };
 		90280E8C1FC3CAF5006C5542 /* CreateClientRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateClientRequestViewController.swift; sourceTree = "<group>"; };
 		903204311FEB13A600F45B0F /* ChooseNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseNameViewController.swift; sourceTree = "<group>"; };
+		903883B0200D571F00ED8321 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		903883B2200D57DF00ED8321 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
 		903C46031FE8538D00D80D58 /* ChatListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewController.swift; sourceTree = "<group>"; };
 		903C46051FE8559E00D80D58 /* ChatListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewCell.swift; sourceTree = "<group>"; };
 		903C46071FE856CC00D80D58 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +226,8 @@
 				909C3B0F1FD9077200C0A207 /* CreateServiceOrRequestViewController.swift */,
 				901677261F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift */,
 				90280E8C1FC3CAF5006C5542 /* CreateClientRequestViewController.swift */,
+				903883B0200D571F00ED8321 /* FeedViewController.swift */,
+				903883B2200D57DF00ED8321 /* PostCollectionViewCell.swift */,
 				901677281F92B87C00F1E1D5 /* ClientFeedViewController.swift */,
 				9016772E1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift */,
 				902295091FEF5E1A00BC39EA /* ClientRequestTableViewCell.swift */,
@@ -538,6 +544,7 @@
 				902588531F93DC7200F57059 /* ServiceOffer.swift in Sources */,
 				909C3B101FD9077200C0A207 /* CreateServiceOrRequestViewController.swift in Sources */,
 				9014E1842007136F00DB612A /* PostsHelper.swift in Sources */,
+				903883B1200D571F00ED8321 /* FeedViewController.swift in Sources */,
 				37A974DC1FC501AF000D5493 /* ProfileViewController.swift in Sources */,
 				3745B96E1FD79E0400622BCE /* CosmosDistrib.swift in Sources */,
 				379650A61FA8956400EF72ED /* SettingsTableViewController.swift in Sources */,
@@ -549,6 +556,7 @@
 				9083B39A1F86D5B20079E309 /* AppDelegate.swift in Sources */,
 				900A838E1FFFC83F00E1FC6E /* ChangeDistanceViewController.swift in Sources */,
 				7F7F23141FA78B7D00EEA294 /* ProviderProfileViewController.swift in Sources */,
+				903883B3200D57DF00ED8321 /* PostCollectionViewCell.swift in Sources */,
 				90280E8D1FC3CAF5006C5542 /* CreateClientRequestViewController.swift in Sources */,
 				379650A41FA8954C00EF72ED /* SettingsViewController.swift in Sources */,
 				908CD2A91FE89F3500372C29 /* ChatMetadata.swift in Sources */,
