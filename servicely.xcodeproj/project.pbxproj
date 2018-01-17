@@ -43,6 +43,7 @@
 		903C46041FE8538D00D80D58 /* ChatListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903C46031FE8538D00D80D58 /* ChatListTableViewController.swift */; };
 		903C46061FE8559E00D80D58 /* ChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903C46051FE8559E00D80D58 /* ChatListTableViewCell.swift */; };
 		903C46081FE856CC00D80D58 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903C46071FE856CC00D80D58 /* ChatViewController.swift */; };
+		906C8282200E9F2500316A13 /* PostsFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C8281200E9F2500316A13 /* PostsFlowLayout.swift */; };
 		9083B39A1F86D5B20079E309 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9083B3991F86D5B20079E309 /* AppDelegate.swift */; };
 		9083B39F1F86D5B20079E309 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9083B39D1F86D5B20079E309 /* Main.storyboard */; };
 		9083B3A11F86D5B20079E309 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9083B3A01F86D5B20079E309 /* Assets.xcassets */; };
@@ -108,6 +109,7 @@
 		903C46031FE8538D00D80D58 /* ChatListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewController.swift; sourceTree = "<group>"; };
 		903C46051FE8559E00D80D58 /* ChatListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewCell.swift; sourceTree = "<group>"; };
 		903C46071FE856CC00D80D58 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		906C8281200E9F2500316A13 /* PostsFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsFlowLayout.swift; sourceTree = "<group>"; };
 		9082AE961FFC8D50004767E2 /* FileProviderUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FileProviderUI.framework; path = System/Library/Frameworks/FileProviderUI.framework; sourceTree = SDKROOT; };
 		9082AE981FFC8D8F004767E2 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		9082AE9A1FFC8EE4004767E2 /* FirebaseTwitterAuthUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseTwitterAuthUI.framework; path = Pods/FirebaseUI/FirebaseUIFrameworks/FirebaseTwitterAuthUI/Frameworks/FirebaseTwitterAuthUI.framework; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				90280E8C1FC3CAF5006C5542 /* CreateClientRequestViewController.swift */,
 				903883B0200D571F00ED8321 /* FeedViewController.swift */,
 				903883B2200D57DF00ED8321 /* PostCollectionViewCell.swift */,
+				906C8281200E9F2500316A13 /* PostsFlowLayout.swift */,
 				901677281F92B87C00F1E1D5 /* ClientFeedViewController.swift */,
 				9016772E1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift */,
 				902295091FEF5E1A00BC39EA /* ClientRequestTableViewCell.swift */,
@@ -566,6 +569,7 @@
 				7F2217E11FA820740004D67D /* EditProviderViewController.swift in Sources */,
 				90C96DC01FE4FC8C00A1E8BA /* DatabaseWrapper.swift in Sources */,
 				903C46081FE856CC00D80D58 /* ChatViewController.swift in Sources */,
+				906C8282200E9F2500316A13 /* PostsFlowLayout.swift in Sources */,
 				7FBB2EB31FC281A4002067C1 /* ServicesRequestsTableViewController.swift in Sources */,
 				7F9E39761FD72290008CB750 /* OurServicesTableViewController.swift in Sources */,
 				903C46041FE8538D00D80D58 /* ChatListTableViewController.swift in Sources */,

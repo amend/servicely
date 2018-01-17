@@ -19,7 +19,7 @@ class PostCollectionViewCell: UICollectionViewCell {
     var service:ServiceOffer? = nil
     var request:ClientRequest? = nil
     
-    
+    /*
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -39,8 +39,26 @@ class PostCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(textLabel)
          */
     }
+     */
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        //fatalError("init(coder:) has not been implemented")
+        
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 2.0
+        self.layer.borderColor = UIColor.black.cgColor
+        self.layer.masksToBounds = true
+        
+        /*
+         imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height*2/3))
+         imageView.contentMode = UIViewContentMode.ScaleAspectFit
+         contentView.addSubview(imageView)
+         
+         textLabel = UILabel(frame: CGRect(x: 0, y: imageView.frame.size.height, width: frame.size.width, height: frame.size.height/3))
+         textLabel.font = UIFont.systemFontOfSize(UIFont.smallSystemFontSize())
+         textLabel.textAlignment = .Center
+         contentView.addSubview(textLabel)
+         */
     }
 }

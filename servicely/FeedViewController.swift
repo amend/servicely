@@ -16,9 +16,11 @@ import FirebaseFacebookAuthUI
 import CoreLocation
 import GeoFire
 
-class FeedViewController: UIViewController, AuthUIDelegate, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate {
+//class FeedViewController: UIViewController, AuthUIDelegate, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate, UICollectionViewDelegateFlowLayout {
+    
+    class FeedViewController: UIViewController, AuthUIDelegate, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate {
 
-    let collectionViewController:UICollectionViewController = UICollectionViewController()
+    //let collectionViewController:UICollectionViewController = UICollectionViewController()
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -71,13 +73,32 @@ class FeedViewController: UIViewController, AuthUIDelegate, UICollectionViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.definesPresentationContext = true
+        self.automaticallyAdjustsScrollViewInsets = false
+        
         // Do any additional setup after loading the view.
         // Uncomment the following line to preserve selection between presentations
         //self.clearsSelectionOnViewWillAppear = false
-        self.collectionView.dataSource = self
         self.collectionView.delegate = self
-        self.collectionViewController.collectionView = self.collectionView
-        self.collectionViewController.clearsSelectionOnViewWillAppear = false
+        self.collectionView.dataSource = self
+        
+        /*
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 350, height: 600)
+        layout.minimumInteritemSpacing = 8
+        layout.minimumLineSpacing = 8
+        layout.headerReferenceSize = CGSize(width: 0, height: 40)
+        layout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        collectionView.collectionViewLayout = layout
+        */
+ 
+        //self.collectionViewController.collectionView = self.collectionView
+        //self.collectionViewController.clearsSelectionOnViewWillAppear = false
+        //self.collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        //self.collectionView.collectionViewLayout = PostsFlowLayout()
+        //self.collectionView.collectionViewLayout = PostsFlowLayout.init(coder: NSCoder.init())!
+        
         
         // pull to refresh
         refreshControl = UIRefreshControl()
@@ -90,6 +111,7 @@ class FeedViewController: UIViewController, AuthUIDelegate, UICollectionViewDele
         // clean up
         self.cleanUpData()
         self.collectionView.reloadData()
+        
         /*
          self.services.removeAll()
          self.requests.removeAll()
@@ -369,7 +391,7 @@ class FeedViewController: UIViewController, AuthUIDelegate, UICollectionViewDele
         } else if((user != nil)
             && ((user?["serviceType"] as! String) == "serviceProvider")
             && ((self.requests.count - 1 ) >= indexPath.row)) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "clientRequestCell", for: indexPath) as! PostCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! PostCollectionViewCell
             let request = self.requests[indexPath.row]
             //let colorScheme = ColorScheme.getColorScheme()
             
@@ -391,7 +413,7 @@ class FeedViewController: UIViewController, AuthUIDelegate, UICollectionViewDele
         
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
@@ -432,6 +454,33 @@ class FeedViewController: UIViewController, AuthUIDelegate, UICollectionViewDele
                 }
             }
         }
+    }
+    
+    // MARK: - UICollectionViewDelegateFlowLayout
+    
+    func collectionView(_ collectionView: UICollectionView,
+                                 layout collectionViewLayout: UICollectionViewLayout,
+                                 sizeForItemAt indexPath: IndexPath) -> CGSize
+    {
+        return CGSize.init(width: 320, height: 410)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                                 layout collectionViewLayout: UICollectionViewLayout,
+                                 insetForSectionAt section: Int) -> UIEdgeInsets    {
+        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                                 layout collectionViewLayout: UICollectionViewLayout,
+                                 minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                                 layout collectionViewLayout: UICollectionViewLayout,
+                                 minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 20.0
     }
     
     // MARK: - location
