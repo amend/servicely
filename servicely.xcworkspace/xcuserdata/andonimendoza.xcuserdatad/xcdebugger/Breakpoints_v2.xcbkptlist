@@ -10,45 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "servicely/FeedViewController.swift"
-            timestampString = "537929356.759505"
+            timestampString = "537937542.992251"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "444"
-            endingLineNumber = "444"
-            landmarkName = "collectionView(_:willDisplay:forItemAt:)"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "servicely.FeedViewController.collectionView(__ObjC.UICollectionView, willDisplay: __ObjC.UICollectionViewCell, forItemAt: Foundation.IndexPath) -&gt; ()"
-                  moduleName = "servicely"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/andonimendoza/Development/ios-class/servicely/servicely/FeedViewController.swift"
-                  timestampString = "537928578.421289"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "444"
-                  endingLineNumber = "444"
-                  offsetFromSymbolStart = "1558">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Array&lt;servicely.ServiceOffer&gt;, Swift.Array&lt;servicely.ClientRequest&gt;, Swift.Dictionary&lt;Swift.String, Swift.Double&gt;, Swift.Array&lt;Swift.String&gt;) -&gt; () in servicely.FeedViewController.collectionView(__ObjC.UICollectionView, willDisplay: __ObjC.UICollectionViewCell, forItemAt: Foundation.IndexPath) -&gt; ()"
-                  moduleName = "servicely"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/andonimendoza/Development/ios-class/servicely/servicely/FeedViewController.swift"
-                  timestampString = "537928578.425474"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "445"
-                  endingLineNumber = "445"
-                  offsetFromSymbolStart = "33">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -58,12 +26,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "servicely/FeedViewController.swift"
-            timestampString = "537929356.760003"
+            timestampString = "537937542.992527"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "445"
-            endingLineNumber = "445"
-            landmarkName = "collectionView(_:willDisplay:forItemAt:)"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "servicely/FeedViewController.swift"
+            timestampString = "537937542.992575"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "servicely/FeedViewController.swift"
+            timestampString = "537937542.992615"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "servicely/FeedViewController.swift"
+            timestampString = "537937542.9926831"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

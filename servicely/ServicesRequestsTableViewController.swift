@@ -11,21 +11,23 @@ import Firebase
 import FirebaseDatabase
 import GeoFire
 
-class ServicesRequestsTableViewController: UITableViewController, CLLocationManagerDelegate {
+class ServicesRequestsTableViewController: FeedViewController {
 
-    var postsHelper:PostsHelper? = nil
+    
+    //var postsHelper:PostsHelper? = nil
     
     var category:String = ""
 
+    /*
     var services = [ServiceOffer]()
     var requests = [ClientRequest]()
     var ratings = [String:Double]()
     // keys will contian keys returned by geofire query
     // TODO: make keys atomic. update: seems to work fine for mass posts without being atomic. is something happening so that it's already thread-safe?
     var keys:[String] = [String]()
-    
+    */
     // data for arrays
-    var isClient:Bool? = nil
+    //var isClient:Bool? = nil
     
     // pagination
     var postsPerBatch = 20
@@ -33,6 +35,7 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
     var postsLoadedTemp = 0
     var loadedAllPosts = false
     
+    /*
     // location
     var locationManager: CLLocationManager!
     //var city:String? = nil
@@ -43,11 +46,12 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
     var latitude:Double? = nil
     var longitude:Double? = nil
     var location:CLLocation? = nil
-    
+    */
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.rowHeight = 80.0
+        //self.tableView.rowHeight = 80.0
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -57,8 +61,9 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
         
         // clean up
         self.cleanUpData()
-        self.tableView.reloadData()
+        //self.tableView.reloadData()
         
+        /*
         locationManager = CLLocationManager()
         self.isAuthorizedtoGetUserLocation()
         if CLLocationManager.locationServicesEnabled() {
@@ -69,10 +74,11 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
             // required for getting posts
             print("location use not approved, cant get posts")
         }
+         */
         
         // so that cell selection remains selected when exiting
         // and returning from categories
-        self.clearsSelectionOnViewWillAppear = false
+        //self.clearsSelectionOnViewWillAppear = false
         
         // pull to refresh
         refreshControl = UIRefreshControl()
@@ -82,7 +88,7 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
         
         // clean up
         self.cleanUpData()
-        self.tableView.reloadData()
+        //self.tableView.reloadData()
 
         
         let db:DatabaseWrapper = DatabaseWrapper()
@@ -105,6 +111,7 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
                 }
             }
             
+            /*
             if(user?["serviceType"] as! String == "client") {
                 self.isClient = true
                 self.title = "Services"
@@ -112,6 +119,7 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
                 self.isClient = false
                 self.title = "Requests"
             }
+             */
             
             
             // there's probably a better way to get ratings for users, so think of one
@@ -123,14 +131,14 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
                         let rating = dict["rating"] as? Double ?? -1
                         //let userID = dict["userID"] as? String ?? ""
                         
-                        self.ratings[rest.key] = rating
+                        //self.ratings[rest.key] = rating
                     } else {
                         print("could not convert snaptshot to dictionary")
                     }
                 }
                 
-                self.postsHelper = PostsHelper.init(isClient: self.isClient)
-                self.postsHelper?.setCategory(category: self.category)
+                //self.postsHelper = PostsHelper.init(isClient: self.isClient)
+                //self.postsHelper?.setCategory(category: self.category)
                 
                 if CLLocationManager.locationServicesEnabled() {
                     print("requesting location")
@@ -147,13 +155,15 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {        
+    override func viewWillAppear(_ animated: Bool) {
+        /*
         locationManager = CLLocationManager()
         self.isAuthorizedtoGetUserLocation()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         }
+        */
         
         let db:DatabaseWrapper = DatabaseWrapper()
         
@@ -165,13 +175,16 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
                 print("user is nil in ServicesRequestsTableViewController")
             }
             
+            
+            
             if(user?["serviceType"] as! String == "client") {
-                self.isClient = true
+                super.isClient = true
                 self.title = "Services"
             } else if(user?["serviceType"] as! String == "serviceProvider") {
-                self.isClient = false
+                super.isClient = false
                 self.title = "Requests"
             }
+            
         }
     }
 
@@ -181,7 +194,7 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
     }
 
     // MARK: - Table view data source
-
+    /*
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -248,9 +261,10 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
         
         return cell
     }
+     */
     
     // MARK: - pull to refresh
-    
+    /*
     @objc func refresh(sender:AnyObject) {
         // Code to refresh table view
         self.cleanUpData()
@@ -325,10 +339,11 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
             }
         }
     }
+     */
     
     
     // MARK: - location
-    
+    /*
     //if we have no permission to access user location, then ask user for permission.
     func isAuthorizedtoGetUserLocation() {
         
@@ -381,16 +396,17 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("location manager failed!")
     }
-    
+    */
     // MARK: - helper functions
     
-    
+    /*
     func cleanUpData() {
         self.services.removeAll()
         self.requests.removeAll()
         self.ratings.removeAll()
         self.keys.removeAll()
     }
+     */
     
     /*
     // Override to support conditional editing of the table view.
@@ -434,6 +450,8 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        /*
         if segue.identifier == "viewService" {
             if(self.isClient!) {
                 let vc:ViewServiceViewController = segue.destination as! ViewServiceViewController
@@ -456,7 +474,7 @@ class ServicesRequestsTableViewController: UITableViewController, CLLocationMana
                 vc.viewingRequest = true
             }
         }
+        */
     }
-
 
 }
