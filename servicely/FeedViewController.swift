@@ -354,6 +354,7 @@ import GeoFire
         if((user != nil)
             && ((user?["serviceType"] as! String) == "client")
             && ((self.services.count - 1 ) >= indexPath.row)) {
+            
             //let cell = tableView.dequeueReusableCell(withIdentifier: "serviceOfferCell", for: indexPath) as! PostCollectionViewCell
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! PostCollectionViewCell
             //if(services.count > 0) {
@@ -391,6 +392,7 @@ import GeoFire
         } else if((user != nil)
             && ((user?["serviceType"] as! String) == "serviceProvider")
             && ((self.requests.count - 1 ) >= indexPath.row)) {
+            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! PostCollectionViewCell
             let request = self.requests[indexPath.row]
             //let colorScheme = ColorScheme.getColorScheme()
@@ -409,8 +411,8 @@ import GeoFire
             
         }
         
-        return UICollectionViewCell()
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! PostCollectionViewCell
+        return cell
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
