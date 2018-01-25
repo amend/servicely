@@ -26,6 +26,6 @@ target 'servicely' do
   # Geofire installation finally worked after deleting Pods/ and Podfile.lock
   # and then first installing pods above, adding line below, and rnning pod install
   #pod 'Firebase', '~> 2.5.1' #takes care of core and database
-  pod 'GeoFire'
+  pod 'GeoFire', '2.0.0'
   #pod 'GeoFire', :git => 'https://github.com/firebase/geofire-objc.git'
 end
