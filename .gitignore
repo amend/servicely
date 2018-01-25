@@ -37,5 +37,5 @@ Pods/
 .xcbkptlist
 
 # user state
-servicely.xcodeproj/xcuserdata/
-servicely.xcworkspace/xcuserdata/
+servicely.xcodeproj/xcuserdata/*
+servicely.xcworkspace/xcuserdata/*

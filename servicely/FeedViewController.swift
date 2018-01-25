@@ -68,7 +68,9 @@ import GeoFire
     // pull to refresh
     var refreshControl: UIRefreshControl!
     
-    
+    // for segue
+    var selectedIndexPath:IndexPath? = nil
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -345,6 +347,15 @@ import GeoFire
             }
         }
     }
+        
+    // MARK: - message button handler
+        
+    @IBAction func messageButtonHandler(_ sender: Any) {
+        if let cell = (sender as AnyObject).superview??.superview as? PostCollectionViewCell {
+            self.selectedIndexPath = self.collectionView?.indexPath(for: cell)
+        }
+    }
+        
 
     
     // MARK: - collection view controller methods
@@ -354,6 +365,7 @@ import GeoFire
         if((user != nil)
             && ((user?["serviceType"] as! String) == "client")
             && ((self.services.count - 1 ) >= indexPath.row)) {
+            
             //let cell = tableView.dequeueReusableCell(withIdentifier: "serviceOfferCell", for: indexPath) as! PostCollectionViewCell
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! PostCollectionViewCell
             //if(services.count > 0) {
@@ -370,27 +382,11 @@ import GeoFire
             
             cell.service = service
             
-            // TODO: Add ratings?
-            /*
-            if(ratings.keys.contains(service.userID)) {
-                let rating = ratings[service.userID]!
-                
-                if(rating != -1){
-                    cell.ratingBar.rating = rating
-                    cell.ratingBar.filledColor = colorScheme
-                    cell.ratingBar.filledBorderColor = colorScheme
-                    cell.ratingBar.emptyBorderColor = colorScheme
-                }else{
-                    cell.ratingBar.isHidden = true
-                }
-            }
-             */
-            //}
-            
             return cell
         } else if((user != nil)
             && ((user?["serviceType"] as! String) == "serviceProvider")
             && ((self.requests.count - 1 ) >= indexPath.row)) {
+            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! PostCollectionViewCell
             let request = self.requests[indexPath.row]
             //let colorScheme = ColorScheme.getColorScheme()
@@ -409,8 +405,8 @@ import GeoFire
             
         }
         
-        return UICollectionViewCell()
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! PostCollectionViewCell
+        return cell
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -454,6 +450,10 @@ import GeoFire
                 }
             }
         }
+    }
+        
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedIndexPath = indexPath
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout
@@ -549,14 +549,71 @@ import GeoFire
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        var service:ServiceOffer? = nil
+        var request:ClientRequest? = nil
+                
+        if(self.selectedIndexPath != nil) {
+            if(self.services != nil) {
+                service = self.services[(self.selectedIndexPath?.row)!]
+            } else if(self.requests != nil) {
+                request = self.requests[(self.selectedIndexPath?.row)!]
+            } else {
+                // TODO: do something if it gets here
+                print("in feed in segue but both requests and services are nil")
+                return
+            }
+        } else {
+            // TODO: do something if it gets here
+            print("in feed in segue but no selected index path")
+            return
+        }
+        
+        if(segue.identifier == "viewServiceToChatSegue") {
+            // TODO: Make ViewRequestVieController
+            if let chatVC = segue.destination as? ChatViewController{
+                
+                if(request != nil) {
+                    chatVC.serviceType = "serviceProvider"
+                    chatVC.category = (request?.category)!
+                    
+                    chatVC.clientName = (request?.userName)!
+                    chatVC.clientID = (request?.userID)!
+                    
+                    if let currentUser = Auth.auth().currentUser {
+                        chatVC.providerID = currentUser.uid
+                        let db:DatabaseWrapper = DatabaseWrapper()
+                        db.getCurrentUser() { (user:NSDictionary?) in
+                            chatVC.providerName = user?["companyName"] as! String
+                        }
+                    }
+                } else {
+                    chatVC.serviceType = "client"
+                    chatVC.category = (service?.category)!
+                    
+                    chatVC.providerName = (service?.companyName)!
+                    chatVC.providerID = (service?.userID)!
+                    
+                    if let currentUser = Auth.auth().currentUser {
+                        chatVC.clientID = currentUser.uid
+                    }
+                    let db:DatabaseWrapper = DatabaseWrapper()
+                    db.getCurrentUser() { (user:NSDictionary?) in
+                        chatVC.clientName = user?["username"] as! String
+                    }
+                }
+                print("exiting prepare for segue")
+            }
+        }
+         
     }
-    */
+    
 
 }
