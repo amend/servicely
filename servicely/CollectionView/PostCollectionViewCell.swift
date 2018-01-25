@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class PostCollectionViewCell: UICollectionViewCell {
     
@@ -66,4 +67,48 @@ class PostCollectionViewCell: UICollectionViewCell {
          contentView.addSubview(textLabel)
          */
     }
+    
+    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        if(segue.identifier == "viewServiceToChatSegue") {
+            // TODO: Make ViewRequestVieController
+            if let chatVC = segue.destination as? ChatViewController{
+                
+                if(self.request != nil) {
+                    chatVC.serviceType = "serviceProvider"
+                    chatVC.category = (self.request?.category)!
+                    
+                    chatVC.clientName = (self.request?.userName)!
+                    chatVC.clientID = (self.request?.userID)!
+                    
+                    if let currentUser = Auth.auth().currentUser {
+                        chatVC.providerID = currentUser.uid
+                        let db:DatabaseWrapper = DatabaseWrapper()
+                        db.getCurrentUser() { (user:NSDictionary?) in
+                            chatVC.providerName = user?["companyName"] as! String
+                        }
+                    }
+                } else {
+                    chatVC.serviceType = "client"
+                    chatVC.category = (self.service?.category)!
+                    
+                    chatVC.providerName = (self.service?.companyName)!
+                    chatVC.providerID = (self.service?.userID)!
+                    
+                    if let currentUser = Auth.auth().currentUser {
+                        chatVC.clientID = currentUser.uid
+                    }
+                    let db:DatabaseWrapper = DatabaseWrapper()
+                    db.getCurrentUser() { (user:NSDictionary?) in
+                        chatVC.clientName = user?["username"] as! String
+                    }
+                }
+                print("exiting prepare for segue")
+            }
+        }
+    }
+    
+    
 }

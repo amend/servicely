@@ -46,7 +46,7 @@
                                                 <constraint firstAttribute="width" constant="58" id="MDi-aI-Sdz"/>
                                             </constraints>
                                         </imageView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Pf-jG-WKZ" customClass="CosmosView" customModule="servicely" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Pf-jG-WKZ" customClass="CosmosView" customModule="servicely" customModuleProvider="target">
                                             <rect key="frame" x="235" y="35" width="120" height="28"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -298,7 +298,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oNk-Iv-Mqt">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -809,6 +809,9 @@
                                                             <integer key="value" value="7"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <segue destination="GZL-qm-osv" kind="show" identifier="viewServiceToChatSegue" id="Vgi-JP-YUH"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;category&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EuQ-Di-YmQ">
                                                     <rect key="frame" x="99" y="20" width="177" height="21"/>
@@ -2478,7 +2481,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="th3-45-jvf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3970.4000000000001" y="314.39280359820094"/>
+            <point key="canvasLocation" x="-3604" y="795"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="0AL-yZ-vZK">
@@ -2493,7 +2496,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EB8-AB-fPP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3050" y="314"/>
+            <point key="canvasLocation" x="-2684" y="794"/>
         </scene>
         <!--Chat-->
         <scene sceneID="kT1-gS-zBR">
@@ -2512,7 +2515,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W6j-fw-9DO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4922" y="315"/>
+            <point key="canvasLocation" x="-4556" y="795"/>
         </scene>
         <!--Services-->
         <scene sceneID="1hS-Il-9x1">
@@ -2806,6 +2809,9 @@
                                                             <integer key="value" value="7"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <segue destination="GZL-qm-osv" kind="show" identifier="viewServiceToChatSegue" id="ed4-S0-W0B"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;category&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTl-xq-XoE">
                                                     <rect key="frame" x="99" y="20" width="177" height="21"/>
@@ -2921,8 +2927,8 @@
         <image name="settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c26-QJ-OID"/>
-        <segue reference="X7F-05-Omp"/>
-        <segue reference="VuY-Ob-ywl"/>
+        <segue reference="BdC-VP-eEj"/>
+        <segue reference="ed4-S0-W0B"/>
+        <segue reference="rt6-5V-NyE"/>
     </inferredMetricsTieBreakers>
 </document>

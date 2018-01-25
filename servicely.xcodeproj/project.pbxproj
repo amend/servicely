@@ -30,11 +30,8 @@
 		900A838E1FFFC83F00E1FC6E /* ChangeDistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900A838D1FFFC83F00E1FC6E /* ChangeDistanceViewController.swift */; };
 		9014E1842007136F00DB612A /* PostsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9014E1832007136F00DB612A /* PostsHelper.swift */; };
 		901677271F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901677261F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift */; };
-		901677291F92B87C00F1E1D5 /* ClientFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901677281F92B87C00F1E1D5 /* ClientFeedViewController.swift */; };
-		9016772F1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016772E1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift */; };
 		901FDE8E1FA6AE4400BA2163 /* ServiceTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901FDE8D1FA6AE4400BA2163 /* ServiceTypeViewController.swift */; };
 		902295081FEF5DD300BC39EA /* ClientRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902295071FEF5DD300BC39EA /* ClientRequest.swift */; };
-		9022950A1FEF5E1A00BC39EA /* ClientRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902295091FEF5E1A00BC39EA /* ClientRequestTableViewCell.swift */; };
 		902588531F93DC7200F57059 /* ServiceOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902588521F93DC7200F57059 /* ServiceOffer.swift */; };
 		90280E8D1FC3CAF5006C5542 /* CreateClientRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90280E8C1FC3CAF5006C5542 /* CreateClientRequestViewController.swift */; };
 		903204321FEB13A600F45B0F /* ChooseNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903204311FEB13A600F45B0F /* ChooseNameViewController.swift */; };
@@ -43,7 +40,6 @@
 		903C46041FE8538D00D80D58 /* ChatListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903C46031FE8538D00D80D58 /* ChatListTableViewController.swift */; };
 		903C46061FE8559E00D80D58 /* ChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903C46051FE8559E00D80D58 /* ChatListTableViewCell.swift */; };
 		903C46081FE856CC00D80D58 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903C46071FE856CC00D80D58 /* ChatViewController.swift */; };
-		906C8282200E9F2500316A13 /* PostsFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C8281200E9F2500316A13 /* PostsFlowLayout.swift */; };
 		9083B39A1F86D5B20079E309 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9083B3991F86D5B20079E309 /* AppDelegate.swift */; };
 		9083B39F1F86D5B20079E309 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9083B39D1F86D5B20079E309 /* Main.storyboard */; };
 		9083B3A11F86D5B20079E309 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9083B3A01F86D5B20079E309 /* Assets.xcassets */; };
@@ -96,11 +92,8 @@
 		900A838D1FFFC83F00E1FC6E /* ChangeDistanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDistanceViewController.swift; sourceTree = "<group>"; };
 		9014E1832007136F00DB612A /* PostsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsHelper.swift; sourceTree = "<group>"; };
 		901677261F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateServiceOfferViewController.swift; sourceTree = "<group>"; };
-		901677281F92B87C00F1E1D5 /* ClientFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientFeedViewController.swift; sourceTree = "<group>"; };
-		9016772E1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceOfferTableViewCell.swift; sourceTree = "<group>"; };
 		901FDE8D1FA6AE4400BA2163 /* ServiceTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTypeViewController.swift; sourceTree = "<group>"; };
 		902295071FEF5DD300BC39EA /* ClientRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientRequest.swift; sourceTree = "<group>"; };
-		902295091FEF5E1A00BC39EA /* ClientRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientRequestTableViewCell.swift; sourceTree = "<group>"; };
 		902588521F93DC7200F57059 /* ServiceOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceOffer.swift; sourceTree = "<group>"; };
 		90280E8C1FC3CAF5006C5542 /* CreateClientRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateClientRequestViewController.swift; sourceTree = "<group>"; };
 		903204311FEB13A600F45B0F /* ChooseNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseNameViewController.swift; sourceTree = "<group>"; };
@@ -109,7 +102,6 @@
 		903C46031FE8538D00D80D58 /* ChatListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewController.swift; sourceTree = "<group>"; };
 		903C46051FE8559E00D80D58 /* ChatListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewCell.swift; sourceTree = "<group>"; };
 		903C46071FE856CC00D80D58 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		906C8281200E9F2500316A13 /* PostsFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsFlowLayout.swift; sourceTree = "<group>"; };
 		9082AE961FFC8D50004767E2 /* FileProviderUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FileProviderUI.framework; path = System/Library/Frameworks/FileProviderUI.framework; sourceTree = SDKROOT; };
 		9082AE981FFC8D8F004767E2 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		9082AE9A1FFC8EE4004767E2 /* FirebaseTwitterAuthUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseTwitterAuthUI.framework; path = Pods/FirebaseUI/FirebaseUIFrameworks/FirebaseTwitterAuthUI/Frameworks/FirebaseTwitterAuthUI.framework; sourceTree = "<group>"; };
@@ -207,40 +199,67 @@
 				90CF54532002B25F00FBCA8A /* servicely.entitlements */,
 				9083B3991F86D5B20079E309 /* AppDelegate.swift */,
 				9083B39D1F86D5B20079E309 /* Main.storyboard */,
-				7F9E39771FD7326A008CB750 /* MyRequetsTableViewController.swift */,
-				7F9E39751FD72290008CB750 /* OurServicesTableViewController.swift */,
-				7FF61A761FC0CC3B00DFE2E7 /* CategoriesTableViewController.swift */,
-				7FBB2EB41FC36430002067C1 /* CategoriesServiceTableViewCell.swift */,
-				7FBB2EB21FC281A4002067C1 /* ServicesRequestsTableViewController.swift */,
+				903883B0200D571F00ED8321 /* FeedViewController.swift */,
+				90A84B58201965B900486605 /* CollectionView */,
+				90A84B572019657500486605 /* Categories */,
 				7FBB2EB61FC37588002067C1 /* ViewServiceViewController.swift */,
 				7F2217E01FA820740004D67D /* EditProviderViewController.swift */,
 				7F3E1B0C1FA7EB3B0034EE46 /* EditProfileViewController.swift */,
 				37A974DB1FC501AF000D5493 /* ProfileViewController.swift */,
 				7F7F23131FA78B7D00EEA294 /* ProviderProfileViewController.swift */,
 				7F7F230F1FA68DC200EEA294 /* ClientProfileViewController.swift */,
+				7F9E39771FD7326A008CB750 /* MyRequetsTableViewController.swift */,
+				7F9E39751FD72290008CB750 /* OurServicesTableViewController.swift */,
 				3745B96D1FD79E0400622BCE /* CosmosDistrib.swift */,
 				9083B3A01F86D5B20079E309 /* Assets.xcassets */,
 				9083B3A21F86D5B20079E309 /* LaunchScreen.storyboard */,
 				900A838C1FFD803800E1FC6E /* Supporting Files */,
-				90C96DBF1FE4FC8C00A1E8BA /* DatabaseWrapper.swift */,
-				90AFFE662006DFB600830CF1 /* LocationHelper.swift */,
+				90A84B5220195E9700486605 /* HelperClasses */,
+				90A84B5320195EBA00486605 /* CreatePostsClasses */,
+				90A84B5620195FF000486605 /* Login */,
+				90A84B5520195FB100486605 /* Settings */,
+				90A84B5420195F5600486605 /* ChatClasses */,
+			);
+			path = servicely;
+			sourceTree = "<group>";
+		};
+		90A84B5220195E9700486605 /* HelperClasses */ = {
+			isa = PBXGroup;
+			children = (
 				9014E1832007136F00DB612A /* PostsHelper.swift */,
-				909C3B0F1FD9077200C0A207 /* CreateServiceOrRequestViewController.swift */,
-				901677261F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift */,
-				90280E8C1FC3CAF5006C5542 /* CreateClientRequestViewController.swift */,
-				903883B0200D571F00ED8321 /* FeedViewController.swift */,
-				903883B2200D57DF00ED8321 /* PostCollectionViewCell.swift */,
-				906C8281200E9F2500316A13 /* PostsFlowLayout.swift */,
-				901677281F92B87C00F1E1D5 /* ClientFeedViewController.swift */,
-				9016772E1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift */,
-				902295091FEF5E1A00BC39EA /* ClientRequestTableViewCell.swift */,
+				90AFFE662006DFB600830CF1 /* LocationHelper.swift */,
+				90C96DBF1FE4FC8C00A1E8BA /* DatabaseWrapper.swift */,
 				902588521F93DC7200F57059 /* ServiceOffer.swift */,
 				902295071FEF5DD300BC39EA /* ClientRequest.swift */,
 				7F9E23231FA3A6C600865172 /* Client.swift */,
+			);
+			path = HelperClasses;
+			sourceTree = "<group>";
+		};
+		90A84B5320195EBA00486605 /* CreatePostsClasses */ = {
+			isa = PBXGroup;
+			children = (
+				909C3B0F1FD9077200C0A207 /* CreateServiceOrRequestViewController.swift */,
+				901677261F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift */,
+				90280E8C1FC3CAF5006C5542 /* CreateClientRequestViewController.swift */,
+			);
+			path = CreatePostsClasses;
+			sourceTree = "<group>";
+		};
+		90A84B5420195F5600486605 /* ChatClasses */ = {
+			isa = PBXGroup;
+			children = (
+				903C46031FE8538D00D80D58 /* ChatListTableViewController.swift */,
+				903C46071FE856CC00D80D58 /* ChatViewController.swift */,
+				903C46051FE8559E00D80D58 /* ChatListTableViewCell.swift */,
 				908CD2A81FE89F3500372C29 /* ChatMetadata.swift */,
-				90CA84191F995EFA00EDB7AC /* ServicelyLogoViewController.swift */,
-				901FDE8D1FA6AE4400BA2163 /* ServiceTypeViewController.swift */,
-				903204311FEB13A600F45B0F /* ChooseNameViewController.swift */,
+			);
+			path = ChatClasses;
+			sourceTree = "<group>";
+		};
+		90A84B5520195FB100486605 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
 				3762DAD81FA705990065FA87 /* ChangeColorSchemeViewController.swift */,
 				3762DAFE1FA7144C0065FA87 /* ColorScheme.swift */,
 				3796509F1FA889AD00EF72ED /* ChangePasswordViewController.swift */,
@@ -249,11 +268,36 @@
 				379650A51FA8956400EF72ED /* SettingsTableViewController.swift */,
 				3785C1F01FA9391200774BCE /* ChangeProfilePictureViewController.swift */,
 				900A838D1FFFC83F00E1FC6E /* ChangeDistanceViewController.swift */,
-				903C46031FE8538D00D80D58 /* ChatListTableViewController.swift */,
-				903C46051FE8559E00D80D58 /* ChatListTableViewCell.swift */,
-				903C46071FE856CC00D80D58 /* ChatViewController.swift */,
 			);
-			path = servicely;
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		90A84B5620195FF000486605 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				90CA84191F995EFA00EDB7AC /* ServicelyLogoViewController.swift */,
+				901FDE8D1FA6AE4400BA2163 /* ServiceTypeViewController.swift */,
+				903204311FEB13A600F45B0F /* ChooseNameViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		90A84B572019657500486605 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				7FF61A761FC0CC3B00DFE2E7 /* CategoriesTableViewController.swift */,
+				7FBB2EB41FC36430002067C1 /* CategoriesServiceTableViewCell.swift */,
+				7FBB2EB21FC281A4002067C1 /* ServicesRequestsTableViewController.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		90A84B58201965B900486605 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				903883B2200D57DF00ED8321 /* PostCollectionViewCell.swift */,
+			);
+			path = CollectionView;
 			sourceTree = "<group>";
 		};
 		90BDE63F200425DB005488D8 /* servicelyUITests */ = {
@@ -551,7 +595,6 @@
 				37A974DC1FC501AF000D5493 /* ProfileViewController.swift in Sources */,
 				3745B96E1FD79E0400622BCE /* CosmosDistrib.swift in Sources */,
 				379650A61FA8956400EF72ED /* SettingsTableViewController.swift in Sources */,
-				9016772F1F92C71B00F1E1D5 /* ServiceOfferTableViewCell.swift in Sources */,
 				7FBB2EB71FC37588002067C1 /* ViewServiceViewController.swift in Sources */,
 				902295081FEF5DD300BC39EA /* ClientRequest.swift in Sources */,
 				90AFFE672006DFB600830CF1 /* LocationHelper.swift in Sources */,
@@ -563,19 +606,16 @@
 				90280E8D1FC3CAF5006C5542 /* CreateClientRequestViewController.swift in Sources */,
 				379650A41FA8954C00EF72ED /* SettingsViewController.swift in Sources */,
 				908CD2A91FE89F3500372C29 /* ChatMetadata.swift in Sources */,
-				901677291F92B87C00F1E1D5 /* ClientFeedViewController.swift in Sources */,
 				901FDE8E1FA6AE4400BA2163 /* ServiceTypeViewController.swift in Sources */,
 				7FBB2EB51FC36430002067C1 /* CategoriesServiceTableViewCell.swift in Sources */,
 				7F2217E11FA820740004D67D /* EditProviderViewController.swift in Sources */,
 				90C96DC01FE4FC8C00A1E8BA /* DatabaseWrapper.swift in Sources */,
 				903C46081FE856CC00D80D58 /* ChatViewController.swift in Sources */,
-				906C8282200E9F2500316A13 /* PostsFlowLayout.swift in Sources */,
 				7FBB2EB31FC281A4002067C1 /* ServicesRequestsTableViewController.swift in Sources */,
 				7F9E39761FD72290008CB750 /* OurServicesTableViewController.swift in Sources */,
 				903C46041FE8538D00D80D58 /* ChatListTableViewController.swift in Sources */,
 				901677271F92B5DD00F1E1D5 /* CreateServiceOfferViewController.swift in Sources */,
 				7FF61A771FC0CC3B00DFE2E7 /* CategoriesTableViewController.swift in Sources */,
-				9022950A1FEF5E1A00BC39EA /* ClientRequestTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
