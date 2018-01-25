@@ -347,6 +347,15 @@ import GeoFire
             }
         }
     }
+        
+    // MARK: - message button handler
+        
+    @IBAction func messageButtonHandler(_ sender: Any) {
+        if let cell = (sender as AnyObject).superview??.superview as? PostCollectionViewCell {
+            self.selectedIndexPath = self.collectionView?.indexPath(for: cell)
+        }
+    }
+        
 
     
     // MARK: - collection view controller methods
