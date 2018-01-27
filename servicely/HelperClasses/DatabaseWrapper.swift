@@ -104,7 +104,9 @@ class DatabaseWrapper {
                         companyName: (dict["companyName"] as? String)!,
                         contactInfo: (dict["contactInfo"] as? String)!,
                         userID: (dict["userID"] as? String)!,
-                        timestamp: (dict["timestamp"] as? Double)!
+                        timestamp: (dict["timestamp"] as? Double)!,
+                        postID: (dict["postID"] as? String)!
+
                         )
                     )
                     
@@ -137,7 +139,9 @@ class DatabaseWrapper {
                         userID: dict["userID"] as! String,
                         userName: dict["userName"] as! String,
                         category: dict["category"] as! String,
-                        timestamp: dict["timestamp"] as! Double
+                        timestamp: dict["timestamp"] as! Double,
+                        postID: dict["postID"] as! String
+
                         )
                     )
                     
@@ -180,7 +184,9 @@ class DatabaseWrapper {
                         userID: (dict["userID"] as? String)!,
                         userName: (dict["userName"] as? String)!,
                         category: (dict["category"] as? String)!,
-                        timestamp: (dict["timestamp"] as? Double)!
+                        timestamp: (dict["timestamp"] as? Double)!,
+                        postID: (dict["postID"] as? String)!
+
                         )
                     )
         
@@ -214,7 +220,9 @@ class DatabaseWrapper {
                         companyName: (dict["companyName"] as? String)!,
                         contactInfo: (dict["contactInfo"] as? String)!,
                         userID: (dict["userID"] as? String)!,
-                        timestamp: (dict["timestamp"] as? Double)!
+                        timestamp: (dict["timestamp"] as? Double)!,
+                        postID: (dict["postID"] as? String)!
+
                         )
                     )
                     
@@ -248,7 +256,9 @@ class DatabaseWrapper {
                         companyName: (dict["companyName"] as? String)!,
                         contactInfo: (dict["contactInfo"] as? String)!,
                         userID: (dict["userID"] as? String)!,
-                        timestamp: (dict["timestamp"] as? Double)!
+                        timestamp: (dict["timestamp"] as? Double)!,
+                        postID: (dict["postID"] as? String)!
+
                         )
                     )
                     
@@ -280,7 +290,8 @@ class DatabaseWrapper {
                         userID: (dict["userID"] as? String)!,
                         userName: (dict["userName"] as? String)!,
                         category: (dict["category"] as? String)!,
-                        timestamp: (dict["timestamp"] as? Double)!
+                        timestamp: (dict["timestamp"] as? Double)!,
+                        postID: (dict["postID"] as? String)!
                         )
                     )
                     

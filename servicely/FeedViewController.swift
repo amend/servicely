@@ -18,7 +18,7 @@ import GeoFire
 
 //class FeedViewController: UIViewController, AuthUIDelegate, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate, UICollectionViewDelegateFlowLayout {
     
-    class FeedViewController: UIViewController, AuthUIDelegate, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate {
+    class FeedViewController: UIViewController, AuthUIDelegate, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate, UICollectionViewDelegateFlowLayout {
 
     //let collectionViewController:UICollectionViewController = UICollectionViewController()
     
@@ -462,13 +462,13 @@ import GeoFire
                                  layout collectionViewLayout: UICollectionViewLayout,
                                  sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        return CGSize.init(width: 320, height: 410)
+        return CGSize.init(width: 375, height: 410)
     }
     
     func collectionView(_ collectionView: UICollectionView,
                                  layout collectionViewLayout: UICollectionViewLayout,
                                  insetForSectionAt section: Int) -> UIEdgeInsets    {
-        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView,

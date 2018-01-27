@@ -112,6 +112,11 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
             return
         }
         
+        // Save to Firebase.
+        let ref:DatabaseReference! = Database.database().reference()
+
+        let postID = ref.child("clientRequest").childByAutoId()
+        
         // define array of key/value pairs to store for this person.
         let clientRequestRecord = [
             "category": serviceType,
@@ -121,14 +126,11 @@ class CreateClientRequestViewController: UIViewController, UIPickerViewDataSourc
             "location": self.cityAddress!,
             "latitude": self.latitude!,
             "longitude": self.longitude!,
-            "timestamp": ServerValue.timestamp()
+            "timestamp": ServerValue.timestamp(),
+            "postID": postID.key
             ] as [String : Any]
         
-        // Save to Firebase.
-        let ref:DatabaseReference! = Database.database().reference()
-
-        let postID = ref.child("clientRequest").childByAutoId()
-            postID.setValue(clientRequestRecord)
+        postID.setValue(clientRequestRecord)
         
         let geoFireRef:DatabaseReference! = Database.database().reference().child("location-clientRequests")
         let geoFire = GeoFire(firebaseRef: geoFireRef)
