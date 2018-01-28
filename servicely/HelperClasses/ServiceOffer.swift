@@ -18,6 +18,7 @@ class ServiceOffer {
     private var _contactInfo:String = ""
     private var _userID:String = ""
     private var _timestamp:Double = 0
+    private var _postID:String = ""
     
     var category:String {
         get { return _category}
@@ -59,7 +60,12 @@ class ServiceOffer {
         set(v) { _timestamp = v }
     }
     
-    init(category:String, serviceDescription:String, askingPrice:String, location:String, companyName:String, contactInfo:String, userID:String, timestamp:Double) {
+    var postID:String {
+        get { return _postID}
+        set(v) { _postID = v}
+    }
+    
+    init(category:String, serviceDescription:String, askingPrice:String, location:String, companyName:String, contactInfo:String, userID:String, timestamp:Double, postID:String) {
         self.category = category
         self.serviceDescription = serviceDescription
         self.askingPrice = askingPrice
@@ -68,5 +74,6 @@ class ServiceOffer {
         self.contactInfo = contactInfo
         self.userID = userID
         self.timestamp = timestamp
+        self.postID = postID
     }
 }

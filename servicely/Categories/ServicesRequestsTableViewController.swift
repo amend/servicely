@@ -58,6 +58,8 @@ class ServicesRequestsTableViewController: FeedViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
+        //self.locationManager = CLLocationManager()
+        //super.locationManager = CLLocationManager()
         
         // clean up
         self.cleanUpData()

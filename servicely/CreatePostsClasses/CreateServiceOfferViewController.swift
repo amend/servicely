@@ -116,6 +116,12 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
             return
         }
         
+        // Save to Firebase.
+        let ref:DatabaseReference! = Database.database().reference()
+        
+        //ref.child("serviceOffer").childByAutoId().setValue(serviceOfferRecord)
+        let postID = ref.child("serviceOffer").childByAutoId()
+        
         // define array of key/value pairs to store for this person.
         let serviceOfferRecord = [
             "companyName": companyName.text!,
@@ -127,14 +133,10 @@ class CreateServiceOfferViewController: UIViewController, UIPickerViewDataSource
             "longitude": self.longitude!,
             "contactInfo": contactInfo.text!,
             "userID": userID,
-            "timestamp": ServerValue.timestamp()
+            "timestamp": ServerValue.timestamp(),
+            "postID": postID.key
             ] as [String : Any]
         
-        // Save to Firebase.
-        let ref:DatabaseReference! = Database.database().reference()
-        
-        //ref.child("serviceOffer").childByAutoId().setValue(serviceOfferRecord)
-        let postID = ref.child("serviceOffer").childByAutoId()
         postID.setValue(serviceOfferRecord)
 
         

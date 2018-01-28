@@ -15,6 +15,7 @@ class ClientRequest {
     private var _userName:String = ""
     private var _category:String = ""
     private var _timestamp:Double = 0
+    private var _postID:String = ""
     
     var serviceDescription:String {
         get {return _serviceDescription}
@@ -46,13 +47,18 @@ class ClientRequest {
         set(v) {_timestamp = v}
     }
     
+    var postID:String {
+        get { return _postID}
+        set(v) { _postID = v}
+    }
     
-    init(serviceDescription:String, location:String, userID:String, userName:String, category:String, timestamp:Double) {
+    init(serviceDescription:String, location:String, userID:String, userName:String, category:String, timestamp:Double, postID:String) {
         self.serviceDescription = serviceDescription
         self.location = location
         self.userID = userID
         self.userName = userName
         self.category = category
         self.timestamp = timestamp
+        self.postID = postID
     }
 }
