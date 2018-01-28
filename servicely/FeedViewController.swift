@@ -557,27 +557,29 @@ import GeoFire
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        var service:ServiceOffer? = nil
-        var request:ClientRequest? = nil
-                
-        if(self.selectedIndexPath != nil) {
-            if(self.services != nil) {
-                service = self.services[(self.selectedIndexPath?.row)!]
-            } else if(self.requests != nil) {
-                request = self.requests[(self.selectedIndexPath?.row)!]
-            } else {
-                // TODO: do something if it gets here
-                print("in feed in segue but both requests and services are nil")
-                return
-            }
-        } else {
-            // TODO: do something if it gets here
-            print("in feed in segue but no selected index path")
-            return
-        }
         
         if(segue.identifier == "viewServiceToChatSegue") {
-            // TODO: Make ViewRequestVieController
+            
+            var service:ServiceOffer? = nil
+            var request:ClientRequest? = nil
+            
+            if(self.selectedIndexPath != nil) {
+                if(self.services != nil) {
+                    service = self.services[(self.selectedIndexPath?.row)!]
+                } else if(self.requests != nil) {
+                    request = self.requests[(self.selectedIndexPath?.row)!]
+                } else {
+                    // TODO: do something if it gets here
+                    print("in feed in segue but both requests and services are nil")
+                    return
+                }
+            } else {
+                // TODO: do something if it gets here
+                print("in feed in segue but no selected index path")
+                return
+            }
+
+            
             if let chatVC = segue.destination as? ChatViewController{
                 
                 if(request != nil) {
