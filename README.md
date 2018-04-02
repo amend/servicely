@@ -16,7 +16,7 @@ The Categories view shows a list of categories that the app supports. Selecting 
 Client Request
 
 This view is what a client uses to make a request.
-<!--- ![](https://i.imgur.com/pp3QQnA.png) ---> 
+<!--- ![](https://i.imgur.com/pp3QQnA.png) --->
 <img src="https://i.imgur.com/pp3QQnA.png" align="left" height="500" width="281" >
 
 Service Offer
@@ -35,7 +35,7 @@ The Profile view allows users view their posts and write a description of what t
 ![](https://i.imgur.com/8aKtFCF.png)
 
 Settings
-![](https://i.imgur.com/3b1VA79.png)
+![](https://i.imgur.com/3b1VA79.png =281x500)
 
 After running "pods update", follow these steps to include geofire:
 1. In xcode navigator, go to Pods/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework
