@@ -4,7 +4,7 @@ Servicely is an iOS app we worked on for CS 378 iOS Programming at UT Austin. Se
 
 ## Feed
 The Feed view shows a feed of service offers if you're using the app as a client, or a feed of client requests if you're using the app as a service provider.
-![](https://i.imgur.com/J214gn7.png)
+<img src="https://i.imgur.com/J214gn7.png" height="500" width="281" >
 
 ## Categories
 The Categories view shows a list of categories that the app supports. Selecting a category shows the user a list of posts that match that category.
