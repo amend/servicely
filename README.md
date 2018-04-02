@@ -10,12 +10,14 @@ The Feed view shows a feed of service offers if you're using the app as a client
 Categories
 
 The Categories view shows a list of categories that the app supports. Selecting a category shows the user a list of posts that match that category.
-![](https://i.imgur.com/av2Kux0.png)
+<!--- ![](https://i.imgur.com/av2Kux0.png) --->
+<img src="https://i.imgur.com/av2Kux0.png" align="left" height="500" width="281" >
 
 Client Request
 
 This view is what a client uses to make a request.
-![](https://i.imgur.com/pp3QQnA.png)
+<!--- ![](https://i.imgur.com/pp3QQnA.png) ---> 
+<img src="https://i.imgur.com/pp3QQnA.png" align="left" height="500" width="281" >
 
 Service Offer
 
