@@ -462,7 +462,7 @@ import GeoFire
                                  layout collectionViewLayout: UICollectionViewLayout,
                                  sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        return CGSize.init(width: 375, height: 410)
+        return CGSize.init(width: 375, height: 460)
     }
     
     func collectionView(_ collectionView: UICollectionView,
